@@ -35,7 +35,7 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static Client Default(long id)
+        public static Client Default()
         {
             try
             {
