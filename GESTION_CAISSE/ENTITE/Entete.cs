@@ -10,13 +10,19 @@ namespace GESTION_CAISSE.ENTITE
     {
         public Entete()
         {
+            commandes = new List<Facture>();
             facturesRegle = new List<Facture>();
+            facturesEnCours = new List<Facture>();
+            facturesEnAttente = new List<Facture>();
         }
 
         public Entete(long id)
         {
             this.id = id;
+            commandes = new List<Facture>();
             facturesRegle = new List<Facture>();
+            facturesEnCours = new List<Facture>();
+            facturesEnAttente = new List<Facture>();
         }
 
         private long id;

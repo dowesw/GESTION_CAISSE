@@ -38,5 +38,10 @@ namespace GESTION_CAISSE.TOOLS
         public static String ETAT_EN_ATTENTE = "En Attente";
         public static String ETAT_EN_COURS = "En Cours";
         public static String ETAT_REGLE = "Réglé";
+        public static String ETAT_VALIDE = "Accordé";
+
+
+        public static String TYPE_FV = "FV";
+        public static String TYPE_BCV = "BCV";
     }
 }

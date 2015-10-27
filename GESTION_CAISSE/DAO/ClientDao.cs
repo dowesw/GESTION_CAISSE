@@ -63,7 +63,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_com_client where defaut = true limit 1";
+                String search = "select * from yvs_com_client c inner join yvs_tiers t on c.tiers = t.id where defaut = true and t.agence = " + Constantes.Agence.Id + " limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 Client a = new Client();
