@@ -61,9 +61,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button32 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button32 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -395,15 +395,6 @@
             this.textBox1.Size = new System.Drawing.Size(652, 48);
             this.textBox1.TabIndex = 31;
             // 
-            // button32
-            // 
-            this.button32.Image = global::GESTION_CAISSE.Properties.Resources.gnavigation;
-            this.button32.Location = new System.Drawing.Point(732, 6);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(68, 48);
-            this.button32.TabIndex = 30;
-            this.button32.UseVisualStyleBackColor = true;
-            // 
             // button31
             // 
             this.button31.Image = global::GESTION_CAISSE.Properties.Resources.dnavigation;
@@ -420,7 +411,16 @@
             this.panel3.Size = new System.Drawing.Size(803, 350);
             this.panel3.TabIndex = 2;
             // 
-            // Form_Choix_Client
+            // button32
+            // 
+            this.button32.Image = global::GESTION_CAISSE.Properties.Resources.gnavigation;
+            this.button32.Location = new System.Drawing.Point(732, 6);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(68, 48);
+            this.button32.TabIndex = 30;
+            this.button32.UseVisualStyleBackColor = true;
+            // 
+            // FormChoixClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -428,9 +428,8 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form_Choix_Client";
+            this.Name = "FormChoixClient";
             this.Text = "FormChoixClient";
-            this.Load += new System.EventHandler(this.Form_Choix_Client_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

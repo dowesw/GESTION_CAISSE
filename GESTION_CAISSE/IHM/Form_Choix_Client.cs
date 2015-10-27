@@ -21,10 +21,5 @@ namespace GESTION_CAISSE.IHM
         {
 
         }
-
-        private void Form_Choix_Client_Load(object sender, EventArgs e)
-        {
-            BLL.ConfigurationBLL.getConfigurerForm(this);
-        }
     }
 }

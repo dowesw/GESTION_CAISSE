@@ -134,6 +134,12 @@
     <Compile Include="ENTITE\Tiers.cs" />
     <Compile Include="ENTITE\TrancheHoraire.cs" />
     <Compile Include="ENTITE\Users.cs" />
+    <Compile Include="IHM\Form_Caisse_Reglement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Caisse_Reglement.designer.cs">
+      <DependentUpon>Form_Caisse_Reglement.cs</DependentUpon>
+    </Compile>
     <Compile Include="IHM\Form_Choix_Client.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     <Compile Include="TOOLS\Constantes.cs" />
     <Compile Include="TOOLS\Messages.cs" />
     <Compile Include="TOOLS\Utils.cs" />
+    <EmbeddedResource Include="IHM\Form_Caisse_Reglement.resx">
+      <DependentUpon>Form_Caisse_Reglement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IHM\Form_Choix_Client.resx">
       <DependentUpon>Form_Choix_Client.cs</DependentUpon>
     </EmbeddedResource>
