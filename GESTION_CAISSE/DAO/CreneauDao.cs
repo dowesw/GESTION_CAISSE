@@ -16,9 +16,10 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select c.id, c.date_travail, c.users, h.depot, h.type from yvs_com_creneau_horaire_users c "
+                String search = "select c.id as id, c.date_travail as date_travail, c.users as users, c.actif actif, h.depot as depot, h.type as type"
+                    + " from yvs_com_creneau_horaire_users c "
                     + " inner join yvs_com_creneau_horaire h on c.creneau = h.id"
-                    + " where id = " + id + "";
+                    + " where c.id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 Creneau a = new Creneau();
@@ -26,22 +27,22 @@ namespace GESTION_CAISSE.DAO
                 {
                     while (lect.Read())
                     {
-                        a.Id = Convert.ToInt64(lect["c.id"].ToString());
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.DateTravail = Convert.ToDateTime((lect["c.date_travail"] != null) ? (!lect["c.date_travail"].ToString().Trim().Equals("") ? lect["c.date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
-                        a.Personnel = (lect["c.users"] != null
-                            ? (!lect["c.users"].ToString().Trim().Equals("")
-                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["c.users"].ToString()))
+                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Personnel = (lect["users"] != null
+                            ? (!lect["users"].ToString().Trim().Equals("")
+                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))
                             : new Personnel())
                             : new Personnel());
-                        a.Depot = (lect["h.depot"] != null
-                            ? (!lect["h.depot"].ToString().Trim().Equals("")
-                            ? BLL.DepotBll.One(Convert.ToInt64(lect["h.depot"].ToString()))
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? BLL.DepotBll.One(Convert.ToInt64(lect["depot"].ToString()))
                             : new Depot())
                             : new Depot());
-                        a.Tranche = (lect["h.type"] != null
-                            ? (!lect["h.type"].ToString().Trim().Equals("")
-                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["h.type"].ToString()))
+                        a.Tranche = (lect["type"] != null
+                            ? (!lect["type"].ToString().Trim().Equals("")
+                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["type"].ToString()))
                             : new TrancheHoraire())
                             : new TrancheHoraire());
                         a.Update = true;
@@ -71,7 +72,8 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select c.id, c.date_travail, c.users, h.depot, h.type from yvs_com_creneau_horaire_users c "
+                String search = "select c.id as id, c.date_travail as date_travail, c.users as users, c.actif actif, h.depot as depot, h.type as type"
+                    + " from yvs_com_creneau_horaire_users c "
                     + " inner join yvs_com_creneau_horaire h on c.creneau = h.id"
                     + " where c.users = " + pers.Id + " and c.date_travail ='" + date + "'";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
@@ -81,22 +83,22 @@ namespace GESTION_CAISSE.DAO
                 {
                     while (lect.Read())
                     {
-                        a.Id = Convert.ToInt64(lect["c.id"].ToString());
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.DateTravail = Convert.ToDateTime((lect["c.date_travail"] != null) ? (!lect["c.date_travail"].ToString().Trim().Equals("") ? lect["c.date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
-                        a.Personnel = (lect["c.users"] != null
-                            ? (!lect["c.users"].ToString().Trim().Equals("")
-                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["c.users"].ToString()))
+                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Personnel = (lect["users"] != null
+                            ? (!lect["users"].ToString().Trim().Equals("")
+                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))
                             : new Personnel())
                             : new Personnel());
-                        a.Depot = (lect["h.depot"] != null
-                            ? (!lect["h.depot"].ToString().Trim().Equals("")
-                            ? BLL.DepotBll.One(Convert.ToInt64(lect["h.depot"].ToString()))
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? BLL.DepotBll.One(Convert.ToInt64(lect["depot"].ToString()))
                             : new Depot())
                             : new Depot());
-                        a.Tranche = (lect["h.type"] != null
-                            ? (!lect["h.type"].ToString().Trim().Equals("")
-                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["h.type"].ToString()))
+                        a.Tranche = (lect["type"] != null
+                            ? (!lect["type"].ToString().Trim().Equals("")
+                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["type"].ToString()))
                             : new TrancheHoraire())
                             : new TrancheHoraire());
                         a.Update = true;
@@ -121,7 +123,8 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select c.id, c.date_travail, c.users, h.depot, h.type from yvs_com_creneau_horaire_users c "
+                String search = "select c.id as id, c.date_travail as date_travail, c.users as users, c.actif actif, h.depot as depot, h.type as type"
+                    + " from yvs_com_creneau_horaire_users c "
                     + " inner join yvs_com_creneau_horaire h on c.creneau = h.id"
                     + " inner join yvs_com_type_creneau_horaire t on h.type = t.id"
                     + " where c.users = " + pers.Id + " and c.date_travail ='" + date + "' and t.heure_debut = '" + heureDebut + "' and t.heure_fin = '" + heureFin + "'";
@@ -132,22 +135,22 @@ namespace GESTION_CAISSE.DAO
                 {
                     while (lect.Read())
                     {
-                        a.Id = Convert.ToInt64(lect["c.id"].ToString());
-                        a.DateTravail = Convert.ToDateTime((lect["c.date_travail"] != null) ? (!lect["c.date_travail"].ToString().Trim().Equals("") ? lect["c.date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.Personnel = (lect["c.users"] != null
-                            ? (!lect["c.users"].ToString().Trim().Equals("")
-                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["c.users"].ToString()))
+                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Personnel = (lect["users"] != null
+                            ? (!lect["users"].ToString().Trim().Equals("")
+                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))
                             : new Personnel())
                             : new Personnel());
-                        a.Depot = (lect["h.depot"] != null
-                            ? (!lect["h.depot"].ToString().Trim().Equals("")
-                            ? BLL.DepotBll.One(Convert.ToInt64(lect["h.depot"].ToString()))
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? BLL.DepotBll.One(Convert.ToInt64(lect["depot"].ToString()))
                             : new Depot())
                             : new Depot());
-                        a.Tranche = (lect["h.type"] != null
-                            ? (!lect["h.type"].ToString().Trim().Equals("")
-                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["h.type"].ToString()))
+                        a.Tranche = (lect["type"] != null
+                            ? (!lect["type"].ToString().Trim().Equals("")
+                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["type"].ToString()))
                             : new TrancheHoraire())
                             : new TrancheHoraire());
                         a.Update = true;
@@ -272,23 +275,23 @@ namespace GESTION_CAISSE.DAO
                 {
                     while (lect.Read())
                     {
-                        Creneau a = new Creneau();
+                        Creneau a = new Creneau(); 
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.DateTravail = Convert.ToDateTime((lect["c.date_travail"] != null) ? (!lect["c.date_travail"].ToString().Trim().Equals("") ? lect["c.date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
-                        a.Personnel = (lect["c.users"] != null
-                            ? (!lect["c.users"].ToString().Trim().Equals("")
-                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["c.users"].ToString()))
+                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Personnel = (lect["users"] != null
+                            ? (!lect["users"].ToString().Trim().Equals("")
+                            ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))
                             : new Personnel())
                             : new Personnel());
-                        a.Depot = (lect["h.depot"] != null
-                            ? (!lect["h.depot"].ToString().Trim().Equals("")
-                            ? BLL.DepotBll.One(Convert.ToInt64(lect["h.depot"].ToString()))
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? BLL.DepotBll.One(Convert.ToInt64(lect["depot"].ToString()))
                             : new Depot())
                             : new Depot());
-                        a.Tranche = (lect["h.type"] != null
-                            ? (!lect["h.type"].ToString().Trim().Equals("")
-                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["h.type"].ToString()))
+                        a.Tranche = (lect["type"] != null
+                            ? (!lect["type"].ToString().Trim().Equals("")
+                            ? BLL.TrancheHoraireBll.One(Convert.ToInt64(lect["type"].ToString()))
                             : new TrancheHoraire())
                             : new TrancheHoraire());
                         a.Update = true;

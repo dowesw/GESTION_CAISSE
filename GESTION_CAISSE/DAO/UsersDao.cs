@@ -32,6 +32,7 @@ namespace GESTION_CAISSE.DAO
                         a.Photo = lect["photo"].ToString().Trim();
                         a.Actif = Convert.ToBoolean((lect["actif"].ToString() != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
                         a.Connected = Convert.ToBoolean((lect["connecte"].ToString() != null) ? (!lect["connecte"].ToString().Trim().Equals("") ? lect["connecte"].ToString().Trim() : "false") : "false");
+                        a.Admin = false;
                     }
                     lect.Close();
                 }
@@ -70,6 +71,7 @@ namespace GESTION_CAISSE.DAO
                         a.Connected = Convert.ToBoolean((lect["connecte"].ToString() != null) ? (!lect["connecte"].ToString().Trim().Equals("") ? lect["connecte"].ToString().Trim() : "false") : "false");
                         TOOLS.Constantes.Agence = BLL.AgenceBll.One(Convert.ToInt64(lect["agence"].ToString()));
                         a.Employe = null;
+                        a.Admin = false;
                     }
                     lect.Close();
                 }
@@ -193,6 +195,7 @@ namespace GESTION_CAISSE.DAO
                     {
                         Users a = new Users();
 
+                        a.Admin = false;
                         l.Add(a);
                     }
                     lect.Close();

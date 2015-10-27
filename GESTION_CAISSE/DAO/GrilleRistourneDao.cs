@@ -26,9 +26,9 @@ namespace GESTION_CAISSE.DAO
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Nature = lect["nature_montant"].ToString();
-                        a.Minimal = Convert.ToDouble(((lect["montant_minimal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"].ToString() : "0") : "0"));
-                        a.Maximal = Convert.ToDouble(((lect["montant_maximal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"].ToString() : "0") : "0"));
-                        a.Montant = Convert.ToDouble(((lect["montant_ristourne"] != null) ? ((!lect["montant_ristourne"].ToString().Trim().Equals("")) ? lect["montant_ristourne"].ToString() : "0") : "0"));
+                        a.Minimal = (Double)((lect["montant_minimal"] != null) ? ((!lect["montant_minimal"].ToString().Trim().Equals("")) ? lect["montant_minimal"] : 0) : 0);
+                        a.Maximal = (Double)((lect["montant_maximal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"] : 0) : 0);
+                        a.Montant = (Double)((lect["montant_ristourne"] != null) ? ((!lect["montant_ristourne"].ToString().Trim().Equals("")) ? lect["montant_ristourne"] : 0) : 0);
                         a.Update = true;
                     }
                     lect.Close();
@@ -154,9 +154,9 @@ namespace GESTION_CAISSE.DAO
                         GrilleRabais a = new GrilleRabais();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Nature = lect["nature_montant"].ToString();
-                        a.Minimal = Convert.ToDouble(((lect["montant_minimal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"].ToString() : "0") : "0"));
-                        a.Maximal = Convert.ToDouble(((lect["montant_maximal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"].ToString() : "0") : "0"));
-                        a.Montant = Convert.ToDouble(((lect["montant_ristourne"] != null) ? ((!lect["montant_ristourne"].ToString().Trim().Equals("")) ? lect["montant_ristourne"].ToString() : "0") : "0"));
+                        a.Minimal = (Double)((lect["montant_minimal"] != null) ? ((!lect["montant_minimal"].ToString().Trim().Equals("")) ? lect["montant_minimal"] : 0) : 0);
+                        a.Maximal = (Double)((lect["montant_maximal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"] : 0) : 0);
+                        a.Montant = (Double)((lect["montant_ristourne"] != null) ? ((!lect["montant_ristourne"].ToString().Trim().Equals("")) ? lect["montant_ristourne"] : 0) : 0);
                         a.Update = true;
                         l.Add(a);
                     }

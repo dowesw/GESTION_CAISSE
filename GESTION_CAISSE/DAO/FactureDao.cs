@@ -39,7 +39,7 @@ namespace GESTION_CAISSE.DAO
                         a.NumDoc = lect["num_doc"].ToString();
                         a.NumPiece = lect["num_piece"].ToString();
                         a.Statut = lect["statut"].ToString();
-                        a.MontantAvance = Convert.ToDouble(((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"].ToString() : "0") : "0"));
+                        a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
                         a.Update = true;
@@ -180,7 +180,7 @@ namespace GESTION_CAISSE.DAO
                         a.NumDoc = lect["num_doc"].ToString();
                         a.NumPiece = lect["num_piece"].ToString();
                         a.Statut = lect["statut"].ToString();
-                        a.MontantAvance = Convert.ToDouble(((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"].ToString() : "0") : "0"));
+                        a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
                         a.Update = true;

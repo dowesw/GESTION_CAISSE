@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace GESTION_CAISSE
 {
@@ -31,18 +32,13 @@ namespace GESTION_CAISSE
                 new IHM.Form_Serveur().ShowDialog();
             }
         }
-
-        static void testc()
-        {
-
-
-        }
-
+        
         static void Initialisation()
         {
             TOOLS.Constantes.Societe = BLL.SocieteBll.One(2288);
             TOOLS.Constantes.Agence = BLL.AgenceBll.One(2299);
             TOOLS.Constantes.Users = BLL.UsersBll.One(2692);
+            TOOLS.Constantes.Creneau = BLL.CreneauBll.One(15);
         }
     }
 }

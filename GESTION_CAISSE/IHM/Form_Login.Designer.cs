@@ -193,41 +193,42 @@
             this.tool_restart,
             this.tool_exit});
             this.context_bubble.Name = "context_bubble";
-            this.context_bubble.Size = new System.Drawing.Size(149, 114);
+            this.context_bubble.Size = new System.Drawing.Size(153, 136);
             // 
             // tool_setting
             // 
             this.tool_setting.Image = global::GESTION_CAISSE.Properties.Resources.configure;
             this.tool_setting.Name = "tool_setting";
-            this.tool_setting.Size = new System.Drawing.Size(148, 22);
+            this.tool_setting.Size = new System.Drawing.Size(152, 22);
             this.tool_setting.Text = "Configuration";
+            this.tool_setting.Click += new System.EventHandler(this.tool_setting_Click);
             // 
             // tool_deconnect
             // 
             this.tool_deconnect.Image = global::GESTION_CAISSE.Properties.Resources.endturn;
             this.tool_deconnect.Name = "tool_deconnect";
-            this.tool_deconnect.Size = new System.Drawing.Size(148, 22);
+            this.tool_deconnect.Size = new System.Drawing.Size(152, 22);
             this.tool_deconnect.Text = "Deconnection";
             // 
             // tool_help
             // 
             this.tool_help.Image = global::GESTION_CAISSE.Properties.Resources.contents;
             this.tool_help.Name = "tool_help";
-            this.tool_help.Size = new System.Drawing.Size(148, 22);
+            this.tool_help.Size = new System.Drawing.Size(152, 22);
             this.tool_help.Text = "Help";
             // 
             // tool_restart
             // 
             this.tool_restart.Image = global::GESTION_CAISSE.Properties.Resources.restart;
             this.tool_restart.Name = "tool_restart";
-            this.tool_restart.Size = new System.Drawing.Size(148, 22);
+            this.tool_restart.Size = new System.Drawing.Size(152, 22);
             this.tool_restart.Text = "Redemarrer";
             // 
             // tool_exit
             // 
             this.tool_exit.Image = global::GESTION_CAISSE.Properties.Resources.exit;
             this.tool_exit.Name = "tool_exit";
-            this.tool_exit.Size = new System.Drawing.Size(148, 22);
+            this.tool_exit.Size = new System.Drawing.Size(152, 22);
             this.tool_exit.Text = "Quitter";
             // 
             // Form_Login

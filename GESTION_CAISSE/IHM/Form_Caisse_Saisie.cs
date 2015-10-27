@@ -56,9 +56,12 @@ namespace GESTION_CAISSE.IHM
         {
             lb_nom_agence.Text = Constantes.Agence.Designation;
             lb_nom_user.Text = Constantes.Users.NomUser;
+            lb_nom_depot.Text = Constantes.Creneau.Depot.Designation;
+            lb_heure_debut_tranch.Text = Constantes.Creneau.Tranche.HeureDebut.ToString("T");
+            lb_heure_fin_tranch.Text = Constantes.Creneau.Tranche.HeureFin.ToString("T");
 
             Timer timer1 = new Timer();
-            timer1.Tick += (s, e) => { lb_date.Text = DateTime.Now.ToString(); };
+            timer1.Tick += (s, e) => { lb_date.Text = DateTime.Now.ToString("U"); };
             timer1.Interval = 100;
             timer1.Start();
         }
@@ -70,18 +73,49 @@ namespace GESTION_CAISSE.IHM
             LoadAllClients();
 
             SetClientDefaut();
+            setEnteteJour();
+        }
+
+        public void setEnteteJour()
+        {
+            DateTime date = Convert.ToDateTime("2015-10-10");
+            Entete e = BLL.EnteteBll.One(Constantes.Creneau, date);
+            if ((e != null) ? e.Id > 0 : false)
+            {
+                //Charge facture en attente
+                dgv_facture_wait.Rows.Clear();
+                foreach (Facture f in e.FacturesEnAttente)
+                {
+                    dgv_facture_wait.Rows.Add(new object[] { f.Id, f.NumDoc, f.HeureDoc.ToString("T"), f.Client.Nom_prenom, f.MontantTTC, f.MontantReste });
+                }
+
+                //Charge facture en cours
+                dgv_facture_cours.Rows.Clear();
+                foreach (Facture f in e.FacturesEnCours)
+                {
+                    dgv_facture_cours.Rows.Add(new object[] { f.Id, f.NumDoc, f.HeureDoc.ToString("T"), f.Client.Nom_prenom, f.MontantTTC, f.MontantReste });
+                }
+
+                //Charge facture regle
+                dgv_facture_regle.Rows.Clear();
+                foreach (Facture f in e.FacturesRegle)
+                {
+                    dgv_facture_regle.Rows.Add(new object[] { f.Id, f.NumDoc, f.HeureDoc.ToString("T"), f.Client.Nom_prenom, f.MontantTTC, f.MontantReste });
+                }
+
+                //Charge commande
+                dgv_commande.Rows.Clear();
+                foreach (Facture f in e.Commandes)
+                {
+                    dgv_commande.Rows.Add(new object[] { f.Id, f.NumDoc, f.HeureDoc.ToString("T"), f.Client.Nom_prenom, f.MontantTTC, f.MontantReste });
+                }
+            }
         }
 
         public void SetClientDefaut()
         {
-            List<Client> l = new List<Client>();
-            string query = "select * FROM yvs_com_client c inner join yvs_tiers t on c.tiers = t.id where c.defaut = true and t.agence = " + Constantes.Agence.Id;
-            l = BLL.ClientBll.Liste(query);
-            if ((l != null) ? l.Count > 0 : false)
-            {
-                Client v = l[0];
-                com_client.SelectedIndex = clients.FindIndex(a => a.Id == v.Id);
-            }
+            Client v = BLL.ClientBll.Default();
+            com_client.SelectedIndex = clients.FindIndex(a => a.Id == v.Id);
         }
 
         public void LoadAllClients()

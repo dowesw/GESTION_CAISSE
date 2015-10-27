@@ -15,8 +15,9 @@ namespace GESTION_CAISSE.TOOLS
         static public string[] MOIS = new string[] { "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" };
 
 
-        public static string jourSemaine(DateTime date){
-            string jour = date.ToString("dddd", new CultureInfo("fr-FR").DateTimeFormat);            
+        public static string jourSemaine(DateTime date)
+        {
+            string jour = date.ToString("dddd", new CultureInfo("fr-FR").DateTimeFormat);
             return jour;
         }
 
@@ -67,13 +68,23 @@ namespace GESTION_CAISSE.TOOLS
             return list;
         }
 
-        public static byte[] convertStringToByte(string text)
+        public static byte[] ConvertStringToByte(string text)
         {
             String[] tempAry = text.Split('-');
             byte[] decBytes2 = new byte[tempAry.Length];
             for (int i = 0; i < tempAry.Length; i++)
                 decBytes2[i] = Convert.ToByte(tempAry[i], 16);
             return decBytes2;
+        }
+
+        public static double ParsedMaxDouble(String value)
+        {
+            String d = Double.MaxValue.ToString();
+            if (value.Equals(d))
+            {
+                return Int64.MaxValue;
+            }
+            return Convert.ToDouble(value);
         }
     }
 }

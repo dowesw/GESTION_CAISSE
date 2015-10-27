@@ -91,11 +91,25 @@ namespace GESTION_CAISSE.ENTITE
             set { statut = value; }
         }
 
+        private double montantTTC;
+        public double MontantTTC
+        {
+            get { return montantTTC; }
+            set { montantTTC = value; }
+        }
+
         private double montantAvance;
         public double MontantAvance
         {
             get { return montantAvance; }
             set { montantAvance = value; }
+        }
+
+        private double montantReste;
+        public double MontantReste
+        {
+            get { return montantReste; }
+            set { montantReste = value; }
         }
 
         private Facture documentLie;
