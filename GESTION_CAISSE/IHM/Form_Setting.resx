@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lb_label.Text" xml:space="preserve">
+    <value>Une bonne gestion d'entreprise passe indéniablement 
+par une bonne gestion commerciale. 
+En effet, votre facturation, vos créances clients sont 
+des données à absolument maitriser 
+pour assurer la continuité d'exploitation de votre société,
+ il faut savoir relancer vos clients 
+pour ne pas laissé votre chiffre d'affaires en dehors de 
+votre compte bancaire. 
+Le suivi de vos fournisseurs également, essayez de négocier 
+avec eux des délais de règlement.</value>
+  </data>
+  <metadata name="choose_color.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAAGABoAwAAFgAAACgAAAAQAAAAIAAAAAEAGAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAA
+        AAD6oWzlgFfog1jog1jog1jog1jog1jog1jog1jog1jog1jKdE1ZOCJpTDhjRC9ZOCLylGPHeGj/qnL/
+        qnL/qnL/qnL/qnL/qnL/qnL/qnL/qnLdk2JgPSZxUj1kQixgPSbylGO8cWz/qnL/qnL/qnL/qnL/qnL/
+        qnL/qnL/qnL/qnLflWNpRCt0UTp9XUdpRCvylGOuZ3L/qnL/qnL/qnL/qnL/qnL/qnL/qnL/qnL/qnLh
+        lmRzSi9/WkBzSi9zSi/ylGOyanPpnHf/qnL/qnL/qnL/qnL/qnL/qnL/qnL/qnLkmGV+UjSNZkt+UjR+
+        UjTylGPjimamcY7/qnL/qnL/qnL/qnL/qnL/qnL/qnL/qnLmmWaKWjqWa06TZ0mKWjrylGPxk2KDWp3+
+        qXL/qnL/qnL/qnL/qnL/qnL/qnL/qnLpm2eXY0Cfb0+ebU2XY0DylGPxk2KqdJK+gIv/qnL/qnL/qnL/
+        qnL/qnL/qnL/qnLrnWikbEWtelite1ikbEXylGPxk2L5pnNYP7n5pnT/qnL/qnL/qnL/qnL/qnL+qnHu
+        q3+xdUy2flm2flmxdUzylGPxk2L/qnKrdZh/Wa3/qnL/qnL/qnL/qnL+qnL+wZjwwJ6+fVLMm3rKl3W+
+        fVLylGPxk2L/qnL+qXJXP8WsdZv/qnL/qnL+q3X+w5z+yaXzv5vKhljOj2TOj2TKhljylGPxk2L/qnL/
+        qnLpnHxFNdLEhY7+rnj+xqH+w5z+wZn1wJzXjl7ZlmnZlWfXjl7ylGPxk2L/qnL/qnL/qnLZkoRsUbjM
+        oqz+wZn+u47+vpP4wZ3ilmPlonXlonXilmPylGPxk2L/qnL/qnL/qnL+tIPita27kaPcpJH8uIv+vpP6
+        w53snWfuqHnto3HsnWfylGPxk2L/qnL/qnL+uoz+z7D+yqf1v5/ttprzuZf8wpz8xZ/1o2z2rXz1o2z1
+        o2z5oGv4n2v+qnL+wJf+17z+173+2L7+17791rv90rb90bP9yqj7p2/7q3b7p2/7p28AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</value>
+  </data>
+</root>

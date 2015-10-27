@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E8EA44C8-ED42-4453-B76A-BCF2A3162299}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GESTION_CAISSE</RootNamespace>
+    <AssemblyName>GESTION_CAISSE</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Npgsql, Version=2.2.4.3, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librairie Ext\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ArticleBll.cs" />
+    <Compile Include="BLL\CategorieClientBll.cs" />
+    <Compile Include="BLL\CategorieComptableBll.cs" />
+    <Compile Include="BLL\ClientBll.cs" />
+    <Compile Include="BLL\AgenceBll.cs" />
+    <Compile Include="BLL\ConfigurationBLL.cs" />
+    <Compile Include="BLL\ArticleComBll.cs" />
+    <Compile Include="BLL\CommissionBll.cs" />
+    <Compile Include="BLL\ContenuBll.cs" />
+    <Compile Include="BLL\EnteteBll.cs" />
+    <Compile Include="BLL\FactureBll.cs" />
+    <Compile Include="BLL\RemiseFactureBll.cs" />
+    <Compile Include="BLL\RemiseBll.cs" />
+    <Compile Include="BLL\RistourneBll.cs" />
+    <Compile Include="BLL\GrilleRistourneBll.cs" />
+    <Compile Include="BLL\GrilleRemiseBll.cs" />
+    <Compile Include="BLL\CreneauBll.cs" />
+    <Compile Include="BLL\TrancheHoraireBll.cs" />
+    <Compile Include="BLL\DepotBll.cs" />
+    <Compile Include="BLL\PersonnelBll.cs" />
+    <Compile Include="BLL\PlanCommissionBll.cs" />
+    <Compile Include="BLL\SocieteBll.cs" />
+    <Compile Include="BLL\TiersBll.cs" />
+    <Compile Include="BLL\ModePaiementBll.cs" />
+    <Compile Include="BLL\FamilleArticleBll.cs" />
+    <Compile Include="BLL\ServeurBll.cs" />
+    <Compile Include="BLL\UsersBll.cs" />
+    <Compile Include="DAO\ArticleDao.cs" />
+    <Compile Include="DAO\CategorieClientDao.cs" />
+    <Compile Include="DAO\CategorieComptableDao.cs" />
+    <Compile Include="DAO\ClientDao.cs" />
+    <Compile Include="DAO\AgenceDao.cs" />
+    <Compile Include="DAO\ConfigurationDAO.cs" />
+    <Compile Include="DAO\ArticleComDao.cs" />
+    <Compile Include="DAO\CommissionDao.cs" />
+    <Compile Include="DAO\ContenuDao.cs" />
+    <Compile Include="DAO\RemiseFactureDao.cs" />
+    <Compile Include="DAO\RistourneDao.cs" />
+    <Compile Include="DAO\RemiseDao.cs" />
+    <Compile Include="DAO\GrilleRistourneDao.cs" />
+    <Compile Include="DAO\GrilleRemiseDao.cs" />
+    <Compile Include="DAO\FactureDao.cs" />
+    <Compile Include="DAO\EnteteDao.cs" />
+    <Compile Include="DAO\TrancheHoraireDao.cs" />
+    <Compile Include="DAO\DepotDao.cs" />
+    <Compile Include="DAO\CreneauDao.cs" />
+    <Compile Include="DAO\PersonnelDao.cs" />
+    <Compile Include="DAO\PlanCommissionDao.cs" />
+    <Compile Include="DAO\SocieteDao.cs" />
+    <Compile Include="DAO\TiersDao.cs" />
+    <Compile Include="DAO\ModePaiementDao.cs" />
+    <Compile Include="DAO\FamilleArticleDao.cs" />
+    <Compile Include="DAO\ServeurDao.cs" />
+    <Compile Include="DAO\UsersDao.cs" />
+    <Compile Include="ENTITE\Agence.cs" />
+    <Compile Include="ENTITE\Article.cs" />
+    <Compile Include="ENTITE\ArticleCom.cs" />
+    <Compile Include="ENTITE\CategorieClient.cs" />
+    <Compile Include="ENTITE\CategorieComptable.cs" />
+    <Compile Include="ENTITE\Client.cs" />
+    <Compile Include="ENTITE\Commission.cs" />
+    <Compile Include="ENTITE\Configuration.cs" />
+    <Compile Include="ENTITE\Contenu.cs" />
+    <Compile Include="ENTITE\Creneau.cs" />
+    <Compile Include="ENTITE\Depot.cs" />
+    <Compile Include="ENTITE\Employe.cs" />
+    <Compile Include="ENTITE\Entete.cs" />
+    <Compile Include="ENTITE\Facture.cs" />
+    <Compile Include="ENTITE\FamilleArticle.cs" />
+    <Compile Include="ENTITE\GrilleRabais.cs" />
+    <Compile Include="ENTITE\GroupeArticle.cs" />
+    <Compile Include="ENTITE\Mensualite.cs" />
+    <Compile Include="ENTITE\ModePaiement.cs" />
+    <Compile Include="ENTITE\Personnel.cs" />
+    <Compile Include="ENTITE\PieceCaisse.cs" />
+    <Compile Include="ENTITE\PlanCommission.cs" />
+    <Compile Include="ENTITE\PlanRemise.cs" />
+    <Compile Include="ENTITE\PlanRistourne.cs" />
+    <Compile Include="ENTITE\Remise.cs" />
+    <Compile Include="ENTITE\RemiseFacture.cs" />
+    <Compile Include="ENTITE\Ristourne.cs" />
+    <Compile Include="ENTITE\Serveur.cs" />
+    <Compile Include="ENTITE\Societe.cs" />
+    <Compile Include="ENTITE\Tiers.cs" />
+    <Compile Include="ENTITE\TrancheHoraire.cs" />
+    <Compile Include="ENTITE\Users.cs" />
+    <Compile Include="IHM\Form_Choix_Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Choix_Client.designer.cs">
+      <DependentUpon>Form_Choix_Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHM\Form_Caisse_Saisie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Caisse_Click.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Caisse_Click.designer.cs">
+      <DependentUpon>Form_Caisse_Click.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHM\Form_Caisse_Saisie.Designer.cs">
+      <DependentUpon>Form_Caisse_Saisie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHM\Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHM\Form_Serveur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Serveur.designer.cs">
+      <DependentUpon>Form_Serveur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHM\Form_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Setting.Designer.cs">
+      <DependentUpon>Form_Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TOOLS\Chemins.cs" />
+    <Compile Include="TOOLS\Connexion.cs" />
+    <Compile Include="TOOLS\Constantes.cs" />
+    <Compile Include="TOOLS\Messages.cs" />
+    <Compile Include="TOOLS\Utils.cs" />
+    <EmbeddedResource Include="IHM\Form_Choix_Client.resx">
+      <DependentUpon>Form_Choix_Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Form_Caisse_Saisie.resx">
+      <DependentUpon>Form_Caisse_Saisie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Form_Caisse_Click.resx">
+      <DependentUpon>Form_Caisse_Click.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Form_Serveur.resx">
+      <DependentUpon>Form_Serveur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Form_Setting.resx">
+      <DependentUpon>Form_Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IMG\LANG\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\THEMES\BlackClass.JPG" />
+    <None Include="IMG\THEMES\BlueTrack.JPG" />
+    <None Include="IMG\THEMES\Basique.JPG" />
+    <None Include="IMG\THEMES\Classique.JPG" />
+    <None Include="IMG\ICONES\stylesheet.png" />
+    <None Include="IMG\dnavigation.png" />
+    <Content Include="IMG\favicon-16.ico" />
+    <Content Include="IMG\favicon-32.ico" />
+    <Content Include="IMG\favicon.ico" />
+    <None Include="IMG\gnavigation.png" />
+    <Content Include="IMG\ICONES\agt_pause-queue.png" />
+    <Content Include="IMG\ICONES\agt_resume.png" />
+    <Content Include="IMG\ICONES\agt_stop.png" />
+    <Content Include="IMG\ICONES\agt_update_critical.png" />
+    <None Include="IMG\ICONES\blender.png" />
+    <None Include="IMG\ICONES\browser.png" />
+    <None Include="IMG\ICONES\build.png" />
+    <Content Include="IMG\ICONES\cnr-not_connected.png" />
+    <None Include="IMG\ICONES\edit_add.png" />
+    <Content Include="IMG\ICONES\edit_user.png" />
+    <Content Include="IMG\ICONES\endturn.png" />
+    <Content Include="IMG\ICONES\exit.png" />
+    <Content Include="IMG\ICONES\irkick.png" />
+    <Content Include="IMG\ICONES\irkickflash.png" />
+    <None Include="IMG\ICONES\klines.png" />
+    <Content Include="IMG\ICONES\logout.png" />
+    <None Include="IMG\ICONES\package_games_kids.png" />
+    <Content Include="IMG\ICONES\player_play.png" />
+    <Content Include="IMG\ICONES\player_stop.png" />
+    <Content Include="IMG\ICONES\restart-1.png" />
+    <Content Include="IMG\ICONES\restart.png" />
+    <Content Include="IMG\ICONES\rotate.png" />
+    <Content Include="IMG\ICONES\rotate_cw.png" />
+    <None Include="IMG\user_m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
