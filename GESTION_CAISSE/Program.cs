@@ -19,6 +19,7 @@ namespace GESTION_CAISSE
             Application.SetCompatibleTextRenderingDefault(false);
             Initialisation();
             Application.Run(new IHM.Form_Caisse_Saisie());
+            //test();
         }
 
         static void StartAppl()
@@ -31,6 +32,11 @@ namespace GESTION_CAISSE
             {
                 new IHM.Form_Serveur().ShowDialog();
             }
+        }
+
+        static void test()
+        {
+          var t =  TOOLS.Utils.GenererReference(TOOLS.Constantes.DOC_COMMANDE);
         }
         
         static void Initialisation()

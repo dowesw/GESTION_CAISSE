@@ -8,26 +8,26 @@ using GESTION_CAISSE.DAO;
 
 namespace GESTION_CAISSE.BLL
 {
-    class FactureBll
+    class ElementReferenceBll
     {
-        static Facture facture;
+        static ElementReference element;
 
-        internal Facture getFacture
+        internal ElementReference getElementReference
         {
-            get { return facture; }
-            set { facture = value; }
+            get { return element; }
+            set { element = value; }
         }
 
-        public FactureBll(Facture unFacture)
+        public ElementReferenceBll(ElementReference unElementReference)
         {
-            facture = unFacture;
+            element = unElementReference;
         }
 
-        public static Facture One(long id)
+        public static ElementReference One(long id)
         {
             try
             {
-                return FactureDao.getOneFacture(id);
+                return ElementReferenceDao.getOneElementReference(id);
             }
             catch (Exception ex)
             {
@@ -35,11 +35,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static Facture One(String reference)
+        public static ElementReference One(String designation)
         {
             try
             {
-                return FactureDao.getOneFacture(reference);
+                return ElementReferenceDao.getOneElementReference(designation);
             }
             catch (Exception ex)
             {
@@ -47,23 +47,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static Facture One_(String reference)
+        public ElementReference Insert()
         {
             try
             {
-                return FactureDao.getOneFacture_(reference);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
-            }
-        }
-
-        public Facture Insert()
-        {
-            try
-            {
-                return FactureDao.getAjoutFacture(facture);
+                return ElementReferenceDao.getAjoutElementReference(element);
             }
             catch (Exception ex)
             {
@@ -76,7 +64,7 @@ namespace GESTION_CAISSE.BLL
         {
             try
             {
-                return FactureDao.getUpdateFacture(facture);
+                return ElementReferenceDao.getUpdateElementReference(element);
             }
             catch (Exception ex)
             {
@@ -88,7 +76,7 @@ namespace GESTION_CAISSE.BLL
         {
             try
             {
-                return FactureDao.getDeleteFacture(id);
+                return ElementReferenceDao.getDeleteElementReference(id);
             }
             catch (Exception ex)
             {
@@ -96,11 +84,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static List<Facture> Liste(String query)
+        public static List<ElementReference> Liste(String query)
         {
             try
             {
-                return FactureDao.getListFacture(query);
+                return ElementReferenceDao.getListElementReference(query);
             }
             catch (Exception ex)
             {

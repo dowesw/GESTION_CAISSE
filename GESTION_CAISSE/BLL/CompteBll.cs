@@ -8,26 +8,26 @@ using GESTION_CAISSE.DAO;
 
 namespace GESTION_CAISSE.BLL
 {
-    class FactureBll
+    class CompteBll
     {
-        static Facture facture;
+        static Compte compte;
 
-        internal Facture getFacture
+        internal Compte getCompte
         {
-            get { return facture; }
-            set { facture = value; }
+            get { return compte; }
+            set { compte = value; }
         }
 
-        public FactureBll(Facture unFacture)
+        public CompteBll(Compte unCompte)
         {
-            facture = unFacture;
+            compte = unCompte;
         }
 
-        public static Facture One(long id)
+        public static Compte One(long id)
         {
             try
             {
-                return FactureDao.getOneFacture(id);
+                return CompteDao.getOneCompte(id);
             }
             catch (Exception ex)
             {
@@ -35,35 +35,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static Facture One(String reference)
+        public Compte Insert()
         {
             try
             {
-                return FactureDao.getOneFacture(reference);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
-            }
-        }
-
-        public static Facture One_(String reference)
-        {
-            try
-            {
-                return FactureDao.getOneFacture_(reference);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
-            }
-        }
-
-        public Facture Insert()
-        {
-            try
-            {
-                return FactureDao.getAjoutFacture(facture);
+                return CompteDao.getAjoutCompte(compte);
             }
             catch (Exception ex)
             {
@@ -76,7 +52,7 @@ namespace GESTION_CAISSE.BLL
         {
             try
             {
-                return FactureDao.getUpdateFacture(facture);
+                return CompteDao.getUpdateCompte(compte);
             }
             catch (Exception ex)
             {
@@ -88,7 +64,7 @@ namespace GESTION_CAISSE.BLL
         {
             try
             {
-                return FactureDao.getDeleteFacture(id);
+                return CompteDao.getDeleteCompte(id);
             }
             catch (Exception ex)
             {
@@ -96,11 +72,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static List<Facture> Liste(String query)
+        public static List<Compte> Liste(String query)
         {
             try
             {
-                return FactureDao.getListFacture(query);
+                return CompteDao.getListCompte(query);
             }
             catch (Exception ex)
             {

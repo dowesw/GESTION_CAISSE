@@ -8,26 +8,26 @@ using GESTION_CAISSE.DAO;
 
 namespace GESTION_CAISSE.BLL
 {
-    class FactureBll
+    class ModelReferenceBll
     {
-        static Facture facture;
+        static ModelReference model;
 
-        internal Facture getFacture
+        internal ModelReference getModelReference
         {
-            get { return facture; }
-            set { facture = value; }
+            get { return model; }
+            set { model = value; }
         }
 
-        public FactureBll(Facture unFacture)
+        public ModelReferenceBll(ModelReference unModelReference)
         {
-            facture = unFacture;
+            model = unModelReference;
         }
 
-        public static Facture One(long id)
+        public static ModelReference One(long id)
         {
             try
             {
-                return FactureDao.getOneFacture(id);
+                return ModelReferenceDao.getOneModelReference(id);
             }
             catch (Exception ex)
             {
@@ -35,11 +35,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static Facture One(String reference)
+        public static ModelReference One(ElementReference element)
         {
             try
             {
-                return FactureDao.getOneFacture(reference);
+                return ModelReferenceDao.getOneModelReference(element);
             }
             catch (Exception ex)
             {
@@ -47,23 +47,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static Facture One_(String reference)
+        public ModelReference Insert()
         {
             try
             {
-                return FactureDao.getOneFacture_(reference);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
-            }
-        }
-
-        public Facture Insert()
-        {
-            try
-            {
-                return FactureDao.getAjoutFacture(facture);
+                return ModelReferenceDao.getAjoutModelReference(model);
             }
             catch (Exception ex)
             {
@@ -76,7 +64,7 @@ namespace GESTION_CAISSE.BLL
         {
             try
             {
-                return FactureDao.getUpdateFacture(facture);
+                return ModelReferenceDao.getUpdateModelReference(model);
             }
             catch (Exception ex)
             {
@@ -88,7 +76,7 @@ namespace GESTION_CAISSE.BLL
         {
             try
             {
-                return FactureDao.getDeleteFacture(id);
+                return ModelReferenceDao.getDeleteModelReference(id);
             }
             catch (Exception ex)
             {
@@ -96,11 +84,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public static List<Facture> Liste(String query)
+        public static List<ModelReference> Liste(String query)
         {
             try
             {
-                return FactureDao.getListFacture(query);
+                return ModelReferenceDao.getListModelReference(query);
             }
             catch (Exception ex)
             {

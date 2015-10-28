@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class CategorieComptable
+    class ElementReference
     {
-        public CategorieComptable()
+        public ElementReference()
         {
-            articles = new List<ArticleComptable>();
+
         }
 
-        public CategorieComptable(long id)
+        public ElementReference(long id)
         {
             this.id = id;
-            articles = new List<ArticleComptable>();
         }
 
         private long id;
@@ -33,18 +32,11 @@ namespace GESTION_CAISSE.ENTITE
             set { designation = value; }
         }
 
-        private String codeAppel;
-        public String CodeAppel
+        private String module = "COM";
+        public String Module
         {
-            get { return codeAppel; }
-            set { codeAppel = value; }
-        }
-
-        private List<ArticleComptable> articles;
-        internal List<ArticleComptable> Articles
-        {
-            get { return articles; }
-            set { articles = value; }
+            get { return module; }
+            set { module = value; }
         }
 
         private bool update;

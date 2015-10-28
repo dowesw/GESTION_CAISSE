@@ -25,6 +25,105 @@ namespace GESTION_CAISSE.DAO
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Solde = Convert.ToBoolean((lect["solde"] != null) ? (!lect["solde"].ToString().Trim().Equals("") ? lect["solde"].ToString().Trim() : "false") : "false");
+                        a.Categorie = (lect["categorie_comptable"] != null
+                            ? (!lect["categorie_comptable"].ToString().Trim().Equals("")
+                            ? BLL.CategorieComptableBll.One(Convert.ToInt64(lect["categorie_comptable"].ToString()))
+                            : new CategorieComptable())
+                            : new CategorieComptable());
+                        a.Client = (lect["client"] != null
+                            ? (!lect["client"].ToString().Trim().Equals("")
+                            ? BLL.ClientBll.One(Convert.ToInt64(lect["client"].ToString()))
+                            : new Client())
+                            : new Client());
+                        a.HeureDoc = Convert.ToDateTime((lect["heure_doc"] != null) ? (!lect["heure_doc"].ToString().Trim().Equals("") ? lect["heure_doc"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.NumDoc = lect["num_doc"].ToString();
+                        a.NumPiece = lect["num_piece"].ToString();
+                        a.Statut = lect["statut"].ToString();
+                        a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
+                        a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
+                        a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        a.Update = true;
+                    }
+                    lect.Close();
+                }
+                return a;
+            }
+            catch (NpgsqlException e)
+            {
+                Messages.Exception(e);
+                return null;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
+        public static Facture getOneFacture(String reference)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                String search = "select * from yvs_com_doc_ventes where num_piece = '" + reference + "' or num_doc = '" + reference + "'";
+                NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
+                NpgsqlDataReader lect = Lcmd.ExecuteReader();
+                Facture a = new Facture();
+                if (lect.HasRows)
+                {
+                    while (lect.Read())
+                    {
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Solde = Convert.ToBoolean((lect["solde"] != null) ? (!lect["solde"].ToString().Trim().Equals("") ? lect["solde"].ToString().Trim() : "false") : "false");
+                        a.Categorie = (lect["categorie_comptable"] != null
+                            ? (!lect["categorie_comptable"].ToString().Trim().Equals("")
+                            ? BLL.CategorieComptableBll.One(Convert.ToInt64(lect["categorie_comptable"].ToString()))
+                            : new CategorieComptable())
+                            : new CategorieComptable());
+                        a.Client = (lect["client"] != null
+                            ? (!lect["client"].ToString().Trim().Equals("")
+                            ? BLL.ClientBll.One(Convert.ToInt64(lect["client"].ToString()))
+                            : new Client())
+                            : new Client());
+                        a.HeureDoc = Convert.ToDateTime((lect["heure_doc"] != null) ? (!lect["heure_doc"].ToString().Trim().Equals("") ? lect["heure_doc"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.NumDoc = lect["num_doc"].ToString();
+                        a.NumPiece = lect["num_piece"].ToString();
+                        a.Statut = lect["statut"].ToString();
+                        a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
+                        a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
+                        a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        a.Update = true;
+                    }
+                    lect.Close();
+                }
+                return a;
+            }
+            catch (NpgsqlException e)
+            {
+                Messages.Exception(e);
+                return null;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
+        public static Facture getOneFacture_(String reference)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                String search = "select * from yvs_com_doc_ventes where num_doc like '" + reference + "' order by num_doc desc limit 1";
+                NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
+                NpgsqlDataReader lect = Lcmd.ExecuteReader();
+                Facture a = new Facture();
+                if (lect.HasRows)
+                {
+                    while (lect.Read())
+                    {
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Solde = Convert.ToBoolean((lect["solde"] != null) ? (!lect["solde"].ToString().Trim().Equals("") ? lect["solde"].ToString().Trim() : "false") : "false");
                         a.Categorie = (lect["categorie_comptable"] != null
                             ? (!lect["categorie_comptable"].ToString().Trim().Equals("")
                             ? BLL.CategorieComptableBll.One(Convert.ToInt64(lect["categorie_comptable"].ToString()))
@@ -166,6 +265,7 @@ namespace GESTION_CAISSE.DAO
                     {
                         Facture a = new Facture();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Solde = Convert.ToBoolean((lect["solde"] != null) ? (!lect["solde"].ToString().Trim().Equals("") ? lect["solde"].ToString().Trim() : "false") : "false");
                         a.Categorie = (lect["categorie_comptable"] != null
                              ? (!lect["categorie_comptable"].ToString().Trim().Equals("")
                              ? BLL.CategorieComptableBll.One(Convert.ToInt64(lect["categorie_comptable"].ToString()))

@@ -20,13 +20,13 @@ namespace GESTION_CAISSE.IHM
 
         Entete entete = new Entete();
         Facture facture = new Facture();
-        Client client_ = new Client();
+        Client client = new Client();
 
 
         ArticleCom article = new ArticleCom();
         Contenu contenu = new Contenu();
 
-        int rowContenu;
+        int rowContenu, rowFactureWait, rowFactureCours, rowCommande;
         Form F_parent;
 
         public Form_Caisse_Saisie()
@@ -66,6 +66,14 @@ namespace GESTION_CAISSE.IHM
             timer1.Start();
         }
 
+        private void configClient(Client a)
+        {
+            lb_adr_client.Text = a.Tiers.Adresse;
+            lb_nom_client.Text = a.Tiers.Nom;
+            lb_prenom_client.Text = a.Tiers.Prenom;
+            lb_tel_client.Text = a.Tiers.Tel;
+        }
+
         private void LoadAll()
         {
             LoadAllArticle();
@@ -82,6 +90,7 @@ namespace GESTION_CAISSE.IHM
             Entete e = BLL.EnteteBll.One(Constantes.Creneau, date);
             if ((e != null) ? e.Id > 0 : false)
             {
+                entete = e;
                 //Charge facture en attente
                 dgv_facture_wait.Rows.Clear();
                 foreach (Facture f in e.FacturesEnAttente)
@@ -206,6 +215,30 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        public void FullContenu(Facture f)
+        {
+            if (f != null)
+            {
+                foreach (Contenu c in f.Contenus)
+                {
+                    dgv_contenu.Rows.Add(new object[] { c.Id, c.Article.Article.Designation, c.Prix, c.Quantite, c.PrixTotal, null });
+                }
+            }
+        }
+
+        private void ResetFicheFacture()
+        {
+            rowFactureWait = 0;
+            rowFactureCours = 0;
+            rowCommande = 0;
+            com_client.ResetText();
+            facture = new Facture();
+            client = new Client();
+            dgv_contenu.Rows.Clear();
+            configClient(BLL.ClientBll.Default());
+            ResetFicheContenu();
+        }
+
         private void ResetFicheContenu()
         {
             rowContenu = 0;
@@ -214,6 +247,25 @@ namespace GESTION_CAISSE.IHM
             com_article.ResetText();
             article = new ArticleCom();
             contenu = new Contenu();
+        }
+
+        private Facture RecopieViewFacture()
+        {
+            Facture f = new Facture();
+            f.Id = facture.Id;
+            f.Categorie = client.Categorie;
+            f.Client = client;
+            f.Entete = entete;
+            f.HeureDoc = DateTime.Now;
+            f.MontantAvance = Convert.ToDouble(txt_montantVerse.Text.Trim());
+            f.MontantTTC = Convert.ToDouble(txt_montantTTC.Text.Trim());
+            f.Update = facture.Update;
+            f.Statut = Constantes.ETAT_EN_ATTENTE;
+            f.Solde = false;
+            f.NumDoc = "";
+            f.NumPiece = "";
+            f.New_ = true;
+            return f;
         }
 
         private Contenu RecopieViewContenu()
@@ -236,6 +288,16 @@ namespace GESTION_CAISSE.IHM
             return c;
         }
 
+        private void PopulateViewFacture(Facture f)
+        {
+            ResetFicheFacture();
+            facture = f;
+            client = f.Client;
+            configClient(f.Client);
+            FullContenu(f);
+            com_client.SelectedText = clients.Find(a => a.Id == client.Id).Nom_prenom;
+        }
+
         private void PopulateViewContenu(Contenu c)
         {
             ResetFicheContenu();
@@ -244,7 +306,6 @@ namespace GESTION_CAISSE.IHM
             com_article.SelectedText = articles.Find(a => a.Id == article.Article.Id).Designation;
             txt_prix_article.Text = c.Prix.ToString();
             txt_qte_article.Text = c.Quantite.ToString();
-            var t = 0;
         }
 
         private void setMontantTTC(Facture bean)
@@ -321,10 +382,8 @@ namespace GESTION_CAISSE.IHM
         {
             Client a = com_client.SelectedItem as Client;
             a = clients.Find(x => x.Id == a.Id);
-            lb_adr_client.Text = a.Tiers.Adresse;
-            lb_nom_client.Text = a.Tiers.Nom;
-            lb_prenom_client.Text = a.Tiers.Prenom;
-            lb_tel_client.Text = a.Tiers.Tel;
+            client = a;
+            configClient(a);
         }
 
         private void btn_add_contenu_Click(object sender, EventArgs e)
@@ -378,6 +437,95 @@ namespace GESTION_CAISSE.IHM
             {
                 Messages.Exception(ex);
             }
+        }
+
+        private void dgv_commande_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_commande.CurrentRow.Cells["idCommande"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_commande.CurrentRow.Cells["idCommande"].Value.ToString());
+                    if (id > 0)
+                    {
+                        Facture f = entete.Commandes.Find(x => x.Id == id);
+                        var t = f;
+                        PopulateViewFacture(f);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dgv_facture_cours_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_facture_cours.CurrentRow.Cells["idFactureCours"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_facture_cours.CurrentRow.Cells["idFactureCours"].Value.ToString());
+                    if (id > 0)
+                    {
+                        Facture f = entete.FacturesEnCours.Find(x => x.Id == id);
+                        var t = f;
+                        PopulateViewFacture(f);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dgv_facture_regle_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_facture_regle.CurrentRow.Cells["idFactureRegle"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_facture_regle.CurrentRow.Cells["idFactureRegle"].Value.ToString());
+                    if (id > 0)
+                    {
+                        Facture f = entete.FacturesRegle.Find(x => x.Id == id);
+                        var t = f;
+                        PopulateViewFacture(f);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dgv_facture_wait_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_facture_wait.CurrentRow.Cells["idFactureWait"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_facture_wait.CurrentRow.Cells["idFactureWait"].Value.ToString());
+                    if (id > 0)
+                    {
+                        Facture f = entete.FacturesEnAttente.Find(x => x.Id == id);
+                        var t = f;
+                        PopulateViewFacture(f);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            ResetFicheFacture();
         }
     }
 }

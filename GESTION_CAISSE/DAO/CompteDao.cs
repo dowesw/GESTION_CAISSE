@@ -9,25 +9,24 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class CategorieComptableDao
+    class CompteDao
     {
-        public static CategorieComptable getOneCategorieComptable(long id)
+        public static Compte getOneCompte(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_base_categorie_comptable where id = " + id + "";
+                String search = "select * from yvs_compta_plan_de_compte where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                CategorieComptable a = new CategorieComptable();
+                Compte a = new Compte();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.CodeAppel = lect["code_appel"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
+                        a.NumCompte = lect["num_compte"].ToString();
+                        a.Intitule = lect["intitule"].ToString();
                         a.Update = true;
                     }
                     lect.Close();
@@ -50,7 +49,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_base_categorie_comptable order by id desc limit 1";
+                String search = "select id from yvs_compta_plan_de_compte order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -75,7 +74,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static CategorieComptable getAjoutCategorieComptable(CategorieComptable a)
+        public static Compte getAjoutCompte(Compte a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -96,7 +95,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateCategorieComptable(CategorieComptable a)
+        public static bool getUpdateCompte(Compte a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -117,7 +116,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteCategorieComptable(long id)
+        public static bool getDeleteCompte(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -138,23 +137,22 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<CategorieComptable> getListCategorieComptable(String query)
+        public static List<Compte> getListCompte(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<CategorieComptable> l = new List<CategorieComptable>();
+                List<Compte> l = new List<Compte>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        CategorieComptable a = new CategorieComptable();
+                        Compte a = new Compte();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.CodeAppel = lect["code_appel"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
+                        a.NumCompte = lect["num_compte"].ToString();
+                        a.Intitule = lect["intitule"].ToString();
                         a.Update = true;
                         l.Add(a);
                     }

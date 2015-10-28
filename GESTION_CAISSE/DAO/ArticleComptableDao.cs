@@ -9,25 +9,38 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class CategorieComptableDao
+    class ArticleComptableDao
     {
-        public static CategorieComptable getOneCategorieComptable(long id)
+        public static ArticleComptable getOneArticleComptable(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_base_categorie_comptable where id = " + id + "";
+                String search = "select * from yvs_base_article_categorie_comptable where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                CategorieComptable a = new CategorieComptable();
+                ArticleComptable a = new ArticleComptable();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.CodeAppel = lect["code_appel"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
+                        a.Article = (lect["article"] != null
+                            ? (!lect["article"].ToString().Trim().Equals("")
+                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
+                            : new Article())
+                            : new Article());
+                        a.Compte = (lect["compte"] != null
+                            ? (!lect["compte"].ToString().Trim().Equals("")
+                            ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))
+                            : new Compte())
+                            : new Compte());
+                        a.Categorie = (lect["categorie"] != null
+                            ? (!lect["categorie"].ToString().Trim().Equals("")
+                            ? new CategorieComptable(Convert.ToInt64(lect["categorie"].ToString()))
+                            : new CategorieComptable())
+                            : new CategorieComptable());
+                        a.Articles = BLL.ArticleTaxeBll.Liste("select * from yvs_base_article_categorie_comptable_taxe where article_categorie = " + a.Id);
                         a.Update = true;
                     }
                     lect.Close();
@@ -50,7 +63,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_base_categorie_comptable order by id desc limit 1";
+                String search = "select id from yvs_base_article_categorie_comptable order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -75,7 +88,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static CategorieComptable getAjoutCategorieComptable(CategorieComptable a)
+        public static ArticleComptable getAjoutArticleComptable(ArticleComptable a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -96,7 +109,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateCategorieComptable(CategorieComptable a)
+        public static bool getUpdateArticleComptable(ArticleComptable a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -117,7 +130,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteCategorieComptable(long id)
+        public static bool getDeleteArticleComptable(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -138,23 +151,36 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<CategorieComptable> getListCategorieComptable(String query)
+        public static List<ArticleComptable> getListArticleComptable(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<CategorieComptable> l = new List<CategorieComptable>();
+                List<ArticleComptable> l = new List<ArticleComptable>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        CategorieComptable a = new CategorieComptable();
+                        ArticleComptable a = new ArticleComptable();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.CodeAppel = lect["code_appel"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
+                        a.Article = (lect["article"] != null
+                            ? (!lect["article"].ToString().Trim().Equals("")
+                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
+                            : new Article())
+                            : new Article());
+                        a.Compte = (lect["compte"] != null
+                            ? (!lect["compte"].ToString().Trim().Equals("")
+                            ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))
+                            : new Compte())
+                            : new Compte());
+                        a.Categorie = (lect["categorie"] != null
+                            ? (!lect["categorie"].ToString().Trim().Equals("")
+                            ? new CategorieComptable(Convert.ToInt64(lect["categorie"].ToString()))
+                            : new CategorieComptable())
+                            : new CategorieComptable());
+                        a.Articles = BLL.ArticleTaxeBll.Liste("select * from yvs_base_article_categorie_comptable_taxe where article_categorie = " + a.Id);
                         a.Update = true;
                         l.Add(a);
                     }

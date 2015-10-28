@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class Facture
+    public class Facture
     {
         public Facture()
         {
@@ -91,6 +91,13 @@ namespace GESTION_CAISSE.ENTITE
             set { statut = value; }
         }
 
+        private double montantHT;
+        public double MontantHT
+        {
+            get { return montantHT; }
+            set { montantHT = value; }
+        }
+
         private double montantTTC;
         public double MontantTTC
         {
@@ -112,11 +119,46 @@ namespace GESTION_CAISSE.ENTITE
             set { montantReste = value; }
         }
 
+        private double montantRemise;
+        public double MontantRemise
+        {
+            get { return montantRemise; }
+            set { montantRemise = value; }
+        }
+
+        private double montantRistourne;
+        public double MontantRistourne
+        {
+            get { return montantRistourne; }
+            set { montantRistourne = value; }
+        }
+
+        private double montantCommission;
+        public double MontantCommission
+        {
+            get { return montantCommission; }
+            set { montantCommission = value; }
+        }
+
+        private double montantTaxe;
+        public double MontantTaxe
+        {
+            get { return montantTaxe; }
+            set { montantTaxe = value; }
+        }
+
         private Facture documentLie;
         internal Facture DocumentLie
         {
             get { return documentLie; }
             set { documentLie = value; }
+        }
+
+        private bool solde;
+        public bool Solde
+        {
+            get { return solde; }
+            set { solde = value; }
         }
 
         private bool update;

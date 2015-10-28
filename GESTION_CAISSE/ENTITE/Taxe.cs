@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class CategorieComptable
+    class Taxe
     {
-        public CategorieComptable()
+        public Taxe()
         {
-            articles = new List<ArticleComptable>();
+
         }
 
-        public CategorieComptable(long id)
+        public Taxe(long id)
         {
             this.id = id;
-            articles = new List<ArticleComptable>();
         }
 
         private long id;
@@ -26,11 +25,11 @@ namespace GESTION_CAISSE.ENTITE
             set { id = value; }
         }
 
-        private String designation;
-        public String Designation
+        private String codeTaxe;
+        public String CodeTaxe
         {
-            get { return designation; }
-            set { designation = value; }
+            get { return codeTaxe; }
+            set { codeTaxe = value; }
         }
 
         private String codeAppel;
@@ -40,11 +39,18 @@ namespace GESTION_CAISSE.ENTITE
             set { codeAppel = value; }
         }
 
-        private List<ArticleComptable> articles;
-        internal List<ArticleComptable> Articles
+        private String designation;
+        public String Designation
         {
-            get { return articles; }
-            set { articles = value; }
+            get { return designation; }
+            set { designation = value; }
+        }
+
+        private double taux = 19.25;
+        public double Taux
+        {
+            get { return taux; }
+            set { taux = value; }
         }
 
         private bool update;

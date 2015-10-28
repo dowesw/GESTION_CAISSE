@@ -9,25 +9,62 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class CategorieComptableDao
+    class ElementReferenceDao
     {
-        public static CategorieComptable getOneCategorieComptable(long id)
+        public static ElementReference getOneElementReference(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_base_categorie_comptable where id = " + id + "";
+                String search = "select * from yvs_base_element_reference where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                CategorieComptable a = new CategorieComptable();
+                ElementReference a = new ElementReference();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.CodeAppel = lect["code_appel"].ToString();
                         a.Designation = lect["designation"].ToString();
-                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
+                        a.Module = lect["module"].ToString();
+                        a.Update = true;
+                    }
+                    lect.Close();
+                }
+                return a;
+            }
+            catch (NpgsqlException e)
+            {
+                Messages.Exception(e);
+                return null;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
+        public static ElementReference getOneElementReference(String designation)
+        {
+            return getOneElementReference(designation, "COM");
+        }
+
+        public static ElementReference getOneElementReference(String designation, String module)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                String search = "select * from yvs_base_element_reference where designation = '" + designation + "' and module = '" + module + "'";
+                NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
+                NpgsqlDataReader lect = Lcmd.ExecuteReader();
+                ElementReference a = new ElementReference();
+                if (lect.HasRows)
+                {
+                    while (lect.Read())
+                    {
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Designation = lect["designation"].ToString();
+                        a.Module = lect["module"].ToString();
                         a.Update = true;
                     }
                     lect.Close();
@@ -50,7 +87,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_base_categorie_comptable order by id desc limit 1";
+                String search = "select id from yvs_base_element_reference order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -75,7 +112,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static CategorieComptable getAjoutCategorieComptable(CategorieComptable a)
+        public static ElementReference getAjoutElementReference(ElementReference a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -96,7 +133,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateCategorieComptable(CategorieComptable a)
+        public static bool getUpdateElementReference(ElementReference a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -117,7 +154,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteCategorieComptable(long id)
+        public static bool getDeleteElementReference(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -138,23 +175,22 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<CategorieComptable> getListCategorieComptable(String query)
+        public static List<ElementReference> getListElementReference(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<CategorieComptable> l = new List<CategorieComptable>();
+                List<ElementReference> l = new List<ElementReference>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        CategorieComptable a = new CategorieComptable();
+                        ElementReference a = new ElementReference();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.CodeAppel = lect["code_appel"].ToString();
                         a.Designation = lect["designation"].ToString();
-                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
+                        a.Module = lect["module"].ToString();
                         a.Update = true;
                         l.Add(a);
                     }

@@ -146,6 +146,7 @@ namespace GESTION_CAISSE.IHM
                     {
                         this.Hide();
                         timer1.Stop();
+                        timer2.Stop();
                         InitTime();
 
                         new Form_Caisse_Saisie(this).Show();
