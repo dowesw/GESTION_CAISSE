@@ -39,10 +39,13 @@ namespace GESTION_CAISSE.DAO
                         a.HeureDoc = Convert.ToDateTime((lect["heure_doc"] != null) ? (!lect["heure_doc"].ToString().Trim().Equals("") ? lect["heure_doc"].ToString().Trim() : "00/00/0000") : "00/00/0000");
                         a.NumDoc = lect["num_doc"].ToString();
                         a.NumPiece = lect["num_piece"].ToString();
+                        a.TypeDoc = lect["type_doc"].ToString();
                         a.Statut = lect["statut"].ToString();
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        a.Mensualites = BLL.MensualiteBll.Liste("select * from yvs_com_mensualite_facture_vente where facture = " + a.Id);
+                        Utils.MontantTotalDoc(a);
                         a.Update = true;
                     }
                     lect.Close();
@@ -88,10 +91,12 @@ namespace GESTION_CAISSE.DAO
                         a.HeureDoc = Convert.ToDateTime((lect["heure_doc"] != null) ? (!lect["heure_doc"].ToString().Trim().Equals("") ? lect["heure_doc"].ToString().Trim() : "00/00/0000") : "00/00/0000");
                         a.NumDoc = lect["num_doc"].ToString();
                         a.NumPiece = lect["num_piece"].ToString();
+                        a.TypeDoc = lect["type_doc"].ToString();
                         a.Statut = lect["statut"].ToString();
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        Utils.MontantTotalDoc(a);
                         a.Update = true;
                     }
                     lect.Close();
@@ -137,6 +142,7 @@ namespace GESTION_CAISSE.DAO
                         a.HeureDoc = Convert.ToDateTime((lect["heure_doc"] != null) ? (!lect["heure_doc"].ToString().Trim().Equals("") ? lect["heure_doc"].ToString().Trim() : "00/00/0000") : "00/00/0000");
                         a.NumDoc = lect["num_doc"].ToString();
                         a.NumPiece = lect["num_piece"].ToString();
+                        a.TypeDoc = lect["type_doc"].ToString();
                         a.Statut = lect["statut"].ToString();
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
@@ -279,10 +285,12 @@ namespace GESTION_CAISSE.DAO
                         a.HeureDoc = Convert.ToDateTime((lect["heure_doc"] != null) ? (!lect["heure_doc"].ToString().Trim().Equals("") ? lect["heure_doc"].ToString().Trim() : "00/00/0000") : "00/00/0000");
                         a.NumDoc = lect["num_doc"].ToString();
                         a.NumPiece = lect["num_piece"].ToString();
+                        a.TypeDoc = lect["type_doc"].ToString();
                         a.Statut = lect["statut"].ToString();
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        Utils.MontantTotalDoc(a);
                         a.Update = true;
                         l.Add(a);
                     }

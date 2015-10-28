@@ -11,12 +11,13 @@ namespace GESTION_CAISSE.ENTITE
     {
         public Article()
         {
-
+            plans = new List<PlanTarifaire>();
         }
 
         public Article(long id)
         {
             this.id = id;
+            plans = new List<PlanTarifaire>();
         }
 
         private long id;
@@ -87,6 +88,13 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return groupe; }
             set { groupe = value; }
+        }
+
+        private List<PlanTarifaire> plans;
+        internal List<PlanTarifaire> Plans
+        {
+            get { return plans; }
+            set { plans = value; }
         }
 
         private bool update;

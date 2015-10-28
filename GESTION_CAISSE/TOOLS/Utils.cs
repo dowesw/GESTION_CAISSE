@@ -221,7 +221,50 @@ namespace GESTION_CAISSE.TOOLS
             return null;
         }
 
-        private void setMontantRemiseDoc(RemiseFacture r, Facture doc)
+        public static void MontantTotalDoc(Facture doc)
+        {
+            doc.MontantHT = 0;
+            doc.MontantTaxe = 0;
+            doc.MontantRemise = 0;
+            doc.MontantRistourne = 0;
+            doc.MontantCommission = 0;
+
+            foreach (Contenu c in doc.Contenus)
+            {
+                if (c.PrixTotal == 0)
+                {
+                    c.PrixTotal = (c.Quantite * c.Prix);
+                }
+                TotalTaxeContenuDoc(doc, c);
+
+                doc.MontantRemise = (doc.MontantRemise + c.RemiseArt + c.RemiseCat);
+                doc.MontantRistourne = (doc.MontantRistourne + c.Ristourne);
+                doc.MontantCommission = (doc.MontantCommission + c.Commission);
+                doc.MontantHT = (doc.MontantHT + c.PrixTotal);
+                doc.MontantTaxe = (doc.MontantTaxe + c.PrixTaxe);
+            }
+            doc.MontantTTC = (doc.MontantHT + doc.MontantTaxe - doc.MontantRemise);
+            TotalRRR(doc);
+            doc.MontantReste = (doc.MontantTTC - doc.MontantAvance);
+        }
+
+        public static void TotalRRR(Facture doc)
+        {
+            if (doc.Remises != null)
+            {
+                foreach (RemiseFacture r in doc.Remises)
+                {
+                    if ((r.Remise != null) ? r.Remise.Id > 0 : false)
+                    {
+                        double mtant = doc.MontantTTC;
+                        TotalRemiseDoc(r, doc);
+                        doc.MontantTTC = mtant - r.Montant;
+                    }
+                }
+            }
+        }
+
+        private static void TotalRemiseDoc(RemiseFacture r, Facture doc)
         {
             double remise = 0, qte = 0, mtant = doc.MontantTTC;
             switch (r.Remise.BaseRemise)
@@ -275,8 +318,37 @@ namespace GESTION_CAISSE.TOOLS
                     break;
             }
             r.Montant = remise;
+            doc.MontantRemise += remise;
         }
 
+
+        public static void TotalTaxeContenuDoc(Facture doc, Contenu cont)
+        {
+            double taux = 0;
+            double s = cont.PrixTotal;
+            double r = cont.RemiseArt + cont.RemiseCat;
+
+            CategorieComptable c = doc.Categorie;
+            if ((c != null) ? c.Id > 0 : false)
+            {
+                foreach (ArticleComptable a in c.Articles)
+                {
+                    if (a.Article.Equals(cont.Article.Article) && a.Actif)
+                    {
+                        foreach (ArticleTaxe t in a.Articles)
+                        {
+                            taux += (s * (t.Taxe.Taux / 100));
+                            if (t.AppRemise)
+                            {
+                                taux += (r * (t.Taxe.Taux / 100));
+                            }
+                        }
+                    }
+                }
+            }
+            cont.PrixTaxe = taux;
+            doc.MontantTaxe += taux;
+        }
 
     }
 }

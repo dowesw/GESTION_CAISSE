@@ -54,6 +54,27 @@ namespace GESTION_CAISSE.ENTITE
             set { articles = value; }
         }
 
+        private double montantTaux;
+        public double MontantTaux
+        {
+            get { return montantTaux; }
+            set { montantTaux = value; }
+        }
+
+        private double montantTotal;
+        public double MontantTotal
+        {
+            get { return montantTotal; }
+            set { montantTotal = value; }
+        }
+
+        private bool actif;
+        public bool Actif
+        {
+            get { return actif; }
+            set { actif = value; }
+        }
+
         private bool update;
         public bool Update
         {

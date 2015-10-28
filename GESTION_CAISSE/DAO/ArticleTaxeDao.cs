@@ -25,6 +25,7 @@ namespace GESTION_CAISSE.DAO
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
                         a.Article = (lect["article_categorie"] != null
                             ? (!lect["article_categorie"].ToString().Trim().Equals("")
                             ? new ArticleComptable(Convert.ToInt64(lect["article_categorie"].ToString()))
@@ -160,6 +161,7 @@ namespace GESTION_CAISSE.DAO
                     {
                         ArticleTaxe a = new ArticleTaxe();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
                         a.Article = (lect["article_categorie"] != null
                             ? (!lect["article_categorie"].ToString().Trim().Equals("")
                             ? new ArticleComptable(Convert.ToInt64(lect["article_categorie"].ToString()))

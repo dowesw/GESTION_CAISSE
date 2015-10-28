@@ -9,39 +9,26 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class ArticleComptableDao
+    class MensualiteDao
     {
-        public static ArticleComptable getOneArticleComptable(long id)
+        public static Mensualite getOneMensualite(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_base_article_categorie_comptable where id = " + id + "";
+                String search = "select * from yvs_com_mensualite_facture_vente where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                ArticleComptable a = new ArticleComptable();
+                Mensualite a = new Mensualite();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
-                        a.Article = (lect["article"] != null
-                            ? (!lect["article"].ToString().Trim().Equals("")
-                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
-                            : new Article())
-                            : new Article());
-                        a.Compte = (lect["compte"] != null
-                            ? (!lect["compte"].ToString().Trim().Equals("")
-                            ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))
-                            : new Compte())
-                            : new Compte());
-                        a.Categorie = (lect["categorie"] != null
-                            ? (!lect["categorie"].ToString().Trim().Equals("")
-                            ? new CategorieComptable(Convert.ToInt64(lect["categorie"].ToString()))
-                            : new CategorieComptable())
-                            : new CategorieComptable());
-                        a.Articles = BLL.ArticleTaxeBll.Liste("select * from yvs_base_article_categorie_comptable_taxe where article_categorie = " + a.Id);
+                        a.DateMensualite = (DateTime)((lect["date_reglement"] != null) ? ((!lect["date_reglement"].ToString().Trim().Equals("")) ? lect["date_reglement"] : DateTime.Now) : DateTime.Now);
+                        a.Etat = lect["etat"].ToString();
+                        a.Montant = (Double)((lect["montant"] != null) ? ((!lect["montant"].ToString().Trim().Equals("")) ? lect["montant"] : 0) : 0);
+                        a.Reglements = BLL.PieceCaisseBll.Liste("setecl * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
                         a.Update = true;
                     }
                     lect.Close();
@@ -64,7 +51,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_base_article_categorie_comptable order by id desc limit 1";
+                String search = "select id from yvs_com_mensualite_facture_vente order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -89,7 +76,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static ArticleComptable getAjoutArticleComptable(ArticleComptable a)
+        public static Mensualite getAjoutMensualite(Mensualite a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -110,7 +97,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateArticleComptable(ArticleComptable a)
+        public static bool getUpdateMensualite(Mensualite a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -131,7 +118,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteArticleComptable(long id)
+        public static bool getDeleteMensualite(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -152,37 +139,24 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<ArticleComptable> getListArticleComptable(String query)
+        public static List<Mensualite> getListMensualite(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<ArticleComptable> l = new List<ArticleComptable>();
+                List<Mensualite> l = new List<Mensualite>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        ArticleComptable a = new ArticleComptable();
+                        Mensualite a = new Mensualite();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
-                        a.Article = (lect["article"] != null
-                            ? (!lect["article"].ToString().Trim().Equals("")
-                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
-                            : new Article())
-                            : new Article());
-                        a.Compte = (lect["compte"] != null
-                            ? (!lect["compte"].ToString().Trim().Equals("")
-                            ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))
-                            : new Compte())
-                            : new Compte());
-                        a.Categorie = (lect["categorie"] != null
-                            ? (!lect["categorie"].ToString().Trim().Equals("")
-                            ? new CategorieComptable(Convert.ToInt64(lect["categorie"].ToString()))
-                            : new CategorieComptable())
-                            : new CategorieComptable());
-                        a.Articles = BLL.ArticleTaxeBll.Liste("select * from yvs_base_article_categorie_comptable_taxe where article_categorie = " + a.Id);
+                        a.DateMensualite = (DateTime)((lect["date_reglement"] != null) ? ((!lect["date_reglement"].ToString().Trim().Equals("")) ? lect["date_reglement"] : DateTime.Now) : DateTime.Now);
+                        a.Etat = lect["etat"].ToString();
+                        a.Montant = (Double)((lect["montant"] != null) ? ((!lect["montant"].ToString().Trim().Equals("")) ? lect["montant"] : 0) : 0);
+                        a.Reglements = BLL.PieceCaisseBll.Liste("setecl * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
                         a.Update = true;
                         l.Add(a);
                     }

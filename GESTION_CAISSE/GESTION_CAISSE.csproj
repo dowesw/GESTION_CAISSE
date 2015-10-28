@@ -60,6 +60,8 @@
     <Compile Include="BLL\CompteBll.cs" />
     <Compile Include="BLL\ArticleComptableBll.cs" />
     <Compile Include="BLL\ArticleTaxeBll.cs" />
+    <Compile Include="BLL\MensualiteBll.cs" />
+    <Compile Include="BLL\PieceCaisseBll.cs" />
     <Compile Include="BLL\TaxeBll.cs" />
     <Compile Include="BLL\ModelReferenceBll.cs" />
     <Compile Include="BLL\ElementReferenceBll.cs" />
@@ -93,6 +95,8 @@
     <Compile Include="DAO\CompteDao.cs" />
     <Compile Include="DAO\ArticleComptableDao.cs" />
     <Compile Include="DAO\ArticleTaxeDao.cs" />
+    <Compile Include="DAO\MensualiteDao.cs" />
+    <Compile Include="DAO\PieceCaisseDao.cs" />
     <Compile Include="DAO\TaxeDao.cs" />
     <Compile Include="DAO\ModelReferenceDao.cs" />
     <Compile Include="DAO\ElementReferenceDao.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="ENTITE\PlanCommission.cs" />
     <Compile Include="ENTITE\PlanRemise.cs" />
     <Compile Include="ENTITE\PlanRistourne.cs" />
+    <Compile Include="ENTITE\PlanTarifaire.cs" />
     <Compile Include="ENTITE\Remise.cs" />
     <Compile Include="ENTITE\RemiseFacture.cs" />
     <Compile Include="ENTITE\Ristourne.cs" />
@@ -249,6 +254,8 @@
     <Folder Include="IMG\LANG\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="IMG\ICONES\xcalc.png" />
+    <None Include="IMG\ICONES\save_all.png" />
     <None Include="IMG\THEMES\BlackClass.JPG" />
     <None Include="IMG\THEMES\BlueTrack.JPG" />
     <None Include="IMG\THEMES\Basique.JPG" />
@@ -266,11 +273,18 @@
     <None Include="IMG\ICONES\blender.png" />
     <None Include="IMG\ICONES\browser.png" />
     <None Include="IMG\ICONES\build.png" />
+    <None Include="IMG\ICONES\btn_print.png" />
+    <None Include="IMG\ICONES\btn_sauvegarde.png" />
+    <None Include="IMG\ICONES\btn_annuler.png" />
     <Content Include="IMG\ICONES\cnr-not_connected.png" />
     <None Include="IMG\ICONES\edit_add.png" />
+    <None Include="IMG\ICONES\compfile.png" />
+    <None Include="IMG\ICONES\edit.png" />
     <Content Include="IMG\ICONES\edit_user.png" />
     <Content Include="IMG\ICONES\endturn.png" />
     <Content Include="IMG\ICONES\exit.png" />
+    <None Include="IMG\ICONES\fileexport.png" />
+    <None Include="IMG\ICONES\filter.png" />
     <Content Include="IMG\ICONES\irkick.png" />
     <Content Include="IMG\ICONES\irkickflash.png" />
     <None Include="IMG\ICONES\klines.png" />

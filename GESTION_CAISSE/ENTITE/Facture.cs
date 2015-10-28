@@ -11,14 +11,16 @@ namespace GESTION_CAISSE.ENTITE
         public Facture()
         {
             contenus = new List<Contenu>();
-            Remises = new List<RemiseFacture>();
+            remises = new List<RemiseFacture>();
+            mensualites = new List<Mensualite>();
         }
 
         public Facture(long id)
         {
             this.id = id;
             contenus = new List<Contenu>();
-            Remises = new List<RemiseFacture>();
+            remises = new List<RemiseFacture>();
+            mensualites = new List<Mensualite>();
         }
 
         private long id;
@@ -84,11 +86,25 @@ namespace GESTION_CAISSE.ENTITE
             set { remises = value; }
         }
 
-        private String statut;
+        private String statut = TOOLS.Constantes.ETAT_EN_ATTENTE;
         public String Statut
         {
             get { return statut; }
             set { statut = value; }
+        }
+
+        private String typeDoc = TOOLS.Constantes.TYPE_FV;
+        public String TypeDoc
+        {
+            get { return typeDoc; }
+            set { typeDoc = value; }
+        }
+
+        private List<Mensualite> mensualites;
+        internal List<Mensualite> Mensualites
+        {
+            get { return mensualites; }
+            set { mensualites = value; }
         }
 
         private double montantHT;

@@ -44,6 +44,8 @@ namespace GESTION_CAISSE.TOOLS
 
         public const String TYPE_FV = "FV";
         public const String TYPE_BCV = "BCV";
+        public const String TYPE_FV_NAME = "Facture";
+        public const String TYPE_BCV_NAME = "Commande";
 
         public const String DOC_FACTURE = "Facture Vente";
         public const String DOC_COMMANDE = "Bon Commande Vente";

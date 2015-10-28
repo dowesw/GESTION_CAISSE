@@ -9,39 +9,37 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class ArticleComptableDao
+    class PieceCaisseDao
     {
-        public static ArticleComptable getOneArticleComptable(long id)
+        public static PieceCaisse getOnePieceCaisse(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_base_article_categorie_comptable where id = " + id + "";
+                String search = "select * from yvs_base_piece_tresorerie where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                ArticleComptable a = new ArticleComptable();
+                PieceCaisse a = new PieceCaisse();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
-                        a.Article = (lect["article"] != null
-                            ? (!lect["article"].ToString().Trim().Equals("")
-                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
-                            : new Article())
-                            : new Article());
-                        a.Compte = (lect["compte"] != null
-                            ? (!lect["compte"].ToString().Trim().Equals("")
-                            ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))
-                            : new Compte())
-                            : new Compte());
-                        a.Categorie = (lect["categorie"] != null
-                            ? (!lect["categorie"].ToString().Trim().Equals("")
-                            ? new CategorieComptable(Convert.ToInt64(lect["categorie"].ToString()))
-                            : new CategorieComptable())
-                            : new CategorieComptable());
-                        a.Articles = BLL.ArticleTaxeBll.Liste("select * from yvs_base_article_categorie_comptable_taxe where article_categorie = " + a.Id);
+                        a.Description = lect["description"].ToString();
+                        a.Libelle = lect["libelle"].ToString();
+                        a.Montant = (Double)((lect["montant"] != null) ? ((!lect["montant"].ToString().Trim().Equals("")) ? lect["montant"] : 0) : 0);
+                        a.IdExterne = (Int64)((lect["id_externe"] != null) ? ((!lect["id_externe"].ToString().Trim().Equals("")) ? lect["id_externe"] : 0) : 0);
+                        a.DatePiece = (DateTime)((lect["date_piece"] != null) ? ((!lect["date_piece"].ToString().Trim().Equals("")) ? lect["date_piece"] : DateTime.Now) : DateTime.Now);
+                        a.Mouvement = lect["mouvement"].ToString();
+                        a.NumPiece = lect["num_piece"].ToString();
+                        a.NumRef = lect["num_ref"].ToString();
+                        a.Statut = lect["statut"].ToString();
+                        a.TableEterne = lect["table_externe"].ToString();
+                        a.Mode = (lect["mode_paiement"] != null
+                            ? (!lect["mode_paiement"].ToString().Trim().Equals("")
+                            ? BLL.ModePaiementBll.One(Convert.ToInt64(lect["mode_paiement"].ToString()))
+                            : new ModePaiement())
+                            : new ModePaiement());
                         a.Update = true;
                     }
                     lect.Close();
@@ -64,7 +62,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_base_article_categorie_comptable order by id desc limit 1";
+                String search = "select id from yvs_base_piece_tresorerie order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -89,7 +87,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static ArticleComptable getAjoutArticleComptable(ArticleComptable a)
+        public static PieceCaisse getAjoutPieceCaisse(PieceCaisse a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -110,7 +108,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateArticleComptable(ArticleComptable a)
+        public static bool getUpdatePieceCaisse(PieceCaisse a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -131,7 +129,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteArticleComptable(long id)
+        public static bool getDeletePieceCaisse(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -152,37 +150,35 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<ArticleComptable> getListArticleComptable(String query)
+        public static List<PieceCaisse> getListPieceCaisse(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<ArticleComptable> l = new List<ArticleComptable>();
+                List<PieceCaisse> l = new List<PieceCaisse>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        ArticleComptable a = new ArticleComptable();
+                        PieceCaisse a = new PieceCaisse();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
-                        a.Article = (lect["article"] != null
-                            ? (!lect["article"].ToString().Trim().Equals("")
-                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
-                            : new Article())
-                            : new Article());
-                        a.Compte = (lect["compte"] != null
-                            ? (!lect["compte"].ToString().Trim().Equals("")
-                            ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))
-                            : new Compte())
-                            : new Compte());
-                        a.Categorie = (lect["categorie"] != null
-                            ? (!lect["categorie"].ToString().Trim().Equals("")
-                            ? new CategorieComptable(Convert.ToInt64(lect["categorie"].ToString()))
-                            : new CategorieComptable())
-                            : new CategorieComptable());
-                        a.Articles = BLL.ArticleTaxeBll.Liste("select * from yvs_base_article_categorie_comptable_taxe where article_categorie = " + a.Id);
+                        a.Description = lect["description"].ToString();
+                        a.Libelle = lect["libelle"].ToString();
+                        a.Montant = (Double)((lect["montant"] != null) ? ((!lect["montant"].ToString().Trim().Equals("")) ? lect["montant"] : 0) : 0);
+                        a.IdExterne = (Int64)((lect["id_externe"] != null) ? ((!lect["id_externe"].ToString().Trim().Equals("")) ? lect["id_externe"] : 0) : 0);
+                        a.DatePiece = (DateTime)((lect["date_piece"] != null) ? ((!lect["date_piece"].ToString().Trim().Equals("")) ? lect["date_piece"] : DateTime.Now) : DateTime.Now);
+                        a.Mouvement = lect["mouvement"].ToString();
+                        a.NumPiece = lect["num_piece"].ToString();
+                        a.NumRef = lect["num_ref"].ToString();
+                        a.Statut = lect["statut"].ToString();
+                        a.TableEterne = lect["table_externe"].ToString();
+                        a.Mode = (lect["mode_paiement"] != null
+                            ? (!lect["mode_paiement"].ToString().Trim().Equals("")
+                            ? BLL.ModePaiementBll.One(Convert.ToInt64(lect["mode_paiement"].ToString()))
+                            : new ModePaiement())
+                            : new ModePaiement());
                         a.Update = true;
                         l.Add(a);
                     }

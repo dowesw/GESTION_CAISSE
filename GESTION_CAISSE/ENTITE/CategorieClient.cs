@@ -10,12 +10,13 @@ namespace GESTION_CAISSE.ENTITE
     {
         public CategorieClient()
         {
-
+            remises = new List<PlanRemise>();
         }
 
         public CategorieClient(long id)
         {
             this.id = id;
+            remises = new List<PlanRemise>();
         }
 
         private long id;
@@ -37,6 +38,13 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return designation; }
             set { designation = value; }
+        }
+
+        private List<PlanRemise> remises;
+        internal List<PlanRemise> Remises
+        {
+            get { return remises; }
+            set { remises = value; }
         }
 
         private bool update;

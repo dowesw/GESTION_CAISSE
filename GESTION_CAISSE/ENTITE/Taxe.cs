@@ -18,6 +18,11 @@ namespace GESTION_CAISSE.ENTITE
             this.id = id;
         }
 
+        public Taxe(String codeTaxe)
+        {
+            this.codeTaxe = codeTaxe;
+        }
+
         private long id;
         public long Id
         {
@@ -51,6 +56,20 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return taux; }
             set { taux = value; }
+        }
+
+        private double totalTaux;
+        public double TotalTaux
+        {
+            get { return totalTaux; }
+            set { totalTaux = value; }
+        }
+
+        private double totalMontant;
+        public double TotalMontant
+        {
+            get { return totalMontant; }
+            set { totalMontant = value; }
         }
 
         private bool update;
