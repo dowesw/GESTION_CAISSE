@@ -84,11 +84,11 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
-        public bool ChangeSupp()
+        public static bool ChangeSupp(long id, bool supp)
         {
             try
             {
-                return FactureDao.getChangeSuppFacture(facture);
+                return FactureDao.getChangeSuppFacture(id, supp);
             }
             catch (Exception ex)
             {

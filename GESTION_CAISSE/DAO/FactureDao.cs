@@ -289,12 +289,12 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getChangeSuppFacture(Facture a)
+        public static bool getChangeSuppFacture(long id, bool supp)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string delete = "update yvs_com_doc_ventes set supp = " + a.Supp + " where id = " + a.Id;
+                string delete = "update yvs_com_doc_ventes set supp = " + supp + " where id = " + id;
                 NpgsqlCommand Ucmd = new NpgsqlCommand(delete, con);
                 Ucmd.ExecuteNonQuery();
                 return true;

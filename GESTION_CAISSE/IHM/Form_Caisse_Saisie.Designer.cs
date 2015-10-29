@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Caisse_Saisie));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -79,12 +79,46 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv_facture_wait = new System.Windows.Forms.DataGridView();
+            this.idFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heureFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mtantFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resteFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suppFactureWait_ = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.suppFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.context_data = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tool_integre_data = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgv_facture_cours = new System.Windows.Forms.DataGridView();
+            this.idFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heureFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mtantFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resteFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suppFactureCours_ = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.suppFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgv_facture_regle = new System.Windows.Forms.DataGridView();
+            this.idFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heureFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mtantFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resteFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suppFactureRegle_ = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.suppFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgv_commande = new System.Windows.Forms.DataGridView();
+            this.idCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heureCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mtantCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resteCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suppCommande_ = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.suppCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgv_contenu = new System.Windows.Forms.DataGridView();
@@ -113,11 +147,13 @@
             this.com_mode = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_montantReste = new System.Windows.Forms.TextBox();
+            this.txt_montantHt = new System.Windows.Forms.TextBox();
             this.txt_montantTTC = new System.Windows.Forms.TextBox();
             this.txt_montantRemise = new System.Windows.Forms.TextBox();
             this.txt_montantVerse = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -140,36 +176,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_montantHt = new System.Windows.Forms.TextBox();
-            this.idFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numDocFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heureDocFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientDocFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mtantDocFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resteDocFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suppDocFactureCours = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.idFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numDocFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heureDocFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientDocFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mtantDocFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resteDocFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suppDocFactureWait = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.idFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numDocFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heureDocFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientDocFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mtantDocFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resteDocFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suppDocFactureRegle = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.idCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numDocCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heureDocCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientDocCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mtantDocCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resteDocCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suppDocCommande = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -180,6 +186,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facture_wait)).BeginInit();
+            this.context_data.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facture_cours)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -524,18 +531,108 @@
             this.dgv_facture_wait.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_facture_wait.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idFactureWait,
-            this.numDocFactureWait,
-            this.heureDocFactureWait,
-            this.clientDocFactureWait,
-            this.mtantDocFactureWait,
-            this.resteDocFactureWait,
-            this.suppDocFactureWait});
+            this.numFactureWait,
+            this.heureFactureWait,
+            this.clientFactureWait,
+            this.mtantFactureWait,
+            this.resteFactureWait,
+            this.suppFactureWait_,
+            this.suppFactureWait});
             this.dgv_facture_wait.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_facture_wait.Location = new System.Drawing.Point(3, 3);
+            this.dgv_facture_wait.MultiSelect = false;
             this.dgv_facture_wait.Name = "dgv_facture_wait";
+            this.dgv_facture_wait.RowTemplate.ContextMenuStrip = this.context_data;
+            this.dgv_facture_wait.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_facture_wait.Size = new System.Drawing.Size(655, 185);
             this.dgv_facture_wait.TabIndex = 1;
             this.dgv_facture_wait.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facture_wait_CellContentClick);
+            this.dgv_facture_wait.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_facture_wait_CellMouseDown);
+            this.dgv_facture_wait.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_wait_RowsAdded);
+            // 
+            // idFactureWait
+            // 
+            this.idFactureWait.HeaderText = "ID";
+            this.idFactureWait.Name = "idFactureWait";
+            this.idFactureWait.Visible = false;
+            // 
+            // numFactureWait
+            // 
+            this.numFactureWait.HeaderText = "Num Piece";
+            this.numFactureWait.Name = "numFactureWait";
+            this.numFactureWait.ReadOnly = true;
+            this.numFactureWait.Width = 110;
+            // 
+            // heureFactureWait
+            // 
+            this.heureFactureWait.HeaderText = "Heure";
+            this.heureFactureWait.Name = "heureFactureWait";
+            this.heureFactureWait.ReadOnly = true;
+            this.heureFactureWait.Width = 104;
+            // 
+            // clientFactureWait
+            // 
+            this.clientFactureWait.HeaderText = "Client";
+            this.clientFactureWait.Name = "clientFactureWait";
+            this.clientFactureWait.ReadOnly = true;
+            this.clientFactureWait.Width = 150;
+            // 
+            // mtantFactureWait
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.mtantFactureWait.DefaultCellStyle = dataGridViewCellStyle1;
+            this.mtantFactureWait.HeaderText = "Montant TTC";
+            this.mtantFactureWait.Name = "mtantFactureWait";
+            this.mtantFactureWait.ReadOnly = true;
+            this.mtantFactureWait.Width = 120;
+            // 
+            // resteFactureWait
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.resteFactureWait.DefaultCellStyle = dataGridViewCellStyle2;
+            this.resteFactureWait.HeaderText = "Reste";
+            this.resteFactureWait.Name = "resteFactureWait";
+            this.resteFactureWait.ReadOnly = true;
+            // 
+            // suppFactureWait_
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle3.NullValue = "X";
+            this.suppFactureWait_.DefaultCellStyle = dataGridViewCellStyle3;
+            this.suppFactureWait_.HeaderText = "";
+            this.suppFactureWait_.LinkColor = System.Drawing.Color.Red;
+            this.suppFactureWait_.Name = "suppFactureWait_";
+            this.suppFactureWait_.ReadOnly = true;
+            this.suppFactureWait_.VisitedLinkColor = System.Drawing.Color.White;
+            this.suppFactureWait_.Width = 27;
+            // 
+            // suppFactureWait
+            // 
+            this.suppFactureWait.HeaderText = "Supp";
+            this.suppFactureWait.Name = "suppFactureWait";
+            this.suppFactureWait.ReadOnly = true;
+            this.suppFactureWait.Visible = false;
+            // 
+            // context_data
+            // 
+            this.context_data.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_integre_data});
+            this.context_data.Name = "context_date";
+            this.context_data.Size = new System.Drawing.Size(189, 48);
+            // 
+            // tool_integre_data
+            // 
+            this.tool_integre_data.Image = global::GESTION_CAISSE.Properties.Resources.visible_yes;
+            this.tool_integre_data.Name = "tool_integre_data";
+            this.tool_integre_data.Size = new System.Drawing.Size(188, 22);
+            this.tool_integre_data.Text = "Soumettre/Reintegrer";
+            this.tool_integre_data.Click += new System.EventHandler(this.tool_integre_data_Click);
             // 
             // tabPage2
             // 
@@ -554,18 +651,90 @@
             this.dgv_facture_cours.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_facture_cours.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idFactureCours,
-            this.numDocFactureCours,
-            this.heureDocFactureCours,
-            this.clientDocFactureCours,
-            this.mtantDocFactureCours,
-            this.resteDocFactureCours,
-            this.suppDocFactureCours});
+            this.numFactureCours,
+            this.heureFactureCours,
+            this.clientFactureCours,
+            this.mtantFactureCours,
+            this.resteFactureCours,
+            this.suppFactureCours_,
+            this.suppFactureCours});
             this.dgv_facture_cours.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_facture_cours.Location = new System.Drawing.Point(3, 3);
+            this.dgv_facture_cours.MultiSelect = false;
             this.dgv_facture_cours.Name = "dgv_facture_cours";
+            this.dgv_facture_cours.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_facture_cours.Size = new System.Drawing.Size(655, 185);
             this.dgv_facture_cours.TabIndex = 2;
             this.dgv_facture_cours.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facture_cours_CellContentClick);
+            this.dgv_facture_cours.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_cours_RowsAdded);
+            // 
+            // idFactureCours
+            // 
+            this.idFactureCours.HeaderText = "ID";
+            this.idFactureCours.Name = "idFactureCours";
+            this.idFactureCours.Visible = false;
+            // 
+            // numFactureCours
+            // 
+            this.numFactureCours.HeaderText = "Num Piece";
+            this.numFactureCours.Name = "numFactureCours";
+            this.numFactureCours.ReadOnly = true;
+            this.numFactureCours.Width = 110;
+            // 
+            // heureFactureCours
+            // 
+            this.heureFactureCours.HeaderText = "Heure";
+            this.heureFactureCours.Name = "heureFactureCours";
+            this.heureFactureCours.ReadOnly = true;
+            this.heureFactureCours.Width = 104;
+            // 
+            // clientFactureCours
+            // 
+            this.clientFactureCours.HeaderText = "Client";
+            this.clientFactureCours.Name = "clientFactureCours";
+            this.clientFactureCours.ReadOnly = true;
+            this.clientFactureCours.Width = 150;
+            // 
+            // mtantFactureCours
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.mtantFactureCours.DefaultCellStyle = dataGridViewCellStyle4;
+            this.mtantFactureCours.HeaderText = "Montant TTC";
+            this.mtantFactureCours.Name = "mtantFactureCours";
+            this.mtantFactureCours.ReadOnly = true;
+            this.mtantFactureCours.Width = 120;
+            // 
+            // resteFactureCours
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0";
+            this.resteFactureCours.DefaultCellStyle = dataGridViewCellStyle5;
+            this.resteFactureCours.HeaderText = "Reste";
+            this.resteFactureCours.Name = "resteFactureCours";
+            this.resteFactureCours.ReadOnly = true;
+            // 
+            // suppFactureCours_
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle6.NullValue = "X";
+            this.suppFactureCours_.DefaultCellStyle = dataGridViewCellStyle6;
+            this.suppFactureCours_.HeaderText = "";
+            this.suppFactureCours_.LinkColor = System.Drawing.Color.Red;
+            this.suppFactureCours_.Name = "suppFactureCours_";
+            this.suppFactureCours_.ReadOnly = true;
+            this.suppFactureCours_.VisitedLinkColor = System.Drawing.Color.White;
+            this.suppFactureCours_.Width = 27;
+            // 
+            // suppFactureCours
+            // 
+            this.suppFactureCours.HeaderText = "Supp";
+            this.suppFactureCours.Name = "suppFactureCours";
+            this.suppFactureCours.Visible = false;
             // 
             // tabPage3
             // 
@@ -584,18 +753,90 @@
             this.dgv_facture_regle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_facture_regle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idFactureRegle,
-            this.numDocFactureRegle,
-            this.heureDocFactureRegle,
-            this.clientDocFactureRegle,
-            this.mtantDocFactureRegle,
-            this.resteDocFactureRegle,
-            this.suppDocFactureRegle});
+            this.numFactureRegle,
+            this.heureFactureRegle,
+            this.clientFactureRegle,
+            this.mtantFactureRegle,
+            this.resteFactureRegle,
+            this.suppFactureRegle_,
+            this.suppFactureRegle});
             this.dgv_facture_regle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_facture_regle.Location = new System.Drawing.Point(3, 3);
+            this.dgv_facture_regle.MultiSelect = false;
             this.dgv_facture_regle.Name = "dgv_facture_regle";
+            this.dgv_facture_regle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_facture_regle.Size = new System.Drawing.Size(655, 185);
             this.dgv_facture_regle.TabIndex = 2;
             this.dgv_facture_regle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facture_regle_CellContentClick);
+            this.dgv_facture_regle.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_regle_RowsAdded);
+            // 
+            // idFactureRegle
+            // 
+            this.idFactureRegle.HeaderText = "ID";
+            this.idFactureRegle.Name = "idFactureRegle";
+            this.idFactureRegle.Visible = false;
+            // 
+            // numFactureRegle
+            // 
+            this.numFactureRegle.HeaderText = "Num Piece";
+            this.numFactureRegle.Name = "numFactureRegle";
+            this.numFactureRegle.ReadOnly = true;
+            this.numFactureRegle.Width = 110;
+            // 
+            // heureFactureRegle
+            // 
+            this.heureFactureRegle.HeaderText = "Heure";
+            this.heureFactureRegle.Name = "heureFactureRegle";
+            this.heureFactureRegle.ReadOnly = true;
+            this.heureFactureRegle.Width = 104;
+            // 
+            // clientFactureRegle
+            // 
+            this.clientFactureRegle.HeaderText = "Client";
+            this.clientFactureRegle.Name = "clientFactureRegle";
+            this.clientFactureRegle.ReadOnly = true;
+            this.clientFactureRegle.Width = 150;
+            // 
+            // mtantFactureRegle
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0";
+            this.mtantFactureRegle.DefaultCellStyle = dataGridViewCellStyle7;
+            this.mtantFactureRegle.HeaderText = "Montant TTC";
+            this.mtantFactureRegle.Name = "mtantFactureRegle";
+            this.mtantFactureRegle.ReadOnly = true;
+            this.mtantFactureRegle.Width = 120;
+            // 
+            // resteFactureRegle
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = "0";
+            this.resteFactureRegle.DefaultCellStyle = dataGridViewCellStyle8;
+            this.resteFactureRegle.HeaderText = "Reste";
+            this.resteFactureRegle.Name = "resteFactureRegle";
+            this.resteFactureRegle.ReadOnly = true;
+            // 
+            // suppFactureRegle_
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle9.NullValue = "X";
+            this.suppFactureRegle_.DefaultCellStyle = dataGridViewCellStyle9;
+            this.suppFactureRegle_.HeaderText = "";
+            this.suppFactureRegle_.LinkColor = System.Drawing.Color.Red;
+            this.suppFactureRegle_.Name = "suppFactureRegle_";
+            this.suppFactureRegle_.ReadOnly = true;
+            this.suppFactureRegle_.VisitedLinkColor = System.Drawing.Color.White;
+            this.suppFactureRegle_.Width = 27;
+            // 
+            // suppFactureRegle
+            // 
+            this.suppFactureRegle.HeaderText = "Supp";
+            this.suppFactureRegle.Name = "suppFactureRegle";
+            this.suppFactureRegle.Visible = false;
             // 
             // tabPage4
             // 
@@ -614,18 +855,90 @@
             this.dgv_commande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_commande.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idCommande,
-            this.numDocCommande,
-            this.heureDocCommande,
-            this.clientDocCommande,
-            this.mtantDocCommande,
-            this.resteDocCommande,
-            this.suppDocCommande});
+            this.numCommande,
+            this.heureCommande,
+            this.clientCommande,
+            this.mtantCommande,
+            this.resteCommande,
+            this.suppCommande_,
+            this.suppCommande});
             this.dgv_commande.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_commande.Location = new System.Drawing.Point(3, 3);
+            this.dgv_commande.MultiSelect = false;
             this.dgv_commande.Name = "dgv_commande";
+            this.dgv_commande.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_commande.Size = new System.Drawing.Size(655, 185);
             this.dgv_commande.TabIndex = 3;
             this.dgv_commande.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_commande_CellContentClick);
+            this.dgv_commande.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_commande_RowsAdded);
+            // 
+            // idCommande
+            // 
+            this.idCommande.HeaderText = "ID";
+            this.idCommande.Name = "idCommande";
+            this.idCommande.Visible = false;
+            // 
+            // numCommande
+            // 
+            this.numCommande.HeaderText = "Num Piece";
+            this.numCommande.Name = "numCommande";
+            this.numCommande.ReadOnly = true;
+            this.numCommande.Width = 110;
+            // 
+            // heureCommande
+            // 
+            this.heureCommande.HeaderText = "Heure";
+            this.heureCommande.Name = "heureCommande";
+            this.heureCommande.ReadOnly = true;
+            this.heureCommande.Width = 104;
+            // 
+            // clientCommande
+            // 
+            this.clientCommande.HeaderText = "Client";
+            this.clientCommande.Name = "clientCommande";
+            this.clientCommande.ReadOnly = true;
+            this.clientCommande.Width = 150;
+            // 
+            // mtantCommande
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.mtantCommande.DefaultCellStyle = dataGridViewCellStyle10;
+            this.mtantCommande.HeaderText = "Montant TTC";
+            this.mtantCommande.Name = "mtantCommande";
+            this.mtantCommande.ReadOnly = true;
+            this.mtantCommande.Width = 120;
+            // 
+            // resteCommande
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.resteCommande.DefaultCellStyle = dataGridViewCellStyle11;
+            this.resteCommande.HeaderText = "Reste";
+            this.resteCommande.Name = "resteCommande";
+            this.resteCommande.ReadOnly = true;
+            // 
+            // suppCommande_
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle12.NullValue = "X";
+            this.suppCommande_.DefaultCellStyle = dataGridViewCellStyle12;
+            this.suppCommande_.HeaderText = "";
+            this.suppCommande_.LinkColor = System.Drawing.Color.Red;
+            this.suppCommande_.Name = "suppCommande_";
+            this.suppCommande_.ReadOnly = true;
+            this.suppCommande_.VisitedLinkColor = System.Drawing.Color.White;
+            this.suppCommande_.Width = 27;
+            // 
+            // suppCommande
+            // 
+            this.suppCommande.HeaderText = "Supp";
+            this.suppCommande.Name = "suppCommande";
+            this.suppCommande.Visible = false;
             // 
             // groupBox4
             // 
@@ -661,7 +974,9 @@
             this.supp});
             this.dgv_contenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_contenu.Location = new System.Drawing.Point(0, 0);
+            this.dgv_contenu.MultiSelect = false;
             this.dgv_contenu.Name = "dgv_contenu";
+            this.dgv_contenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contenu.Size = new System.Drawing.Size(667, 320);
             this.dgv_contenu.TabIndex = 0;
             this.dgv_contenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_contenu_CellContentClick);
@@ -933,6 +1248,17 @@
             this.txt_montantReste.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_montantReste.TextChanged += new System.EventHandler(this.txt_montantReste_TextChanged_1);
             // 
+            // txt_montantHt
+            // 
+            this.txt_montantHt.Location = new System.Drawing.Point(131, 20);
+            this.txt_montantHt.Name = "txt_montantHt";
+            this.txt_montantHt.ReadOnly = true;
+            this.txt_montantHt.Size = new System.Drawing.Size(209, 20);
+            this.txt_montantHt.TabIndex = 1;
+            this.txt_montantHt.Text = "0";
+            this.txt_montantHt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_montantHt.TextChanged += new System.EventHandler(this.txt_montantHt_TextChanged);
+            // 
             // txt_montantTTC
             // 
             this.txt_montantTTC.Location = new System.Drawing.Point(131, 85);
@@ -981,6 +1307,15 @@
             this.label23.Size = new System.Drawing.Size(44, 13);
             this.label23.TabIndex = 0;
             this.label23.Text = "Reste : ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(27, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Montant HT : ";
             // 
             // label22
             // 
@@ -1113,8 +1448,10 @@
             this.montantReglement});
             this.dgv_reglement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_reglement.Location = new System.Drawing.Point(3, 16);
+            this.dgv_reglement.MultiSelect = false;
             this.dgv_reglement.Name = "dgv_reglement";
             this.dgv_reglement.ReadOnly = true;
+            this.dgv_reglement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_reglement.Size = new System.Drawing.Size(345, 163);
             this.dgv_reglement.TabIndex = 0;
             this.dgv_reglement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_reglement_CellContentClick);
@@ -1202,274 +1539,6 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Montant HT : ";
-            // 
-            // txt_montantHt
-            // 
-            this.txt_montantHt.Location = new System.Drawing.Point(131, 20);
-            this.txt_montantHt.Name = "txt_montantHt";
-            this.txt_montantHt.ReadOnly = true;
-            this.txt_montantHt.Size = new System.Drawing.Size(209, 20);
-            this.txt_montantHt.TabIndex = 1;
-            this.txt_montantHt.Text = "0";
-            this.txt_montantHt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_montantHt.TextChanged += new System.EventHandler(this.txt_montantHt_TextChanged);
-            // 
-            // idFactureCours
-            // 
-            this.idFactureCours.HeaderText = "ID";
-            this.idFactureCours.Name = "idFactureCours";
-            this.idFactureCours.Visible = false;
-            // 
-            // numDocFactureCours
-            // 
-            this.numDocFactureCours.HeaderText = "Num Piece";
-            this.numDocFactureCours.Name = "numDocFactureCours";
-            this.numDocFactureCours.ReadOnly = true;
-            this.numDocFactureCours.Width = 110;
-            // 
-            // heureDocFactureCours
-            // 
-            this.heureDocFactureCours.HeaderText = "Heure";
-            this.heureDocFactureCours.Name = "heureDocFactureCours";
-            this.heureDocFactureCours.ReadOnly = true;
-            this.heureDocFactureCours.Width = 104;
-            // 
-            // clientDocFactureCours
-            // 
-            this.clientDocFactureCours.HeaderText = "Client";
-            this.clientDocFactureCours.Name = "clientDocFactureCours";
-            this.clientDocFactureCours.ReadOnly = true;
-            this.clientDocFactureCours.Width = 150;
-            // 
-            // mtantDocFactureCours
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.mtantDocFactureCours.DefaultCellStyle = dataGridViewCellStyle4;
-            this.mtantDocFactureCours.HeaderText = "Montant TTC";
-            this.mtantDocFactureCours.Name = "mtantDocFactureCours";
-            this.mtantDocFactureCours.ReadOnly = true;
-            this.mtantDocFactureCours.Width = 120;
-            // 
-            // resteDocFactureCours
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.resteDocFactureCours.DefaultCellStyle = dataGridViewCellStyle5;
-            this.resteDocFactureCours.HeaderText = "Reste";
-            this.resteDocFactureCours.Name = "resteDocFactureCours";
-            this.resteDocFactureCours.ReadOnly = true;
-            // 
-            // suppDocFactureCours
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle6.NullValue = "X";
-            this.suppDocFactureCours.DefaultCellStyle = dataGridViewCellStyle6;
-            this.suppDocFactureCours.HeaderText = "";
-            this.suppDocFactureCours.LinkColor = System.Drawing.Color.Red;
-            this.suppDocFactureCours.Name = "suppDocFactureCours";
-            this.suppDocFactureCours.ReadOnly = true;
-            this.suppDocFactureCours.VisitedLinkColor = System.Drawing.Color.White;
-            this.suppDocFactureCours.Width = 27;
-            // 
-            // idFactureWait
-            // 
-            this.idFactureWait.HeaderText = "ID";
-            this.idFactureWait.Name = "idFactureWait";
-            this.idFactureWait.Visible = false;
-            // 
-            // numDocFactureWait
-            // 
-            this.numDocFactureWait.HeaderText = "Num Piece";
-            this.numDocFactureWait.Name = "numDocFactureWait";
-            this.numDocFactureWait.ReadOnly = true;
-            this.numDocFactureWait.Width = 110;
-            // 
-            // heureDocFactureWait
-            // 
-            this.heureDocFactureWait.HeaderText = "Heure";
-            this.heureDocFactureWait.Name = "heureDocFactureWait";
-            this.heureDocFactureWait.ReadOnly = true;
-            this.heureDocFactureWait.Width = 104;
-            // 
-            // clientDocFactureWait
-            // 
-            this.clientDocFactureWait.HeaderText = "Client";
-            this.clientDocFactureWait.Name = "clientDocFactureWait";
-            this.clientDocFactureWait.ReadOnly = true;
-            this.clientDocFactureWait.Width = 150;
-            // 
-            // mtantDocFactureWait
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = "0";
-            this.mtantDocFactureWait.DefaultCellStyle = dataGridViewCellStyle1;
-            this.mtantDocFactureWait.HeaderText = "Montant TTC";
-            this.mtantDocFactureWait.Name = "mtantDocFactureWait";
-            this.mtantDocFactureWait.ReadOnly = true;
-            this.mtantDocFactureWait.Width = 120;
-            // 
-            // resteDocFactureWait
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.resteDocFactureWait.DefaultCellStyle = dataGridViewCellStyle2;
-            this.resteDocFactureWait.HeaderText = "Reste";
-            this.resteDocFactureWait.Name = "resteDocFactureWait";
-            this.resteDocFactureWait.ReadOnly = true;
-            // 
-            // suppDocFactureWait
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle3.NullValue = "X";
-            this.suppDocFactureWait.DefaultCellStyle = dataGridViewCellStyle3;
-            this.suppDocFactureWait.HeaderText = "";
-            this.suppDocFactureWait.LinkColor = System.Drawing.Color.Red;
-            this.suppDocFactureWait.Name = "suppDocFactureWait";
-            this.suppDocFactureWait.ReadOnly = true;
-            this.suppDocFactureWait.VisitedLinkColor = System.Drawing.Color.White;
-            this.suppDocFactureWait.Width = 27;
-            // 
-            // idFactureRegle
-            // 
-            this.idFactureRegle.HeaderText = "ID";
-            this.idFactureRegle.Name = "idFactureRegle";
-            this.idFactureRegle.Visible = false;
-            // 
-            // numDocFactureRegle
-            // 
-            this.numDocFactureRegle.HeaderText = "Num Piece";
-            this.numDocFactureRegle.Name = "numDocFactureRegle";
-            this.numDocFactureRegle.ReadOnly = true;
-            this.numDocFactureRegle.Width = 110;
-            // 
-            // heureDocFactureRegle
-            // 
-            this.heureDocFactureRegle.HeaderText = "Heure";
-            this.heureDocFactureRegle.Name = "heureDocFactureRegle";
-            this.heureDocFactureRegle.ReadOnly = true;
-            this.heureDocFactureRegle.Width = 104;
-            // 
-            // clientDocFactureRegle
-            // 
-            this.clientDocFactureRegle.HeaderText = "Client";
-            this.clientDocFactureRegle.Name = "clientDocFactureRegle";
-            this.clientDocFactureRegle.ReadOnly = true;
-            this.clientDocFactureRegle.Width = 150;
-            // 
-            // mtantDocFactureRegle
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.mtantDocFactureRegle.DefaultCellStyle = dataGridViewCellStyle7;
-            this.mtantDocFactureRegle.HeaderText = "Montant TTC";
-            this.mtantDocFactureRegle.Name = "mtantDocFactureRegle";
-            this.mtantDocFactureRegle.ReadOnly = true;
-            this.mtantDocFactureRegle.Width = 120;
-            // 
-            // resteDocFactureRegle
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = "0";
-            this.resteDocFactureRegle.DefaultCellStyle = dataGridViewCellStyle8;
-            this.resteDocFactureRegle.HeaderText = "Reste";
-            this.resteDocFactureRegle.Name = "resteDocFactureRegle";
-            this.resteDocFactureRegle.ReadOnly = true;
-            // 
-            // suppDocFactureRegle
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle9.NullValue = "X";
-            this.suppDocFactureRegle.DefaultCellStyle = dataGridViewCellStyle9;
-            this.suppDocFactureRegle.HeaderText = "";
-            this.suppDocFactureRegle.LinkColor = System.Drawing.Color.Red;
-            this.suppDocFactureRegle.Name = "suppDocFactureRegle";
-            this.suppDocFactureRegle.ReadOnly = true;
-            this.suppDocFactureRegle.VisitedLinkColor = System.Drawing.Color.White;
-            this.suppDocFactureRegle.Width = 27;
-            // 
-            // idCommande
-            // 
-            this.idCommande.HeaderText = "ID";
-            this.idCommande.Name = "idCommande";
-            this.idCommande.Visible = false;
-            // 
-            // numDocCommande
-            // 
-            this.numDocCommande.HeaderText = "Num Piece";
-            this.numDocCommande.Name = "numDocCommande";
-            this.numDocCommande.ReadOnly = true;
-            this.numDocCommande.Width = 110;
-            // 
-            // heureDocCommande
-            // 
-            this.heureDocCommande.HeaderText = "Heure";
-            this.heureDocCommande.Name = "heureDocCommande";
-            this.heureDocCommande.ReadOnly = true;
-            this.heureDocCommande.Width = 104;
-            // 
-            // clientDocCommande
-            // 
-            this.clientDocCommande.HeaderText = "Client";
-            this.clientDocCommande.Name = "clientDocCommande";
-            this.clientDocCommande.ReadOnly = true;
-            this.clientDocCommande.Width = 150;
-            // 
-            // mtantDocCommande
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0";
-            this.mtantDocCommande.DefaultCellStyle = dataGridViewCellStyle10;
-            this.mtantDocCommande.HeaderText = "Montant TTC";
-            this.mtantDocCommande.Name = "mtantDocCommande";
-            this.mtantDocCommande.ReadOnly = true;
-            this.mtantDocCommande.Width = 120;
-            // 
-            // resteDocCommande
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0";
-            this.resteDocCommande.DefaultCellStyle = dataGridViewCellStyle11;
-            this.resteDocCommande.HeaderText = "Reste";
-            this.resteDocCommande.Name = "resteDocCommande";
-            this.resteDocCommande.ReadOnly = true;
-            // 
-            // suppDocCommande
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle12.NullValue = "X";
-            this.suppDocCommande.DefaultCellStyle = dataGridViewCellStyle12;
-            this.suppDocCommande.HeaderText = "";
-            this.suppDocCommande.LinkColor = System.Drawing.Color.Red;
-            this.suppDocCommande.Name = "suppDocCommande";
-            this.suppDocCommande.ReadOnly = true;
-            this.suppDocCommande.VisitedLinkColor = System.Drawing.Color.White;
-            this.suppDocCommande.Width = 27;
-            // 
             // Form_Caisse_Saisie
             // 
             this.AcceptButton = this.btn_add_contenu;
@@ -1514,6 +1583,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facture_wait)).EndInit();
+            this.context_data.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facture_cours)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -1635,33 +1705,39 @@
         private System.Windows.Forms.TextBox txt_montantHt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFactureWait;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numDocFactureWait;
-        private System.Windows.Forms.DataGridViewTextBoxColumn heureDocFactureWait;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientDocFactureWait;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mtantDocFactureWait;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resteDocFactureWait;
-        private System.Windows.Forms.DataGridViewLinkColumn suppDocFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn heureFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mtantFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resteFactureWait;
+        private System.Windows.Forms.DataGridViewLinkColumn suppFactureWait_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suppFactureWait;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFactureCours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numDocFactureCours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn heureDocFactureCours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientDocFactureCours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mtantDocFactureCours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resteDocFactureCours;
-        private System.Windows.Forms.DataGridViewLinkColumn suppDocFactureCours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numFactureCours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn heureFactureCours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientFactureCours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mtantFactureCours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resteFactureCours;
+        private System.Windows.Forms.DataGridViewLinkColumn suppFactureCours_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suppFactureCours;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFactureRegle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numDocFactureRegle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn heureDocFactureRegle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientDocFactureRegle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mtantDocFactureRegle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resteDocFactureRegle;
-        private System.Windows.Forms.DataGridViewLinkColumn suppDocFactureRegle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numFactureRegle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn heureFactureRegle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientFactureRegle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mtantFactureRegle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resteFactureRegle;
+        private System.Windows.Forms.DataGridViewLinkColumn suppFactureRegle_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suppFactureRegle;
         private System.Windows.Forms.DataGridViewTextBoxColumn idCommande;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numDocCommande;
-        private System.Windows.Forms.DataGridViewTextBoxColumn heureDocCommande;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientDocCommande;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mtantDocCommande;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resteDocCommande;
-        private System.Windows.Forms.DataGridViewLinkColumn suppDocCommande;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numCommande;
+        private System.Windows.Forms.DataGridViewTextBoxColumn heureCommande;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientCommande;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mtantCommande;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resteCommande;
+        private System.Windows.Forms.DataGridViewLinkColumn suppCommande_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suppCommande;
+        private System.Windows.Forms.ContextMenuStrip context_data;
+        private System.Windows.Forms.ToolStripMenuItem tool_integre_data;
     }
 }
 

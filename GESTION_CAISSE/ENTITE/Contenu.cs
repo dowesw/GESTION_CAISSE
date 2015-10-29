@@ -7,7 +7,7 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class Contenu
+    public class Contenu
     {
         public Contenu()
         {

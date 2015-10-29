@@ -282,6 +282,8 @@
     <Folder Include="IMG\LANG\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="IMG\ICONES\visible_yes.png" />
+    <None Include="IMG\ICONES\visible_no.png" />
     <None Include="IMG\ICONES\xcalc.png" />
     <None Include="IMG\ICONES\save_all.png" />
     <None Include="IMG\THEMES\BlackClass.JPG" />
