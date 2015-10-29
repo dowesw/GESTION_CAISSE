@@ -9,25 +9,32 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class CategorieClientDao
+    class PlanTarifaireDao
     {
-        public static CategorieClient getOneCategorieClient(long id)
+        public static PlanTarifaire getOnePlanTarifaire(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_com_categorie_client where id = " + id + "";
+                String search = "select * from yvs_base_plan_tarifaire_article where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                CategorieClient a = new CategorieClient();
+                PlanTarifaire a = new PlanTarifaire();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Code = lect["code"].ToString();
-                        a.Designation = lect["libelle"].ToString();
-                        a.Remises = BLL.PlanRemiseBll.Liste("select * from yvs_com_plan_remise where actif = true and categorie =" + a.Id + " and '" + DateTime.Now + "' between date_debut and date_fin ");
+                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
+                        a.Puv = (Double)((lect["puv_minimal"] != null) ? (!lect["puv_minimal"].ToString().Trim().Equals("") ? lect["puv_minimal"] : 0) : 0);
+                        a.Remise = (Double)((lect["remise"] != null) ? (!lect["remise"].ToString().Trim().Equals("") ? lect["remise"] : 0) : 0);
+                        a.Ristourne = (Double)((lect["ristourne"] != null) ? (!lect["ristourne"].ToString().Trim().Equals("") ? lect["ristourne"] : 0) : 0);
+                        a.Remise_ = (lect["remise"] != null
+                            ? (!lect["remise"].ToString().Trim().Equals("")
+                            ? BLL.RemiseBll.One(Convert.ToInt64(lect["remise"].ToString()))
+                            : new Remise())
+                            : new Remise());
                         a.Update = true;
                     }
                     lect.Close();
@@ -50,7 +57,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_com_categorie_client order by id desc limit 1";
+                String search = "select id from yvs_base_plan_tarifaire_article order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -75,7 +82,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static CategorieClient getAjoutCategorieClient(CategorieClient a)
+        public static PlanTarifaire getAjoutPlanTarifaire(PlanTarifaire a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -96,7 +103,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateCategorieClient(CategorieClient a)
+        public static bool getUpdatePlanTarifaire(PlanTarifaire a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -117,7 +124,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteCategorieClient(long id)
+        public static bool getDeletePlanTarifaire(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -138,23 +145,30 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<CategorieClient> getListCategorieClient(String query)
+        public static List<PlanTarifaire> getListPlanTarifaire(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<CategorieClient> l = new List<CategorieClient>();
+                List<PlanTarifaire> l = new List<PlanTarifaire>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        CategorieClient a = new CategorieClient();
+                        PlanTarifaire a = new PlanTarifaire();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Code = lect["code"].ToString();
-                        a.Designation = lect["libelle"].ToString();
-                        a.Remises = BLL.PlanRemiseBll.Liste("select * from yvs_com_plan_remise where actif = true and categorie =" + a.Id + " and '" + DateTime.Now + "' between date_debut and date_fin ");
+                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
+                        a.Puv = (Double)((lect["puv_minimal"] != null) ? (!lect["puv_minimal"].ToString().Trim().Equals("") ? lect["puv_minimal"] : 0) : 0);
+                        a.Remise = (Double)((lect["remise"] != null) ? (!lect["remise"].ToString().Trim().Equals("") ? lect["remise"] : 0) : 0);
+                        a.Ristourne = (Double)((lect["ristourne"] != null) ? (!lect["ristourne"].ToString().Trim().Equals("") ? lect["ristourne"] : 0) : 0);
+                        a.Remise_ = (lect["remise"] != null
+                            ? (!lect["remise"].ToString().Trim().Equals("")
+                            ? BLL.RemiseBll.One(Convert.ToInt64(lect["remise"].ToString()))
+                            : new Remise())
+                            : new Remise());
                         a.Update = true;
                         l.Add(a);
                     }

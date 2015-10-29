@@ -32,6 +32,13 @@ namespace GESTION_CAISSE.ENTITE
             set { code = value; }
         }
 
+        private Remise remise_ = new Remise();
+        internal Remise Remise_
+        {
+            get { return remise_; }
+            set { remise_ = value; }
+        }
+
         private double puv;
         public double Puv
         {
@@ -58,6 +65,27 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return actif; }
             set { actif = value; }
+        }
+
+        private bool update;
+        public bool Update
+        {
+            get { return update; }
+            set { update = value; }
+        }
+
+        private bool select;
+        public bool Select
+        {
+            get { return select; }
+            set { select = value; }
+        }
+
+        private bool new_;
+        public bool New_
+        {
+            get { return new_; }
+            set { new_ = value; }
         }
     }
 }

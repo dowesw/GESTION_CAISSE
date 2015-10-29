@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class Depot
+    class Emplacement
     {
-        public Depot()
+        public Emplacement()
         {
-            emplacmenets = new List<Emplacement>();
             articles = new List<ArticleDepot>();
-            articlesAll = new List<ArticleDepot>();
         }
 
-        public Depot(long id)
+        public Emplacement(long id)
         {
             this.id = id;
-            emplacmenets = new List<Emplacement>();
             articles = new List<ArticleDepot>();
-            articlesAll = new List<ArticleDepot>();
         }
 
         private long id;
@@ -30,11 +26,11 @@ namespace GESTION_CAISSE.ENTITE
             set { id = value; }
         }
 
-        private String abbreviation;
-        public String Abbreviation
+        private String code;
+        public String Code
         {
-            get { return abbreviation; }
-            set { abbreviation = value; }
+            get { return code; }
+            set { code = value; }
         }
 
         private String designation;
@@ -44,11 +40,11 @@ namespace GESTION_CAISSE.ENTITE
             set { designation = value; }
         }
 
-        private List<Emplacement> emplacmenets;
-        internal List<Emplacement> Emplacmenets
+        private bool defaut;
+        public bool Defaut
         {
-            get { return emplacmenets; }
-            set { emplacmenets = value; }
+            get { return defaut; }
+            set { defaut = value; }
         }
 
         private List<ArticleDepot> articles;
@@ -56,13 +52,6 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return articles; }
             set { articles = value; }
-        }
-
-        private List<ArticleDepot> articlesAll;
-        internal List<ArticleDepot> ArticlesAll
-        {
-            get { return articlesAll; }
-            set { articlesAll = value; }
         }
 
         private bool update;

@@ -9,25 +9,35 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class CategorieClientDao
+    class PlanRemiseDao
     {
-        public static CategorieClient getOneCategorieClient(long id)
+        public static PlanRemise getOnePlanRemise(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_com_categorie_client where id = " + id + "";
+                String search = "select * from yvs_com_plan_remise where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                CategorieClient a = new CategorieClient();
+                PlanRemise a = new PlanRemise();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Code = lect["code"].ToString();
-                        a.Designation = lect["libelle"].ToString();
-                        a.Remises = BLL.PlanRemiseBll.Liste("select * from yvs_com_plan_remise where actif = true and categorie =" + a.Id + " and '" + DateTime.Now + "' between date_debut and date_fin ");
+                        a.DateDebut = (DateTime)((lect["date_debut"] != null) ? (!lect["date_debut"].ToString().Trim().Equals("") ? lect["date_debut"] : DateTime.Now) : DateTime.Now);
+                        a.DateFin = (DateTime)((lect["date_fin"] != null) ? (!lect["date_fin"].ToString().Trim().Equals("") ? lect["date_fin"] : DateTime.Now) : DateTime.Now);
+                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
+                        a.Remise = (lect["remise"] != null
+                            ? (!lect["remise"].ToString().Trim().Equals("")
+                            ? BLL.RemiseBll.One(Convert.ToInt64(lect["remise"].ToString()))
+                            : new Remise())
+                            : new Remise());
+                        a.Article = (lect["article"] != null
+                            ? (!lect["article"].ToString().Trim().Equals("")
+                            ? BLL.ArticleComBll.One(Convert.ToInt32(lect["article"].ToString()))
+                            : new ArticleCom())
+                            : new ArticleCom());
                         a.Update = true;
                     }
                     lect.Close();
@@ -50,7 +60,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_com_categorie_client order by id desc limit 1";
+                String search = "select id from yvs_com_plan_remise order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -75,7 +85,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static CategorieClient getAjoutCategorieClient(CategorieClient a)
+        public static PlanRemise getAjoutPlanRemise(PlanRemise a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -96,7 +106,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateCategorieClient(CategorieClient a)
+        public static bool getUpdatePlanRemise(PlanRemise a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -117,7 +127,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteCategorieClient(long id)
+        public static bool getDeletePlanRemise(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -138,23 +148,33 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<CategorieClient> getListCategorieClient(String query)
+        public static List<PlanRemise> getListPlanRemise(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<CategorieClient> l = new List<CategorieClient>();
+                List<PlanRemise> l = new List<PlanRemise>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        CategorieClient a = new CategorieClient();
+                        PlanRemise a = new PlanRemise();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Code = lect["code"].ToString();
-                        a.Designation = lect["libelle"].ToString();
-                        a.Remises = BLL.PlanRemiseBll.Liste("select * from yvs_com_plan_remise where actif = true and categorie =" + a.Id + " and '" + DateTime.Now + "' between date_debut and date_fin ");
+                        a.DateDebut = (DateTime)((lect["date_debut"] != null) ? (!lect["date_debut"].ToString().Trim().Equals("") ? lect["date_debut"] : DateTime.Now) : DateTime.Now);
+                        a.DateFin = (DateTime)((lect["date_fin"] != null) ? (!lect["date_fin"].ToString().Trim().Equals("") ? lect["date_fin"] : DateTime.Now) : DateTime.Now);
+                        a.Actif = (Boolean)((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"] : false) : false);
+                        a.Remise = (lect["remise"] != null
+                            ? (!lect["remise"].ToString().Trim().Equals("")
+                            ? BLL.RemiseBll.One(Convert.ToInt64(lect["remise"].ToString()))
+                            : new Remise())
+                            : new Remise());
+                        a.Article = (lect["article"] != null
+                            ? (!lect["article"].ToString().Trim().Equals("")
+                            ? BLL.ArticleComBll.One(Convert.ToInt32(lect["article"].ToString()))
+                            : new ArticleCom())
+                            : new ArticleCom());
                         a.Update = true;
                         l.Add(a);
                     }

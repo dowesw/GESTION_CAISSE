@@ -60,6 +60,10 @@
     <Compile Include="BLL\CompteBll.cs" />
     <Compile Include="BLL\ArticleComptableBll.cs" />
     <Compile Include="BLL\ArticleTaxeBll.cs" />
+    <Compile Include="BLL\ArticleDepotBll.cs" />
+    <Compile Include="BLL\EmplacementBll.cs" />
+    <Compile Include="BLL\PlanRemiseBll.cs" />
+    <Compile Include="BLL\PlanTarifaireBll.cs" />
     <Compile Include="BLL\MensualiteBll.cs" />
     <Compile Include="BLL\PieceCaisseBll.cs" />
     <Compile Include="BLL\TaxeBll.cs" />
@@ -95,6 +99,10 @@
     <Compile Include="DAO\CompteDao.cs" />
     <Compile Include="DAO\ArticleComptableDao.cs" />
     <Compile Include="DAO\ArticleTaxeDao.cs" />
+    <Compile Include="DAO\ArticleDepotDao.cs" />
+    <Compile Include="DAO\EmplacementDao.cs" />
+    <Compile Include="DAO\PlanRemiseDao.cs" />
+    <Compile Include="DAO\PlanTarifaireDao.cs" />
     <Compile Include="DAO\MensualiteDao.cs" />
     <Compile Include="DAO\PieceCaisseDao.cs" />
     <Compile Include="DAO\TaxeDao.cs" />
@@ -122,6 +130,7 @@
     <Compile Include="ENTITE\Article.cs" />
     <Compile Include="ENTITE\ArticleCom.cs" />
     <Compile Include="ENTITE\ArticleComptable.cs" />
+    <Compile Include="ENTITE\ArticleDepot.cs" />
     <Compile Include="ENTITE\ArticleTaxe.cs" />
     <Compile Include="ENTITE\CategorieClient.cs" />
     <Compile Include="ENTITE\CategorieComptable.cs" />
@@ -133,6 +142,7 @@
     <Compile Include="ENTITE\Creneau.cs" />
     <Compile Include="ENTITE\Depot.cs" />
     <Compile Include="ENTITE\ElementReference.cs" />
+    <Compile Include="ENTITE\Emplacement.cs" />
     <Compile Include="ENTITE\Employe.cs" />
     <Compile Include="ENTITE\Entete.cs" />
     <Compile Include="ENTITE\Facture.cs" />
