@@ -46,6 +46,40 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
+        public static FamilleArticle getOneFamilleArticle_(long id)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                String search = "select * from yvs_base_famille_article where id = " + id + "";
+                NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
+                NpgsqlDataReader lect = Lcmd.ExecuteReader();
+                FamilleArticle a = new FamilleArticle();
+                if (lect.HasRows)
+                {
+                    while (lect.Read())
+                    {
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Designation = lect["designation"].ToString();
+                        a.Description = lect["description"].ToString();
+                        a.Reference = lect["reference"].ToString();
+                    }
+                    a.Update = true;
+                    lect.Close();
+                }
+                return a;
+            }
+            catch (NpgsqlException e)
+            {
+                Messages.Exception(e);
+                return null;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
         private static long getCurrent()
         {
             NpgsqlConnection con = Connexion.Connection();
@@ -157,6 +191,41 @@ namespace GESTION_CAISSE.DAO
                         a.Description = lect["description"].ToString();
                         a.Reference = lect["reference"].ToString();
                         a.Articles = BLL.ArticleBll.Liste("select * from yvs_articles");
+                        a.Update = true;
+                        l.Add(a);
+                    }
+                    lect.Close();
+                }
+                return l;
+            }
+            catch (NpgsqlException e)
+            {
+                Messages.Exception(e);
+                return null;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
+        public static List<FamilleArticle> getListFamilleArticle_(String query)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                List<FamilleArticle> l = new List<FamilleArticle>();
+                NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
+                NpgsqlDataReader lect = Lcmd.ExecuteReader();
+                if (lect.HasRows)
+                {
+                    while (lect.Read())
+                    {
+                        FamilleArticle a = new FamilleArticle();
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Designation = lect["designation"].ToString();
+                        a.Description = lect["description"].ToString();
+                        a.Reference = lect["reference"].ToString();
                         a.Update = true;
                         l.Add(a);
                     }

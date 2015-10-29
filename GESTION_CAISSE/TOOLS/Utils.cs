@@ -236,6 +236,7 @@ namespace GESTION_CAISSE.TOOLS
                     c.PrixTotal = (c.Quantite * c.Prix);
                 }
                 TotalTaxeContenuDoc(doc, c);
+                TotalRRRContenuDoc(doc, c);
 
                 doc.MontantRemise = (doc.MontantRemise + c.RemiseArt + c.RemiseCat);
                 doc.MontantRistourne = (doc.MontantRistourne + c.Ristourne);
@@ -244,17 +245,17 @@ namespace GESTION_CAISSE.TOOLS
                 doc.MontantTaxe = (doc.MontantTaxe + c.PrixTaxe);
             }
             doc.MontantTTC = (doc.MontantHT + doc.MontantTaxe - doc.MontantRemise);
-            TotalRRR(doc);
+            TotalRRRDoc(doc);
             doc.MontantReste = (doc.MontantTTC - doc.MontantAvance);
         }
 
-        public static void TotalRRR(Facture doc)
+        public static void TotalRRRDoc(Facture doc)
         {
             if (doc.Remises != null)
             {
                 foreach (RemiseFacture r in doc.Remises)
                 {
-                    if ((r.Remise != null) ? r.Remise.Id > 0 : false)
+                    if (r.Remise != null)
                     {
                         double mtant = doc.MontantTTC;
                         TotalRemiseDoc(r, doc);
@@ -266,57 +267,13 @@ namespace GESTION_CAISSE.TOOLS
 
         private static void TotalRemiseDoc(RemiseFacture r, Facture doc)
         {
-            double remise = 0, qte = 0, mtant = doc.MontantTTC;
-            switch (r.Remise.BaseRemise)
+            double qte = 0;
+            foreach (Contenu c in doc.Contenus)
             {
-                case Constantes.BASE_CA:
-                    foreach (GrilleRabais g in r.Remise.Grilles)
-                    {
-                        if (g.Maximal >= mtant && mtant >= g.Minimal)
-                        {
-                            switch (g.Nature)
-                            {
-                                case Constantes.NATURE_MTANT:
-                                    remise = g.Montant;
-                                    break;
-                                case Constantes.NATURE_TAUX:
-                                    remise = (mtant * g.Montant) / 100;
-                                    break;
-                                default:
-                                    break;
-                            }
-                            break;
-                        }
-                    }
-                    break;
-                case Constantes.BASE_QTE:
-                    foreach (Contenu c in doc.Contenus)
-                    {
-                        qte += c.Quantite;
-                    }
-                    foreach (GrilleRabais g in r.Remise.Grilles)
-                    {
-                        if (g.Maximal >= qte && qte >= g.Minimal)
-                        {
-                            switch (g.Nature)
-                            {
-                                case Constantes.NATURE_MTANT:
-                                    remise = g.Montant;
-                                    break;
-                                case Constantes.NATURE_TAUX:
-                                    remise = (mtant * g.Montant) / 100;
-                                    break;
-                                default:
-                                    break;
-                            }
-                            break;
-                        }
-                    }
-                    break;
-                default:
-                    Messages.ShowErreur("Impossible d'attribuer cette remise!");
-                    break;
+                qte += c.Quantite;
             }
+            Remise r_ = r.Remise;
+            double remise = MontantRemise(r.Remise, qte, doc.MontantTTC);
             r.Montant = remise;
             doc.MontantRemise += remise;
         }
@@ -329,7 +286,7 @@ namespace GESTION_CAISSE.TOOLS
             double r = cont.RemiseArt + cont.RemiseCat;
 
             CategorieComptable c = doc.Categorie;
-            if ((c != null) ? c.Id > 0 : false)
+            if (c != null)
             {
                 foreach (ArticleComptable a in c.Articles)
                 {
@@ -348,6 +305,98 @@ namespace GESTION_CAISSE.TOOLS
             }
             cont.PrixTaxe = taux;
             doc.MontantTaxe += taux;
+        }
+
+        public static void TotalRRRContenuDoc(Facture d, Contenu c)
+        {
+            if ((d != null) ? d.Client != null : false)
+            {
+                TotalRemiseContenuDoc(c, d.Client.CategorieClt);
+            }
+        }
+
+        public static void TotalRemiseContenuDoc(Contenu c, CategorieClient ca)
+        {
+            if ((ca != null) ? ((ca.Id > 0) ? ((c != null) ? c.Id > 0 : false) : false) : false)
+            {
+                ArticleCom a = c.Article;
+                if ((a != null) ? a.Id > 0 : false)
+                {
+                    //Gestion Remise Sur l'article par le plan tarifaire
+                    Article a_ = a.Article;
+                    if ((a_ != null) ? ((a_.Id > 0) ? ((a_.Plans != null) ? a_.Plans.Count > 0 : false) : false) : false)
+                    {
+                        PlanTarifaire p = a_.Plans[0];
+                        c.Prix = p.Puv;
+                        c.RemiseArt = MontantRemise(p.Remise_, c.Quantite, c.PrixTotal);
+                    }
+
+                    //Gestion Remise Sur l'article par le plan de remise
+                    foreach (PlanRemise p in ca.Remises)
+                    {
+                        if (p.Article.Equals(a))
+                        {
+                            c.RemiseCat = MontantRemise(p.Remise, c.Quantite, c.PrixTotal);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private static double MontantRemise(Remise r, double quantite, double montant)
+        {
+            double remise = 0;
+            if ((r != null) ? r.Id > 0 : false)
+            {
+                switch (r.BaseRemise)
+                {
+                    case Constantes.BASE_CA:
+                        foreach (GrilleRabais g in r.Grilles)
+                        {
+                            if (g.Maximal >= montant && montant >= g.Minimal)
+                            {
+                                switch (g.Nature)
+                                {
+                                    case Constantes.NATURE_MTANT:
+                                        remise = g.Montant;
+                                        break;
+                                    case Constantes.NATURE_TAUX:
+                                        remise = (montant * g.Montant) / 100;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            }
+                        }
+                        break;
+                    case Constantes.BASE_QTE:
+                        foreach (GrilleRabais g in r.Grilles)
+                        {
+                            if (g.Maximal >= quantite && quantite >= g.Minimal)
+                            {
+                                switch (g.Nature)
+                                {
+                                    case Constantes.NATURE_MTANT:
+                                        remise = g.Montant;
+                                        break;
+                                    case Constantes.NATURE_TAUX:
+                                        remise = (montant * g.Montant) / 100;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            }
+                        }
+                        break;
+                    default:
+                        remise = 0;
+                        break;
+                }
+            }
+            return remise;
         }
 
     }

@@ -41,8 +41,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Caisse_Saisie));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -151,15 +151,15 @@
             this.btn_approv = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.dgv_reglement = new System.Windows.Forms.DataGridView();
-            this.idReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idMensualite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montantReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.com_typeDoc = new System.Windows.Forms.ComboBox();
             this.txt_reference = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+            this.montantReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idMensualite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -1277,6 +1277,7 @@
             // 
             // dgv_reglement
             // 
+            this.dgv_reglement.AllowUserToDeleteRows = false;
             this.dgv_reglement.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgv_reglement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_reglement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1287,44 +1288,10 @@
             this.dgv_reglement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_reglement.Location = new System.Drawing.Point(3, 16);
             this.dgv_reglement.Name = "dgv_reglement";
+            this.dgv_reglement.ReadOnly = true;
             this.dgv_reglement.Size = new System.Drawing.Size(345, 163);
             this.dgv_reglement.TabIndex = 0;
             this.dgv_reglement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_reglement_CellContentClick);
-            // 
-            // idReglement
-            // 
-            this.idReglement.HeaderText = "ID";
-            this.idReglement.Name = "idReglement";
-            this.idReglement.ReadOnly = true;
-            this.idReglement.Visible = false;
-            // 
-            // idMensualite
-            // 
-            this.idMensualite.HeaderText = "Mensualite";
-            this.idMensualite.Name = "idMensualite";
-            this.idMensualite.ReadOnly = true;
-            this.idMensualite.Visible = false;
-            // 
-            // dateReglement
-            // 
-            dataGridViewCellStyle13.Format = "G";
-            dataGridViewCellStyle13.NullValue = "Pas Record";
-            this.dateReglement.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dateReglement.HeaderText = "Date";
-            this.dateReglement.Name = "dateReglement";
-            this.dateReglement.ReadOnly = true;
-            this.dateReglement.Width = 170;
-            // 
-            // montantReglement
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = "0";
-            this.montantReglement.DefaultCellStyle = dataGridViewCellStyle14;
-            this.montantReglement.HeaderText = "Montant";
-            this.montantReglement.Name = "montantReglement";
-            this.montantReglement.ReadOnly = true;
-            this.montantReglement.Width = 130;
             // 
             // com_typeDoc
             // 
@@ -1373,6 +1340,41 @@
             this.lb_numPiece.Size = new System.Drawing.Size(104, 13);
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
+            // 
+            // montantReglement
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = "0";
+            this.montantReglement.DefaultCellStyle = dataGridViewCellStyle14;
+            this.montantReglement.HeaderText = "Montant";
+            this.montantReglement.Name = "montantReglement";
+            this.montantReglement.ReadOnly = true;
+            this.montantReglement.Width = 130;
+            // 
+            // dateReglement
+            // 
+            dataGridViewCellStyle13.Format = "G";
+            dataGridViewCellStyle13.NullValue = "Pas Record";
+            this.dateReglement.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dateReglement.HeaderText = "Date";
+            this.dateReglement.Name = "dateReglement";
+            this.dateReglement.ReadOnly = true;
+            this.dateReglement.Width = 170;
+            // 
+            // idMensualite
+            // 
+            this.idMensualite.HeaderText = "Mensualite";
+            this.idMensualite.Name = "idMensualite";
+            this.idMensualite.ReadOnly = true;
+            this.idMensualite.Visible = false;
+            // 
+            // idReglement
+            // 
+            this.idReglement.HeaderText = "ID";
+            this.idReglement.Name = "idReglement";
+            this.idReglement.ReadOnly = true;
+            this.idReglement.Visible = false;
             // 
             // Form_Caisse_Saisie
             // 
@@ -1541,10 +1543,6 @@
         private System.Windows.Forms.Label lb_search_client;
         private System.Windows.Forms.TextBox txt_montantRemise;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idReglement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idMensualite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateReglement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn montantReglement;
         private System.Windows.Forms.ContextMenuStrip context_save;
         private System.Windows.Forms.ToolStripMenuItem tool_btn_wait;
         private System.Windows.Forms.ComboBox com_typeDoc;
@@ -1558,6 +1556,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qteContenu;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalContenu;
         private System.Windows.Forms.DataGridViewLinkColumn supp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idReglement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idMensualite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateReglement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montantReglement;
     }
 }
 
