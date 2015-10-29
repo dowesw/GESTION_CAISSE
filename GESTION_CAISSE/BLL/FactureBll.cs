@@ -35,6 +35,30 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
+        public static Facture One(String reference)
+        {
+            try
+            {
+                return FactureDao.getOneFacture(reference);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
+            }
+        }
+
+        public static Facture One_(String reference)
+        {
+            try
+            {
+                return FactureDao.getOneFacture_(reference);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
+            }
+        }
+
         public Facture Insert()
         {
             try

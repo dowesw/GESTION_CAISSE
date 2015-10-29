@@ -18,6 +18,8 @@ namespace GESTION_CAISSE
             Application.SetCompatibleTextRenderingDefault(false);
             Initialisation();
             Application.Run(new IHM.Form_Caisse_Click());
+            Application.Run(new IHM.Form_Caisse_Saisie());
+            //test();
         }
 
         static void StartAppl()
@@ -32,12 +34,11 @@ namespace GESTION_CAISSE
             }
         }
 
-        static void testc()
+        static void test()
         {
-
-
+          var t =  TOOLS.Utils.GenererReference(TOOLS.Constantes.DOC_COMMANDE);
         }
-
+        
         static void Initialisation()
         {
             TOOLS.Constantes.Societe = BLL.SocieteBll.One(2288);

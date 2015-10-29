@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class Facture
+    public class Facture
     {
         public Facture()
         {
             contenus = new List<Contenu>();
-            Remises = new List<RemiseFacture>();
+            remises = new List<RemiseFacture>();
+            mensualites = new List<Mensualite>();
         }
 
         public Facture(long id)
         {
             this.id = id;
             contenus = new List<Contenu>();
-            Remises = new List<RemiseFacture>();
+            remises = new List<RemiseFacture>();
+            mensualites = new List<Mensualite>();
         }
 
         private long id;
@@ -84,11 +86,39 @@ namespace GESTION_CAISSE.ENTITE
             set { remises = value; }
         }
 
-        private String statut;
+        private String statut = TOOLS.Constantes.ETAT_EN_ATTENTE;
         public String Statut
         {
             get { return statut; }
             set { statut = value; }
+        }
+
+        private String typeDoc = TOOLS.Constantes.TYPE_FV;
+        public String TypeDoc
+        {
+            get { return typeDoc; }
+            set { typeDoc = value; }
+        }
+
+        private List<Mensualite> mensualites;
+        internal List<Mensualite> Mensualites
+        {
+            get { return mensualites; }
+            set { mensualites = value; }
+        }
+
+        private double montantHT;
+        public double MontantHT
+        {
+            get { return montantHT; }
+            set { montantHT = value; }
+        }
+
+        private double montantTTC;
+        public double MontantTTC
+        {
+            get { return montantTTC; }
+            set { montantTTC = value; }
         }
 
         private double montantAvance;
@@ -98,11 +128,53 @@ namespace GESTION_CAISSE.ENTITE
             set { montantAvance = value; }
         }
 
+        private double montantReste;
+        public double MontantReste
+        {
+            get { return montantReste; }
+            set { montantReste = value; }
+        }
+
+        private double montantRemise;
+        public double MontantRemise
+        {
+            get { return montantRemise; }
+            set { montantRemise = value; }
+        }
+
+        private double montantRistourne;
+        public double MontantRistourne
+        {
+            get { return montantRistourne; }
+            set { montantRistourne = value; }
+        }
+
+        private double montantCommission;
+        public double MontantCommission
+        {
+            get { return montantCommission; }
+            set { montantCommission = value; }
+        }
+
+        private double montantTaxe;
+        public double MontantTaxe
+        {
+            get { return montantTaxe; }
+            set { montantTaxe = value; }
+        }
+
         private Facture documentLie;
         internal Facture DocumentLie
         {
             get { return documentLie; }
             set { documentLie = value; }
+        }
+
+        private bool solde;
+        public bool Solde
+        {
+            get { return solde; }
+            set { solde = value; }
         }
 
         private bool update;

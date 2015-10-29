@@ -153,6 +153,36 @@ namespace GESTION_CAISSE.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_annuler {
+            get {
+                object obj = ResourceManager.GetObject("btn_annuler", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_print {
+            get {
+                object obj = ResourceManager.GetObject("btn_print", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_sauvegarde {
+            get {
+                object obj = ResourceManager.GetObject("btn_sauvegarde", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap build {
             get {
                 object obj = ResourceManager.GetObject("build", resourceCulture);
@@ -183,6 +213,16 @@ namespace GESTION_CAISSE.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap compfile {
+            get {
+                object obj = ResourceManager.GetObject("compfile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap configure {
             get {
                 object obj = ResourceManager.GetObject("configure", resourceCulture);
@@ -206,6 +246,16 @@ namespace GESTION_CAISSE.Properties {
         internal static System.Drawing.Bitmap dnavigation {
             get {
                 object obj = ResourceManager.GetObject("dnavigation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +356,26 @@ namespace GESTION_CAISSE.Properties {
         internal static System.Drawing.Bitmap favicon1 {
             get {
                 object obj = ResourceManager.GetObject("favicon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fileexport {
+            get {
+                object obj = ResourceManager.GetObject("fileexport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap filter {
+            get {
+                object obj = ResourceManager.GetObject("filter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -443,6 +513,16 @@ namespace GESTION_CAISSE.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap save_all {
+            get {
+                object obj = ResourceManager.GetObject("save_all", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap stylesheet {
             get {
                 object obj = ResourceManager.GetObject("stylesheet", resourceCulture);
@@ -476,6 +556,16 @@ namespace GESTION_CAISSE.Properties {
         internal static System.Drawing.Bitmap wizard {
             get {
                 object obj = ResourceManager.GetObject("wizard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xcalc {
+            get {
+                object obj = ResourceManager.GetObject("xcalc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

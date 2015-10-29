@@ -10,12 +10,13 @@ namespace GESTION_CAISSE.ENTITE
     {
         public Mensualite()
         {
-
+            reglements = new List<PieceCaisse>();
         }
 
         public Mensualite(long id)
         {
             this.id = id;
+            reglements = new List<PieceCaisse>();
         }
 
         private long id;
@@ -37,6 +38,20 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return etat; }
             set { etat = value; }
+        }
+
+        private double montant;
+        public double Montant
+        {
+            get { return montant; }
+            set { montant = value; }
+        }
+
+        private List<PieceCaisse> reglements;
+        internal List<PieceCaisse> Reglements
+        {
+            get { return reglements; }
+            set { reglements = value; }
         }
 
         private bool update;

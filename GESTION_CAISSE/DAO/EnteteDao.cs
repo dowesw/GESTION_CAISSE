@@ -27,12 +27,65 @@ namespace GESTION_CAISSE.DAO
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Etat = lect["etat"].ToString();
                         a.DateEntete = Convert.ToDateTime((lect["date_entete"] != null) ? (!lect["date_entete"].ToString().Trim().Equals("") ? lect["date_entete"].ToString().Trim() : "00/00/0000") : "00/00/0000");
-                        a.Creneau = (lect["article"] != null
-                            ? (!lect["article"].ToString().Trim().Equals("")
+                        a.Creneau = (lect["creneau"] != null
+                            ? (!lect["creneau"].ToString().Trim().Equals("")
                             ? BLL.CreneauBll.One(Convert.ToInt64(lect["creneau"].ToString()))
                             : new Creneau())
                             : new Creneau());
-                        a.FacturesRegle = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = " + a.Id);
+                        a.FacturesRegle = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_REGLE + "'");
+                        a.FacturesEnAttente = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_ATTENTE + "'");
+                        a.FacturesEnCours = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_COURS + "'");
+                        a.Commandes = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_BCV + "' and statut = '" + Constantes.ETAT_VALIDE + "'");
+                        a.Update = true;
+                    }
+                    lect.Close();
+                }
+                return a;
+            }
+            catch (NpgsqlException e)
+            {
+                Messages.Exception(e);
+                return null;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
+        public static Entete getOneEntete(Creneau creneau, DateTime date)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                String search = "select * from yvs_com_entete_doc_vente where date_entete = '" + date + "' and creneau = " + creneau.Id;
+                NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
+                NpgsqlDataReader lect = Lcmd.ExecuteReader();
+                Entete a = new Entete();
+                if (lect.HasRows)
+                {
+                    while (lect.Read())
+                    {
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Etat = lect["etat"].ToString();
+                        a.DateEntete = Convert.ToDateTime((lect["date_entete"] != null) ? (!lect["date_entete"].ToString().Trim().Equals("") ? lect["date_entete"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Creneau = (lect["creneau"] != null
+                            ? (!lect["creneau"].ToString().Trim().Equals("")
+                            ? BLL.CreneauBll.One(Convert.ToInt64(lect["creneau"].ToString()))
+                            : new Creneau())
+                            : new Creneau());
+                        a.FacturesRegle = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_REGLE + "'");
+                        a.FacturesEnAttente = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_ATTENTE + "'");
+                        a.FacturesEnCours = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_COURS + "'");
+                        a.Commandes = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_BCV + "' and statut = '" + Constantes.ETAT_VALIDE + "'");
                         a.Update = true;
                     }
                     lect.Close();
@@ -157,7 +210,21 @@ namespace GESTION_CAISSE.DAO
                     {
                         Entete a = new Entete();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        
+                        a.Etat = lect["etat"].ToString();
+                        a.DateEntete = Convert.ToDateTime((lect["date_entete"] != null) ? (!lect["date_entete"].ToString().Trim().Equals("") ? lect["date_entete"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Creneau = (lect["creneau"] != null
+                            ? (!lect["creneau"].ToString().Trim().Equals("")
+                            ? BLL.CreneauBll.One(Convert.ToInt64(lect["creneau"].ToString()))
+                            : new Creneau())
+                            : new Creneau());
+                        a.FacturesRegle = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_REGLE + "'");
+                        a.FacturesEnAttente = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_ATTENTE + "'");
+                        a.FacturesEnCours = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_COURS + "'");
+                        a.Commandes = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
+                            + a.Id + " and type_doc = '" + Constantes.TYPE_BCV + "' and statut = '" + Constantes.ETAT_VALIDE + "'");
                         a.Update = true;
                         l.Add(a);
                     }

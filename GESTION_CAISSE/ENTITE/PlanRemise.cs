@@ -60,6 +60,13 @@ namespace GESTION_CAISSE.ENTITE
             set { remise = value; }
         }
 
+        private bool actif;
+        public bool Actif
+        {
+            get { return actif; }
+            set { actif = value; }
+        }
+
         private bool update;
         public bool Update
         {

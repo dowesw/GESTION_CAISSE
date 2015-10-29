@@ -27,6 +27,7 @@ namespace GESTION_CAISSE.DAO
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.CodeAppel = lect["code_appel"].ToString();
                         a.Designation = lect["designation"].ToString();
+                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
                         a.Update = true;
                     }
                     lect.Close();
@@ -153,6 +154,7 @@ namespace GESTION_CAISSE.DAO
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.CodeAppel = lect["code_appel"].ToString();
                         a.Designation = lect["designation"].ToString();
+                        a.Articles = BLL.ArticleComptableBll.Liste("select * from yvs_base_article_categorie_comptable where categorie = " + a.Id);
                         a.Update = true;
                         l.Add(a);
                     }

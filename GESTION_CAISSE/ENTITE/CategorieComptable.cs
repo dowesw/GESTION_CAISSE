@@ -10,12 +10,13 @@ namespace GESTION_CAISSE.ENTITE
     {
         public CategorieComptable()
         {
-
+            articles = new List<ArticleComptable>();
         }
 
         public CategorieComptable(long id)
         {
             this.id = id;
+            articles = new List<ArticleComptable>();
         }
 
         private long id;
@@ -37,6 +38,13 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return codeAppel; }
             set { codeAppel = value; }
+        }
+
+        private List<ArticleComptable> articles;
+        internal List<ArticleComptable> Articles
+        {
+            get { return articles; }
+            set { articles = value; }
         }
 
         private bool update;

@@ -35,6 +35,18 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
+        public static Entete One(Creneau creneau, DateTime date)
+        {
+            try
+            {
+                return EnteteDao.getOneEntete(creneau, date);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
+            }
+        }
+
         public Entete Insert()
         {
             try

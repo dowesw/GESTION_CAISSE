@@ -27,6 +27,7 @@ namespace GESTION_CAISSE.DAO
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Code = lect["code"].ToString();
                         a.Designation = lect["libelle"].ToString();
+                        a.Remises = BLL.PlanRemiseBll.Liste("select * from yvs_com_plan_remise where actif = true and categorie =" + a.Id + " and '" + DateTime.Now + "' between date_debut and date_fin ");
                         a.Update = true;
                     }
                     lect.Close();
@@ -153,6 +154,7 @@ namespace GESTION_CAISSE.DAO
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Code = lect["code"].ToString();
                         a.Designation = lect["libelle"].ToString();
+                        a.Remises = BLL.PlanRemiseBll.Liste("select * from yvs_com_plan_remise where actif = true and categorie =" + a.Id + " and '" + DateTime.Now + "' between date_debut and date_fin ");
                         a.Update = true;
                         l.Add(a);
                     }

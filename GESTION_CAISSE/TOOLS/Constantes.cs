@@ -22,21 +22,41 @@ namespace GESTION_CAISSE.TOOLS
 
         public static bool askQuestion;
 
-        public static String NAME_ADMIN = "A";
 
-        public static int MAX_ERROR_CONNECT = 2;
-        public static int MAX_TIME_CONNECT = 30;
 
-        public static string FILE_SEPARATOR = "\\";
+        public const String NAME_ADMIN = "A";
 
-        public static string APP_NAME = "Gestion Caisse";
+        public const int MAX_ERROR_CONNECT = 2;
+        public const int MAX_TIME_CONNECT = 30;
 
-        public static String MOUV_ENTREE = "E";
+        public const string FILE_SEPARATOR = "\\";
 
-        public static String TABLE_EXTERNE_PIECE = "yvs_com_mensualite_facture_vente";
+        public const string APP_NAME = "Gestion Caisse";
 
-        public static String ETAT_EN_ATTENTE = "En Attente";
-        public static String ETAT_EN_COURS = "En Cours";
-        public static String ETAT_REGLE = "Réglé";
+        public const String MOUV_ENTREE = "E";
+
+        public const String TABLE_EXTERNE_PIECE = "yvs_com_mensualite_facture_vente";
+
+        public const String ETAT_EN_ATTENTE = "En Attente";
+        public const String ETAT_EN_COURS = "En Cours";
+        public const String ETAT_REGLE = "Réglé";
+        public const String ETAT_VALIDE = "Accordé";
+
+        public const String TYPE_FV = "FV";
+        public const String TYPE_BCV = "BCV";
+        public const String TYPE_FV_NAME = "Facture";
+        public const String TYPE_BCV_NAME = "Commande";
+
+        public const String DOC_FACTURE = "Facture Vente";
+        public const String DOC_COMMANDE = "Bon Commande Vente";
+        public const String DOC_PIECE = "Piece Tresorerie";        
+
+        //Base
+        public const String BASE_CA = "CA";
+        public const String BASE_QTE = "Qte";
+
+        //Nature Montant
+        public const String NATURE_TAUX = "Taux";
+        public const String NATURE_MTANT = "Montant";
     }
 }

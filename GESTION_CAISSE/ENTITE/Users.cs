@@ -81,6 +81,13 @@ namespace GESTION_CAISSE.ENTITE
             set { actif = value; }
         }
 
+        private bool admin;
+        public bool Admin
+        {
+            get { return admin; }
+            set { admin = value; }
+        }
+
         public bool correct()
         {
             return correct(this);

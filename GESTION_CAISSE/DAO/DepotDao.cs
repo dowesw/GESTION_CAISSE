@@ -25,7 +25,7 @@ namespace GESTION_CAISSE.DAO
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Abbreviation = lect["abbreviationd"].ToString();
+                        a.Abbreviation = lect["abbreviation"].ToString();
                         a.Designation = lect["designation"].ToString();
                         a.Update = true;
                     }
@@ -151,7 +151,7 @@ namespace GESTION_CAISSE.DAO
                     {
                         Depot a = new Depot();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Abbreviation = lect["abbreviationd"].ToString();
+                        a.Abbreviation = lect["abbreviation"].ToString();
                         a.Designation = lect["designation"].ToString();
                         a.Update = true;
                         l.Add(a);

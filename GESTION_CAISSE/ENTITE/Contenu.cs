@@ -47,6 +47,13 @@ namespace GESTION_CAISSE.ENTITE
             set { prixTotal = value; }
         }
 
+        private double prixTaxe;
+        public double PrixTaxe
+        {
+            get { return prixTaxe; }
+            set { prixTaxe = value; }
+        }
+
         private double remiseCat;
         public double RemiseCat
         {

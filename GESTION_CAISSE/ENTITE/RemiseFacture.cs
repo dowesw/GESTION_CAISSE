@@ -31,6 +31,13 @@ namespace GESTION_CAISSE.ENTITE
             set { remise = value; }
         }
 
+        private double montant;
+        public double Montant
+        {
+            get { return montant; }
+            set { montant = value; }
+        }
+
         private bool update;
         public bool Update
         {

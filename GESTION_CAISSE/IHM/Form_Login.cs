@@ -60,6 +60,7 @@ namespace GESTION_CAISSE.IHM
                     {
                         u.CodeUsers = "Administrateur";
                         u.NomUser = "Administrateur";
+                        u.Admin = true;
                         if (Constantes.Users == null)
                             Constantes.Users = new ENTITE.Users();
                         Constantes.Users = u;
@@ -98,6 +99,21 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private bool setCreneau()
+        {
+            if (Constantes.Users.Admin)
+            {
+                return true;
+            }
+            Creneau c = BLL.CreneauBll.One(BLL.PersonnelBll.One(Constantes.Users));
+            if ((c != null) ? c.Id > 0 : false)
+            {
+                Constantes.Creneau = c;
+            }
+            Messages.ShowErreur("Vous n'etes pas programmé pour aujourd'hui. Veuillez contacter votre administrateur!");
+            return false;
+        }
+
         private string Echapper(string chaine)
         {
             int i = 0;
@@ -126,12 +142,16 @@ namespace GESTION_CAISSE.IHM
             {
                 if (ConnectLog())
                 {
-                    this.Hide();
-                    timer1.Stop();
-                    InitTime();
+                    if (setCreneau())
+                    {
+                        this.Hide();
+                        timer1.Stop();
+                        timer2.Stop();
+                        InitTime();
 
-                    new Form_Caisse_Saisie(this).Show();
-                    ShowNotification();
+                        new Form_Caisse_Saisie(this).Show();
+                        ShowNotification();
+                    }
                 }
             }
             catch (Exception ex)
@@ -214,6 +234,11 @@ namespace GESTION_CAISSE.IHM
             txt_email.Focus();
             Constantes.Users = null;
             timer2.Start();
+        }
+
+        private void tool_setting_Click(object sender, EventArgs e)
+        {
+            new Form_Setting().Show();
         }
     }
 }
