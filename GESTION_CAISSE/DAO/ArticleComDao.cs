@@ -30,6 +30,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.Update = true;
                     }
                     lect.Close();
@@ -65,6 +68,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                     }
                     a.Update = true;
                     lect.Close();
@@ -194,6 +200,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.Update = true;
                         l.Add(a);
                     }

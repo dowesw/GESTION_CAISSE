@@ -33,6 +33,27 @@ namespace GESTION_CAISSE.ENTITE
             set { article = value; }
         }
 
+        private String codeBarre;
+        public String CodeBarre
+        {
+            get { return codeBarre; }
+            set { codeBarre = value; }
+        }
+
+        private String refArt;
+        public String RefArt
+        {
+            get { return refArt; }
+            set { refArt = value; }
+        }
+
+        private String designation;
+        public String Designation
+        {
+            get { return designation; }
+            set { designation = value; }
+        }
+
         private CategorieComptable categorie = new CategorieComptable();
         internal CategorieComptable Categorie
         {

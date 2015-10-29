@@ -31,6 +31,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.Compte = (lect["compte"] != null
                             ? (!lect["compte"].ToString().Trim().Equals("")
                             ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))
@@ -172,6 +175,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.Compte = (lect["compte"] != null
                             ? (!lect["compte"].ToString().Trim().Equals("")
                             ? BLL.CompteBll.One(Convert.ToInt64(lect["compte"].ToString()))

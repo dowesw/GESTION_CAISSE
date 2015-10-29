@@ -37,12 +37,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Caisse_Saisie));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -70,9 +70,7 @@
             this.lb_search_client = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.lb_nom_client = new System.Windows.Forms.Label();
-            this.lb_prenom_client = new System.Windows.Forms.Label();
             this.box_client = new System.Windows.Forms.PictureBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -110,6 +108,12 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgv_contenu = new System.Windows.Forms.DataGridView();
+            this.idContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.articleContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.puvContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qteContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supp = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_qte_article = new System.Windows.Forms.TextBox();
             this.com_article = new System.Windows.Forms.ComboBox();
@@ -147,21 +151,15 @@
             this.btn_approv = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.dgv_reglement = new System.Windows.Forms.DataGridView();
-            this.idReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idMensualite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montantReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.com_typeDoc = new System.Windows.Forms.ComboBox();
             this.txt_reference = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
-            this.idContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.articleContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.puvContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qteContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supp = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.montantReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idMensualite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -367,9 +365,7 @@
             this.groupBox2.Controls.Add(this.lb_search_client);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lb_nom_client);
-            this.groupBox2.Controls.Add(this.lb_prenom_client);
             this.groupBox2.Controls.Add(this.box_client);
-            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Location = new System.Drawing.Point(704, 133);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(348, 206);
@@ -380,7 +376,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(21, 96);
+            this.label17.Location = new System.Drawing.Point(22, 133);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(67, 13);
             this.label17.TabIndex = 7;
@@ -390,7 +386,7 @@
             // 
             this.lb_tel_client.AutoSize = true;
             this.lb_tel_client.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_tel_client.Location = new System.Drawing.Point(41, 115);
+            this.lb_tel_client.Location = new System.Drawing.Point(42, 152);
             this.lb_tel_client.Name = "lb_tel_client";
             this.lb_tel_client.Size = new System.Drawing.Size(88, 18);
             this.lb_tel_client.TabIndex = 6;
@@ -400,7 +396,7 @@
             // 
             this.lb_adr_client.AutoSize = true;
             this.lb_adr_client.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_adr_client.Location = new System.Drawing.Point(41, 69);
+            this.lb_adr_client.Location = new System.Drawing.Point(42, 106);
             this.lb_adr_client.Name = "lb_adr_client";
             this.lb_adr_client.Size = new System.Drawing.Size(95, 18);
             this.lb_adr_client.TabIndex = 6;
@@ -452,7 +448,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(20, 51);
+            this.label15.Location = new System.Drawing.Point(21, 88);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(45, 13);
             this.label15.TabIndex = 4;
@@ -462,40 +458,21 @@
             // 
             this.lb_nom_client.AutoSize = true;
             this.lb_nom_client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_nom_client.Location = new System.Drawing.Point(40, 180);
+            this.lb_nom_client.Location = new System.Drawing.Point(41, 55);
             this.lb_nom_client.Name = "lb_nom_client";
-            this.lb_nom_client.Size = new System.Drawing.Size(80, 20);
+            this.lb_nom_client.Size = new System.Drawing.Size(119, 20);
             this.lb_nom_client.TabIndex = 3;
-            this.lb_nom_client.Text = "Gouchere";
-            // 
-            // lb_prenom_client
-            // 
-            this.lb_prenom_client.AutoSize = true;
-            this.lb_prenom_client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_prenom_client.Location = new System.Drawing.Point(40, 160);
-            this.lb_prenom_client.Name = "lb_prenom_client";
-            this.lb_prenom_client.Size = new System.Drawing.Size(48, 20);
-            this.lb_prenom_client.TabIndex = 2;
-            this.lb_prenom_client.Text = "Yves ";
+            this.lb_nom_client.Text = "Yves Gouchere";
             // 
             // box_client
             // 
             this.box_client.Image = global::GESTION_CAISSE.Properties.Resources.user_m;
-            this.box_client.Location = new System.Drawing.Point(197, 49);
+            this.box_client.Location = new System.Drawing.Point(197, 79);
             this.box_client.Name = "box_client";
             this.box_client.Size = new System.Drawing.Size(137, 115);
             this.box_client.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.box_client.TabIndex = 1;
             this.box_client.TabStop = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(21, 141);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Nom : ";
             // 
             // groupBox3
             // 
@@ -867,6 +844,69 @@
             this.dgv_contenu.TabIndex = 0;
             this.dgv_contenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_contenu_CellContentClick);
             // 
+            // idContenu
+            // 
+            this.idContenu.HeaderText = "ID";
+            this.idContenu.Name = "idContenu";
+            this.idContenu.Visible = false;
+            // 
+            // articleContenu
+            // 
+            this.articleContenu.HeaderText = "Article";
+            this.articleContenu.Name = "articleContenu";
+            this.articleContenu.ReadOnly = true;
+            this.articleContenu.Width = 200;
+            // 
+            // puvContenu
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = "0";
+            this.puvContenu.DefaultCellStyle = dataGridViewCellStyle9;
+            this.puvContenu.HeaderText = "Prix Unitaire";
+            this.puvContenu.Name = "puvContenu";
+            this.puvContenu.ReadOnly = true;
+            this.puvContenu.Width = 125;
+            // 
+            // qteContenu
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.qteContenu.DefaultCellStyle = dataGridViewCellStyle10;
+            this.qteContenu.HeaderText = "Quantité";
+            this.qteContenu.Name = "qteContenu";
+            this.qteContenu.ReadOnly = true;
+            this.qteContenu.Width = 125;
+            // 
+            // totalContenu
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.totalContenu.DefaultCellStyle = dataGridViewCellStyle11;
+            this.totalContenu.HeaderText = "Total";
+            this.totalContenu.Name = "totalContenu";
+            this.totalContenu.ReadOnly = true;
+            this.totalContenu.Width = 140;
+            // 
+            // supp
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle12.NullValue = "X";
+            this.supp.DefaultCellStyle = dataGridViewCellStyle12;
+            this.supp.HeaderText = "";
+            this.supp.LinkColor = System.Drawing.Color.Red;
+            this.supp.Name = "supp";
+            this.supp.ReadOnly = true;
+            this.supp.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.supp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.supp.ToolTipText = "Supprimer";
+            this.supp.VisitedLinkColor = System.Drawing.Color.White;
+            this.supp.Width = 34;
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -1237,6 +1277,7 @@
             // 
             // dgv_reglement
             // 
+            this.dgv_reglement.AllowUserToDeleteRows = false;
             this.dgv_reglement.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgv_reglement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_reglement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1247,44 +1288,10 @@
             this.dgv_reglement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_reglement.Location = new System.Drawing.Point(3, 16);
             this.dgv_reglement.Name = "dgv_reglement";
+            this.dgv_reglement.ReadOnly = true;
             this.dgv_reglement.Size = new System.Drawing.Size(345, 163);
             this.dgv_reglement.TabIndex = 0;
             this.dgv_reglement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_reglement_CellContentClick);
-            // 
-            // idReglement
-            // 
-            this.idReglement.HeaderText = "ID";
-            this.idReglement.Name = "idReglement";
-            this.idReglement.ReadOnly = true;
-            this.idReglement.Visible = false;
-            // 
-            // idMensualite
-            // 
-            this.idMensualite.HeaderText = "Mensualite";
-            this.idMensualite.Name = "idMensualite";
-            this.idMensualite.ReadOnly = true;
-            this.idMensualite.Visible = false;
-            // 
-            // dateReglement
-            // 
-            dataGridViewCellStyle13.Format = "G";
-            dataGridViewCellStyle13.NullValue = "Pas Record";
-            this.dateReglement.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dateReglement.HeaderText = "Date";
-            this.dateReglement.Name = "dateReglement";
-            this.dateReglement.ReadOnly = true;
-            this.dateReglement.Width = 170;
-            // 
-            // montantReglement
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = "0";
-            this.montantReglement.DefaultCellStyle = dataGridViewCellStyle14;
-            this.montantReglement.HeaderText = "Montant";
-            this.montantReglement.Name = "montantReglement";
-            this.montantReglement.ReadOnly = true;
-            this.montantReglement.Width = 130;
             // 
             // com_typeDoc
             // 
@@ -1334,68 +1341,40 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
-            // idContenu
+            // montantReglement
             // 
-            this.idContenu.HeaderText = "ID";
-            this.idContenu.Name = "idContenu";
-            this.idContenu.Visible = false;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = "0";
+            this.montantReglement.DefaultCellStyle = dataGridViewCellStyle14;
+            this.montantReglement.HeaderText = "Montant";
+            this.montantReglement.Name = "montantReglement";
+            this.montantReglement.ReadOnly = true;
+            this.montantReglement.Width = 130;
             // 
-            // articleContenu
+            // dateReglement
             // 
-            this.articleContenu.HeaderText = "Article";
-            this.articleContenu.Name = "articleContenu";
-            this.articleContenu.ReadOnly = true;
-            this.articleContenu.Width = 200;
+            dataGridViewCellStyle13.Format = "G";
+            dataGridViewCellStyle13.NullValue = "Pas Record";
+            this.dateReglement.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dateReglement.HeaderText = "Date";
+            this.dateReglement.Name = "dateReglement";
+            this.dateReglement.ReadOnly = true;
+            this.dateReglement.Width = 170;
             // 
-            // puvContenu
+            // idMensualite
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = "0";
-            this.puvContenu.DefaultCellStyle = dataGridViewCellStyle9;
-            this.puvContenu.HeaderText = "Prix Unitaire";
-            this.puvContenu.Name = "puvContenu";
-            this.puvContenu.ReadOnly = true;
-            this.puvContenu.Width = 125;
+            this.idMensualite.HeaderText = "Mensualite";
+            this.idMensualite.Name = "idMensualite";
+            this.idMensualite.ReadOnly = true;
+            this.idMensualite.Visible = false;
             // 
-            // qteContenu
+            // idReglement
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = "0";
-            this.qteContenu.DefaultCellStyle = dataGridViewCellStyle10;
-            this.qteContenu.HeaderText = "Quantité";
-            this.qteContenu.Name = "qteContenu";
-            this.qteContenu.ReadOnly = true;
-            this.qteContenu.Width = 125;
-            // 
-            // totalContenu
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0";
-            this.totalContenu.DefaultCellStyle = dataGridViewCellStyle11;
-            this.totalContenu.HeaderText = "Total";
-            this.totalContenu.Name = "totalContenu";
-            this.totalContenu.ReadOnly = true;
-            this.totalContenu.Width = 140;
-            // 
-            // supp
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle12.NullValue = "X";
-            this.supp.DefaultCellStyle = dataGridViewCellStyle12;
-            this.supp.HeaderText = "";
-            this.supp.LinkColor = System.Drawing.Color.Red;
-            this.supp.Name = "supp";
-            this.supp.ReadOnly = true;
-            this.supp.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.supp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.supp.ToolTipText = "Supprimer";
-            this.supp.VisitedLinkColor = System.Drawing.Color.White;
-            this.supp.Width = 34;
+            this.idReglement.HeaderText = "ID";
+            this.idReglement.Name = "idReglement";
+            this.idReglement.ReadOnly = true;
+            this.idReglement.Visible = false;
             // 
             // Form_Caisse_Saisie
             // 
@@ -1497,9 +1476,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lb_heure_fin_tranch;
         private System.Windows.Forms.PictureBox box_client;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lb_nom_client;
-        private System.Windows.Forms.Label lb_prenom_client;
         private System.Windows.Forms.ComboBox com_client;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lb_adr_client;
@@ -1566,10 +1543,6 @@
         private System.Windows.Forms.Label lb_search_client;
         private System.Windows.Forms.TextBox txt_montantRemise;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idReglement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idMensualite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateReglement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn montantReglement;
         private System.Windows.Forms.ContextMenuStrip context_save;
         private System.Windows.Forms.ToolStripMenuItem tool_btn_wait;
         private System.Windows.Forms.ComboBox com_typeDoc;
@@ -1583,6 +1556,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qteContenu;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalContenu;
         private System.Windows.Forms.DataGridViewLinkColumn supp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idReglement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idMensualite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateReglement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montantReglement;
     }
 }
 

@@ -31,6 +31,9 @@ namespace GESTION_CAISSE.DAO
                             ? new ArticleComptable(Convert.ToInt64(lect["article_categorie"].ToString()))
                             : new ArticleComptable())
                             : new ArticleComptable());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.Taxe = (lect["taxe"] != null
                             ? (!lect["taxe"].ToString().Trim().Equals("")
                             ? BLL.TaxeBll.One(Convert.ToInt64(lect["taxe"].ToString()))
@@ -167,6 +170,9 @@ namespace GESTION_CAISSE.DAO
                             ? new ArticleComptable(Convert.ToInt64(lect["article_categorie"].ToString()))
                             : new ArticleComptable())
                             : new ArticleComptable());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.Taxe = (lect["taxe"] != null
                             ? (!lect["taxe"].ToString().Trim().Equals("")
                             ? BLL.TaxeBll.One(Convert.ToInt64(lect["taxe"].ToString()))

@@ -35,6 +35,18 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
+        public static FamilleArticle One_(long id)
+        {
+            try
+            {
+                return FamilleArticleDao.getOneFamilleArticle_(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
+            }
+        }
+
         public FamilleArticle Insert()
         {
             try
@@ -77,6 +89,18 @@ namespace GESTION_CAISSE.BLL
             try
             {
                 return FamilleArticleDao.getListFamilleArticle(query);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible de retourner la liste des élements", ex);
+            }
+        }
+
+        public static List<FamilleArticle> Liste_(String query)
+        {
+            try
+            {
+                return FamilleArticleDao.getListFamilleArticle_(query);
             }
             catch (Exception ex)
             {

@@ -20,7 +20,7 @@ namespace GESTION_CAISSE.IHM
 
         Entete entete = new Entete();
         Facture facture = new Facture();
-
+        Depot depot = new Depot();
 
         ArticleCom article = new ArticleCom();
         Contenu contenu = new Contenu();
@@ -35,8 +35,8 @@ namespace GESTION_CAISSE.IHM
             modes = new List<ModePaiement>();
             clients = new List<Client>();
 
-            LoadAll();
             configForm();
+            LoadAll();
         }
 
         public Form_Caisse_Saisie(Form parent)
@@ -46,17 +46,19 @@ namespace GESTION_CAISSE.IHM
             modes = new List<ModePaiement>();
             clients = new List<Client>();
 
+            configForm();
             LoadAll();
             F_parent = parent;
-            configForm();
         }
 
         private void configForm()
         {
+            depot = Constantes.Creneau.Depot;
+
             lb_numPiece.Text = Utils.GenererReference(Constantes.DOC_FACTURE);
             lb_nom_agence.Text = Constantes.Agence.Designation;
             lb_nom_user.Text = Constantes.Users.NomUser;
-            lb_nom_depot.Text = Constantes.Creneau.Depot.Designation;
+            lb_nom_depot.Text = depot.Designation;
             lb_heure_debut_tranch.Text = Constantes.Creneau.Tranche.HeureDebut.ToString("T");
             lb_heure_fin_tranch.Text = Constantes.Creneau.Tranche.HeureFin.ToString("T");
 
@@ -69,8 +71,7 @@ namespace GESTION_CAISSE.IHM
         private void configClient(Client a)
         {
             lb_adr_client.Text = a.Tiers.Adresse;
-            lb_nom_client.Text = a.Tiers.Nom;
-            lb_prenom_client.Text = a.Tiers.Prenom;
+            lb_nom_client.Text = a.Tiers.Nom_prenom;
             lb_tel_client.Text = a.Tiers.Tel;
         }
 
@@ -195,8 +196,12 @@ namespace GESTION_CAISSE.IHM
         public void LoadAllArticle()
         {
             articles.Clear();
-            string query = "select * FROM yvs_articles where societe = " + Constantes.Societe.Id;
-            articles = BLL.ArticleBll.Liste(query);
+
+            foreach (ArticleDepot a in depot.Articles)
+            {
+                articles.Add(a.Article);
+            }
+
             com_article.Items.Clear();
             com_article.DisplayMember = "Designation";
             com_article.ValueMember = "Id";
