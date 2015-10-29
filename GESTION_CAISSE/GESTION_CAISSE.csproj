@@ -282,6 +282,7 @@
     <Folder Include="IMG\LANG\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="IMG\tnavigation.png" />
     <None Include="IMG\ICONES\xcalc.png" />
     <None Include="IMG\ICONES\save_all.png" />
     <None Include="IMG\THEMES\BlackClass.JPG" />
@@ -290,6 +291,7 @@
     <None Include="IMG\THEMES\Classique.JPG" />
     <None Include="IMG\ICONES\stylesheet.png" />
     <None Include="IMG\dnavigation.png" />
+    <None Include="IMG\bnavigation.png" />
     <Content Include="IMG\favicon-16.ico" />
     <Content Include="IMG\favicon-32.ico" />
     <Content Include="IMG\favicon.ico" />
