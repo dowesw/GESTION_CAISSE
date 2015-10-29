@@ -13,10 +13,20 @@ namespace GESTION_CAISSE.IHM
 {
     public partial class Form_Caisse_Click : Form
     {
-
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel
+            .ComponentResourceManager(typeof(Form_Caisse_Click));
+       
         List<FamilleArticle> familles;
+        List<FamilleArticle> famillesCrits;
         List<Article> articles;
+        List<Article> articlesCrits;
         List<Client> clients;
+        List<Button> buttonAs;
+        List<Label> labelAs;
+        List<Button> buttonFs;
+        List<Label> labelFs;
+        int indTabF;
+        int indTabA;
        
         FamilleArticle currentFamille= new FamilleArticle();
         public double remboursement;
@@ -28,7 +38,7 @@ namespace GESTION_CAISSE.IHM
         public Form_Caisse_Click()
         {   
             InitializeComponent();
-
+            indTabF = 0; indTabA = 0;
             familles = new List<FamilleArticle>();
             articles = new List<Article>();
             clients = new List<Client>();
@@ -40,6 +50,16 @@ namespace GESTION_CAISSE.IHM
 
             InitInfoClient();
 
+            // création de la liste des boutons famille
+            buttonFs = new List<Button> { button7, button8, button9, button10, button11, button12, button13, button14 };
+            // création de la liste des labels famille
+            labelFs = new List<Label> { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8 };
+
+            // création de la liste des boutons article
+            buttonAs = new List<Button> { button15, button16, button17, button18, button19, button20, button21, button22 };
+            // création de la liste des labels article
+            labelAs = new List<Label> { label18, label20, label21, label22, label23, label24, label25, label26 };
+            
             //charger famillesa articles
             familles.Clear();
             familles = BLL.FamilleArticleBll.Liste("select * from yvs_base_famille_article");
@@ -54,112 +74,75 @@ namespace GESTION_CAISSE.IHM
             TelClient.Text = clientZero.Tiers.Tel;
             label16.Text = clientZero.Tiers.CodeTiers;
         }
+       
+        //modification des boutons des familles
+        private void ModifButton(Button ctl, FamilleArticle cli, Label lbl)
+        {
+            cli = (FamilleArticle)familles.ElementAt<FamilleArticle>(indTabF);
 
+            //if (cli.Tiers.Logo.Trim().Equals("") || cli.Tiers.Logo == null)
+            //{
+            //    ctl.BackgroundImage = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
+            //}
+            //else
+            //{
+            //    String chemin = Application.StartupPath;
+            //    chemin += TOOLS.Constantes.FILE_SEPARATOR + cli.Tiers.Logo;
+            //    ctl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject(chemin)));
+            //}
+            ctl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            ctl.Text = "";
+            ctl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            ctl.UseVisualStyleBackColor = true;
+            ctl.Visible = true;
+            //ctl.Size = new System.Drawing.Size(159, 170);
+            ctl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold,
+                System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ctl.Click += delegate(object sender, EventArgs e)
+            {
+                articlesCrits.Clear();
+                articlesCrits.AddRange(cli.Articles);
+            };
+            lbl.Visible = true;
+            lbl.Text = cli.Designation;
+        }
+
+        //modification des boutons des articles
+        private void ModifButton(Button ctl, Article cli, Label lbl)
+        {
+            cli = (Article)articles.ElementAt<Article>(indTabA);
+
+            if (cli.Photos[0].Trim().Equals("") || cli.Photos[0] == null)
+            {
+                ctl.BackgroundImage = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
+            }
+            else
+            {
+                String chemin = Application.StartupPath;
+                chemin += TOOLS.Constantes.FILE_SEPARATOR + cli.Photos[0];
+                ctl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject(chemin)));
+            }
+            ctl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            ctl.Text = "";
+            ctl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            ctl.UseVisualStyleBackColor = true;
+            ctl.Visible = true;
+            ctl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold,
+                System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ctl.Click += delegate(object sender, EventArgs e)
+            {
+               
+            };
+            lbl.Visible = true;
+            lbl.Text = cli.Designation;
+        }
+
+        //gestion affichage des familles d'articles
         private void Form_Caisse_Click_Load(object sender, EventArgs e)
         {
-            LoadAllFamille();
-
-        }
-
-        private void LoadAllFamille()
-        {
            
-            CreatBtnFamilleArticle();
+
         }
-
-        private void CreatBtnFamilleArticle()
-        {
-            int btnPos = 0;
-            //Panel pnl = new Panel();
-            //pnl.AutoScroll = true;
-            //pnl.Width = 393;
-            //pnl.Height = 202;
-            //pnl.BackColor = Color.Aqua;
-            //pnl.Location = new Point(3, 16);
-
-            foreach (FamilleArticle fA in familles)
-            {
-                Button _btn = new Button();
-                _btn.Text = fA.Designation;
-                _btn.Height = 86;
-                _btn.Width = 138;
-                _btn.BackColor = Color.White; 
-
-                if((btnPos%2)==0){
-                    _btn.Location = new Point(15+ (138* (btnPos/2)), 15);
-                }
-
-                if ((btnPos % 2) != 0)
-                {
-                    _btn.Location = new Point(15 + (138 * (btnPos / 2)), 86+ 15);
-                }
-                
-                btnPos ++;
-                _btn.Click += delegate(object sender, EventArgs e)
-                {
-                    //_btn.Image
-                    _btn.BackColor = Color.Tomato;
-                    panel5.Controls.Clear();
-                    CreatBtnArticle(fA.Articles);
-                    foreach (Button btnn in panel4.Controls)
-                    {
-                        btnn.BackColor = Color.White;
-                    }
-
-                    _btn.BackColor = Color.Tomato;
-                };
-                panel4.AutoScroll = true;
-                panel4.Controls.Add(_btn);
-            }
-        }
-
-        private void CreatBtnArticle(List<Article> aarticles)
-        {
-            int btnPos = 0;
-            //Panel pnl = new Panel();
-            //pnl.AutoScroll = true;
-            //pnl.Width = 393;
-            //pnl.Height = 202;
-            //pnl.BackColor = Color.Aqua;
-            //pnl.Location = new Point(3, 16);
-
-            foreach (Article art in aarticles)
-            {
-                Button _btn = new Button();
-                _btn.Text = art.Designation;
-                _btn.Height = 86;
-                _btn.Width = 138;
-                _btn.BackColor = Color.White;
-
-                if ((btnPos % 2) == 0)
-                {
-                    _btn.Location = new Point(15 + (138 * (btnPos / 2)), 15);
-                }
-
-                if ((btnPos % 2) != 0)
-                {
-                    _btn.Location = new Point(15 + (138 * (btnPos / 2)), 86 + 15);
-                }
-
-                btnPos++;
-
-                _btn.Click += delegate(object sender, EventArgs e)
-                {
-                    //_btn.BackColor = Color.Tomato;
-                    //panel5.Controls.Clear();
-                    foreach (Button btnn in panel5.Controls)
-                    {
-                        btnn.BackColor = Color.White;
-                    }
-
-                    _btn.BackColor = Color.Tomato;
-                    AjoutDatgridArt(art, AjoutQteArt());
-                };
-                panel5.AutoScroll = true;
-                panel5.Controls.Add(_btn);
-            }
-        }
-
 
         private void AjoutDatgridArt(Article artDtG, int qte)
         {
@@ -215,6 +198,11 @@ namespace GESTION_CAISSE.IHM
         {
             Form_Choix_Client f = new Form_Choix_Client(this);
             f.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

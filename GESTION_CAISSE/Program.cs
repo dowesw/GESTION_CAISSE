@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace GESTION_CAISSE
 {
@@ -18,8 +19,6 @@ namespace GESTION_CAISSE
             Application.SetCompatibleTextRenderingDefault(false);
             Initialisation();
             Application.Run(new IHM.Form_Caisse_Click());
-            Application.Run(new IHM.Form_Caisse_Saisie());
-            //test();
         }
 
         static void StartAppl()
@@ -44,6 +43,7 @@ namespace GESTION_CAISSE
             TOOLS.Constantes.Societe = BLL.SocieteBll.One(2288);
             TOOLS.Constantes.Agence = BLL.AgenceBll.One(2299);
             TOOLS.Constantes.Users = BLL.UsersBll.One(2692);
+            TOOLS.Constantes.Creneau = BLL.CreneauBll.One(15);
         }
     }
 }
