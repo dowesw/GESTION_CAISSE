@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class Client
+    public class Client
     {
         public Client()
         {

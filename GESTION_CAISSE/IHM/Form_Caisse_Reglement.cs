@@ -151,7 +151,7 @@ namespace GESTION_CAISSE.IHM
 
         private void EffacerClick(object sender, EventArgs e)
         {
-            textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1); ;
+            if (textBox1.Text.Length > 0) textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1); 
         }
 
         private void CalculerClick(object sender, EventArgs e)
@@ -167,6 +167,11 @@ namespace GESTION_CAISSE.IHM
         }
 
         private void parseTbx()
+        {
+
+        }
+
+        private void Form_Caisse_Reglement_Load(object sender, EventArgs e)
         {
 
         }

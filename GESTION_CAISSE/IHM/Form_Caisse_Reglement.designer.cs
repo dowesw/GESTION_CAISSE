@@ -219,14 +219,15 @@
             this.textBox1.Size = new System.Drawing.Size(272, 33);
             this.textBox1.TabIndex = 0;
             // 
-            // Form_Caisse_Rglmt
+            // Form_Caisse_Reglement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(283, 243);
             this.Controls.Add(this.panel3);
-            this.Name = "Form_Caisse_Rglmt";
+            this.Name = "Form_Caisse_Reglement";
             this.Text = "Règlements";
+            this.Load += new System.EventHandler(this.Form_Caisse_Reglement_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);

@@ -17,24 +17,42 @@ namespace GESTION_CAISSE.IHM
         List<FamilleArticle> familles;
         List<Article> articles;
         List<Client> clients;
-        Client clientZero;
+       
         FamilleArticle currentFamille= new FamilleArticle();
         public double remboursement;
         public double apayer;
+        public Client clientZero;
 
         
 
         public Form_Caisse_Click()
         {   
             InitializeComponent();
+
             familles = new List<FamilleArticle>();
             articles = new List<Article>();
             clients = new List<Client>();
-
+            clientZero = BLL.ClientBll.Default();
             Timer bg = new Timer();
             bg.Tick += (s, e) => { label2.Text = DateTime.Now.ToString("U"); };
             bg.Interval = 500;
             bg.Start();
+
+            InitInfoClient();
+
+            //charger famillesa articles
+            familles.Clear();
+            familles = BLL.FamilleArticleBll.Liste("select * from yvs_base_famille_article");
+        }
+
+        public void InitInfoClient()
+        {
+            // initialisation deslabels pour le client
+            NomClient.Text = clientZero.Tiers.Nom;
+            PrenomClient.Text = clientZero.Tiers.Prenom;
+            AdresseClient.Text = clientZero.Tiers.Adresse;
+            TelClient.Text = clientZero.Tiers.Tel;
+            label16.Text = clientZero.Tiers.CodeTiers;
         }
 
         private void Form_Caisse_Click_Load(object sender, EventArgs e)
@@ -45,9 +63,7 @@ namespace GESTION_CAISSE.IHM
 
         private void LoadAllFamille()
         {
-            familles.Clear();
-            familles = BLL.FamilleArticleBll.Liste("select * from yvs_base_famille_article");
-            var t = familles.Count;
+           
             CreatBtnFamilleArticle();
         }
 
@@ -67,7 +83,7 @@ namespace GESTION_CAISSE.IHM
                 _btn.Text = fA.Designation;
                 _btn.Height = 86;
                 _btn.Width = 138;
-                _btn.BackColor = Color.White;
+                _btn.BackColor = Color.White; 
 
                 if((btnPos%2)==0){
                     _btn.Location = new Point(15+ (138* (btnPos/2)), 15);
@@ -81,6 +97,7 @@ namespace GESTION_CAISSE.IHM
                 btnPos ++;
                 _btn.Click += delegate(object sender, EventArgs e)
                 {
+                    //_btn.Image
                     _btn.BackColor = Color.Tomato;
                     panel5.Controls.Clear();
                     CreatBtnArticle(fA.Articles);
@@ -185,7 +202,19 @@ namespace GESTION_CAISSE.IHM
             TotalRemz.Text = "0";
             Relicat.Text = "0";
 
-            clientZero = new Client();
+            clientZero = BLL.ClientBll.Default();
+            dataGridView1.Rows.Clear();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void picClient_Click(object sender, EventArgs e)
+        {
+            Form_Choix_Client f = new Form_Choix_Client(this);
+            f.ShowDialog();
         }
 
     }
