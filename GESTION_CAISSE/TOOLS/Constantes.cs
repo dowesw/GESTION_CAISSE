@@ -14,6 +14,7 @@ namespace GESTION_CAISSE.TOOLS
         public static Societe Societe = new Societe(2288);
         public static Agence Agence = new Agence(2299);
         public static Creneau Creneau = new Creneau();
+        public static Entete Entete = new Entete();
 
         public static Form_Caisse_Click form_caisse_click = null;
         public static Form_Caisse_Saisie form_caisse_saisie = null;

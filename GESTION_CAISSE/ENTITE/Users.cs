@@ -97,12 +97,12 @@ namespace GESTION_CAISSE.ENTITE
         {
             if (users.codeUsers == null || users.codeUsers.Trim().Equals(""))
             {
-                Messages.Erreur("Le code ne peut pas être null!");
+                Messages.ShowErreur("Le code ne peut pas être null!");
                 return false;
             }
             if (users.password == null || users.password.Trim().Equals(""))
             {
-                Messages.Erreur("Le mot de passe ne peut pas être null!");
+                Messages.ShowErreur("Le mot de passe ne peut pas être null!");
                 return false;
             }
             return true;

@@ -167,6 +167,12 @@
     <Compile Include="ENTITE\Tiers.cs" />
     <Compile Include="ENTITE\TrancheHoraire.cs" />
     <Compile Include="ENTITE\Users.cs" />
+    <Compile Include="IHM\Form_Caisse_Quantite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Caisse_Quantite.Designer.cs">
+      <DependentUpon>Form_Caisse_Quantite.cs</DependentUpon>
+    </Compile>
     <Compile Include="IHM\Form_Caisse_Reglement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,18 @@
     </Compile>
     <Compile Include="IHM\Form_Login.Designer.cs">
       <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHM\Form_Search_Article.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Search_Article.Designer.cs">
+      <DependentUpon>Form_Search_Article.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHM\Form_Search_Famille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Search_Famille.Designer.cs">
+      <DependentUpon>Form_Search_Famille.cs</DependentUpon>
     </Compile>
     <Compile Include="IHM\Form_Serveur.cs">
       <SubType>Form</SubType>

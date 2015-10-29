@@ -158,6 +158,11 @@ namespace GESTION_CAISSE.ENTITE
                 Messages.ShowErreur("Vous devez entrer une quantitée");
                 return false;
             }
+            if ((bean.facture != null) ? bean.facture.Id < 1 : true)
+            {
+                Messages.ShowErreur("Vous devez dabord enregsitrer la facture!");
+                return false;
+            }
             return true;
         }
     }

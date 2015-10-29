@@ -177,6 +177,27 @@ namespace GESTION_CAISSE.ENTITE
             set { solde = value; }
         }
 
+        private bool mouvStock = true;
+        public bool MouvStock
+        {
+            get { return mouvStock; }
+            set { mouvStock = value; }
+        }
+
+        private int impression;
+        public int Impression
+        {
+            get { return impression; }
+            set { impression = value; }
+        }
+
+        private bool supp;
+        public bool Supp
+        {
+            get { return supp; }
+            set { supp = value; }
+        }
+
         private bool update;
         public bool Update
         {
@@ -196,6 +217,38 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return new_; }
             set { new_ = value; }
+        }
+
+        public bool Control()
+        {
+            return Control(this);
+        }
+
+        public bool Control(Facture bean)
+        {
+            if (bean == null)
+            {
+                TOOLS.Messages.ShowErreur("La facture ne peut pas être nulle!");
+                return false;
+            }
+            if ((bean.client == null) ? bean.client.Id > 0 : false)
+            {
+                TOOLS.Messages.ShowErreur("Vous devez entrer le client!");
+                return false;
+            }
+            if (bean.typeDoc == null || bean.typeDoc.Trim().Equals(""))
+            {
+                bean.typeDoc = TOOLS.Constantes.TYPE_FV;
+            }
+            if (bean.numDoc == null || bean.numDoc.Trim().Equals(""))
+            {
+                bean.numDoc = TOOLS.Utils.GenererReference(TOOLS.Constantes.DOC_FACTURE);
+            }
+            if (bean.statut == null || bean.statut.Trim().Equals(""))
+            {
+                bean.statut = TOOLS.Constantes.ETAT_EN_COURS;
+            }
+            return true;
         }
     }
 }

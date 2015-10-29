@@ -18,14 +18,11 @@ namespace GESTION_CAISSE.IHM
         List<ModePaiement> modes;
         List<Client> clients;
 
-        Entete entete = new Entete();
         Facture facture = new Facture();
         Depot depot = new Depot();
 
-        ArticleCom article = new ArticleCom();
         Contenu contenu = new Contenu();
 
-        int rowContenu, rowFactureWait, rowFactureCours, rowCommande;
         Form F_parent;
 
         public Form_Caisse_Saisie()
@@ -85,6 +82,7 @@ namespace GESTION_CAISSE.IHM
                 txt_montantReste.Text = f.MontantReste.ToString();
                 txt_montantVerse.Text = f.MontantAvance.ToString();
                 txt_montantRemise.Text = f.MontantRemise.ToString();
+                txt_montantHt.Text = f.MontantHT.ToString();
             }
             else
             {
@@ -94,6 +92,7 @@ namespace GESTION_CAISSE.IHM
                 txt_montantReste.Text = "0";
                 txt_montantVerse.Text = "0";
                 txt_montantRemise.Text = "0";
+                txt_montantHt.Text = "0";
             }
         }
 
@@ -113,7 +112,7 @@ namespace GESTION_CAISSE.IHM
             Entete e = BLL.EnteteBll.One(Constantes.Creneau, date);
             if ((e != null) ? e.Id > 0 : false)
             {
-                entete = e;
+                Constantes.Entete = e;
                 //Charge facture en attente
                 dgv_facture_wait.Rows.Clear();
                 foreach (Facture f in e.FacturesEnAttente)
@@ -148,6 +147,8 @@ namespace GESTION_CAISSE.IHM
         {
             Client v = BLL.ClientBll.Default();
             com_client.SelectedIndex = clients.FindIndex(a => a.Id == v.Id);
+            facture.Client = v;
+            facture.Categorie = v.Categorie;
         }
 
         public void LoadAllClients()
@@ -250,6 +251,12 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private void UpdateRowFacture(DataGridView data, Facture f)
+        {
+            data.Rows.RemoveAt(GetRowData(data, f.Id));
+            AddRowFacture(data, f);
+        }
+
         private void AddRowContenu(DataGridView data, Contenu c)
         {
             if (c != null)
@@ -263,6 +270,17 @@ namespace GESTION_CAISSE.IHM
             AddRowContenu(dgv_contenu, c);
         }
 
+        private void UpdateRowContenu(DataGridView data, Contenu f)
+        {
+            data.Rows.RemoveAt(GetRowData(data, f.Id));
+            AddRowContenu(data, f);
+        }
+
+        private void UpdateRowContenu(Contenu c)
+        {
+            UpdateRowContenu(dgv_contenu, c);
+        }
+
         private void AddRowReglement(DataGridView data, PieceCaisse p)
         {
             if (p != null)
@@ -274,6 +292,30 @@ namespace GESTION_CAISSE.IHM
         private void AddRowReglement(PieceCaisse p)
         {
             AddRowReglement(dgv_reglement, p);
+        }
+
+        private void UpdateRowReglement(DataGridView data, PieceCaisse f)
+        {
+            data.Rows.RemoveAt(GetRowData(data, f.Id));
+            AddRowReglement(data, f);
+        }
+
+        private void UpdateRowReglement(PieceCaisse c)
+        {
+            UpdateRowReglement(dgv_reglement, c);
+        }
+
+        private int GetRowData(DataGridView data, long id)
+        {
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                long l = (Int64)data.Rows[i].Cells[0].Value;
+                if (l.Equals(id))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         public void FullContenu(Facture f)
@@ -313,17 +355,18 @@ namespace GESTION_CAISSE.IHM
 
         private void ResetFicheFacture()
         {
-            rowFactureWait = 0;
-            rowFactureCours = 0;
-            rowCommande = 0;
             facture = new Facture();
             facture.TypeDoc = Constantes.TYPE_FV;
             facture.Statut = Constantes.ETAT_EN_ATTENTE;
+            facture.Client = BLL.ClientBll.Default();
+            facture.Categorie = facture.Client.Categorie;
             facture.HeureDoc = DateTime.Now;
+            facture.MouvStock = true;
             com_client.ResetText();
             dgv_contenu.Rows.Clear();
             dgv_reglement.Rows.Clear();
-            configClient(BLL.ClientBll.Default());
+            configClient(facture.Client);
+            com_typeDoc.Text = "Facture";
             SetStateFacture(true);
             configFacture(null);
             ResetFicheContenu();
@@ -331,11 +374,9 @@ namespace GESTION_CAISSE.IHM
 
         private void ResetFicheContenu()
         {
-            rowContenu = 0;
             txt_prix_article.Text = "0";
             txt_qte_article.Text = "0";
             com_article.ResetText();
-            article = new ArticleCom();
             contenu = new Contenu();
         }
 
@@ -345,7 +386,7 @@ namespace GESTION_CAISSE.IHM
             f.Id = facture.Id;
             f.Categorie = facture.Categorie;
             f.Client = facture.Client;
-            f.Entete = entete;
+            f.Entete = Constantes.Entete;
             f.HeureDoc = DateTime.Now;
             f.MontantAvance = Convert.ToDouble(txt_montantVerse.Text.Trim());
             f.MontantTTC = Convert.ToDouble(txt_montantTTC.Text.Trim());
@@ -365,6 +406,7 @@ namespace GESTION_CAISSE.IHM
             f.Contenus = facture.Contenus;
             f.Mensualites = facture.Mensualites;
             f.Remises = facture.Remises;
+            f.MouvStock = facture.MouvStock;
             return f;
         }
 
@@ -372,17 +414,17 @@ namespace GESTION_CAISSE.IHM
         {
             Contenu c = new Contenu();
             c.Id = contenu.Id;
-            c.Article = article;
-            c.Commission = 0;
+            c.Article = contenu.Article;
             c.Facture = facture;
             c.Prix = Convert.ToDouble((!txt_prix_article.Text.Trim().Equals("")) ? txt_prix_article.Text.Trim() : "0");
             c.Quantite = Convert.ToDouble((!txt_qte_article.Text.Trim().Equals("")) ? txt_qte_article.Text.Trim() : "0");
+            c.DateContenu = contenu.DateContenu;
             c.PrixTotal = c.Prix * c.Quantite;
-            c.RemiseArt = 0;
-            c.RemiseCat = 0;
+            c.RemiseArt = contenu.RemiseArt;
+            c.RemiseCat = contenu.RemiseCat;
             c.Remise = c.RemiseArt + c.RemiseCat;
-            c.Ristourne = 0;
-            c.Select = false;
+            c.Ristourne = contenu.Ristourne;
+            c.Commission = contenu.Commission;
             c.Update = contenu.Update;
             c.New_ = true;
             return c;
@@ -398,6 +440,9 @@ namespace GESTION_CAISSE.IHM
             FullReglement(f);
             com_client.SelectedText = clients.Find(a => a.Id == facture.Client.Id).Nom_prenom;
             btn_save.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+            btn_reglement.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+            btn_regl_tick.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+            btn_add_contenu.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
             SetStateFacture(false);
         }
 
@@ -405,10 +450,42 @@ namespace GESTION_CAISSE.IHM
         {
             ResetFicheContenu();
             contenu = c;
-            article = c.Article;
-            com_article.SelectedText = articles.Find(a => a.Id == article.Article.Id).Designation;
+            com_article.SelectedText = articles.Find(a => a.Id == c.Article.Article.Id).Designation;
             txt_prix_article.Text = c.Prix.ToString();
             txt_qte_article.Text = c.Quantite.ToString();
+        }
+
+        private void SetCurrentFacture(Facture f)
+        {
+            if ((f != null) ? f.Id > 0 : false)
+            {
+                String type = f.TypeDoc;
+                String etat = f.Statut;
+                switch (type)
+                {
+                    case Constantes.TYPE_BCV:
+                        Constantes.Entete.Commandes[Constantes.Entete.Commandes.FindIndex(x => x.Id == f.Id)] = f;
+                        UpdateRowFacture(dgv_commande, f);
+                        break;
+                    case Constantes.TYPE_FV:
+                        switch (etat)
+                        {
+                            case Constantes.ETAT_EN_ATTENTE:
+                                Constantes.Entete.FacturesEnAttente[Constantes.Entete.FacturesEnAttente.FindIndex(x => x.Id == f.Id)] = f;
+                                UpdateRowFacture(dgv_facture_wait, f);
+                                break;
+                            case Constantes.ETAT_EN_COURS:
+                                Constantes.Entete.FacturesEnCours[Constantes.Entete.FacturesEnCours.FindIndex(x => x.Id == f.Id)] = f;
+                                UpdateRowFacture(dgv_facture_cours, f);
+                                break;
+                            case Constantes.ETAT_REGLE:
+                                Constantes.Entete.FacturesRegle[Constantes.Entete.FacturesRegle.FindIndex(x => x.Id == f.Id)] = f;
+                                UpdateRowFacture(dgv_facture_regle, f);
+                                break;
+                        }
+                        break;
+                }
+            }
         }
 
         private void Form_Caisse_Saisie_Load(object sender, EventArgs e)
@@ -424,17 +501,40 @@ namespace GESTION_CAISSE.IHM
 
         private void Form_Caisse_Saisie_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Constantes.form_caisse_click == null && DialogResult.OK == Messages.FermerApplication())
-                Application.Exit();
-
+            if (Constantes.form_caisse_click == null)
+            {
+                if (DialogResult.OK == Messages.FermerApplication())
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    if (F_parent != null)
+                        F_parent.Show();
+                }
+            }
         }
 
         private void com_article_SelectedIndexChanged(object sender, EventArgs e)
         {
+            contenu = new Contenu();
             Article a = com_article.SelectedItem as Article;
             a = articles.Find(x => x.Id == a.Id);
             txt_prix_article.Text = a.Prix.ToString();
-            article = BLL.ArticleComBll.One(a);
+            txt_qte_article.Text = "0";
+            contenu.Article = BLL.ArticleComBll.One(a);
+
+            foreach (Contenu c in facture.Contenus)
+            {
+                if (c.Article.Id.Equals(contenu.Article.Id))
+                {
+                    contenu.Id = c.Id;
+                    contenu.Update = true;
+                    txt_qte_article.Text = c.Quantite.ToString();
+                    Messages.Alert("Ce contenu existe deja. Passer en mode modification!");
+                    break;
+                }
+            }
         }
 
         private void com_client_SelectedIndexChanged(object sender, EventArgs e)
@@ -457,10 +557,12 @@ namespace GESTION_CAISSE.IHM
                     case Constantes.TYPE_BCV_NAME:
                         reference = Utils.GenererReference(Constantes.DOC_COMMANDE);
                         facture.TypeDoc = Constantes.TYPE_BCV;
+                        facture.MouvStock = false;
                         break;
                     case Constantes.TYPE_FV_NAME:
                         reference = Utils.GenererReference(Constantes.DOC_FACTURE);
                         facture.TypeDoc = Constantes.TYPE_FV;
+                        facture.MouvStock = true;
                         break;
                 }
                 facture.NumDoc = reference;
@@ -493,18 +595,36 @@ namespace GESTION_CAISSE.IHM
             {
                 if (!c.Update)
                 {
-                    c.Id = dgv_contenu.Rows.Count + 1;
-                    c.Update = true;
-                    facture.Contenus.Add(c);
+                    c.DateContenu = DateTime.Now;
+                    Contenu c_ = new BLL.ContenuBll(c).Insert();
+                    if ((c_ != null) ? c_.Id > 0 : false)
+                    {
+                        c.Id = c_.Id;
+                        contenu.DateContenu = DateTime.Now;
+                        contenu.Id = c_.Id;
+                        c.Update = true;
+                        facture.Contenus.Add(c);
+                        AddRowContenu(c);
+
+                        contenu.Update = true;
+                        Messages.Succes();
+                    }
                 }
                 else
                 {
-                    c.Update = true;
-                    dgv_contenu.Rows.RemoveAt(rowContenu);
+                    if (new BLL.ContenuBll(c).Update())
+                    {
+                        c.Update = true;
+                        facture.Contenus[facture.Contenus.FindIndex(x => x.Id == c.Id)] = c;
+                        UpdateRowContenu(c);
+
+                        contenu.Update = true;
+                        Messages.Succes();
+                    }
                 }
-                dgv_contenu.Rows.Add(new object[] { c.Id, c.Article.Article.Designation, c.Prix, c.Quantite, c.PrixTotal, null });
                 Utils.MontantTotalDoc(facture);
                 configFacture(facture);
+                SetCurrentFacture(facture);
                 ResetFicheContenu();
             }
         }
@@ -512,49 +632,62 @@ namespace GESTION_CAISSE.IHM
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             ResetFicheFacture();
-            facture.Client = BLL.ClientBll.Default();
-            com_client.SelectedText = clients.Find(a => a.Id == facture.Client.Id).Nom_prenom;
+            com_client.SelectedText = facture.Client.Nom_prenom;
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
             Facture f = RecopieViewFacture();
-            String type = f.TypeDoc;
-            String etat = f.Statut;
-            if (!f.Update)
+            if (f.Control())
             {
-                switch (type)
+                String type = f.TypeDoc;
+                String etat = f.Statut;
+                if (!f.Update)
                 {
-                    case Constantes.TYPE_BCV:
-                        f.Id = dgv_commande.Rows.Count + 1;
-                        entete.Commandes.Add(f);
-                        AddRowFacture(dgv_commande, f);
-                        break;
-                    case Constantes.TYPE_FV:
-                        switch (etat)
+                    Facture f_ = new BLL.FactureBll(f).Insert();
+                    if ((f_ != null) ? f_.Id > 0 : false)
+                    {
+                        f.Id = f_.Id;
+                        f.Update = true;
+                        facture.Id = f_.Id;
+                        switch (type)
                         {
-                            case Constantes.ETAT_EN_ATTENTE:
-                                f.Id = dgv_facture_wait.Rows.Count + 1;
-                                entete.FacturesEnAttente.Add(f);
-                                AddRowFacture(dgv_facture_wait, f);
+                            case Constantes.TYPE_BCV:
+                                Constantes.Entete.Commandes.Add(f);
+                                AddRowFacture(dgv_commande, f);
                                 break;
-                            case Constantes.ETAT_EN_COURS:
-                                f.Id = dgv_facture_cours.Rows.Count + 1;
-                                entete.FacturesEnCours.Add(f);
-                                AddRowFacture(dgv_facture_cours, f);
-                                break;
-                            case Constantes.ETAT_REGLE:
-                                f.Id = dgv_facture_regle.Rows.Count + 1;
-                                entete.FacturesRegle.Add(f);
-                                AddRowFacture(dgv_facture_regle, f);
+                            case Constantes.TYPE_FV:
+                                switch (etat)
+                                {
+                                    case Constantes.ETAT_EN_ATTENTE:
+                                        Constantes.Entete.FacturesEnAttente.Add(f);
+                                        AddRowFacture(dgv_facture_wait, f);
+                                        break;
+                                    case Constantes.ETAT_EN_COURS:
+                                        Constantes.Entete.FacturesEnCours.Add(f);
+                                        AddRowFacture(dgv_facture_cours, f);
+                                        break;
+                                    case Constantes.ETAT_REGLE:
+                                        Constantes.Entete.FacturesRegle.Add(f);
+                                        AddRowFacture(dgv_facture_regle, f);
+                                        break;
+                                }
                                 break;
                         }
-                        break;
+                        facture.Update = true;
+                        Messages.Succes();
+                    }
                 }
-            }
-            else
-            {
-
+                else
+                {
+                    if (new BLL.FactureBll(f).Update())
+                    {
+                        f.Update = true;
+                        SetCurrentFacture(f);
+                        facture.Update = true;
+                        Messages.Succes();
+                    }
+                }
             }
         }
 
@@ -568,18 +701,32 @@ namespace GESTION_CAISSE.IHM
                     if (id > 0)
                     {
                         Contenu c = facture.Contenus.Find(x => x.Id == id);
-                        PopulateViewContenu(c);
-                        rowContenu = e.RowIndex;
                         if (e.ColumnIndex == 5)
                         {
-                            if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                            if (!facture.Statut.Equals(Constantes.ETAT_REGLE))
                             {
-                                dgv_contenu.Rows.RemoveAt(rowContenu);
-                                facture.Contenus.Remove(c);
-                                Utils.MontantTotalDoc(facture);
-                                configFacture(facture);
-                                ResetFicheContenu();
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.ContenuBll.Delete(c.Id))
+                                    {
+                                        dgv_contenu.Rows.RemoveAt(GetRowData(dgv_contenu, c.Id));
+                                        facture.Contenus.Remove(c);
+                                        Utils.MontantTotalDoc(facture);
+                                        configFacture(facture);
+                                        SetCurrentFacture(facture);
+
+                                        Messages.Succes();
+                                    }
+                                }
                             }
+                            else
+                            {
+                                Messages.ShowErreur("Vous ne pouvez pas supprimer ce contenu. car la facture est déja reglée");
+                            }
+                        }
+                        else
+                        {
+                            PopulateViewContenu(c);
                         }
                     }
                 }
@@ -599,7 +746,7 @@ namespace GESTION_CAISSE.IHM
                     long id = Convert.ToInt64(dgv_commande.CurrentRow.Cells["idCommande"].Value.ToString());
                     if (id > 0)
                     {
-                        Facture f = entete.Commandes.Find(x => x.Id == id);
+                        Facture f = Constantes.Entete.Commandes.Find(x => x.Id == id);
                         com_typeDoc.Text = "Commande";
                         PopulateViewFacture(f);
                     }
@@ -620,7 +767,7 @@ namespace GESTION_CAISSE.IHM
                     long id = Convert.ToInt64(dgv_facture_cours.CurrentRow.Cells["idFactureCours"].Value.ToString());
                     if (id > 0)
                     {
-                        Facture f = entete.FacturesEnCours.Find(x => x.Id == id);
+                        Facture f = Constantes.Entete.FacturesEnCours.Find(x => x.Id == id);
                         com_typeDoc.Text = "Facture";
                         PopulateViewFacture(f);
                     }
@@ -641,7 +788,7 @@ namespace GESTION_CAISSE.IHM
                     long id = Convert.ToInt64(dgv_facture_regle.CurrentRow.Cells["idFactureRegle"].Value.ToString());
                     if (id > 0)
                     {
-                        Facture f = entete.FacturesRegle.Find(x => x.Id == id);
+                        Facture f = Constantes.Entete.FacturesRegle.Find(x => x.Id == id);
                         com_typeDoc.Text = "Facture";
                         PopulateViewFacture(f);
                     }
@@ -662,9 +809,32 @@ namespace GESTION_CAISSE.IHM
                     long id = Convert.ToInt64(dgv_facture_wait.CurrentRow.Cells["idFactureWait"].Value.ToString());
                     if (id > 0)
                     {
-                        Facture f = entete.FacturesEnAttente.Find(x => x.Id == id);
-                        com_typeDoc.Text = "Facture";
-                        PopulateViewFacture(f);
+                        Facture f = Constantes.Entete.FacturesEnAttente.Find(x => x.Id == id);
+                        if (e.ColumnIndex == 6)
+                        {
+                            if (!f.Statut.Equals(Constantes.ETAT_REGLE) && f.Contenus.Count < 1)
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.FactureBll.Delete(f.Id))
+                                    {
+                                        dgv_facture_wait.Rows.RemoveAt(GetRowData(dgv_facture_wait, f.Id));
+                                        Constantes.Entete.FacturesEnAttente.Remove(f);
+                                        ResetFicheFacture();
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Messages.ShowErreur("Vous ne pouvez pas supprimer cette facture!");
+                            }
+                        }
+                        else
+                        {
+                            com_typeDoc.Text = "Facture";
+                            PopulateViewFacture(f);
+                        }
                     }
                 }
             }
@@ -702,6 +872,21 @@ namespace GESTION_CAISSE.IHM
         private void txt_montantReste_TextChanged_1(object sender, EventArgs e)
         {
             txt_montantReste.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantReste.Text));
+        }
+
+        private void txt_montantHt_TextChanged(object sender, EventArgs e)
+        {
+            txt_montantHt.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantHt.Text));
+        }
+
+        private void txt_prix_article_TextChanged(object sender, EventArgs e)
+        {
+            txt_prix_article.Text = string.Format("{0:#,##0.00}", double.Parse(txt_prix_article.Text));
+        }
+
+        private void txt_qte_article_TextChanged(object sender, EventArgs e)
+        {
+            txt_qte_article.Text = string.Format("{0:#,##0}", double.Parse(txt_qte_article.Text));
         }
 
         private void tool_codeClient_Click(object sender, EventArgs e)

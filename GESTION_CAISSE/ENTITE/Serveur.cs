@@ -54,22 +54,22 @@ namespace GESTION_CAISSE.ENTITE
         {
             if (bean == null)
             {
-                Messages.Erreur("Serveur Incorrect!");
+                Messages.ShowErreur("Serveur Incorrect!");
                 return false;
             }
             if (bean.adresse == null || bean.adresse.Trim().Equals(""))
             {
-                Messages.Erreur("L'adresse du serveur ne peut pas être null!");
+                Messages.ShowErreur("L'adresse du serveur ne peut pas être null!");
                 return false;
             }
             if (bean.database == null || bean.database.Trim().Equals(""))
             {
-                Messages.Erreur("La base de donnée ne peut pas être null!");
+                Messages.ShowErreur("La base de donnée ne peut pas être null!");
                 return false;
             }
             if (bean.port < 0)
             {
-                Messages.Erreur("Le numéro du port ne peut pas être inferieur a 0!");
+                Messages.ShowErreur("Le numéro du port ne peut pas être inferieur a 0!");
                 return false;
             }
             return true;

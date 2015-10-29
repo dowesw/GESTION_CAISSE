@@ -317,14 +317,14 @@ namespace GESTION_CAISSE.TOOLS
 
         public static void TotalRemiseContenuDoc(Contenu c, CategorieClient ca)
         {
-            if ((ca != null) ? ((ca.Id > 0) ? ((c != null) ? c.Id > 0 : false) : false) : false)
+            if ((ca != null) ? c != null : false)
             {
                 ArticleCom a = c.Article;
-                if ((a != null) ? a.Id > 0 : false)
+                if (a != null)
                 {
                     //Gestion Remise Sur l'article par le plan tarifaire
                     Article a_ = a.Article;
-                    if ((a_ != null) ? ((a_.Id > 0) ? ((a_.Plans != null) ? a_.Plans.Count > 0 : false) : false) : false)
+                    if ((a_ != null) ? ((a_.Plans != null) ? a_.Plans.Count > 0 : false) : false)
                     {
                         PlanTarifaire p = a_.Plans[0];
                         c.Prix = p.Puv;
@@ -347,7 +347,7 @@ namespace GESTION_CAISSE.TOOLS
         private static double MontantRemise(Remise r, double quantite, double montant)
         {
             double remise = 0;
-            if ((r != null) ? r.Id > 0 : false)
+            if (r != null)
             {
                 switch (r.BaseRemise)
                 {

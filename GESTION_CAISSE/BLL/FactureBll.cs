@@ -84,6 +84,30 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
+        public bool ChangeSupp()
+        {
+            try
+            {
+                return FactureDao.getChangeSuppFacture(facture);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible de modifier cette enregistrement", ex);
+            }
+        }
+
+        public bool ChangeImpression()
+        {
+            try
+            {
+                return FactureDao.getChangeImpressionFacture(facture);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible de modifier cette enregistrement", ex);
+            }
+        }
+
         public static bool Delete(long id)
         {
             try

@@ -16,7 +16,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_com_contenu_doc_vente where id = " + id + "";
+                String search = "select * from yvs_com_contenu_doc_vente where id = " + id;
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 Contenu a = new Contenu();
@@ -61,7 +61,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_com_contenu_doc_vente order by id desc limit 1";
+                String search = "select c.id as id from yvs_com_contenu_doc_vente c inner join yvs_com_doc_ventes d on c.doc_vente = d.id where d.entete_doc = " + Constantes.Entete.Id + " order by id desc limit 1"; ;
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -91,14 +91,18 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string insert = "";
+                string insert = "insert into yvs_com_contenu_doc_vente"
+                    + "(article, doc_vente, quantite, prix, remise_art, remise_cat, ristourne, comission, supp, actif, date_contenu, date_save)"
+                    + " values (" + a.Article.Id + ", " + a.Facture.Id + ", " + a.Quantite + ", " + a.Prix + ", " + a.RemiseArt + ", " + a.RemiseCat + ", "
+                    + a.Ristourne + ", " + a.Commission + ", false, true, '" + a.DateContenu + "', '" + DateTime.Now + "')";
                 NpgsqlCommand cmd = new NpgsqlCommand(insert, con);
                 cmd.ExecuteNonQuery();
                 a.Id = getCurrent();
                 return a;
             }
-            catch
+            catch (NpgsqlException e)
             {
+                Messages.Exception(e);
                 return null;
             }
             finally
@@ -112,7 +116,11 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string update = "";
+                string update = "update yvs_com_contenu_doc_vente set "
+                    + " article=" + a.Article.Id + ", doc_vente=" + a.Facture.Id + ", quantite=" + a.Quantite + ", prix=" + a.Prix + ","
+                    + " remise_art=" + a.RemiseArt + ", remise_cat=" + a.RemiseCat + ", ristourne=" + a.Ristourne + ", comission=" + a.Commission + ","
+                    + " date_contenu='" + a.DateContenu + "', date_save='" + DateTime.Now + "'"
+                    + " where id = " + a.Id;
                 NpgsqlCommand Ucmd = new NpgsqlCommand(update, con);
                 Ucmd.ExecuteNonQuery();
                 return true;
@@ -133,7 +141,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string delete = "";
+                string delete = "delete from yvs_com_contenu_doc_vente where id = " + id;
                 NpgsqlCommand Ucmd = new NpgsqlCommand(delete, con);
                 Ucmd.ExecuteNonQuery();
                 return true;

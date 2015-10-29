@@ -79,15 +79,27 @@ namespace GESTION_CAISSE.TOOLS
             return reponse;
         }
 
-        static public DialogResult Erreur(string message)
+        static public DialogResult Erreur_Retry(string message)
         {
             DialogResult reponse = MessageBox.Show(message, Constantes.APP_NAME, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+            return reponse;
+        }
+
+        static public DialogResult Erreur_Oui_Non(string message)
+        {
+            DialogResult reponse = MessageBox.Show(message, Constantes.APP_NAME, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             return reponse;
         }
 
         static public DialogResult ShowErreur(string message)
         {
             DialogResult reponse = MessageBox.Show(message, Constantes.APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return reponse;
+        }
+
+        static public DialogResult Alert(string message)
+        {
+            DialogResult reponse = MessageBox.Show(message, Constantes.APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return reponse;
         }
 
