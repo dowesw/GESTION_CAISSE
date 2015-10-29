@@ -35,6 +35,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.ModeAppro = lect["mode_appro"].ToString().Trim();
                         a.ModeReappro = lect["mode_reappro"].ToString().Trim();
                         a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0) : 0);
@@ -82,6 +85,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.ModeAppro = lect["mode_appro"].ToString().Trim();
                         a.ModeReappro = lect["mode_reappro"].ToString().Trim();
                         a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0) : 0);
@@ -222,6 +228,9 @@ namespace GESTION_CAISSE.DAO
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
                             : new Article())
                             : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
                         a.ModeAppro = lect["mode_appro"].ToString().Trim();
                         a.ModeReappro = lect["mode_reappro"].ToString().Trim();
                         a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0) : 0);

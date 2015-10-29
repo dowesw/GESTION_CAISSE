@@ -27,6 +27,33 @@ namespace GESTION_CAISSE.DAO
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Abbreviation = lect["abbreviation"].ToString();
                         a.Designation = lect["designation"].ToString();
+                        a.Emplacmenets = BLL.EmplacementBll.Liste("select * from yvs_base_emplacement_depot where depot = " + a.Id);
+                        a.ArticlesAll = BLL.ArticleDepotBll.Liste("select a.id as id, a.emplacement as emplacement, a.article as article, a.mode_appro as mode_appro, a.mode_reappro as mode_reappro, a.stock_alert as stock_alert, a.stock_max as stock_max, a.stock_min as stock_min, a.quantite_stock as quantite_stock "
+                                                                    + " from yvs_base_article_depot a inner join yvs_base_emplacement_depot e "
+                                                                    + " on a.emplacement = e.id where e.depot = " + a.Id);
+                        foreach (ArticleDepot d in a.ArticlesAll)
+                        {
+                            bool trouv = false;
+                            foreach (ArticleDepot d_ in a.Articles)
+                            {
+                                if (d.Article.Equals(d_.Article))
+                                {
+                                    d.Id = d_.Id;
+                                    d.Stock += d_.Stock;
+                                    trouv = true;
+                                    break;
+                                }
+                            }
+                            if (!trouv)
+                            {
+                                a.Id = a.Articles.Count;
+                                a.Articles.Add(d);
+                            }
+                            else
+                            {
+                                a.Articles[a.Articles.FindIndex(x => x.Id == d.Id)] = d;
+                            }
+                        }
                         a.Update = true;
                     }
                     lect.Close();
