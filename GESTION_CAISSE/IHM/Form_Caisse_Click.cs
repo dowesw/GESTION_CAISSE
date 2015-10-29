@@ -38,8 +38,15 @@ namespace GESTION_CAISSE.IHM
         public Form_Caisse_Click()
         {   
             InitializeComponent();
+           
             indTabF = 0; indTabA = 0;
+            
             familles = new List<FamilleArticle>();
+            //charger famillesa articles
+            familles.Clear();
+            familles = BLL.FamilleArticleBll.Liste_("select * from yvs_base_famille_article");
+            famillesCrits = new List<FamilleArticle>();
+            articlesCrits = new List<Article>();
             articles = new List<Article>();
             clients = new List<Client>();
             clientZero = BLL.ClientBll.Default();
@@ -49,6 +56,7 @@ namespace GESTION_CAISSE.IHM
             bg.Start();
 
             InitInfoClient();
+            
 
             // création de la liste des boutons famille
             buttonFs = new List<Button> { button7, button8, button9, button10, button11, button12, button13, button14 };
@@ -59,10 +67,12 @@ namespace GESTION_CAISSE.IHM
             buttonAs = new List<Button> { button15, button16, button17, button18, button19, button20, button21, button22 };
             // création de la liste des labels article
             labelAs = new List<Label> { label18, label20, label21, label22, label23, label24, label25, label26 };
-            
-            //charger famillesa articles
-            familles.Clear();
-            familles = BLL.FamilleArticleBll.Liste("select * from yvs_base_famille_article");
+
+            InitButton(buttonAs, labelAs);
+            InitButton(buttonFs, labelFs);
+            SearchDirectionF(2);
+
+           
         }
 
         public void InitInfoClient()
@@ -74,11 +84,35 @@ namespace GESTION_CAISSE.IHM
             TelClient.Text = clientZero.Tiers.Tel;
             label16.Text = clientZero.Tiers.CodeTiers;
         }
-       
+
+        private void InitButton(List<Button> listBtn, List<Label> listLabl)
+        {
+            foreach (Button btn in listBtn)
+            {
+                btn.BackgroundImage = null;
+                btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+                btn.Text = "";
+                btn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+                btn.UseVisualStyleBackColor = true;
+                btn.Visible = false;
+                btn.Click += delegate(object sender, EventArgs e)
+                {
+
+                };
+            }
+
+            foreach (Label lblL in listLabl)
+            {
+                lblL.Text = "";
+                lblL.Visible = false;
+
+            }
+        }
+
         //modification des boutons des familles
         private void ModifButton(Button ctl, FamilleArticle cli, Label lbl)
         {
-            cli = (FamilleArticle)familles.ElementAt<FamilleArticle>(indTabF);
+            //cli = (FamilleArticle)familles.ElementAt<FamilleArticle>(indTabF);
 
             //if (cli.Tiers.Logo.Trim().Equals("") || cli.Tiers.Logo == null)
             //{
@@ -100,8 +134,10 @@ namespace GESTION_CAISSE.IHM
                 System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ctl.Click += delegate(object sender, EventArgs e)
             {
-                articlesCrits.Clear();
-                articlesCrits.AddRange(cli.Articles);
+                indTabA = 0;
+                articles.Clear();
+                articles = BLL.ArticleBll.Liste("select * from yvs_articles where famille= " + cli.Id);
+                SearchDirectionA(2);
             };
             lbl.Visible = true;
             lbl.Text = cli.Designation;
@@ -110,9 +146,13 @@ namespace GESTION_CAISSE.IHM
         //modification des boutons des articles
         private void ModifButton(Button ctl, Article cli, Label lbl)
         {
-            cli = (Article)articles.ElementAt<Article>(indTabA);
+            //cli = (Article)articles.ElementAt<Article>(indTabA);
 
-            if (cli.Photos[0].Trim().Equals("") || cli.Photos[0] == null)
+            if ((cli.Photos!=null)? 
+                    ((cli.Photos.Count>0)?
+                        ((cli.Photos[0]!=null)?cli.Photos[0].Trim().Equals(""):true)
+                    :true)
+                :true)
             {
                 ctl.BackgroundImage = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
             }
@@ -122,9 +162,9 @@ namespace GESTION_CAISSE.IHM
                 chemin += TOOLS.Constantes.FILE_SEPARATOR + cli.Photos[0];
                 ctl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject(chemin)));
             }
+
             ctl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ctl.Text = "";
-            ctl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             ctl.UseVisualStyleBackColor = true;
             ctl.Visible = true;
             ctl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold,
@@ -137,12 +177,189 @@ namespace GESTION_CAISSE.IHM
             lbl.Text = cli.Designation;
         }
 
-        //gestion affichage des familles d'articles
-        private void Form_Caisse_Click_Load(object sender, EventArgs e)
+        private void ResultatRechercheF(String txt)
         {
-           
-
+            famillesCrits.Clear();
+            if ((txt.Length != 0))
+            {
+                foreach (FamilleArticle sCli in familles)
+                {
+                    if (sCli.Designation.ToLower().Contains(txt.ToLower()))
+                    {
+                        famillesCrits.Add(sCli);
+                    }
+                }
+            }
+            else { famillesCrits.AddRange(familles); }
         }
+
+        private void ResultatRechercheA(String txt)
+        {
+            articlesCrits.Clear();
+            if ((txt.Length != 0))
+            {
+                foreach (Article sCli in articles)
+                {
+                    if (sCli.Designation.ToLower().Contains(txt.ToLower()))
+                    {
+                        articlesCrits.Add(sCli);
+                    }
+                }
+            }
+            else { articlesCrits.AddRange(articles); }
+        }
+
+        private List<FamilleArticle> GetPack8F(ref int indActu, List<FamilleArticle> list, int sens)
+        {
+            List<FamilleArticle> listRetour = new List<FamilleArticle>();
+            if (sens == 2)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    if ((indActu == list.Count - 1) || (list.Count == 0)) pgDroiteF.Enabled = false;
+                    else pgDroiteF.Enabled = true;
+                    if (indActu < 8) pgGaucheF.Enabled = false;
+                    else pgGaucheF.Enabled = true;
+
+                    if ((indActu >= 0) && (indActu < list.Count))
+                    {
+                        listRetour.Add(list.ElementAt<FamilleArticle>(indActu));
+                        indActu++;
+                    }
+
+                    if (indActu == list.Count)
+                    {
+                        indActu--;
+                        return listRetour;
+                    }
+                }
+            }
+
+            if (sens == 1)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+
+                    if (indActu == list.Count - 1) pgDroiteF.Enabled = false;
+                    else pgDroiteF.Enabled = true;
+                    if (indActu < 8) pgGaucheF.Enabled = false;
+                    else pgGaucheF.Enabled = true;
+
+                    if ((indActu >= 0) && (indActu < list.Count))
+                    {
+                        listRetour.Add(list.ElementAt<FamilleArticle>(indActu));
+                        indActu--;
+                    }
+
+                    if (indActu <= -1)
+                    {
+                        return listRetour;
+                    }
+                }
+            }
+            return listRetour;
+        }
+
+        private List<Article> GetPack8A(ref int indActu, List<Article> list, int sens)
+        {
+            List<Article> listRetour = new List<Article>();
+            if (sens == 2)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                   
+
+                    if ((indActu >= 0) && (indActu < list.Count))
+                    {
+                        listRetour.Add(list.ElementAt<Article>(indActu));
+                        indActu++;
+                    }
+
+                    if (indActu == list.Count)
+                    {
+                        if ((indActu == list.Count - 1) || (list.Count == 0)) pgDroiteA.Enabled = false;
+                        else pgDroiteA.Enabled = true;
+                        if (indActu < 8) pgGaucheA.Enabled = false;
+                        else pgGaucheA.Enabled = true;
+                        indActu--;
+                        return listRetour;
+                    }
+                }
+            }
+
+            if (sens == 1)
+            {
+                indActu-=7;
+                for (int i = 0; i < 8; i++)
+                {
+
+                    if ((indActu >= 0) && (indActu < list.Count))
+                    {
+                        listRetour.Add(list.ElementAt<Article>(indActu));
+                        indActu++;
+                    }
+
+                    if (indActu <= -1)
+                    {
+                        if (indActu == list.Count - 1) pgDroiteA.Enabled = false;
+                        else pgDroiteA.Enabled = true;
+                        if (indActu < 8) pgGaucheA.Enabled = false;
+                        else pgGaucheA.Enabled = true;
+                        indActu++;
+                        return listRetour;
+                    }
+                }
+            }
+            return listRetour;
+        }
+
+        private void SearchDirectionF(int sens)
+        {
+            int posBtn = 0;
+            InitButton(buttonFs, labelFs);
+            ResultatRechercheF("");
+            List<FamilleArticle> seracList = GetPack8F(ref indTabF, famillesCrits, sens);
+            var t = seracList.Count;
+            foreach (FamilleArticle cli in seracList)
+            {
+                ModifButton(buttonFs.ElementAt<Button>(posBtn), cli, labelFs.ElementAt<Label>(posBtn));
+                posBtn++;
+            }
+        }
+        private void SearchDirectionA(int sens)
+        {
+            int posBtn = 0;
+            InitButton(buttonAs, labelAs);
+            ResultatRechercheA("");
+            List<Article> seracList = GetPack8A(ref indTabA, articlesCrits, sens);
+            var t = seracList.Count;
+            foreach (Article cli in seracList)
+            {
+                ModifButton(buttonAs.ElementAt<Button>(posBtn), cli, labelAs.ElementAt<Label>(posBtn));
+                posBtn++;
+            }
+        }
+
+        private void pgGaucheF_Click(object sender, EventArgs e)
+        {
+            SearchDirectionF(1);
+        }
+
+        private void pgDroiteF_Click(object sender, EventArgs e)
+        {
+            SearchDirectionF(2);
+        }
+
+        private void pgGaucheA_Click(object sender, EventArgs e)
+        {
+            SearchDirectionA(1);
+        }
+
+        private void pgDroiteA_Click(object sender, EventArgs e)
+        {
+            SearchDirectionA(2);
+        }
+
 
         private void AjoutDatgridArt(Article artDtG, int qte)
         {
@@ -157,13 +374,6 @@ namespace GESTION_CAISSE.IHM
             return 34;
         }
 
-
-        private void LoadAllArticleFromFamille()
-        {
-            articles.Clear();
-            articles = BLL.ArticleBll.Liste("select * from yvs_articles where famille= "+currentFamille.Id);
-            
-        }
 
         private void LoadAllClient()
         {
@@ -204,6 +414,5 @@ namespace GESTION_CAISSE.IHM
         {
 
         }
-
     }
 }

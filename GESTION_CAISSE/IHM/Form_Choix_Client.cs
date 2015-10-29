@@ -166,7 +166,7 @@ namespace GESTION_CAISSE.IHM
                 btn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
                 btn.UseVisualStyleBackColor = true;
                 btn.Visible = false;
-                btn.Click += delegate(object sender, EventArgs e)
+                btn.Click -= delegate(object sender, EventArgs e)
                 {
 
                 };
