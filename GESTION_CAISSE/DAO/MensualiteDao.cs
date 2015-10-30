@@ -28,7 +28,22 @@ namespace GESTION_CAISSE.DAO
                         a.DateMensualite = (DateTime)((lect["date_reglement"] != null) ? ((!lect["date_reglement"].ToString().Trim().Equals("")) ? lect["date_reglement"] : DateTime.Now) : DateTime.Now);
                         a.Etat = lect["etat"].ToString();
                         a.Montant = (Double)((lect["montant"] != null) ? ((!lect["montant"].ToString().Trim().Equals("")) ? lect["montant"] : 0) : 0);
+                        a.Facture = ((lect["facture"] != null)
+                            ? (!lect["facture"].ToString().Trim().Equals("")
+                            ? new Facture(Convert.ToInt64(lect["facture"].ToString()))
+                            : new Facture())
+                            : new Facture());
+                        a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
                         a.Reglements = BLL.PieceCaisseBll.Liste("setecl * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
+                        foreach (PieceCaisse p in a.Reglements)
+                        {
+                            a.MontantVerse += p.Montant;
+                        }
+                        a.MontantReste = a.Montant - a.MontantVerse;
+                        if (a.MontantReste < 0)
+                        {
+                            a.MontantReste = 0;
+                        }
                         a.Update = true;
                     }
                     lect.Close();
@@ -51,7 +66,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_com_mensualite_facture_vente order by id desc limit 1";
+                String search = "select m.id as id from yvs_com_mensualite_facture_vente m inner join  yvs_com_doc_ventes d on m.facture = d.id where d.entete_doc = " + Constantes.Entete.Id + " order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -81,14 +96,17 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string insert = "";
+                string insert = "insert into yvs_com_mensualite_facture_vente"
+                                + "(date_reglement, facture, montant, etat)"
+                                + "values ('" + a.DateMensualite + "', " + a.Facture.Id + ", " + a.Montant + ", '" + a.Etat + "')";
                 NpgsqlCommand cmd = new NpgsqlCommand(insert, con);
                 cmd.ExecuteNonQuery();
                 a.Id = getCurrent();
                 return a;
             }
-            catch
+            catch (NpgsqlException e)
             {
+                Messages.Exception(e);
                 return null;
             }
             finally
@@ -102,7 +120,9 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string update = "";
+                string update = "update yvs_com_mensualite_facture_vente set "
+                                + " date_reglement = '" + a.DateMensualite + "', facture = " + a.Facture.Id + ", montant = " + a.Montant + ", etat = '" + a.Etat + "'"
+                                + " where id = " + a.Id;
                 NpgsqlCommand Ucmd = new NpgsqlCommand(update, con);
                 Ucmd.ExecuteNonQuery();
                 return true;
@@ -123,7 +143,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string delete = "";
+                string delete = "delete from yvs_com_mensualite_facture_vente where id = " + id;
                 NpgsqlCommand Ucmd = new NpgsqlCommand(delete, con);
                 Ucmd.ExecuteNonQuery();
                 return true;
@@ -156,7 +176,22 @@ namespace GESTION_CAISSE.DAO
                         a.DateMensualite = (DateTime)((lect["date_reglement"] != null) ? ((!lect["date_reglement"].ToString().Trim().Equals("")) ? lect["date_reglement"] : DateTime.Now) : DateTime.Now);
                         a.Etat = lect["etat"].ToString();
                         a.Montant = (Double)((lect["montant"] != null) ? ((!lect["montant"].ToString().Trim().Equals("")) ? lect["montant"] : 0) : 0);
+                        a.Facture = ((lect["facture"] != null)
+                            ? (!lect["facture"].ToString().Trim().Equals("")
+                            ? new Facture(Convert.ToInt64(lect["facture"].ToString()))
+                            : new Facture())
+                            : new Facture());
+                        a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
                         a.Reglements = BLL.PieceCaisseBll.Liste("setecl * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
+                        foreach (PieceCaisse p in a.Reglements)
+                        {
+                            a.MontantVerse += p.Montant;
+                        }
+                        a.MontantReste = a.Montant - a.MontantVerse;
+                        if (a.MontantReste < 0)
+                        {
+                            a.MontantReste = 0;
+                        }
                         a.Update = true;
                         l.Add(a);
                     }

@@ -47,11 +47,39 @@ namespace GESTION_CAISSE.ENTITE
             set { montant = value; }
         }
 
+        private double montantVerse;
+        public double MontantVerse
+        {
+            get { return montantVerse; }
+            set { montantVerse = value; }
+        }
+
+        private double montantReste;
+        public double MontantReste
+        {
+            get { return montantReste; }
+            set { montantReste = value; }
+        }
+
+        private Facture facture = new Facture();
+        public Facture Facture
+        {
+            get { return facture; }
+            set { facture = value; }
+        }
+
         private List<PieceCaisse> reglements;
         internal List<PieceCaisse> Reglements
         {
             get { return reglements; }
             set { reglements = value; }
+        }
+
+        private bool isOut;
+        public bool IsOut
+        {
+            get { return isOut; }
+            set { isOut = value; }
         }
 
         private bool update;

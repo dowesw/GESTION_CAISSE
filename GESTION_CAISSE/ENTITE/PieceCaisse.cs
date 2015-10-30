@@ -102,6 +102,13 @@ namespace GESTION_CAISSE.ENTITE
             set { statut = value; }
         }
 
+        private bool onCompte;
+        public bool OnCompte
+        {
+            get { return onCompte; }
+            set { onCompte = value; }
+        }
+
         private bool update;
         public bool Update
         {

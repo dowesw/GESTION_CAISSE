@@ -19,6 +19,13 @@ namespace GESTION_CAISSE.ENTITE
             articles = new List<Article>();
         }
 
+        public FamilleArticle(long id, String designation)
+        {
+            this.id = id;
+            this.designation = designation;
+            articles = new List<Article>();
+        }
+
         private long id;
         public long Id
         {
@@ -80,6 +87,11 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return new_; }
             set { new_ = value; }
+        }
+
+        public static FamilleArticle Default()
+        {
+            return new FamilleArticle(-1, "Autres");
         }
     }
 }

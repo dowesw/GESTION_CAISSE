@@ -129,7 +129,6 @@
             this.totalContenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supp = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txt_qte_article = new System.Windows.Forms.TextBox();
             this.com_article = new System.Windows.Forms.ComboBox();
             this.context_article = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tool_search_ref = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,8 +175,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
-            this.btn_supp_contenu = new System.Windows.Forms.Button();
-            this.btn_supp_facture = new System.Windows.Forms.Button();
+            this.txt_qte_article = new System.Windows.Forms.NumericUpDown();
+            this.context_reglement = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tool_mensualite = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -206,6 +206,8 @@
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_qte_article)).BeginInit();
+            this.context_reglement.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -1071,16 +1073,6 @@
             this.panel1.Size = new System.Drawing.Size(671, 45);
             this.panel1.TabIndex = 0;
             // 
-            // txt_qte_article
-            // 
-            this.txt_qte_article.Location = new System.Drawing.Point(524, 13);
-            this.txt_qte_article.Name = "txt_qte_article";
-            this.txt_qte_article.Size = new System.Drawing.Size(100, 20);
-            this.txt_qte_article.TabIndex = 7;
-            this.txt_qte_article.Text = "0";
-            this.txt_qte_article.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_qte_article.TextChanged += new System.EventHandler(this.txt_qte_article_TextChanged);
-            // 
             // com_article
             // 
             this.com_article.ContextMenuStrip = this.context_article;
@@ -1139,13 +1131,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(310, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "PUV";
+            this.label2.Text = "PUV : ";
             // 
             // txt_prix_article
             // 
-            this.txt_prix_article.Location = new System.Drawing.Point(345, 13);
+            this.txt_prix_article.Location = new System.Drawing.Point(348, 13);
             this.txt_prix_article.Name = "txt_prix_article";
             this.txt_prix_article.ReadOnly = true;
             this.txt_prix_article.Size = new System.Drawing.Size(89, 20);
@@ -1460,6 +1452,7 @@
             this.idMensualite,
             this.dateReglement,
             this.montantReglement});
+            this.dgv_reglement.ContextMenuStrip = this.context_reglement;
             this.dgv_reglement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_reglement.Location = new System.Drawing.Point(3, 16);
             this.dgv_reglement.MultiSelect = false;
@@ -1553,27 +1546,27 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
-            // btn_supp_contenu
+            // txt_qte_article
             // 
-            this.btn_supp_contenu.Location = new System.Drawing.Point(-1, -1);
-            this.btn_supp_contenu.Name = "btn_supp_contenu";
-            this.btn_supp_contenu.Size = new System.Drawing.Size(10, 10);
-            this.btn_supp_contenu.TabIndex = 14;
-            this.btn_supp_contenu.Text = "&X";
-            this.btn_supp_contenu.UseVisualStyleBackColor = true;
-            this.btn_supp_contenu.Visible = false;
-            this.btn_supp_contenu.Click += new System.EventHandler(this.btn_supp_contenu_Click);
+            this.txt_qte_article.Location = new System.Drawing.Point(524, 13);
+            this.txt_qte_article.Name = "txt_qte_article";
+            this.txt_qte_article.Size = new System.Drawing.Size(105, 20);
+            this.txt_qte_article.TabIndex = 1;
+            this.txt_qte_article.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btn_supp_facture
+            // context_reglement
             // 
-            this.btn_supp_facture.Location = new System.Drawing.Point(12, -1);
-            this.btn_supp_facture.Name = "btn_supp_facture";
-            this.btn_supp_facture.Size = new System.Drawing.Size(10, 10);
-            this.btn_supp_facture.TabIndex = 14;
-            this.btn_supp_facture.Text = "&W";
-            this.btn_supp_facture.UseVisualStyleBackColor = true;
-            this.btn_supp_facture.Visible = false;
-            this.btn_supp_facture.Click += new System.EventHandler(this.btn_supp_facture_Click);
+            this.context_reglement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_mensualite});
+            this.context_reglement.Name = "context_reglement";
+            this.context_reglement.Size = new System.Drawing.Size(176, 48);
+            // 
+            // tool_mensualite
+            // 
+            this.tool_mensualite.Name = "tool_mensualite";
+            this.tool_mensualite.Size = new System.Drawing.Size(175, 22);
+            this.tool_mensualite.Text = "Gestion Mensualité";
+            this.tool_mensualite.Click += new System.EventHandler(this.tool_mensualite_Click);
             // 
             // Form_Caisse_Saisie
             // 
@@ -1582,8 +1575,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1056, 817);
-            this.Controls.Add(this.btn_supp_facture);
-            this.Controls.Add(this.btn_supp_contenu);
             this.Controls.Add(this.lb_numPiece);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -1641,6 +1632,8 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_qte_article)).EndInit();
+            this.context_reglement.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1664,7 +1657,6 @@
         private System.Windows.Forms.TextBox txt_prix_article;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_qte_article;
         private System.Windows.Forms.ComboBox com_article;
         private System.Windows.Forms.Label lb_date;
         private System.Windows.Forms.PictureBox box_user;
@@ -1730,12 +1722,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lb_numPiece;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idContenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn articleContenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn puvContenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qteContenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalContenu;
-        private System.Windows.Forms.DataGridViewLinkColumn supp;
         private System.Windows.Forms.DataGridViewTextBoxColumn idReglement;
         private System.Windows.Forms.DataGridViewTextBoxColumn idMensualite;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateReglement;
@@ -1776,8 +1762,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn suppCommande;
         private System.Windows.Forms.ContextMenuStrip context_data;
         private System.Windows.Forms.ToolStripMenuItem tool_integre_data;
-        private System.Windows.Forms.Button btn_supp_contenu;
-        private System.Windows.Forms.Button btn_supp_facture;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idContenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn articleContenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn puvContenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qteContenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalContenu;
+        private System.Windows.Forms.DataGridViewLinkColumn supp;
+        private System.Windows.Forms.NumericUpDown txt_qte_article;
+        private System.Windows.Forms.ContextMenuStrip context_reglement;
+        private System.Windows.Forms.ToolStripMenuItem tool_mensualite;
     }
 }
 

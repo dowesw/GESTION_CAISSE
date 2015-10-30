@@ -47,6 +47,19 @@ namespace GESTION_CAISSE.DAO
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
                         a.Mensualites = BLL.MensualiteBll.Liste("select * from yvs_com_mensualite_facture_vente where facture = " + a.Id);
+                        double mtant = 0;
+                        foreach (Mensualite m in a.Mensualites)
+                        {
+                            mtant += m.MontantVerse;
+                            foreach (PieceCaisse p in m.Reglements)
+                            {
+                                a.Reglements.Add(p);
+                            }
+                        }
+                        if (mtant > a.MontantAvance)
+                        {
+                            a.MontantAvance = mtant;
+                        }
                         Utils.MontantTotalDoc(a);
                         a.Update = true;
                     }
@@ -100,6 +113,19 @@ namespace GESTION_CAISSE.DAO
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        double mtant = 0;
+                        foreach (Mensualite m in a.Mensualites)
+                        {
+                            mtant += m.MontantVerse;
+                            foreach (PieceCaisse p in m.Reglements)
+                            {
+                                a.Reglements.Add(p);
+                            }
+                        }
+                        if (mtant > a.MontantAvance)
+                        {
+                            a.MontantAvance = mtant;
+                        }
                         Utils.MontantTotalDoc(a);
                         a.Update = true;
                     }
@@ -366,6 +392,19 @@ namespace GESTION_CAISSE.DAO
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        double mtant = 0;
+                        foreach (Mensualite m in a.Mensualites)
+                        {
+                            mtant += m.MontantVerse;
+                            foreach (PieceCaisse p in m.Reglements)
+                            {
+                                a.Reglements.Add(p);
+                            }
+                        }
+                        if (mtant > a.MontantAvance)
+                        {
+                            a.MontantAvance = mtant;
+                        }
                         Utils.MontantTotalDoc(a);
                         a.Update = true;
                         l.Add(a);

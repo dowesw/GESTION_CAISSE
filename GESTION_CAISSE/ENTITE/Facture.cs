@@ -13,6 +13,7 @@ namespace GESTION_CAISSE.ENTITE
             contenus = new List<Contenu>();
             remises = new List<RemiseFacture>();
             mensualites = new List<Mensualite>();
+            reglements = new List<PieceCaisse>();
         }
 
         public Facture(long id)
@@ -21,6 +22,7 @@ namespace GESTION_CAISSE.ENTITE
             contenus = new List<Contenu>();
             remises = new List<RemiseFacture>();
             mensualites = new List<Mensualite>();
+            reglements = new List<PieceCaisse>();
         }
 
         private long id;
@@ -105,6 +107,13 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return mensualites; }
             set { mensualites = value; }
+        }
+
+        private List<PieceCaisse> reglements;
+        internal List<PieceCaisse> Reglements
+        {
+            get { return reglements; }
+            set { reglements = value; }
         }
 
         private double montantHT;

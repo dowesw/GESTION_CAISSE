@@ -18,7 +18,7 @@ namespace GESTION_CAISSE.IHM
         List<ModePaiement> modes;
         List<Client> clients;
 
-        Facture facture = new Facture();
+        public Facture facture = new Facture();
         Depot depot = new Depot();
 
         Contenu contenu = new Contenu();
@@ -55,6 +55,7 @@ namespace GESTION_CAISSE.IHM
         private void configForm()
         {
             depot = Constantes.Creneau.Depot;
+            this.Text = Constantes.APP_NAME + " : Principal";
 
             lb_numPiece.Text = Utils.GenererReference(Constantes.DOC_FACTURE);
             lb_nom_agence.Text = Constantes.Agence.Designation;
@@ -258,7 +259,7 @@ namespace GESTION_CAISSE.IHM
 
         private void UpdateRowFacture(DataGridView data, Facture f)
         {
-            data.Rows.RemoveAt(GetRowData(data, f.Id));
+            data.Rows.RemoveAt(Utils.GetRowData(data, f.Id));
             AddRowFacture(data, f);
         }
 
@@ -277,7 +278,7 @@ namespace GESTION_CAISSE.IHM
 
         private void UpdateRowContenu(DataGridView data, Contenu f)
         {
-            data.Rows.RemoveAt(GetRowData(data, f.Id));
+            data.Rows.RemoveAt(Utils.GetRowData(data, f.Id));
             AddRowContenu(data, f);
         }
 
@@ -301,26 +302,13 @@ namespace GESTION_CAISSE.IHM
 
         private void UpdateRowReglement(DataGridView data, PieceCaisse f)
         {
-            data.Rows.RemoveAt(GetRowData(data, f.Id));
+            data.Rows.RemoveAt(Utils.GetRowData(data, f.Id));
             AddRowReglement(data, f);
         }
 
         private void UpdateRowReglement(PieceCaisse c)
         {
             UpdateRowReglement(dgv_reglement, c);
-        }
-
-        private int GetRowData(DataGridView data, long id)
-        {
-            for (int i = 0; i < data.Rows.Count; i++)
-            {
-                long l = (Int64)data.Rows[i].Cells[0].Value;
-                if (l.Equals(id))
-                {
-                    return i;
-                }
-            }
-            return -1;
         }
 
         public void FullContenu(Facture f)
@@ -338,15 +326,9 @@ namespace GESTION_CAISSE.IHM
         {
             if (f != null)
             {
-                foreach (Mensualite c in f.Mensualites)
+                foreach (PieceCaisse p in f.Reglements)
                 {
-                    if (c != null)
-                    {
-                        foreach (PieceCaisse p in c.Reglements)
-                        {
-                            AddRowReglement(p);
-                        }
-                    }
+                    AddRowReglement(p);
                 }
             }
         }
@@ -504,22 +486,22 @@ namespace GESTION_CAISSE.IHM
                 {
                     case Constantes.TYPE_BCV:
                         Constantes.Entete.Commandes.Remove(f);
-                        dgv_commande.Rows.RemoveAt(GetRowData(dgv_commande, f.Id));
+                        dgv_commande.Rows.RemoveAt(Utils.GetRowData(dgv_commande, f.Id));
                         break;
                     case Constantes.TYPE_FV:
                         switch (etat)
                         {
                             case Constantes.ETAT_EN_ATTENTE:
                                 Constantes.Entete.FacturesEnAttente.Remove(f);
-                                dgv_facture_wait.Rows.RemoveAt(GetRowData(dgv_facture_wait, f.Id));
+                                dgv_facture_wait.Rows.RemoveAt(Utils.GetRowData(dgv_facture_wait, f.Id));
                                 break;
                             case Constantes.ETAT_EN_COURS:
                                 Constantes.Entete.FacturesEnCours.Remove(f);
-                                dgv_facture_cours.Rows.RemoveAt(GetRowData(dgv_facture_cours, f.Id));
+                                dgv_facture_cours.Rows.RemoveAt(Utils.GetRowData(dgv_facture_cours, f.Id));
                                 break;
                             case Constantes.ETAT_REGLE:
                                 Constantes.Entete.FacturesRegle.Remove(f);
-                                dgv_facture_regle.Rows.RemoveAt(GetRowData(dgv_facture_regle, f.Id));
+                                dgv_facture_regle.Rows.RemoveAt(Utils.GetRowData(dgv_facture_regle, f.Id));
                                 break;
                         }
                         break;
@@ -778,7 +760,7 @@ namespace GESTION_CAISSE.IHM
                     {
                         if (BLL.ContenuBll.Delete(contenu.Id))
                         {
-                            dgv_contenu.Rows.RemoveAt(GetRowData(dgv_contenu, contenu.Id));
+                            dgv_contenu.Rows.RemoveAt(Utils.GetRowData(dgv_contenu, contenu.Id));
                             facture.Contenus.Remove(contenu);
                             Utils.MontantTotalDoc(facture);
                             configFacture(facture);
@@ -844,7 +826,7 @@ namespace GESTION_CAISSE.IHM
                                 {
                                     if (BLL.ContenuBll.Delete(c.Id))
                                     {
-                                        dgv_contenu.Rows.RemoveAt(GetRowData(dgv_contenu, c.Id));
+                                        dgv_contenu.Rows.RemoveAt(Utils.GetRowData(dgv_contenu, c.Id));
                                         facture.Contenus.Remove(c);
                                         Utils.MontantTotalDoc(facture);
                                         configFacture(facture);
@@ -891,7 +873,7 @@ namespace GESTION_CAISSE.IHM
                                 {
                                     if (BLL.FactureBll.Delete(f.Id))
                                     {
-                                        dgv_commande.Rows.RemoveAt(GetRowData(dgv_commande, f.Id));
+                                        dgv_commande.Rows.RemoveAt(Utils.GetRowData(dgv_commande, f.Id));
                                         Constantes.Entete.Commandes.Remove(f);
                                         ResetFicheFacture();
                                         Messages.Succes();
@@ -943,7 +925,7 @@ namespace GESTION_CAISSE.IHM
                                 {
                                     if (BLL.FactureBll.Delete(f.Id))
                                     {
-                                        dgv_facture_cours.Rows.RemoveAt(GetRowData(dgv_facture_cours, f.Id));
+                                        dgv_facture_cours.Rows.RemoveAt(Utils.GetRowData(dgv_facture_cours, f.Id));
                                         Constantes.Entete.FacturesEnCours.Remove(f);
                                         ResetFicheFacture();
                                         Messages.Succes();
@@ -995,7 +977,7 @@ namespace GESTION_CAISSE.IHM
                                 {
                                     if (BLL.FactureBll.Delete(f.Id))
                                     {
-                                        dgv_facture_regle.Rows.RemoveAt(GetRowData(dgv_facture_regle, f.Id));
+                                        dgv_facture_regle.Rows.RemoveAt(Utils.GetRowData(dgv_facture_regle, f.Id));
                                         Constantes.Entete.FacturesRegle.Remove(f);
                                         ResetFicheFacture();
                                         Messages.Succes();
@@ -1047,7 +1029,7 @@ namespace GESTION_CAISSE.IHM
                                 {
                                     if (BLL.FactureBll.Delete(f.Id))
                                     {
-                                        dgv_facture_wait.Rows.RemoveAt(GetRowData(dgv_facture_wait, f.Id));
+                                        dgv_facture_wait.Rows.RemoveAt(Utils.GetRowData(dgv_facture_wait, f.Id));
                                         Constantes.Entete.FacturesEnAttente.Remove(f);
                                         ResetFicheFacture();
                                         Messages.Succes();
@@ -1269,6 +1251,11 @@ namespace GESTION_CAISSE.IHM
                     Messages.Succes();
                 }
             }
+        }
+
+        private void tool_mensualite_Click(object sender, EventArgs e)
+        {
+            new Form_Caisse_Mensualite(this).ShowDialog();
         }
 
     }

@@ -399,5 +399,18 @@ namespace GESTION_CAISSE.TOOLS
             return remise;
         }
 
+        public static int GetRowData(DataGridView data, long id)
+        {
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                long l = (Int64)data.Rows[i].Cells[0].Value;
+                if (l.Equals(id))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
     }
 }
