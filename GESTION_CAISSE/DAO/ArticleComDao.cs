@@ -49,12 +49,52 @@ namespace GESTION_CAISSE.DAO
                 Connexion.Deconnection(con);
             }
         }
+
         public static ArticleCom getOneArticleCom(Article article)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
                 String search = "select * from yvs_com_article where article = " + article.Id + " limit 1";
+                NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
+                NpgsqlDataReader lect = Lcmd.ExecuteReader();
+                ArticleCom a = new ArticleCom();
+                if (lect.HasRows)
+                {
+                    while (lect.Read())
+                    {
+                        a.Id = Convert.ToInt64(lect["id"].ToString());
+                        a.Article = (lect["article"] != null
+                            ? (!lect["article"].ToString().Trim().Equals("")
+                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
+                            : new Article())
+                            : new Article());
+                        a.Designation = a.Article.Designation;
+                        a.RefArt = a.Article.RefArt;
+                        a.CodeBarre = a.Article.CodeBarre;
+                    }
+                    a.Update = true;
+                    lect.Close();
+                }
+                return a;
+            }
+            catch (NpgsqlException e)
+            {
+                Messages.Exception(e);
+                return null;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
+        public static ArticleCom getOneArticleCom(ArticleDepot article)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                String search = "select * from yvs_com_article where article = " + article.Article.Id + " limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 ArticleCom a = new ArticleCom();

@@ -212,6 +212,7 @@ namespace GESTION_CAISSE.IHM
             com_article.ValueMember = "Id";
             com_article.DataSource = new BindingSource(articles, null);
 
+            com_article.AutoCompleteCustomSource.Clear();
             foreach (ENTITE.Article a in articles)
             {
                 if ((a.Designation != null) ? !a.Designation.Trim().Equals("") : false)
@@ -359,6 +360,7 @@ namespace GESTION_CAISSE.IHM
 
         private void ResetFicheFacture()
         {
+            rowFacture = -1;
             facture = new Facture();
             facture.TypeDoc = Constantes.TYPE_FV;
             facture.Statut = Constantes.ETAT_EN_ATTENTE;
@@ -459,7 +461,7 @@ namespace GESTION_CAISSE.IHM
             txt_qte_article.Text = c.Quantite.ToString();
         }
 
-        private void SetCurrentFacture(Facture f)
+        private void UpdateCurrentFacture(Facture f)
         {
             if ((f != null) ? f.Id > 0 : false)
             {
@@ -485,6 +487,39 @@ namespace GESTION_CAISSE.IHM
                             case Constantes.ETAT_REGLE:
                                 Constantes.Entete.FacturesRegle[Constantes.Entete.FacturesRegle.FindIndex(x => x.Id == f.Id)] = f;
                                 UpdateRowFacture(dgv_facture_regle, f);
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void DeleteCurrentFacture(Facture f)
+        {
+            if ((f != null) ? f.Id > 0 : false)
+            {
+                String type = f.TypeDoc;
+                String etat = f.Statut;
+                switch (type)
+                {
+                    case Constantes.TYPE_BCV:
+                        Constantes.Entete.Commandes.Remove(f);
+                        dgv_commande.Rows.RemoveAt(GetRowData(dgv_commande, f.Id));
+                        break;
+                    case Constantes.TYPE_FV:
+                        switch (etat)
+                        {
+                            case Constantes.ETAT_EN_ATTENTE:
+                                Constantes.Entete.FacturesEnAttente.Remove(f);
+                                dgv_facture_wait.Rows.RemoveAt(GetRowData(dgv_facture_wait, f.Id));
+                                break;
+                            case Constantes.ETAT_EN_COURS:
+                                Constantes.Entete.FacturesEnCours.Remove(f);
+                                dgv_facture_cours.Rows.RemoveAt(GetRowData(dgv_facture_cours, f.Id));
+                                break;
+                            case Constantes.ETAT_REGLE:
+                                Constantes.Entete.FacturesRegle.Remove(f);
+                                dgv_facture_regle.Rows.RemoveAt(GetRowData(dgv_facture_regle, f.Id));
                                 break;
                         }
                         break;
@@ -621,10 +656,13 @@ namespace GESTION_CAISSE.IHM
 
         private void btn_deconnect_Click(object sender, EventArgs e)
         {
-            Form_Login l = (Form_Login)F_parent;
-            l.bubble.Visible = false;
-            l.Show();
-            this.Dispose();
+            if (F_parent != null)
+            {
+                Form_Login l = (Form_Login)F_parent;
+                l.bubble.Visible = false;
+                l.Show();
+                this.Dispose();
+            }
         }
 
         private void btn_add_contenu_Click(object sender, EventArgs e)
@@ -663,7 +701,7 @@ namespace GESTION_CAISSE.IHM
                 }
                 Utils.MontantTotalDoc(facture);
                 configFacture(facture);
-                SetCurrentFacture(facture);
+                UpdateCurrentFacture(facture);
                 ResetFicheContenu();
             }
         }
@@ -722,9 +760,67 @@ namespace GESTION_CAISSE.IHM
                     if (new BLL.FactureBll(f).Update())
                     {
                         f.Update = true;
-                        SetCurrentFacture(f);
+                        UpdateCurrentFacture(f);
                         facture.Update = true;
                         Messages.Succes();
+                    }
+                }
+            }
+        }
+
+        private void btn_supp_contenu_Click(object sender, EventArgs e)
+        {
+            if ((facture != null) ? ((facture.Id > 0) ? ((contenu != null) ? contenu.Id > 0 : false) : false) : false)
+            {
+                if (!facture.Statut.Equals(Constantes.ETAT_REGLE))
+                {
+                    if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                    {
+                        if (BLL.ContenuBll.Delete(contenu.Id))
+                        {
+                            dgv_contenu.Rows.RemoveAt(GetRowData(dgv_contenu, contenu.Id));
+                            facture.Contenus.Remove(contenu);
+                            Utils.MontantTotalDoc(facture);
+                            configFacture(facture);
+                            UpdateCurrentFacture(facture);
+
+                            Messages.Succes();
+                        }
+                    }
+                }
+                else
+                {
+                    Messages.ShowErreur("Vous ne pouvez pas supprimer ce contenu. car la facture est déja reglée");
+                }
+            }
+        }
+
+        private void btn_supp_facture_Click(object sender, EventArgs e)
+        {
+            if ((facture != null) ? facture.Id > 0 : false)
+            {
+                if (!facture.Statut.Equals(Constantes.ETAT_REGLE) && facture.Contenus.Count < 1)
+                {
+                    if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                    {
+                        if (BLL.FactureBll.Delete(facture.Id))
+                        {
+                            UpdateCurrentFacture(facture);
+                            ResetFicheFacture();
+                            Messages.Succes();
+                        }
+                    }
+                }
+                else
+                {
+                    if (DialogResult.Yes == Messages.Erreur_Oui_Non("Vous ne pouvez pas supprimer cette facture! La marquer?"))
+                    {
+                        if (BLL.FactureBll.ChangeSupp(facture.Id, true))
+                        {
+                            facture.Supp = true;
+                            UpdateCurrentFacture(facture);
+                            Messages.Succes();
+                        }
                     }
                 }
             }
@@ -752,7 +848,7 @@ namespace GESTION_CAISSE.IHM
                                         facture.Contenus.Remove(c);
                                         Utils.MontantTotalDoc(facture);
                                         configFacture(facture);
-                                        SetCurrentFacture(facture);
+                                        UpdateCurrentFacture(facture);
 
                                         Messages.Succes();
                                     }
@@ -809,7 +905,7 @@ namespace GESTION_CAISSE.IHM
                                     if (BLL.FactureBll.ChangeSupp(f.Id, true))
                                     {
                                         f.Supp = true;
-                                        SetCurrentFacture(f);
+                                        UpdateCurrentFacture(f);
                                         Messages.Succes();
                                     }
                                 }
@@ -861,7 +957,7 @@ namespace GESTION_CAISSE.IHM
                                     if (BLL.FactureBll.ChangeSupp(f.Id, true))
                                     {
                                         f.Supp = true;
-                                        SetCurrentFacture(f);
+                                        UpdateCurrentFacture(f);
                                         Messages.Succes();
                                     }
                                 }
@@ -913,7 +1009,7 @@ namespace GESTION_CAISSE.IHM
                                     if (BLL.FactureBll.ChangeSupp(f.Id, true))
                                     {
                                         f.Supp = true;
-                                        SetCurrentFacture(f);
+                                        UpdateCurrentFacture(f);
                                         Messages.Succes();
                                     }
                                 }
@@ -965,7 +1061,7 @@ namespace GESTION_CAISSE.IHM
                                     if (BLL.FactureBll.ChangeSupp(f.Id, true))
                                     {
                                         f.Supp = true;
-                                        SetCurrentFacture(f);
+                                        UpdateCurrentFacture(f);
                                         Messages.Succes();
                                     }
                                 }
@@ -1044,6 +1140,48 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private void dgv_facture_cours_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_facture_cours.CurrentRow.Cells[1].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_facture_cours.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_facture_cours;
+                    bool supp = (Boolean)((dgv_facture_cours.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_facture_cours.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_facture_regle_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_facture_regle.CurrentRow.Cells[1].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_facture_regle.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_facture_regle;
+                    bool supp = (Boolean)((dgv_facture_regle.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_facture_regle.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_commande_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_commande.CurrentRow.Cells[1].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_commande.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_commande;
+                    bool supp = (Boolean)((dgv_commande.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_commande.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
         private void txt_montantTTC_TextChanged(object sender, EventArgs e)
         {
             txt_montantTTC.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantTTC.Text));
@@ -1084,6 +1222,11 @@ namespace GESTION_CAISSE.IHM
             txt_qte_article.Text = string.Format("{0:#,##0}", double.Parse(txt_qte_article.Text));
         }
 
+        private void lb_nom_agence_TextChanged(object sender, EventArgs e)
+        {
+            lb_nom_agence.Text = lb_nom_agence.Text.ToUpper();
+        }
+
         private void tool_codeClient_Click(object sender, EventArgs e)
         {
             lb_search_client.Text = "Client (Code) :";
@@ -1118,10 +1261,13 @@ namespace GESTION_CAISSE.IHM
 
         private void tool_integre_data_Click(object sender, EventArgs e)
         {
-            if (BLL.FactureBll.ChangeSupp(rowFacture, suppFacture))
+            if (rowFacture > -1)
             {
-                SetCurrentFacture(rowFacture, suppFacture, suppData);
-                Messages.Succes();
+                if (BLL.FactureBll.ChangeSupp(rowFacture, suppFacture))
+                {
+                    SetCurrentFacture(rowFacture, suppFacture, suppData);
+                    Messages.Succes();
+                }
             }
         }
 

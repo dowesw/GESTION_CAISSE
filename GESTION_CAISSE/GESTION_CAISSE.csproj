@@ -229,6 +229,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TOOLS\Chemins.cs" />
     <Compile Include="TOOLS\Connexion.cs" />
     <Compile Include="TOOLS\Constantes.cs" />
@@ -260,14 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -285,8 +285,11 @@
     <Folder Include="IMG\LANG\" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="IMG\ICONES\wizard.png" />
     <None Include="IMG\password.png" />
+=======
+>>>>>>> origin/master
     <None Include="IMG\ICONES\visible_yes.png" />
     <None Include="IMG\ICONES\visible_no.png" />
     <None Include="IMG\tnavigation.png" />
