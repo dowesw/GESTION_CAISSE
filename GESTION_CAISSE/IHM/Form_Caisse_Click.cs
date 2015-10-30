@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GESTION_CAISSE.ENTITE;
+using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.IHM
 {
@@ -530,6 +531,80 @@ namespace GESTION_CAISSE.IHM
         {
             Form_Choix_Client f = new Form_Choix_Client(this);
             f.ShowDialog();
+        }
+
+        private void AddRowFacture(DataGridView data, Facture f)
+        {
+            if (f != null)
+            {
+                data.Rows.Add(new object[] { f.Id, f.NumDoc, f.HeureDoc.ToString("T"), f.Client.Nom_prenom, f.MontantTTC, f.MontantReste, null, f.Supp });
+            }
+        }
+
+        public void setEnteteJour()
+        {
+            DateTime date = Convert.ToDateTime("2015-10-10");
+            Entete e = BLL.EnteteBll.One(Constantes.Creneau, date);
+            if ((e != null) ? e.Id > 0 : false)
+            {
+                Constantes.Entete = e;
+                //Charge facture en attente
+                dgv_facture_wait.Rows.Clear();
+                foreach (Facture f in e.FacturesEnAttente)
+                {
+                    AddRowFacture(dgv_facture_wait, f);
+                }
+
+                //Charge facture en cours
+                dgv_facture_cours.Rows.Clear();
+                foreach (Facture f in e.FacturesEnCours)
+                {
+                    AddRowFacture(dgv_facture_cours, f);
+                }
+
+                //Charge facture regle
+                dgv_facture_regle.Rows.Clear();
+                foreach (Facture f in e.FacturesRegle)
+                {
+                    AddRowFacture(dgv_facture_regle, f);
+                }
+
+                //Charge commande
+                dgv_commande.Rows.Clear();
+                foreach (Facture f in e.Commandes)
+                {
+                    AddRowFacture(dgv_commande, f);
+                }
+            }
+        }
+
+        private void configFacture(Facture f)
+        {
+            if (f != null)
+            {
+                lb_numPiece.Text = f.NumDoc;
+                txt_reference.Text = f.NumPiece;
+                SommeP.Text = f.MontantTTC.ToString();
+                Relicat.Text = f.MontantReste.ToString();
+                txt_montantVerse.Text = f.MontantAvance.ToString();
+                TotalRemz.Text = f.MontantRemise.ToString();
+                SommSR.Text = f.MontantHT.ToString();
+            }
+            else
+            {
+                lb_numPiece.Text = Utils.GenererReference(Constantes.DOC_FACTURE);
+                txt_reference.ResetText();
+                SommeP.Text = "0";
+                Relicat.Text = "0";
+                txt_montantVerse.Text = "0";
+                TotalRemz.Text = "0";
+                SommSR.Text = "0";
+            }
+        }
+
+        private void dgv_facture_wait_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
