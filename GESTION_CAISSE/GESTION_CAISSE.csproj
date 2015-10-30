@@ -285,11 +285,8 @@
     <Folder Include="IMG\LANG\" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <None Include="IMG\ICONES\wizard.png" />
     <None Include="IMG\password.png" />
-=======
->>>>>>> origin/master
     <None Include="IMG\ICONES\visible_yes.png" />
     <None Include="IMG\ICONES\visible_no.png" />
     <None Include="IMG\tnavigation.png" />

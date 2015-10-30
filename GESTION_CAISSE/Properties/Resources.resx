@@ -265,10 +265,11 @@
   <data name="irkickflash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\irkickflash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  
   <data name="browser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\browser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< HEAD
+
   <data name="Basique" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\THEMES\Basique.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -280,7 +281,7 @@
   </data>
   <data name="Classique" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\THEMES\Classique.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-=======
+  </data>
   <data name="visible_no" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\visible_no.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -292,6 +293,5 @@
   </data>
   <data name="tnavigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\tnavigation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
->>>>>>> origin/master
   </data>
 </root>

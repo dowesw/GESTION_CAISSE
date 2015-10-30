@@ -48,7 +48,10 @@ namespace GESTION_CAISSE.IHM
         private void VALIDER(object sender, EventArgs e)
         {
             Form_Caisse_Click f = (Form_Caisse_Click)fParent;
-            f.contenu.Quantite = Convert.ToDouble(textBox1.Text);
+            if (!textBox1.Text.Equals(""))
+                f.contenu.Quantite = Convert.ToDouble(textBox1.Text);
+            else
+                f.contenu.Quantite = 0;
             this.Close();
         }
 

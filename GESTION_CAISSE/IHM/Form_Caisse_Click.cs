@@ -15,7 +15,7 @@ namespace GESTION_CAISSE.IHM
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel
             .ComponentResourceManager(typeof(Form_Caisse_Click));
-       
+
         List<FamilleArticle> familles;
         List<FamilleArticle> famillesCrits;
         List<Article> articles;
@@ -29,40 +29,50 @@ namespace GESTION_CAISSE.IHM
         Depot dpt;
         int indTabF;
         int indTabA;
-       
-        FamilleArticle currentFamille= new FamilleArticle();
+        public bool archive;
+
         public double remboursement;
         public double apayer;
         public Client clientZero;
         public Contenu contenu;
         public Article articleGen;
+        Facture fact;
 
-        
+
 
         public Form_Caisse_Click()
-        {   
+        {
             InitializeComponent();
-           
-            indTabF = 0; indTabA = 0;
-            
             familles = new List<FamilleArticle>();
             //charger famillesa articles
             familles.Clear();
-            familles = BLL.FamilleArticleBll.Liste_("select * from yvs_base_famille_article");
+            //familles = BLL.FamilleArticleBll.Liste_("select * from yvs_base_famille_article");
+            familles = prodListFamille();
             famillesCrits = new List<FamilleArticle>();
             articlesCrits = new List<Article>();
             articles = new List<Article>();
             clients = new List<Client>();
-            clientZero = BLL.ClientBll.Default();
+           
             contenu = new Contenu();
-            Timer bg = new Timer();
-            bg.Tick += (s, e) => { label2.Text = DateTime.Now.ToString("U"); };
-            bg.Interval = 500;
-            bg.Start();
+           
+            ConfigForm();
 
-            InitInfoClient();
+            // tout réinitialiser
+            archive = true;
+            btnReglement.Enabled = false;
             
+            panel4.Enabled = false;
+            //picClient.Enabled = false;
+            btnEnregistrer.Enabled = false;
+            SearchDirectionF(2);
 
+        }
+
+        public void ConfigForm()
+        {
+            clientZero = BLL.ClientBll.Default();
+            dpt = TOOLS.Constantes.Creneau.Depot;
+            indTabF = 0; indTabA = 0;
             // création de la liste des boutons famille
             buttonFs = new List<Button> { button7, button8, button9, button10, button11, button12, button13, button14 };
             // création de la liste des labels famille
@@ -72,14 +82,24 @@ namespace GESTION_CAISSE.IHM
             buttonAs = new List<Button> { button15, button16, button17, button18, button19, button20, button21, button22 };
             // création de la liste des labels article
             labelAs = new List<Label> { label18, label20, label21, label22, label23, label24, label25, label26 };
-
-            InitButton(buttonAs, labelAs);
             InitButton(buttonFs, labelFs);
-            SearchDirectionF(2);
-
-           
+            InitButton(buttonAs, labelAs);
+            initZonePrix();
+            InitInfoClient();
+            Timer bg = new Timer();
+            bg.Tick += (s, e) => { label2.Text = DateTime.Now.ToString("U"); };
+            bg.Interval = 500;
+            bg.Start();
         }
 
+        public void initZonePrix()
+        {
+            SommSR.Text = "0";
+            SommeP.Text = "0";
+            Relicat.Text = "0";
+            TotalRemz.Text = "0";
+        }
+        
         public void InitInfoClient()
         {
             // initialisation deslabels pour le client
@@ -114,26 +134,60 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private List<FamilleArticle> prodListFamille(int id)
+        private List<FamilleArticle> prodListFamille()
         {
-            List<FamilleArticle> list = new List<FamilleArticle>();
+            FamilleArticle Dflt = new FamilleArticle(0);
+            Dflt.Description = "Articles sans réel famille";
+            Dflt.Designation = "Autres";
+            List<FamilleArticle> listInter = new List<FamilleArticle> { Dflt };
 
-            List<Article> articleDepot =new List<Article>();
+            List<Article> articless = new List<Article>();
+            dpt = TOOLS.Constantes.Creneau.Depot;
+
             foreach (ArticleDepot arDpt in dpt.Articles)
             {
-                articleDepot.Add(arDpt.Article);
+                articless.Add(arDpt.Article);
             }
 
-            foreach (Article arT in articleDepot)
+            foreach (Article arT in articless)
             {
-                String rqt = "Select famille from yvs_articles where id = " + arT.Id; 
-            }
-            return list;
-        }
+                //if (arT.Famille.Id < 1)
+                //{ 
+                //    arT.Famille = Dflt; Dflt.Articles.Add(arT);
+                //}
+                if (arT.Famille.Id > 0)
+                {
+                    if (!listInter.Contains(arT.Famille))
+                    {
+                        FamilleArticle f = BLL.FamilleArticleBll.One_(arT.Famille.Id);
+                        f.Articles.Add(arT);
+                        listInter.Add(f);
+                        //listInter.Add(arT.Famille);
+                    }
+                    else
+                    {
+                        FamilleArticle f = listInter.Find(x => x.Id == arT.Famille.Id);
+                        f.Articles.Add(arT);
+                        listInter[listInter.FindIndex(x => x.Id == f.Id)] = f;
+                    }
+                }
+                else
+                {
+                    FamilleArticle f = listInter.Find(x => x.Id == Dflt.Id);
+                    f.Articles.Add(arT);
+                    listInter[listInter.FindIndex(x => x.Id == f.Id)] = f;
+                }
 
+                //arT.Famille.Id;
+                //BLL.FamilleArticleBll.One();
+                //list.Add();
+            }
+            return listInter;
+        }
         //modification des boutons des familles
         private void ModifButton(Button ctl, FamilleArticle cli, Label lbl)
         {
+
             //cli = (FamilleArticle)familles.ElementAt<FamilleArticle>(indTabF);
 
             //if (cli.Tiers.Logo.Trim().Equals("") || cli.Tiers.Logo == null)
@@ -151,16 +205,33 @@ namespace GESTION_CAISSE.IHM
             ctl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             ctl.UseVisualStyleBackColor = true;
             ctl.Visible = true;
-            //ctl.Size = new System.Drawing.Size(159, 170);
             ctl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold,
                 System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ctl.Click += delegate(object sender, EventArgs e)
             {
+                ctl.BackColor = Color.DarkGray;
                 indTabA = 0;
                 articles.Clear();
-                articles = BLL.ArticleBll.Liste("select * from yvs_articles where famille= " + cli.Id);
+                articles.AddRange(cli.Articles);
                 SearchDirectionA(2);
+                ctl.Enabled = false;
+                foreach (Button btn in buttonFs)
+                {
+                    if (btn != ctl)
+                    {
+                        btn.Enabled = true;
+                    }
+                }
+
+                foreach (Button btn in buttonAs)
+                {
+                    if (btn != ctl)
+                    {
+                        btn.Enabled = true;
+                    }
+                }
             };
+
             lbl.Visible = true;
             lbl.Text = cli.Designation;
         }
@@ -170,11 +241,11 @@ namespace GESTION_CAISSE.IHM
         {
             //cli = (Article)articles.ElementAt<Article>(indTabA);
 
-            if ((cli.Photos!=null)? 
-                    ((cli.Photos.Count>0)?
-                        ((cli.Photos[0]!=null)?cli.Photos[0].Trim().Equals(""):true)
-                    :true)
-                :true)
+            if ((cli.Photos != null) ?
+                    ((cli.Photos.Count > 0) ?
+                        ((cli.Photos[0] != null) ? cli.Photos[0].Trim().Equals("") : true)
+                    : true)
+                : true)
             {
                 ctl.BackgroundImage = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
             }
@@ -196,10 +267,20 @@ namespace GESTION_CAISSE.IHM
                 contenu.Article = BLL.ArticleComBll.One(cli);
                 Form_Caisse_Quantite f = new Form_Caisse_Quantite(this);
                 f.ShowDialog();
-               
-                dataGridView1.Rows.Add(new object[] { contenu.Id, contenu.Article.Article.Designation,
-                    contenu.Prix, contenu.Quantite, contenu.PrixTotal, null });
-            
+                TOOLS.Utils.TotalRRRContenuDoc(fact, contenu);
+                contenu.PrixTotal = contenu.Quantite * contenu.Article.Article.Prix;
+                if (contenu.Quantite != 0)
+                {
+                    dataGridView1.Rows.Add(new object[] { contenu.Id, contenu.Article.Article.Designation,
+                    contenu.Article.Article.Prix, contenu.Remise, contenu.Quantite, contenu.PrixTotal, null });
+
+                    SommSR.Text = Convert.ToString(Convert.ToDouble(SommSR.Text) + contenu.PrixTotal);
+
+                    //sauvegarde nouveau contenu
+                }
+                ctl.BackColor = Color.DarkGray;
+                ctl.Enabled = false;
+                btnReglement.Enabled = true;
             };
             lbl.Visible = true;
             lbl.Text = cli.Designation;
@@ -293,7 +374,7 @@ namespace GESTION_CAISSE.IHM
             List<Article> listRetour = new List<Article>();
             if (sens == 2)
             {
-               
+
                 for (int i = 0; i < 8; i++)
                 {
 
@@ -397,18 +478,6 @@ namespace GESTION_CAISSE.IHM
             dataGridView1.Rows.Add(row);
         }
 
-        private int AjoutQteArt()
-        {
-            return 34;
-        }
-
-
-        private void LoadAllClient()
-        {
-            clients.Clear();
-            clients = BLL.ClientBll.Liste("select * from yvs_com_client");
-        }
-
         private void Regler(object sender, EventArgs e)
         {
             Form_Caisse_Reglement f = new Form_Caisse_Reglement(this);
@@ -417,19 +486,23 @@ namespace GESTION_CAISSE.IHM
 
         private void NvoTicket_Click(object sender, EventArgs e)
         {
-            TotalRemz.Text = "0";
-            SommeP.Text = "0";
-            SommSR.Text = "0";
-            TotalRemz.Text = "0";
-            Relicat.Text = "0";
+            if (archive)
+            {
+                InitButton(buttonAs, labelAs);
+                initZonePrix();
+                clientZero = BLL.ClientBll.Default();
+                dataGridView1.Rows.Clear();
+                panel4.Enabled = true;
+                picClient.Enabled = true;
+                btnEnregistrer.Enabled = true;
+                archive = false;
+                fact = new Facture();
+            }
+            else
+            {
 
-            clientZero = BLL.ClientBll.Default();
-            dataGridView1.Rows.Clear();
-        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
+            }
         }
 
         private void picClient_Click(object sender, EventArgs e)
@@ -438,14 +511,25 @@ namespace GESTION_CAISSE.IHM
             f.ShowDialog();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-
+            //sauvegarde nouvelle facture
+            Facture fa = new Facture();
+            fa.Categorie = new CategorieComptable();
+            fa.Client = clientZero;
+            fa.DocumentLie = new Facture();
+            fa.Entete = new Entete();
+            fa.HeureDoc = DateTime.Now;
+            //fa.MontantAvance = new CategorieComptable();
+            //fact.NumDoc = TOOLS.Utils.GenererReference(TOOLS.Constantes.DOC_FACTURE);
+            Facture f = new BLL.FactureBll(fact).Insert();
+            fact.Id = f.Id;
         }
 
-        private void Form_Caisse_Click_Load(object sender, EventArgs e)
+        private void picClient_Click_1(object sender, EventArgs e)
         {
-            dpt = TOOLS.Constantes.Creneau.Depot;
+            Form_Choix_Client f = new Form_Choix_Client(this);
+            f.ShowDialog();
         }
     }
 }
