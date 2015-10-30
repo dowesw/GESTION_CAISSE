@@ -88,6 +88,7 @@ namespace GESTION_CAISSE.DAO
                 Connexion.Deconnection(con);
             }
         }
+
         public static ArticleCom getOneArticleCom(ArticleDepot article)
         {
             NpgsqlConnection con = Connexion.Connection();

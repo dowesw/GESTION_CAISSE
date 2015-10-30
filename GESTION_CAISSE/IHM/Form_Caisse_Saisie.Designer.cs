@@ -177,6 +177,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
             this.btn_supp_contenu = new System.Windows.Forms.Button();
+            this.btn_supp_facture = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -353,24 +354,30 @@
             // btn_theme
             // 
             this.btn_theme.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_theme.ForeColor = System.Drawing.Color.Transparent;
             this.btn_theme.Image = global::GESTION_CAISSE.Properties.Resources.klines;
             this.btn_theme.Location = new System.Drawing.Point(989, 40);
             this.btn_theme.Name = "btn_theme";
             this.btn_theme.Size = new System.Drawing.Size(37, 28);
             this.btn_theme.TabIndex = 0;
             this.btn_theme.Tag = "Changer Thème";
+            this.btn_theme.Text = "&L";
+            this.btn_theme.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btn_theme.UseVisualStyleBackColor = true;
             this.btn_theme.Click += new System.EventHandler(this.btn_theme_Click);
             // 
             // btn_deconnect
             // 
             this.btn_deconnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_deconnect.ForeColor = System.Drawing.Color.Transparent;
             this.btn_deconnect.Image = global::GESTION_CAISSE.Properties.Resources.exit;
             this.btn_deconnect.Location = new System.Drawing.Point(989, 9);
             this.btn_deconnect.Name = "btn_deconnect";
             this.btn_deconnect.Size = new System.Drawing.Size(37, 28);
             this.btn_deconnect.TabIndex = 0;
-            this.btn_deconnect.Tag = "Déconnection";
+            this.btn_deconnect.Tag = "&Déconnection";
+            this.btn_deconnect.Text = "&D";
+            this.btn_deconnect.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btn_deconnect.UseVisualStyleBackColor = true;
             this.btn_deconnect.Click += new System.EventHandler(this.btn_deconnect_Click);
             // 
@@ -1149,12 +1156,14 @@
             // 
             // btn_add_contenu
             // 
-            this.btn_add_contenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add_contenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add_contenu.ForeColor = System.Drawing.Color.Transparent;
             this.btn_add_contenu.Image = global::GESTION_CAISSE.Properties.Resources.build;
             this.btn_add_contenu.Location = new System.Drawing.Point(635, 11);
             this.btn_add_contenu.Name = "btn_add_contenu";
             this.btn_add_contenu.Size = new System.Drawing.Size(29, 23);
             this.btn_add_contenu.TabIndex = 2;
+            this.btn_add_contenu.Text = "&A";
             this.btn_add_contenu.UseVisualStyleBackColor = true;
             this.btn_add_contenu.Click += new System.EventHandler(this.btn_add_contenu_Click);
             // 
@@ -1200,7 +1209,7 @@
             this.btn_reglement.Name = "btn_reglement";
             this.btn_reglement.Size = new System.Drawing.Size(101, 23);
             this.btn_reglement.TabIndex = 4;
-            this.btn_reglement.Text = "Encaisser";
+            this.btn_reglement.Text = "&Encaisser";
             this.btn_reglement.UseVisualStyleBackColor = true;
             // 
             // btn_ticket
@@ -1211,7 +1220,7 @@
             this.btn_ticket.Name = "btn_ticket";
             this.btn_ticket.Size = new System.Drawing.Size(100, 23);
             this.btn_ticket.TabIndex = 4;
-            this.btn_ticket.Text = "Ticket";
+            this.btn_ticket.Text = "&Ticket";
             this.btn_ticket.UseVisualStyleBackColor = true;
             // 
             // btn_regl_tick
@@ -1222,7 +1231,7 @@
             this.btn_regl_tick.Name = "btn_regl_tick";
             this.btn_regl_tick.Size = new System.Drawing.Size(107, 23);
             this.btn_regl_tick.TabIndex = 4;
-            this.btn_regl_tick.Text = "Enc. + Tick";
+            this.btn_regl_tick.Text = "Enc. + Ti&ck";
             this.btn_regl_tick.UseVisualStyleBackColor = true;
             // 
             // com_mode
@@ -1359,7 +1368,7 @@
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(101, 23);
             this.btn_cancel.TabIndex = 0;
-            this.btn_cancel.Text = "Nouveau";
+            this.btn_cancel.Text = "&Nouveau";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
@@ -1372,7 +1381,7 @@
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(112, 23);
             this.btn_save.TabIndex = 0;
-            this.btn_save.Text = "Enregistrer";
+            this.btn_save.Text = "Enregi&strer";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
@@ -1399,7 +1408,7 @@
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(95, 23);
             this.btn_print.TabIndex = 0;
-            this.btn_print.Text = "Imprimer";
+            this.btn_print.Text = "&Imprimer";
             this.btn_print.UseVisualStyleBackColor = true;
             // 
             // lb_date
@@ -1550,8 +1559,21 @@
             this.btn_supp_contenu.Name = "btn_supp_contenu";
             this.btn_supp_contenu.Size = new System.Drawing.Size(10, 10);
             this.btn_supp_contenu.TabIndex = 14;
+            this.btn_supp_contenu.Text = "&X";
             this.btn_supp_contenu.UseVisualStyleBackColor = true;
             this.btn_supp_contenu.Visible = false;
+            this.btn_supp_contenu.Click += new System.EventHandler(this.btn_supp_contenu_Click);
+            // 
+            // btn_supp_facture
+            // 
+            this.btn_supp_facture.Location = new System.Drawing.Point(12, -1);
+            this.btn_supp_facture.Name = "btn_supp_facture";
+            this.btn_supp_facture.Size = new System.Drawing.Size(10, 10);
+            this.btn_supp_facture.TabIndex = 14;
+            this.btn_supp_facture.Text = "&W";
+            this.btn_supp_facture.UseVisualStyleBackColor = true;
+            this.btn_supp_facture.Visible = false;
+            this.btn_supp_facture.Click += new System.EventHandler(this.btn_supp_facture_Click);
             // 
             // Form_Caisse_Saisie
             // 
@@ -1560,6 +1582,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1056, 817);
+            this.Controls.Add(this.btn_supp_facture);
             this.Controls.Add(this.btn_supp_contenu);
             this.Controls.Add(this.lb_numPiece);
             this.Controls.Add(this.label7);
@@ -1754,6 +1777,7 @@
         private System.Windows.Forms.ContextMenuStrip context_data;
         private System.Windows.Forms.ToolStripMenuItem tool_integre_data;
         private System.Windows.Forms.Button btn_supp_contenu;
+        private System.Windows.Forms.Button btn_supp_facture;
     }
 }
 
