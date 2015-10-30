@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Relicat = new System.Windows.Forms.Label();
             this.SommeP = new System.Windows.Forms.Label();
@@ -74,25 +74,25 @@
             this.hScrollBar2 = new System.Windows.Forms.HScrollBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
-            this.button18 = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.button20 = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pgDroiteA = new System.Windows.Forms.Button();
             this.pgGaucheA = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -633,6 +633,72 @@
             this.panel6.Size = new System.Drawing.Size(682, 233);
             this.panel6.TabIndex = 3;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(11, 66);
+            this.label18.MaximumSize = new System.Drawing.Size(130, 50);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(116, 50);
+            this.label18.TabIndex = 44;
+            this.label18.Text = "tuyau de la bota de castagne perlado eminado";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(9, 181);
+            this.label20.MaximumSize = new System.Drawing.Size(130, 50);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(116, 50);
+            this.label20.TabIndex = 45;
+            this.label20.Text = "tuyau de la bota de castagne perlado eminado";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(164, 66);
+            this.label21.MaximumSize = new System.Drawing.Size(130, 50);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(116, 50);
+            this.label21.TabIndex = 46;
+            this.label21.Text = "tuyau de la bota de castagne perlado eminado";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(162, 181);
+            this.label22.MaximumSize = new System.Drawing.Size(130, 50);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(116, 50);
+            this.label22.TabIndex = 47;
+            this.label22.Text = "tuyau de la bota de castagne perlado eminado";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(313, 181);
+            this.label24.MaximumSize = new System.Drawing.Size(130, 50);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(116, 50);
+            this.label24.TabIndex = 49;
+            this.label24.Text = "tuyau de la bota de castagne perlado eminado";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(315, 66);
+            this.label23.MaximumSize = new System.Drawing.Size(130, 50);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(116, 50);
+            this.label23.TabIndex = 48;
+            this.label23.Text = "tuyau de la bota de castagne perlado eminado";
+            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -654,144 +720,6 @@
             this.label25.Size = new System.Drawing.Size(116, 50);
             this.label25.TabIndex = 50;
             this.label25.Text = "tuyau de la bota de castagne perlado eminado";
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(302, 0);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(145, 116);
-            this.button19.TabIndex = 40;
-            this.button19.Text = "button19";
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(313, 181);
-            this.label24.MaximumSize = new System.Drawing.Size(130, 50);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(116, 50);
-            this.label24.TabIndex = 49;
-            this.label24.Text = "tuyau de la bota de castagne perlado eminado";
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(0, 0);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(145, 116);
-            this.button15.TabIndex = 36;
-            this.button15.Text = "button15";
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(315, 66);
-            this.label23.MaximumSize = new System.Drawing.Size(130, 50);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(116, 50);
-            this.label23.TabIndex = 48;
-            this.label23.Text = "tuyau de la bota de castagne perlado eminado";
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(0, 119);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(145, 116);
-            this.button16.TabIndex = 37;
-            this.button16.Text = "button16";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(162, 181);
-            this.label22.MaximumSize = new System.Drawing.Size(130, 50);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(116, 50);
-            this.label22.TabIndex = 47;
-            this.label22.Text = "tuyau de la bota de castagne perlado eminado";
-            // 
-            // button17
-            // 
-            this.button17.Location = new System.Drawing.Point(151, 0);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(145, 116);
-            this.button17.TabIndex = 38;
-            this.button17.Text = "button17";
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(164, 66);
-            this.label21.MaximumSize = new System.Drawing.Size(130, 50);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(116, 50);
-            this.label21.TabIndex = 46;
-            this.label21.Text = "tuyau de la bota de castagne perlado eminado";
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(151, 119);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(145, 116);
-            this.button18.TabIndex = 39;
-            this.button18.Text = "button18";
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(9, 181);
-            this.label20.MaximumSize = new System.Drawing.Size(130, 50);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(116, 50);
-            this.label20.TabIndex = 45;
-            this.label20.Text = "tuyau de la bota de castagne perlado eminado";
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(302, 118);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(145, 116);
-            this.button20.TabIndex = 41;
-            this.button20.Text = "button20";
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(11, 66);
-            this.label18.MaximumSize = new System.Drawing.Size(130, 50);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(116, 50);
-            this.label18.TabIndex = 44;
-            this.label18.Text = "tuyau de la bota de castagne perlado eminado";
-            // 
-            // button21
-            // 
-            this.button21.Location = new System.Drawing.Point(453, 0);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(145, 116);
-            this.button21.TabIndex = 42;
-            this.button21.Text = "button21";
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // button22
-            // 
-            this.button22.Location = new System.Drawing.Point(453, 118);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(145, 116);
-            this.button22.TabIndex = 43;
-            this.button22.Text = "button22";
-            this.button22.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -823,6 +751,78 @@
             this.pgGaucheA.TabIndex = 0;
             this.pgGaucheA.UseVisualStyleBackColor = true;
             this.pgGaucheA.Click += new System.EventHandler(this.pgGaucheA_Click);
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(453, 0);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(145, 116);
+            this.button21.TabIndex = 42;
+            this.button21.Text = "button21";
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(453, 118);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(145, 116);
+            this.button22.TabIndex = 43;
+            this.button22.Text = "button22";
+            this.button22.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(302, 0);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(145, 116);
+            this.button19.TabIndex = 40;
+            this.button19.Text = "button19";
+            this.button19.UseVisualStyleBackColor = true;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(302, 118);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(145, 116);
+            this.button20.TabIndex = 41;
+            this.button20.Text = "button20";
+            this.button20.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(151, 119);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(145, 116);
+            this.button18.TabIndex = 39;
+            this.button18.Text = "button18";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(151, 0);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(145, 116);
+            this.button17.TabIndex = 38;
+            this.button17.Text = "button17";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(0, 119);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(145, 116);
+            this.button16.TabIndex = 37;
+            this.button16.Text = "button16";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(0, 0);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(145, 116);
+            this.button15.TabIndex = 36;
+            this.button15.Text = "button15";
+            this.button15.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -904,10 +904,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle3.NullValue = "X";
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle1.NullValue = "X";
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column7.HeaderText = "";
             this.Column7.LinkColor = System.Drawing.Color.Red;
             this.Column7.Name = "Column7";
@@ -1139,7 +1139,9 @@
             this.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_Caisse_Click";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form_Caisse_Click_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1195,7 +1197,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label TotalRemz;
         private System.Windows.Forms.Label SommSR;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnReglement;
         private System.Windows.Forms.Button NvoTicket;
@@ -1258,6 +1259,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button22;
+        public System.Windows.Forms.DataGridView dataGridView1;
 
 
     }

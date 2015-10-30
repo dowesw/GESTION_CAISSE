@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace GESTION_CAISSE.ENTITE
 {
-    class Article
+    public class Article
     {
         public Article()
         {

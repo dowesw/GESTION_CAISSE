@@ -195,26 +195,7 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private void modifBtns(int direction)
-        {
-            Client cli;
-            foreach (Button ctl in buttons)
-            {
-                if ((indTab >= 0) && (indTab < clients.Count))
-                {
-
-
-                }
-                else
-                {
-                    ctl.Visible = false;
-                }
-
-                if (direction == 1) { indTab++; } else { indTab--; }
-            }
-
-        }
-
+       
         private void DroiteClick(object sender, EventArgs e)
         {
             SearchDirection(2);
@@ -276,6 +257,21 @@ namespace GESTION_CAISSE.IHM
             SearchDirection(2);
             Console.WriteLine(textBox1.Text);
             var tt = clientCrits.Count;
+        }
+
+        private void button67_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button60_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_Choix_Client_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

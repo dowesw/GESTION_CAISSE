@@ -234,6 +234,9 @@
     <Compile Include="TOOLS\Constantes.cs" />
     <Compile Include="TOOLS\Messages.cs" />
     <Compile Include="TOOLS\Utils.cs" />
+    <EmbeddedResource Include="IHM\Form_Caisse_Quantite.resx">
+      <DependentUpon>Form_Caisse_Quantite.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IHM\Form_Caisse_Reglement.resx">
       <DependentUpon>Form_Caisse_Reglement.cs</DependentUpon>
     </EmbeddedResource>

@@ -32,7 +32,8 @@ namespace GESTION_CAISSE.IHM
         public double remboursement;
         public double apayer;
         public Client clientZero;
-
+        public Contenu contenu;
+        public Article articleGen;
         
 
         public Form_Caisse_Click()
@@ -50,6 +51,7 @@ namespace GESTION_CAISSE.IHM
             articles = new List<Article>();
             clients = new List<Client>();
             clientZero = BLL.ClientBll.Default();
+            contenu = new Contenu();
             Timer bg = new Timer();
             bg.Tick += (s, e) => { label2.Text = DateTime.Now.ToString("U"); };
             bg.Interval = 500;
@@ -171,7 +173,13 @@ namespace GESTION_CAISSE.IHM
                 System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ctl.Click += delegate(object sender, EventArgs e)
             {
+                contenu.Article = BLL.ArticleComBll.One(cli);
+                Form_Caisse_Quantite f = new Form_Caisse_Quantite(this);
+                f.ShowDialog();
                
+                dataGridView1.Rows.Add(new object[] { contenu.Id, contenu.Article.Article.Designation,
+                    contenu.Prix, contenu.Quantite, contenu.PrixTotal, null });
+            
             };
             lbl.Visible = true;
             lbl.Text = cli.Designation;
@@ -265,9 +273,9 @@ namespace GESTION_CAISSE.IHM
             List<Article> listRetour = new List<Article>();
             if (sens == 2)
             {
+               
                 for (int i = 0; i < 8; i++)
                 {
-                   
 
                     if ((indActu >= 0) && (indActu < list.Count))
                     {
@@ -277,37 +285,37 @@ namespace GESTION_CAISSE.IHM
 
                     if (indActu == list.Count)
                     {
-                        if ((indActu == list.Count - 1) || (list.Count == 0)) pgDroiteA.Enabled = false;
-                        else pgDroiteA.Enabled = true;
-                        if (indActu < 8) pgGaucheA.Enabled = false;
-                        else pgGaucheA.Enabled = true;
                         indActu--;
                         return listRetour;
                     }
+                    if ((indActu == list.Count - 1) || (list.Count == 0)) pgDroiteA.Enabled = false;
+                    else pgDroiteA.Enabled = true;
+                    if (indActu < 8) pgGaucheA.Enabled = false;
+                    else pgGaucheA.Enabled = true;
                 }
             }
 
             if (sens == 1)
             {
-                indActu-=7;
+                if ((indActu % 8) != 0) indActu -= (indActu % 8); indActu--;
                 for (int i = 0; i < 8; i++)
                 {
 
                     if ((indActu >= 0) && (indActu < list.Count))
                     {
                         listRetour.Add(list.ElementAt<Article>(indActu));
-                        indActu++;
+                        indActu--;
                     }
 
                     if (indActu <= -1)
                     {
-                        if (indActu == list.Count - 1) pgDroiteA.Enabled = false;
-                        else pgDroiteA.Enabled = true;
-                        if (indActu < 8) pgGaucheA.Enabled = false;
-                        else pgGaucheA.Enabled = true;
                         indActu++;
                         return listRetour;
                     }
+                    if (indActu == list.Count - 1) pgDroiteA.Enabled = false;
+                    else pgDroiteA.Enabled = true;
+                    if (indActu < 8) pgGaucheA.Enabled = false;
+                    else pgGaucheA.Enabled = true;
                 }
             }
             return listRetour;
@@ -413,6 +421,11 @@ namespace GESTION_CAISSE.IHM
         private void button7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form_Caisse_Click_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }
