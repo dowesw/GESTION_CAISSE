@@ -31,7 +31,11 @@ namespace GESTION_CAISSE.IHM
             {
                 btn.Click += delegate(object senderc, EventArgs ec)
                 {
-                    this.textBox1.Text += btn.Text;
+                    if (textBox1.Text.Equals("") && btn.Text.Equals("0"))
+                    {
+                        
+                    }
+                    else { this.textBox1.Text += btn.Text; }
                 };
             }
         }
@@ -52,6 +56,6 @@ namespace GESTION_CAISSE.IHM
         {
             textBox1.Text = "";
         }
-       
+
     }
 }

@@ -338,7 +338,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::GESTION_CAISSE.Properties.Resources.user_m1;
+            this.pictureBox1.Image = global::GESTION_CAISSE.Properties.Resources.user_m;
             this.pictureBox1.Location = new System.Drawing.Point(7, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
@@ -1022,7 +1022,7 @@
             // 
             // picClient
             // 
-            this.picClient.Image = global::GESTION_CAISSE.Properties.Resources.user_m1;
+            this.picClient.Image = global::GESTION_CAISSE.Properties.Resources.user_m;
             this.picClient.Location = new System.Drawing.Point(178, 21);
             this.picClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.picClient.Name = "picClient";

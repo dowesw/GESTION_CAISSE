@@ -25,6 +25,8 @@ namespace GESTION_CAISSE.IHM
         List<Label> labelAs;
         List<Button> buttonFs;
         List<Label> labelFs;
+
+        Depot dpt;
         int indTabF;
         int indTabA;
        
@@ -34,6 +36,7 @@ namespace GESTION_CAISSE.IHM
         public Client clientZero;
         public Contenu contenu;
         public Article articleGen;
+
         
 
         public Form_Caisse_Click()
@@ -109,6 +112,23 @@ namespace GESTION_CAISSE.IHM
                 lblL.Visible = false;
 
             }
+        }
+
+        private List<FamilleArticle> prodListFamille(int id)
+        {
+            List<FamilleArticle> list = new List<FamilleArticle>();
+
+            List<Article> articleDepot =new List<Article>();
+            foreach (ArticleDepot arDpt in dpt.Articles)
+            {
+                articleDepot.Add(arDpt.Article);
+            }
+
+            foreach (Article arT in articleDepot)
+            {
+                String rqt = "Select famille from yvs_articles where id = " + arT.Id; 
+            }
+            return list;
         }
 
         //modification des boutons des familles
@@ -425,7 +445,7 @@ namespace GESTION_CAISSE.IHM
 
         private void Form_Caisse_Click_Load(object sender, EventArgs e)
         {
-           
+            dpt = TOOLS.Constantes.Creneau.Depot;
         }
     }
 }
