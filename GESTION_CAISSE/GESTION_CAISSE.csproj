@@ -294,6 +294,8 @@
     <Folder Include="IMG\LANG\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="IMG\ICONES\wizard.png" />
+    <None Include="IMG\password.png" />
     <None Include="IMG\ICONES\visible_yes.png" />
     <None Include="IMG\ICONES\visible_no.png" />
     <None Include="IMG\tnavigation.png" />
@@ -320,10 +322,17 @@
     <None Include="IMG\ICONES\btn_print.png" />
     <None Include="IMG\ICONES\btn_sauvegarde.png" />
     <None Include="IMG\ICONES\btn_annuler.png" />
+    <None Include="IMG\ICONES\btn_actualiser.png" />
+    <None Include="IMG\ICONES\btn_ajouter.png" />
+    <None Include="IMG\ICONES\btn_cherche.png" />
+    <None Include="IMG\ICONES\btn_rechercher.png" />
+    <None Include="IMG\ICONES\btn_supprimer.png" />
     <Content Include="IMG\ICONES\cnr-not_connected.png" />
     <None Include="IMG\ICONES\edit_add.png" />
     <None Include="IMG\ICONES\compfile.png" />
     <None Include="IMG\ICONES\edit.png" />
+    <None Include="IMG\ICONES\configure.png" />
+    <None Include="IMG\ICONES\contents.png" />
     <Content Include="IMG\ICONES\edit_user.png" />
     <Content Include="IMG\ICONES\endturn.png" />
     <Content Include="IMG\ICONES\exit.png" />

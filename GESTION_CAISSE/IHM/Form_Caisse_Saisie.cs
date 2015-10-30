@@ -750,62 +750,9 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private void btn_supp_contenu_Click(object sender, EventArgs e)
+        private void btn_reglement_Click(object sender, EventArgs e)
         {
-            if ((facture != null) ? ((facture.Id > 0) ? ((contenu != null) ? contenu.Id > 0 : false) : false) : false)
-            {
-                if (!facture.Statut.Equals(Constantes.ETAT_REGLE))
-                {
-                    if (DialogResult.Yes == Messages.Confirmation("supprimer"))
-                    {
-                        if (BLL.ContenuBll.Delete(contenu.Id))
-                        {
-                            dgv_contenu.Rows.RemoveAt(Utils.GetRowData(dgv_contenu, contenu.Id));
-                            facture.Contenus.Remove(contenu);
-                            Utils.MontantTotalDoc(facture);
-                            configFacture(facture);
-                            UpdateCurrentFacture(facture);
 
-                            Messages.Succes();
-                        }
-                    }
-                }
-                else
-                {
-                    Messages.ShowErreur("Vous ne pouvez pas supprimer ce contenu. car la facture est déja reglée");
-                }
-            }
-        }
-
-        private void btn_supp_facture_Click(object sender, EventArgs e)
-        {
-            if ((facture != null) ? facture.Id > 0 : false)
-            {
-                if (!facture.Statut.Equals(Constantes.ETAT_REGLE) && facture.Contenus.Count < 1)
-                {
-                    if (DialogResult.Yes == Messages.Confirmation("supprimer"))
-                    {
-                        if (BLL.FactureBll.Delete(facture.Id))
-                        {
-                            UpdateCurrentFacture(facture);
-                            ResetFicheFacture();
-                            Messages.Succes();
-                        }
-                    }
-                }
-                else
-                {
-                    if (DialogResult.Yes == Messages.Erreur_Oui_Non("Vous ne pouvez pas supprimer cette facture! La marquer?"))
-                    {
-                        if (BLL.FactureBll.ChangeSupp(facture.Id, true))
-                        {
-                            facture.Supp = true;
-                            UpdateCurrentFacture(facture);
-                            Messages.Succes();
-                        }
-                    }
-                }
-            }
         }
 
         private void dgv_contenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
