@@ -47,6 +47,18 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
+        public static ArticleCom One(ArticleDepot article)
+        {
+            try
+            {
+                return ArticleComDao.getOneArticleCom(article);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible d'atteindre l'enregistrement", ex);
+            }
+        }
+
         public ArticleCom Insert()
         {
             try

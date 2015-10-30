@@ -176,6 +176,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+            this.btn_supp_contenu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -297,6 +298,7 @@
             this.lb_nom_agence.Size = new System.Drawing.Size(151, 18);
             this.lb_nom_agence.TabIndex = 5;
             this.lb_nom_agence.Text = "Agence Bessengue";
+            this.lb_nom_agence.TextChanged += new System.EventHandler(this.lb_nom_agence_TextChanged);
             // 
             // label24
             // 
@@ -624,7 +626,7 @@
             this.context_data.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tool_integre_data});
             this.context_data.Name = "context_date";
-            this.context_data.Size = new System.Drawing.Size(189, 48);
+            this.context_data.Size = new System.Drawing.Size(189, 26);
             // 
             // tool_integre_data
             // 
@@ -666,6 +668,7 @@
             this.dgv_facture_cours.Size = new System.Drawing.Size(655, 185);
             this.dgv_facture_cours.TabIndex = 2;
             this.dgv_facture_cours.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facture_cours_CellContentClick);
+            this.dgv_facture_cours.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_facture_cours_CellMouseDown);
             this.dgv_facture_cours.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_cours_RowsAdded);
             // 
             // idFactureCours
@@ -768,6 +771,7 @@
             this.dgv_facture_regle.Size = new System.Drawing.Size(655, 185);
             this.dgv_facture_regle.TabIndex = 2;
             this.dgv_facture_regle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facture_regle_CellContentClick);
+            this.dgv_facture_regle.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_facture_regle_CellMouseDown);
             this.dgv_facture_regle.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_regle_RowsAdded);
             // 
             // idFactureRegle
@@ -870,6 +874,7 @@
             this.dgv_commande.Size = new System.Drawing.Size(655, 185);
             this.dgv_commande.TabIndex = 3;
             this.dgv_commande.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_commande_CellContentClick);
+            this.dgv_commande.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_commande_CellMouseDown);
             this.dgv_commande.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_commande_RowsAdded);
             // 
             // idCommande
@@ -1539,6 +1544,15 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
+            // btn_supp_contenu
+            // 
+            this.btn_supp_contenu.Location = new System.Drawing.Point(-1, -1);
+            this.btn_supp_contenu.Name = "btn_supp_contenu";
+            this.btn_supp_contenu.Size = new System.Drawing.Size(10, 10);
+            this.btn_supp_contenu.TabIndex = 14;
+            this.btn_supp_contenu.UseVisualStyleBackColor = true;
+            this.btn_supp_contenu.Visible = false;
+            // 
             // Form_Caisse_Saisie
             // 
             this.AcceptButton = this.btn_add_contenu;
@@ -1546,6 +1560,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1056, 817);
+            this.Controls.Add(this.btn_supp_contenu);
             this.Controls.Add(this.lb_numPiece);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -1738,6 +1753,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn suppCommande;
         private System.Windows.Forms.ContextMenuStrip context_data;
         private System.Windows.Forms.ToolStripMenuItem tool_integre_data;
+        private System.Windows.Forms.Button btn_supp_contenu;
     }
 }
 

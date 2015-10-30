@@ -212,6 +212,7 @@ namespace GESTION_CAISSE.IHM
             com_article.ValueMember = "Id";
             com_article.DataSource = new BindingSource(articles, null);
 
+            com_article.AutoCompleteCustomSource.Clear();
             foreach (ENTITE.Article a in articles)
             {
                 if ((a.Designation != null) ? !a.Designation.Trim().Equals("") : false)
@@ -359,6 +360,7 @@ namespace GESTION_CAISSE.IHM
 
         private void ResetFicheFacture()
         {
+            rowFacture = -1;
             facture = new Facture();
             facture.TypeDoc = Constantes.TYPE_FV;
             facture.Statut = Constantes.ETAT_EN_ATTENTE;
@@ -1044,6 +1046,48 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private void dgv_facture_cours_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_facture_cours.CurrentRow.Cells[1].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_facture_cours.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_facture_cours;
+                    bool supp = (Boolean)((dgv_facture_cours.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_facture_cours.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_facture_regle_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_facture_regle.CurrentRow.Cells[1].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_facture_regle.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_facture_regle;
+                    bool supp = (Boolean)((dgv_facture_regle.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_facture_regle.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_commande_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_commande.CurrentRow.Cells[1].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_commande.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_commande;
+                    bool supp = (Boolean)((dgv_commande.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_commande.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
         private void txt_montantTTC_TextChanged(object sender, EventArgs e)
         {
             txt_montantTTC.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantTTC.Text));
@@ -1084,6 +1128,11 @@ namespace GESTION_CAISSE.IHM
             txt_qte_article.Text = string.Format("{0:#,##0}", double.Parse(txt_qte_article.Text));
         }
 
+        private void lb_nom_agence_TextChanged(object sender, EventArgs e)
+        {
+            lb_nom_agence.Text = lb_nom_agence.Text.ToUpper();
+        }
+
         private void tool_codeClient_Click(object sender, EventArgs e)
         {
             lb_search_client.Text = "Client (Code) :";
@@ -1118,10 +1167,13 @@ namespace GESTION_CAISSE.IHM
 
         private void tool_integre_data_Click(object sender, EventArgs e)
         {
-            if (BLL.FactureBll.ChangeSupp(rowFacture, suppFacture))
+            if (rowFacture > -1)
             {
-                SetCurrentFacture(rowFacture, suppFacture, suppData);
-                Messages.Succes();
+                if (BLL.FactureBll.ChangeSupp(rowFacture, suppFacture))
+                {
+                    SetCurrentFacture(rowFacture, suppFacture, suppData);
+                    Messages.Succes();
+                }
             }
         }
 
