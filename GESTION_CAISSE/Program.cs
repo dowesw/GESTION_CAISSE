@@ -18,7 +18,7 @@ namespace GESTION_CAISSE
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Initialisation();
-            Application.Run(new IHM.Form_Caisse_Mensualite());
+            Application.Run(new IHM.Form_Caisse_Saisie());
             //test();
         }
 

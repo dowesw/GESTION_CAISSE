@@ -28,7 +28,7 @@ namespace GESTION_CAISSE.DAO
                         a.Code = lect["code"].ToString();
                         a.Designation = lect["designation"].ToString();
                         a.Defaut = (Boolean)((lect["defaut"] != null) ? (!lect["defaut"].ToString().Trim().Equals("") ? lect["defaut"] : false) : false);
-                        a.Articles = BLL.ArticleDepotBll.Liste("select * from yvs_base_article_depot where emplacement = " + a.Id);
+                        //a.Articles = BLL.ArticleDepotBll.Liste("select * from yvs_base_article_depot where emplacement = " + a.Id);
                         a.Update = true;
                     }
                     lect.Close();
@@ -156,7 +156,7 @@ namespace GESTION_CAISSE.DAO
                         a.Code = lect["code"].ToString();
                         a.Designation = lect["designation"].ToString();
                         a.Defaut = (Boolean)((lect["defaut"] != null) ? (!lect["defaut"].ToString().Trim().Equals("") ? lect["defaut"] : false) : false);
-                        a.Articles = BLL.ArticleDepotBll.Liste("select * from yvs_base_article_depot where emplacement = " + a.Id);
+                        //a.Articles = BLL.ArticleDepotBll.Liste("select * from yvs_base_article_depot where emplacement = " + a.Id);
                         a.Update = true;
                         l.Add(a);
                     }

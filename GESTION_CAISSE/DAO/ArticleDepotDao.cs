@@ -25,11 +25,11 @@ namespace GESTION_CAISSE.DAO
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Emplcement = (lect["emplacement"] != null
-                            ? (!lect["emplacement"].ToString().Trim().Equals("")
-                            ? new Emplacement(Convert.ToInt64(lect["emplacement"].ToString()))
-                            : new Emplacement())
-                            : new Emplacement());
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? new Depot(Convert.ToInt64(lect["depot"].ToString()))
+                            : new Depot())
+                            : new Depot());
                         a.Article = (lect["article"] != null
                             ? (!lect["article"].ToString().Trim().Equals("")
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
@@ -40,10 +40,10 @@ namespace GESTION_CAISSE.DAO
                         a.CodeBarre = a.Article.CodeBarre;
                         a.ModeAppro = lect["mode_appro"].ToString().Trim();
                         a.ModeReappro = lect["mode_reappro"].ToString().Trim();
-                        a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0) : 0);
-                        a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0) : 0);
-                        a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0) : 0);
-                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (!lect["quantite_stock"].ToString().Trim().Equals("") ? lect["quantite_stock"] : 0) : 0);
+                        a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0.0) : 0.0);
+                        a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0.0) : 0.0);
+                        a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0.0) : 0.0);
+                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (lect["quantite_stock"].ToString().Length > 0 ? lect["quantite_stock"] : 0.0) : 0.0);
                         a.Update = true;
                     }
                     lect.Close();
@@ -75,11 +75,11 @@ namespace GESTION_CAISSE.DAO
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Emplcement = (lect["emplacement"] != null
-                            ? (!lect["emplacement"].ToString().Trim().Equals("")
-                            ? new Emplacement(Convert.ToInt64(lect["emplacement"].ToString()))
-                            : new Emplacement())
-                            : new Emplacement());
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? new Depot(Convert.ToInt64(lect["depot"].ToString()))
+                            : new Depot())
+                            : new Depot());
                         a.Article = (lect["article"] != null
                             ? (!lect["article"].ToString().Trim().Equals("")
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
@@ -90,10 +90,10 @@ namespace GESTION_CAISSE.DAO
                         a.CodeBarre = a.Article.CodeBarre;
                         a.ModeAppro = lect["mode_appro"].ToString().Trim();
                         a.ModeReappro = lect["mode_reappro"].ToString().Trim();
-                        a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0) : 0);
-                        a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0) : 0);
-                        a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0) : 0);
-                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (!lect["quantite_stock"].ToString().Trim().Equals("") ? lect["quantite_stock"] : 0) : 0);
+                        a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0.0) : 0.0);
+                        a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0.0) : 0.0);
+                        a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0.0) : 0.0);
+                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (lect["quantite_stock"].ToString().Length > 0 ? lect["quantite_stock"] : 0.0) : 0.0);
                         a.Update = true;
                     }
                     lect.Close();
@@ -218,11 +218,11 @@ namespace GESTION_CAISSE.DAO
                     {
                         ArticleDepot a = new ArticleDepot();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Emplcement = (lect["emplacement"] != null
-                            ? (!lect["emplacement"].ToString().Trim().Equals("")
-                            ? new Emplacement(Convert.ToInt64(lect["emplacement"].ToString()))
-                            : new Emplacement())
-                            : new Emplacement());
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? new Depot(Convert.ToInt64(lect["depot"].ToString()))
+                            : new Depot())
+                            : new Depot());
                         a.Article = (lect["article"] != null
                             ? (!lect["article"].ToString().Trim().Equals("")
                             ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
@@ -233,10 +233,10 @@ namespace GESTION_CAISSE.DAO
                         a.CodeBarre = a.Article.CodeBarre;
                         a.ModeAppro = lect["mode_appro"].ToString().Trim();
                         a.ModeReappro = lect["mode_reappro"].ToString().Trim();
-                        a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0) : 0);
-                        a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0) : 0);
-                        a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0) : 0);
-                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (!lect["quantite_stock"].ToString().Trim().Equals("") ? lect["quantite_stock"] : 0) : 0);
+                        a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0.0) : 0.0);
+                        a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0.0) : 0.0);
+                        a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0.0) : 0.0);
+                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (lect["quantite_stock"].ToString().Length > 0 ? lect["quantite_stock"] : 0.0) : 0.0);
                         a.Update = true;
                         l.Add(a);
                     }

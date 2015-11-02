@@ -10,17 +10,15 @@ namespace GESTION_CAISSE.ENTITE
     {
         public Depot()
         {
-            emplacmenets = new List<Emplacement>();
+            emplacements = new List<Emplacement>();
             articles = new List<ArticleDepot>();
-            articlesAll = new List<ArticleDepot>();
         }
 
         public Depot(long id)
         {
             this.id = id;
-            emplacmenets = new List<Emplacement>();
+            emplacements = new List<Emplacement>();
             articles = new List<ArticleDepot>();
-            articlesAll = new List<ArticleDepot>();
         }
 
         private long id;
@@ -44,11 +42,11 @@ namespace GESTION_CAISSE.ENTITE
             set { designation = value; }
         }
 
-        private List<Emplacement> emplacmenets;
-        internal List<Emplacement> Emplacmenets
+        private List<Emplacement> emplacements;
+        internal List<Emplacement> Emplacements
         {
-            get { return emplacmenets; }
-            set { emplacmenets = value; }
+            get { return emplacements; }
+            set { emplacements = value; }
         }
 
         private List<ArticleDepot> articles;
@@ -56,13 +54,6 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return articles; }
             set { articles = value; }
-        }
-
-        private List<ArticleDepot> articlesAll;
-        internal List<ArticleDepot> ArticlesAll
-        {
-            get { return articlesAll; }
-            set { articlesAll = value; }
         }
 
         private bool update;

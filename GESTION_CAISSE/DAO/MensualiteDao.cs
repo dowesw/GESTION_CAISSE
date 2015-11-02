@@ -34,7 +34,7 @@ namespace GESTION_CAISSE.DAO
                             : new Facture())
                             : new Facture());
                         a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
-                        a.Reglements = BLL.PieceCaisseBll.Liste("setecl * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
+                        a.Reglements = BLL.PieceCaisseBll.Liste("select * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
                         foreach (PieceCaisse p in a.Reglements)
                         {
                             a.MontantVerse += p.Montant;
@@ -182,7 +182,7 @@ namespace GESTION_CAISSE.DAO
                             : new Facture())
                             : new Facture());
                         a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
-                        a.Reglements = BLL.PieceCaisseBll.Liste("setecl * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
+                        a.Reglements = BLL.PieceCaisseBll.Liste("select * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
                         foreach (PieceCaisse p in a.Reglements)
                         {
                             a.MontantVerse += p.Montant;

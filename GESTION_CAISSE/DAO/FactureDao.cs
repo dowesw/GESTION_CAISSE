@@ -46,7 +46,7 @@ namespace GESTION_CAISSE.DAO
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
-                        a.Mensualites = BLL.MensualiteBll.Liste("select * from yvs_com_mensualite_facture_vente where facture = " + a.Id);
+                        a.Mensualites = BLL.MensualiteBll.Liste("select * from yvs_com_mensualite_facture_vente where facture = " + a.Id + " order by date_reglement");
                         double mtant = 0;
                         foreach (Mensualite m in a.Mensualites)
                         {
@@ -113,6 +113,7 @@ namespace GESTION_CAISSE.DAO
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        a.Mensualites = BLL.MensualiteBll.Liste("select * from yvs_com_mensualite_facture_vente where facture = " + a.Id + " order by date_reglement");
                         double mtant = 0;
                         foreach (Mensualite m in a.Mensualites)
                         {
@@ -392,6 +393,7 @@ namespace GESTION_CAISSE.DAO
                         a.MontantAvance = (Double)((lect["montant_avance"] != null) ? ((!lect["montant_avance"].ToString().Trim().Equals("")) ? lect["montant_avance"] : 0) : 0);
                         a.Contenus = BLL.ContenuBll.Liste("select * from yvs_com_contenu_doc_vente where doc_vente = " + a.Id);
                         a.Remises = BLL.RemiseFactureBll.Liste("select * from yvs_com_remise_doc_vente where doc_vente = " + a.Id);
+                        a.Mensualites = BLL.MensualiteBll.Liste("select * from yvs_com_mensualite_facture_vente where facture = " + a.Id + " order by date_reglement");
                         double mtant = 0;
                         foreach (Mensualite m in a.Mensualites)
                         {

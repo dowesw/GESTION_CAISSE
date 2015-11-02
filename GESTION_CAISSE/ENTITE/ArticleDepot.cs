@@ -94,11 +94,11 @@ namespace GESTION_CAISSE.ENTITE
             set { modeReappro = value; }
         }
 
-        private Emplacement emplcement = new Emplacement();
-        internal Emplacement Emplcement
+        private Depot depot = new Depot();
+        internal Depot Depot
         {
-            get { return emplcement; }
-            set { emplcement = value; }
+            get { return depot; }
+            set { depot = value; }
         }
 
         private bool update;

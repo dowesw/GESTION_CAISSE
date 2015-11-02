@@ -131,6 +131,7 @@
     <Compile Include="ENTITE\ArticleCom.cs" />
     <Compile Include="ENTITE\ArticleComptable.cs" />
     <Compile Include="ENTITE\ArticleDepot.cs" />
+    <Compile Include="ENTITE\ArticleEmplacement.cs" />
     <Compile Include="ENTITE\ArticleTaxe.cs" />
     <Compile Include="ENTITE\CategorieClient.cs" />
     <Compile Include="ENTITE\CategorieComptable.cs" />

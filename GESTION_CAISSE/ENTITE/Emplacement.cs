@@ -10,13 +10,13 @@ namespace GESTION_CAISSE.ENTITE
     {
         public Emplacement()
         {
-            articles = new List<ArticleDepot>();
+            articles = new List<ArticleEmplacement>();
         }
 
         public Emplacement(long id)
         {
             this.id = id;
-            articles = new List<ArticleDepot>();
+            articles = new List<ArticleEmplacement>();
         }
 
         private long id;
@@ -47,8 +47,8 @@ namespace GESTION_CAISSE.ENTITE
             set { defaut = value; }
         }
 
-        private List<ArticleDepot> articles;
-        internal List<ArticleDepot> Articles
+        private List<ArticleEmplacement> articles;
+        internal List<ArticleEmplacement> Articles
         {
             get { return articles; }
             set { articles = value; }

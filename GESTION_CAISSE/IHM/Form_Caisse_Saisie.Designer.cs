@@ -150,11 +150,10 @@
             this.txt_montantHt = new System.Windows.Forms.TextBox();
             this.txt_montantTTC = new System.Windows.Forms.TextBox();
             this.txt_montantRemise = new System.Windows.Forms.TextBox();
-            this.txt_montantVerse = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lb_totalRest = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lb_totalVerse = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -178,6 +177,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -208,6 +208,7 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).BeginInit();
             this.context_reglement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -345,6 +346,7 @@
             // 
             // box_user
             // 
+            this.box_user.Image = global::GESTION_CAISSE.Properties.Resources.user_m;
             this.box_user.Location = new System.Drawing.Point(8, 17);
             this.box_user.Name = "box_user";
             this.box_user.Size = new System.Drawing.Size(51, 50);
@@ -356,6 +358,7 @@
             // 
             this.btn_theme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_theme.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_theme.Image = global::GESTION_CAISSE.Properties.Resources.klines;
             this.btn_theme.Location = new System.Drawing.Point(989, 40);
             this.btn_theme.Name = "btn_theme";
             this.btn_theme.Size = new System.Drawing.Size(37, 28);
@@ -370,6 +373,7 @@
             // 
             this.btn_deconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_deconnect.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_deconnect.Image = global::GESTION_CAISSE.Properties.Resources.exit;
             this.btn_deconnect.Location = new System.Drawing.Point(989, 9);
             this.btn_deconnect.Name = "btn_deconnect";
             this.btn_deconnect.Size = new System.Drawing.Size(37, 28);
@@ -447,6 +451,7 @@
             // 
             // tool_codeClient
             // 
+            this.tool_codeClient.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_codeClient.Name = "tool_codeClient";
             this.tool_codeClient.Size = new System.Drawing.Size(124, 22);
             this.tool_codeClient.Text = "Par Code";
@@ -454,6 +459,7 @@
             // 
             // tool_nomClient
             // 
+            this.tool_nomClient.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_nomClient.Name = "tool_nomClient";
             this.tool_nomClient.Size = new System.Drawing.Size(124, 22);
             this.tool_nomClient.Text = "Par Nom ";
@@ -489,6 +495,7 @@
             // 
             // box_client
             // 
+            this.box_client.Image = global::GESTION_CAISSE.Properties.Resources.user_m;
             this.box_client.Location = new System.Drawing.Point(202, 73);
             this.box_client.Name = "box_client";
             this.box_client.Size = new System.Drawing.Size(132, 113);
@@ -633,6 +640,7 @@
             // 
             // tool_integre_data
             // 
+            this.tool_integre_data.Image = global::GESTION_CAISSE.Properties.Resources.agt_update_critical;
             this.tool_integre_data.Name = "tool_integre_data";
             this.tool_integre_data.Size = new System.Drawing.Size(188, 22);
             this.tool_integre_data.Text = "Soumettre/Reintegrer";
@@ -1096,6 +1104,7 @@
             // 
             // tool_search_ref
             // 
+            this.tool_search_ref.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_search_ref.Name = "tool_search_ref";
             this.tool_search_ref.Size = new System.Drawing.Size(157, 22);
             this.tool_search_ref.Text = "Par Reference";
@@ -1103,6 +1112,7 @@
             // 
             // tool_search_name
             // 
+            this.tool_search_name.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_search_name.Name = "tool_search_name";
             this.tool_search_name.Size = new System.Drawing.Size(157, 22);
             this.tool_search_name.Text = "Par Désignation";
@@ -1110,6 +1120,7 @@
             // 
             // tool_search_code
             // 
+            this.tool_search_code.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_search_code.Name = "tool_search_code";
             this.tool_search_code.Size = new System.Drawing.Size(157, 22);
             this.tool_search_code.Text = "Par Code Barre";
@@ -1148,6 +1159,7 @@
             // 
             this.btn_add_contenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add_contenu.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_add_contenu.Image = global::GESTION_CAISSE.Properties.Resources.build;
             this.btn_add_contenu.Location = new System.Drawing.Point(635, 11);
             this.btn_add_contenu.Name = "btn_add_contenu";
             this.btn_add_contenu.Size = new System.Drawing.Size(29, 23);
@@ -1168,6 +1180,7 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox5.Controls.Add(this.txt_montantVerse);
             this.groupBox5.Controls.Add(this.btn_reglement);
             this.groupBox5.Controls.Add(this.btn_ticket);
             this.groupBox5.Controls.Add(this.btn_regl_tick);
@@ -1177,11 +1190,10 @@
             this.groupBox5.Controls.Add(this.txt_montantHt);
             this.groupBox5.Controls.Add(this.txt_montantTTC);
             this.groupBox5.Controls.Add(this.txt_montantRemise);
-            this.groupBox5.Controls.Add(this.txt_montantVerse);
             this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.label23);
+            this.groupBox5.Controls.Add(this.lb_totalRest);
             this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.lb_totalVerse);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Location = new System.Drawing.Point(704, 374);
             this.groupBox5.Name = "groupBox5";
@@ -1192,6 +1204,7 @@
             // 
             // btn_reglement
             // 
+            this.btn_reglement.Image = global::GESTION_CAISSE.Properties.Resources.xcalc;
             this.btn_reglement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_reglement.Location = new System.Drawing.Point(13, 215);
             this.btn_reglement.Name = "btn_reglement";
@@ -1203,6 +1216,7 @@
             // 
             // btn_ticket
             // 
+            this.btn_ticket.Image = global::GESTION_CAISSE.Properties.Resources.edit;
             this.btn_ticket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_ticket.Location = new System.Drawing.Point(121, 215);
             this.btn_ticket.Name = "btn_ticket";
@@ -1213,6 +1227,7 @@
             // 
             // btn_regl_tick
             // 
+            this.btn_regl_tick.Image = global::GESTION_CAISSE.Properties.Resources.fileexport;
             this.btn_regl_tick.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_regl_tick.Location = new System.Drawing.Point(227, 215);
             this.btn_regl_tick.Name = "btn_regl_tick";
@@ -1228,6 +1243,7 @@
             this.com_mode.Name = "com_mode";
             this.com_mode.Size = new System.Drawing.Size(149, 21);
             this.com_mode.TabIndex = 3;
+            this.com_mode.SelectedIndexChanged += new System.EventHandler(this.com_mode_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -1281,16 +1297,6 @@
             this.txt_montantRemise.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_montantRemise.TextChanged += new System.EventHandler(this.txt_montantRemise_TextChanged);
             // 
-            // txt_montantVerse
-            // 
-            this.txt_montantVerse.Location = new System.Drawing.Point(131, 119);
-            this.txt_montantVerse.Name = "txt_montantVerse";
-            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
-            this.txt_montantVerse.TabIndex = 1;
-            this.txt_montantVerse.Text = "0";
-            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_montantVerse.TextChanged += new System.EventHandler(this.txt_montantVerse_TextChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1300,14 +1306,14 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Somme Remise : ";
             // 
-            // label23
+            // lb_totalRest
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(27, 155);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(44, 13);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "Reste : ";
+            this.lb_totalRest.AutoSize = true;
+            this.lb_totalRest.Location = new System.Drawing.Point(27, 155);
+            this.lb_totalRest.Name = "lb_totalRest";
+            this.lb_totalRest.Size = new System.Drawing.Size(44, 13);
+            this.lb_totalRest.TabIndex = 0;
+            this.lb_totalRest.Text = "Reste : ";
             // 
             // label9
             // 
@@ -1318,14 +1324,14 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Montant HT : ";
             // 
-            // label22
+            // lb_totalVerse
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(27, 122);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(87, 13);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "Somme Versée : ";
+            this.lb_totalVerse.AutoSize = true;
+            this.lb_totalVerse.Location = new System.Drawing.Point(27, 122);
+            this.lb_totalVerse.Name = "lb_totalVerse";
+            this.lb_totalVerse.Size = new System.Drawing.Size(87, 13);
+            this.lb_totalVerse.TabIndex = 0;
+            this.lb_totalVerse.Text = "Somme Versée : ";
             // 
             // label21
             // 
@@ -1349,6 +1355,7 @@
             // 
             // btn_cancel
             // 
+            this.btn_cancel.Image = global::GESTION_CAISSE.Properties.Resources.rotate;
             this.btn_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_cancel.Location = new System.Drawing.Point(11, 7);
             this.btn_cancel.Name = "btn_cancel";
@@ -1361,6 +1368,7 @@
             // btn_save
             // 
             this.btn_save.ContextMenuStrip = this.context_save;
+            this.btn_save.Image = global::GESTION_CAISSE.Properties.Resources.btn_sauvegarde;
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save.Location = new System.Drawing.Point(119, 7);
             this.btn_save.Name = "btn_save";
@@ -1379,6 +1387,7 @@
             // 
             // tool_btn_wait
             // 
+            this.tool_btn_wait.Image = global::GESTION_CAISSE.Properties.Resources.agt_resume;
             this.tool_btn_wait.Name = "tool_btn_wait";
             this.tool_btn_wait.Size = new System.Drawing.Size(129, 22);
             this.tool_btn_wait.Text = "En Attente";
@@ -1386,6 +1395,7 @@
             // 
             // btn_print
             // 
+            this.btn_print.Image = global::GESTION_CAISSE.Properties.Resources.btn_print;
             this.btn_print.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_print.Location = new System.Drawing.Point(237, 7);
             this.btn_print.Name = "btn_print";
@@ -1494,10 +1504,11 @@
             this.context_reglement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tool_mensualite});
             this.context_reglement.Name = "context_reglement";
-            this.context_reglement.Size = new System.Drawing.Size(176, 26);
+            this.context_reglement.Size = new System.Drawing.Size(176, 48);
             // 
             // tool_mensualite
             // 
+            this.tool_mensualite.Image = global::GESTION_CAISSE.Properties.Resources.compfile;
             this.tool_mensualite.Name = "tool_mensualite";
             this.tool_mensualite.Size = new System.Drawing.Size(175, 22);
             this.tool_mensualite.Text = "Gestion Mensualité";
@@ -1550,6 +1561,25 @@
             this.lb_numPiece.Size = new System.Drawing.Size(104, 13);
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
+            // 
+            // txt_montantVerse
+            // 
+            this.txt_montantVerse.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.txt_montantVerse.Location = new System.Drawing.Point(131, 120);
+            this.txt_montantVerse.Maximum = new decimal(new int[] {
+            -1304428544,
+            434162106,
+            542,
+            0});
+            this.txt_montantVerse.Name = "txt_montantVerse";
+            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
+            this.txt_montantVerse.TabIndex = 5;
+            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
             // 
             // Form_Caisse_Saisie
             // 
@@ -1617,6 +1647,7 @@
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).EndInit();
             this.context_reglement.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1662,9 +1693,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lb_tel_client;
         private System.Windows.Forms.TextBox txt_montantReste;
-        private System.Windows.Forms.TextBox txt_montantVerse;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lb_totalRest;
+        private System.Windows.Forms.Label lb_totalVerse;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ContextMenuStrip context_article;
         private System.Windows.Forms.ToolStripMenuItem tool_search_ref;
@@ -1754,6 +1784,7 @@
         private System.Windows.Forms.NumericUpDown txt_qte_article;
         private System.Windows.Forms.ContextMenuStrip context_reglement;
         private System.Windows.Forms.ToolStripMenuItem tool_mensualite;
+        private System.Windows.Forms.NumericUpDown txt_montantVerse;
     }
 }
 

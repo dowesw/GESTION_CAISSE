@@ -22,6 +22,8 @@ namespace GESTION_CAISSE.IHM
         Depot depot = new Depot();
 
         Contenu contenu = new Contenu();
+        Mensualite mensualite = new Mensualite();
+        PieceCaisse reglement = new PieceCaisse();
 
         long rowFacture;
         bool suppFacture;
@@ -383,7 +385,22 @@ namespace GESTION_CAISSE.IHM
             f.Statut = facture.Statut;
             f.TypeDoc = facture.TypeDoc;
             f.Solde = facture.Solde;
-            f.NumDoc = lb_numPiece.Text;
+            if (facture.Update)
+            {
+                f.NumDoc = lb_numPiece.Text;
+            }
+            else
+            {
+                switch (facture.TypeDoc)
+                {
+                    case Constantes.TYPE_BCV:
+                        f.NumDoc = Utils.GenererReference(Constantes.DOC_COMMANDE);
+                        break;
+                    case Constantes.TYPE_FV:
+                        f.NumDoc = Utils.GenererReference(Constantes.DOC_FACTURE);
+                        break;
+                }
+            }
             f.NumPiece = txt_reference.Text.Trim();
             f.MontantCommission = facture.MontantCommission;
             f.MontantHT = facture.MontantHT;
@@ -418,6 +435,49 @@ namespace GESTION_CAISSE.IHM
             return c;
         }
 
+        private Mensualite RecopieViewMensualite(double montant)
+        {
+            Mensualite m = new Mensualite();
+            m.DateMensualite = DateTime.Now;
+            m.Etat = Constantes.ETAT_EN_ATTENTE;
+            m.Facture = facture;
+            m.Montant = montant;
+            m.Reglements = mensualite.Reglements;
+            return m;
+        }
+
+        private PieceCaisse RecopieViewReglement(Mensualite m, double montant)
+        {
+            PieceCaisse p = new PieceCaisse();
+            p.DatePiece = DateTime.Now;
+            p.IdExterne = m.Id;
+            p.TableEterne = Constantes.TABLE_EXTERNE_PIECE;
+            p.Libelle = "Reglement Facture Vente";
+            p.Montant = montant;
+            p.Mouvement = Constantes.MOUV_ENTREE;
+            p.Mode = reglement.Mode;
+            p.OnCompte = reglement.OnCompte;
+            p.NumRef = Utils.GenererReference(Constantes.DOC_PIECE);
+            p.Statut = Constantes.ETAT_REGLE;
+            return p;
+        }
+
+        private PieceCaisse RecopieViewReglement(double montant)
+        {
+            PieceCaisse p = new PieceCaisse();
+            p.DatePiece = DateTime.Now;
+            p.IdExterne = mensualite.Id;
+            p.TableEterne = Constantes.TABLE_EXTERNE_PIECE;
+            p.Libelle = "Reglement Facture Vente";
+            p.Montant = montant;
+            p.Mouvement = Constantes.MOUV_ENTREE;
+            p.Mode = reglement.Mode;
+            p.OnCompte = reglement.OnCompte;
+            p.NumRef = Utils.GenererReference(Constantes.DOC_PIECE);
+            p.Statut = Constantes.ETAT_REGLE;
+            return p;
+        }
+
         private void PopulateViewFacture(Facture f)
         {
             ResetFicheFacture();
@@ -431,6 +491,7 @@ namespace GESTION_CAISSE.IHM
             btn_reglement.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
             btn_regl_tick.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
             btn_add_contenu.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+            txt_montantVerse.ReadOnly = f.Statut.Equals(Constantes.ETAT_REGLE);
             SetStateFacture(false);
         }
 
@@ -441,6 +502,39 @@ namespace GESTION_CAISSE.IHM
             com_article.SelectedText = articles.Find(a => a.Id == c.Article.Article.Id).Designation;
             txt_prix_article.Text = c.Prix.ToString();
             txt_qte_article.Text = c.Quantite.ToString();
+        }
+
+        private void AddCurrentFacture(Facture f)
+        {
+            if (f != null)
+            {
+                String type = f.TypeDoc;
+                String etat = f.Statut;
+                switch (type)
+                {
+                    case Constantes.TYPE_BCV:
+                        Constantes.Entete.Commandes.Add(f);
+                        AddRowFacture(dgv_commande, f);
+                        break;
+                    case Constantes.TYPE_FV:
+                        switch (etat)
+                        {
+                            case Constantes.ETAT_EN_ATTENTE:
+                                Constantes.Entete.FacturesEnAttente.Add(f);
+                                AddRowFacture(dgv_facture_wait, f);
+                                break;
+                            case Constantes.ETAT_EN_COURS:
+                                Constantes.Entete.FacturesEnCours.Add(f);
+                                AddRowFacture(dgv_facture_cours, f);
+                                break;
+                            case Constantes.ETAT_REGLE:
+                                Constantes.Entete.FacturesRegle.Add(f);
+                                AddRowFacture(dgv_facture_regle, f);
+                                break;
+                        }
+                        break;
+                }
+            }
         }
 
         private void UpdateCurrentFacture(Facture f)
@@ -613,11 +707,13 @@ namespace GESTION_CAISSE.IHM
                     case Constantes.TYPE_BCV_NAME:
                         reference = Utils.GenererReference(Constantes.DOC_COMMANDE);
                         facture.TypeDoc = Constantes.TYPE_BCV;
+                        lb_totalVerse.Text = "Somme Avancée : ";
                         facture.MouvStock = false;
                         break;
                     case Constantes.TYPE_FV_NAME:
                         reference = Utils.GenererReference(Constantes.DOC_FACTURE);
                         facture.TypeDoc = Constantes.TYPE_FV;
+                        lb_totalVerse.Text = "Somme Versée : ";
                         facture.MouvStock = true;
                         break;
                 }
@@ -628,6 +724,13 @@ namespace GESTION_CAISSE.IHM
                 reference = facture.NumDoc;
             }
             lb_numPiece.Text = reference;
+        }
+
+        private void com_mode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ModePaiement a = com_mode.SelectedItem as ModePaiement;
+            a = modes.Find(x => x.Id == a.Id);
+            reglement.Mode = a;
         }
 
         private void btn_theme_Click(object sender, EventArgs e)
@@ -699,8 +802,6 @@ namespace GESTION_CAISSE.IHM
             Facture f = RecopieViewFacture();
             if (f.Control())
             {
-                String type = f.TypeDoc;
-                String etat = f.Statut;
                 if (!f.Update)
                 {
                     Facture f_ = new BLL.FactureBll(f).Insert();
@@ -709,30 +810,7 @@ namespace GESTION_CAISSE.IHM
                         f.Id = f_.Id;
                         f.Update = true;
                         facture.Id = f_.Id;
-                        switch (type)
-                        {
-                            case Constantes.TYPE_BCV:
-                                Constantes.Entete.Commandes.Add(f);
-                                AddRowFacture(dgv_commande, f);
-                                break;
-                            case Constantes.TYPE_FV:
-                                switch (etat)
-                                {
-                                    case Constantes.ETAT_EN_ATTENTE:
-                                        Constantes.Entete.FacturesEnAttente.Add(f);
-                                        AddRowFacture(dgv_facture_wait, f);
-                                        break;
-                                    case Constantes.ETAT_EN_COURS:
-                                        Constantes.Entete.FacturesEnCours.Add(f);
-                                        AddRowFacture(dgv_facture_cours, f);
-                                        break;
-                                    case Constantes.ETAT_REGLE:
-                                        Constantes.Entete.FacturesRegle.Add(f);
-                                        AddRowFacture(dgv_facture_regle, f);
-                                        break;
-                                }
-                                break;
-                        }
+                        AddCurrentFacture(f);
                         facture.Update = true;
                         Messages.Succes();
                     }
@@ -750,9 +828,74 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private void createReglementByEcheance(double montant)
+        {
+            Mensualite m = new Mensualite();
+            PieceCaisse p = RecopieViewReglement(m, m.MontantReste);
+
+            double mtant = facture.MontantAvance - m.MontantReste;
+        }
+
         private void btn_reglement_Click(object sender, EventArgs e)
         {
-
+            if ((facture != null) ? facture.Id > 0 : false)
+            {
+                if (facture.MontantReste > 0)
+                {
+                    if (Convert.ToDouble(txt_montantVerse.Text) > 0)
+                    {
+                        Mensualite m = new Mensualite();
+                        if (facture.Mensualites.Count > 0)
+                        {
+                            foreach (Mensualite m_ in facture.Mensualites)
+                            {
+                                if (m_.MontantReste > 0)
+                                {
+                                    m = m_;
+                                    break;
+                                }
+                            }
+                        }
+                        if (m.Id > 0)
+                        {
+                            createReglementByEcheance(facture.MontantAvance);
+                        }
+                        else
+                        {
+                            m = RecopieViewMensualite(facture.MontantAvance);
+                            Mensualite m_ = new BLL.MensualiteBll(m).Insert();
+                            if ((m_ != null) ? m_.Id > 0 : false)
+                            {
+                                m.Id = m_.Id;
+                                m.Update = true;
+                                PieceCaisse p = RecopieViewReglement(m, m.Montant);
+                                PieceCaisse p_ = new BLL.PieceCaisseBll(p).Insert();
+                                if ((p_ != null) ? p_.Id > 0 : false)
+                                {
+                                    p.Id = p_.Id;
+                                    p.Update = true;
+                                    m.Reglements.Add(p);
+                                    facture.Mensualites.Add(m);
+                                    AddRowReglement(p);
+                                    Messages.Succes();
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Messages.ShowErreur("Vous devez entrer le montant!");
+                    }
+                }
+                else
+                {
+                    Messages.ShowErreur("cette facture a deja été réglée!");
+                }
+            }
+            else
+            {
+                Messages.ShowErreur("Vous devez selectionner une facture!");
+            }
         }
 
         private void dgv_contenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1059,7 +1202,7 @@ namespace GESTION_CAISSE.IHM
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (dgv_facture_wait.CurrentRow.Cells[1].Value != null)
+                if (dgv_facture_wait.Rows[e.RowIndex].Cells[0].Value != null)
                 {
                     rowFacture = Convert.ToInt64(dgv_facture_wait.Rows[e.RowIndex].Cells[0].Value.ToString());
                     suppData = dgv_facture_wait;
@@ -1073,7 +1216,7 @@ namespace GESTION_CAISSE.IHM
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (dgv_facture_cours.CurrentRow.Cells[1].Value != null)
+                if (dgv_facture_cours.Rows[e.RowIndex].Cells[0].Value != null)
                 {
                     rowFacture = Convert.ToInt64(dgv_facture_cours.Rows[e.RowIndex].Cells[0].Value.ToString());
                     suppData = dgv_facture_cours;
@@ -1087,7 +1230,7 @@ namespace GESTION_CAISSE.IHM
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (dgv_facture_regle.CurrentRow.Cells[1].Value != null)
+                if (dgv_facture_regle.Rows[e.RowIndex].Cells[0].Value != null)
                 {
                     rowFacture = Convert.ToInt64(dgv_facture_regle.Rows[e.RowIndex].Cells[0].Value.ToString());
                     suppData = dgv_facture_regle;
@@ -1101,7 +1244,7 @@ namespace GESTION_CAISSE.IHM
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (dgv_commande.CurrentRow.Cells[1].Value != null)
+                if (dgv_commande.Rows[e.RowIndex].Cells[0].Value != null)
                 {
                     rowFacture = Convert.ToInt64(dgv_commande.Rows[e.RowIndex].Cells[0].Value.ToString());
                     suppData = dgv_commande;
@@ -1116,9 +1259,10 @@ namespace GESTION_CAISSE.IHM
             txt_montantTTC.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantTTC.Text));
         }
 
-        private void txt_montantVerse_TextChanged(object sender, EventArgs e)
+        private void txt_montantVerse_ValueChanged(object sender, EventArgs e)
         {
             txt_montantVerse.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantVerse.Text));
+            txt_montantReste.Text = (Convert.ToDouble(txt_montantTTC.Text) - Convert.ToDouble(txt_montantVerse.Text)).ToString();
         }
 
         private void txt_montantReste_TextChanged(object sender, EventArgs e)
@@ -1134,6 +1278,8 @@ namespace GESTION_CAISSE.IHM
         private void txt_montantReste_TextChanged_1(object sender, EventArgs e)
         {
             txt_montantReste.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantReste.Text));
+            double reste = Convert.ToDouble(txt_montantReste.Text);
+            lb_totalRest.Text = (reste < 0) ? "A Rembourser : " : "Reste : ";
         }
 
         private void txt_montantHt_TextChanged(object sender, EventArgs e)
