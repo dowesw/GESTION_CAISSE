@@ -18,7 +18,11 @@ namespace GESTION_CAISSE
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Initialisation();
+<<<<<<< HEAD
             Application.Run(new IHM.Form_Caisse_Saisie());
+=======
+            Application.Run(new IHM.Form_Caisse_Click());
+>>>>>>> origin/master
             //test();
         }
 
