@@ -27,17 +27,17 @@ namespace GESTION_CAISSE.IHM
         List<Button> buttonFs;
         List<Label> labelFs;
 
-        Depot dpt;
+        Depot dpt= new Depot();
         int indTabF;
         int indTabA;
         public bool archive;
 
         public double remboursement;
         public double apayer;
-        public Client clientZero;
-        public Contenu contenu;
-        public Article articleGen;
-        Facture fact;
+        public Client clientZero=new Client();
+        public Contenu contenu= new Contenu();
+        public Article articleGen= new Article();
+        Facture fact=new Facture();
 
 
 
@@ -134,6 +134,8 @@ namespace GESTION_CAISSE.IHM
 
             }
         }
+
+
 
         private List<FamilleArticle> prodListFamille()
         {
@@ -471,6 +473,7 @@ namespace GESTION_CAISSE.IHM
         }
 
 
+
         private void AjoutDatgridArt(Article artDtG, int qte)
         {
             string[] row = new string[] { artDtG.Designation, (artDtG.Prix).ToString(), qte.ToString(),
@@ -489,6 +492,8 @@ namespace GESTION_CAISSE.IHM
         {
             if (archive)
             {
+                contenu = new Contenu();
+
                 InitButton(buttonAs, labelAs);
                 initZonePrix();
                 clientZero = BLL.ClientBll.Default();
@@ -498,13 +503,20 @@ namespace GESTION_CAISSE.IHM
                 btnEnregistrer.Enabled = true;
                 archive = false;
                 fact = new Facture();
+                fact.TypeDoc = Constantes.TYPE_FV;
+                fact.Statut = Constantes.ETAT_EN_ATTENTE;
+                fact.Client = BLL.ClientBll.Default();
+                fact.Categorie = fact.Client.Categorie;
+                fact.HeureDoc = DateTime.Now;
+                fact.MouvStock = true;
             }
             else
             {
-
+                
 
             }
         }
+
 
         private void picClient_Click(object sender, EventArgs e)
         {

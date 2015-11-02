@@ -265,6 +265,7 @@ namespace GESTION_CAISSE.IHM
             AddRowFacture(data, f);
         }
 
+
         private void AddRowContenu(DataGridView data, Contenu c)
         {
             if (c != null)
@@ -341,6 +342,7 @@ namespace GESTION_CAISSE.IHM
             com_client.Enabled = etat;
             txt_reference.Enabled = etat;
         }
+
 
         private void ResetFicheFacture()
         {
