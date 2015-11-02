@@ -29,7 +29,7 @@ namespace GESTION_CAISSE.DAO
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.DateTravail = (DateTime)((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"] : DateTime.Now) : DateTime.Now);
                         a.Personnel = (lect["users"] != null
                             ? (!lect["users"].ToString().Trim().Equals("")
                             ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))
@@ -85,7 +85,7 @@ namespace GESTION_CAISSE.DAO
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.DateTravail = (DateTime)((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"] : DateTime.Now) : DateTime.Now);
                         a.Personnel = (lect["users"] != null
                             ? (!lect["users"].ToString().Trim().Equals("")
                             ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))
@@ -137,7 +137,7 @@ namespace GESTION_CAISSE.DAO
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.DateTravail = (DateTime)((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"] : DateTime.Now) : DateTime.Now);
                         a.Personnel = (lect["users"] != null
                             ? (!lect["users"].ToString().Trim().Equals("")
                             ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))
@@ -278,7 +278,7 @@ namespace GESTION_CAISSE.DAO
                         Creneau a = new Creneau(); 
                         a.Id = Convert.ToInt64(lect["id"].ToString());
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
-                        a.DateTravail = Convert.ToDateTime((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.DateTravail = (DateTime)((lect["date_travail"] != null) ? (!lect["date_travail"].ToString().Trim().Equals("") ? lect["date_travail"] : DateTime.Now) : DateTime.Now);
                         a.Personnel = (lect["users"] != null
                             ? (!lect["users"].ToString().Trim().Equals("")
                             ? BLL.PersonnelBll.One(Convert.ToInt64(lect["users"].ToString()))

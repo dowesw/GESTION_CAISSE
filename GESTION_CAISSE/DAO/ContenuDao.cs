@@ -25,15 +25,15 @@ namespace GESTION_CAISSE.DAO
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Commission = Convert.ToDouble(((lect["comission"] != null) ? ((!lect["comission"].ToString().Trim().Equals("")) ? lect["comission"].ToString() : "0") : "0"));
-                        a.Prix = Convert.ToDouble(((lect["prix"] != null) ? ((!lect["prix"].ToString().Trim().Equals("")) ? lect["prix"].ToString() : "0") : "0"));
-                        a.Quantite = Convert.ToDouble(((lect["quantite"] != null) ? ((!lect["quantite"].ToString().Trim().Equals("")) ? lect["quantite"].ToString() : "0") : "0"));
+                        a.Commission = (Double)((lect["comission"] != null) ? (!lect["comission"].ToString().Trim().Equals("") ? lect["comission"] : 0.0) : 0.0);
+                        a.Prix = (Double)((lect["prix"] != null) ? (!lect["prix"].ToString().Trim().Equals("") ? lect["prix"] : 0.0) : 0.0);
+                        a.Quantite = (Double)((lect["quantite"] != null) ? (!lect["quantite"].ToString().Trim().Equals("") ? lect["quantite"] : 0.0) : 0.0);
                         a.PrixTotal = a.Prix * a.Quantite;
-                        a.RemiseArt = Convert.ToDouble(((lect["remise_art"] != null) ? ((!lect["remise_art"].ToString().Trim().Equals("")) ? lect["remise_art"].ToString() : "0") : "0"));
-                        a.RemiseCat = Convert.ToDouble(((lect["remise_cat"] != null) ? ((!lect["remise_cat"].ToString().Trim().Equals("")) ? lect["remise_cat"].ToString() : "0") : "0"));
+                        a.RemiseArt = (Double)((lect["remise_art"] != null) ? (!lect["remise_art"].ToString().Trim().Equals("") ? lect["remise_art"] : 0.0) : 0.0);
+                        a.RemiseCat = (Double)((lect["remise_cat"] != null) ? (!lect["remise_cat"].ToString().Trim().Equals("") ? lect["remise_cat"] : 0.0) : 0.0);
                         a.Remise = a.RemiseCat + a.RemiseArt;
-                        a.Ristourne = Convert.ToDouble(((lect["ristourne"] != null) ? ((!lect["ristourne"].ToString().Trim().Equals("")) ? lect["ristourne"].ToString() : "0") : "0"));
-                        a.DateContenu = Convert.ToDateTime((lect["date_contenu"] != null) ? (!lect["date_contenu"].ToString().Trim().Equals("") ? lect["date_contenu"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Ristourne = (Double)((lect["ristourne"] != null) ? (!lect["ristourne"].ToString().Trim().Equals("") ? lect["ristourne"] : 0.0) : 0.0);
+                        a.DateContenu = (DateTime)((lect["date_contenu"] != null) ? (!lect["date_contenu"].ToString().Trim().Equals("") ? lect["date_contenu"] : DateTime.Now) : DateTime.Now);
                         a.Article = (lect["article"] != null
                             ? (!lect["article"].ToString().Trim().Equals("")
                             ? BLL.ArticleComBll.One(Convert.ToInt64(lect["article"].ToString()))
@@ -171,15 +171,15 @@ namespace GESTION_CAISSE.DAO
                     {
                         Contenu a = new Contenu();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Commission = Convert.ToDouble(((lect["comission"] != null) ? ((!lect["comission"].ToString().Trim().Equals("")) ? lect["comission"].ToString() : "0") : "0"));
-                        a.Prix = Convert.ToDouble(((lect["prix"] != null) ? ((!lect["prix"].ToString().Trim().Equals("")) ? lect["prix"].ToString() : "0") : "0"));
-                        a.Quantite = Convert.ToDouble(((lect["quantite"] != null) ? ((!lect["quantite"].ToString().Trim().Equals("")) ? lect["quantite"].ToString() : "0") : "0"));
+                        a.Commission = (Double)((lect["comission"] != null) ? (!lect["comission"].ToString().Trim().Equals("") ? lect["comission"] : 0.0) : 0.0);
+                        a.Prix = (Double)((lect["prix"] != null) ? (!lect["prix"].ToString().Trim().Equals("") ? lect["prix"] : 0.0) : 0.0);
+                        a.Quantite = (Double)((lect["quantite"] != null) ? (!lect["quantite"].ToString().Trim().Equals("") ? lect["quantite"] : 0.0) : 0.0);
                         a.PrixTotal = a.Prix * a.Quantite;
-                        a.RemiseArt = Convert.ToDouble(((lect["remise_art"] != null) ? ((!lect["remise_art"].ToString().Trim().Equals("")) ? lect["remise_art"].ToString() : "0") : "0"));
-                        a.RemiseCat = Convert.ToDouble(((lect["remise_cat"] != null) ? ((!lect["remise_cat"].ToString().Trim().Equals("")) ? lect["remise_cat"].ToString() : "0") : "0"));
+                        a.RemiseArt = (Double)((lect["remise_art"] != null) ? (!lect["remise_art"].ToString().Trim().Equals("") ? lect["remise_art"] : 0.0) : 0.0);
+                        a.RemiseCat = (Double)((lect["remise_cat"] != null) ? (!lect["remise_cat"].ToString().Trim().Equals("") ? lect["remise_cat"] : 0.0) : 0.0);
                         a.Remise = a.RemiseCat + a.RemiseArt;
-                        a.Ristourne = Convert.ToDouble(((lect["ristourne"] != null) ? ((!lect["ristourne"].ToString().Trim().Equals("")) ? lect["ristourne"].ToString() : "0") : "0"));
-                        a.DateContenu = Convert.ToDateTime((lect["date_contenu"] != null) ? (!lect["date_contenu"].ToString().Trim().Equals("") ? lect["date_contenu"].ToString().Trim() : "00/00/0000") : "00/00/0000");
+                        a.Ristourne = (Double)((lect["ristourne"] != null) ? (!lect["ristourne"].ToString().Trim().Equals("") ? lect["ristourne"] : 0.0) : 0.0);
+                        a.DateContenu = (DateTime)((lect["date_contenu"] != null) ? (!lect["date_contenu"].ToString().Trim().Equals("") ? lect["date_contenu"] : DateTime.Now) : DateTime.Now);
                         a.Article = (lect["article"] != null
                             ? (!lect["article"].ToString().Trim().Equals("")
                             ? BLL.ArticleComBll.One(Convert.ToInt64(lect["article"].ToString()))

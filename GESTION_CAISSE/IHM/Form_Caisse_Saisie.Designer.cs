@@ -178,8 +178,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.btn_supp_contenu = new System.Windows.Forms.Button();
             this.btn_supp_facture = new System.Windows.Forms.Button();
+=======
+            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
+>>>>>>> origin/master
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -348,6 +352,7 @@
             // 
             // box_user
             // 
+            this.box_user.Image = global::GESTION_CAISSE.Properties.Resources.user_m;
             this.box_user.Location = new System.Drawing.Point(8, 17);
             this.box_user.Name = "box_user";
             this.box_user.Size = new System.Drawing.Size(51, 50);
@@ -359,6 +364,7 @@
             // 
             this.btn_theme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_theme.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_theme.Image = global::GESTION_CAISSE.Properties.Resources.klines;
             this.btn_theme.Location = new System.Drawing.Point(989, 40);
             this.btn_theme.Name = "btn_theme";
             this.btn_theme.Size = new System.Drawing.Size(37, 28);
@@ -373,6 +379,7 @@
             // 
             this.btn_deconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_deconnect.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_deconnect.Image = global::GESTION_CAISSE.Properties.Resources.exit;
             this.btn_deconnect.Location = new System.Drawing.Point(989, 9);
             this.btn_deconnect.Name = "btn_deconnect";
             this.btn_deconnect.Size = new System.Drawing.Size(37, 28);
@@ -450,6 +457,7 @@
             // 
             // tool_codeClient
             // 
+            this.tool_codeClient.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_codeClient.Name = "tool_codeClient";
             this.tool_codeClient.Size = new System.Drawing.Size(124, 22);
             this.tool_codeClient.Text = "Par Code";
@@ -457,6 +465,7 @@
             // 
             // tool_nomClient
             // 
+            this.tool_nomClient.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_nomClient.Name = "tool_nomClient";
             this.tool_nomClient.Size = new System.Drawing.Size(124, 22);
             this.tool_nomClient.Text = "Par Nom ";
@@ -492,6 +501,7 @@
             // 
             // box_client
             // 
+            this.box_client.Image = global::GESTION_CAISSE.Properties.Resources.user_m;
             this.box_client.Location = new System.Drawing.Point(202, 73);
             this.box_client.Name = "box_client";
             this.box_client.Size = new System.Drawing.Size(132, 113);
@@ -636,6 +646,10 @@
             // 
             // tool_integre_data
             // 
+<<<<<<< HEAD
+=======
+            this.tool_integre_data.Image = global::GESTION_CAISSE.Properties.Resources.agt_update_critical;
+>>>>>>> origin/master
             this.tool_integre_data.Name = "tool_integre_data";
             this.tool_integre_data.Size = new System.Drawing.Size(188, 22);
             this.tool_integre_data.Text = "Soumettre/Reintegrer";
@@ -1099,6 +1113,7 @@
             // 
             // tool_search_ref
             // 
+            this.tool_search_ref.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_search_ref.Name = "tool_search_ref";
             this.tool_search_ref.Size = new System.Drawing.Size(157, 22);
             this.tool_search_ref.Text = "Par Reference";
@@ -1106,6 +1121,7 @@
             // 
             // tool_search_name
             // 
+            this.tool_search_name.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_search_name.Name = "tool_search_name";
             this.tool_search_name.Size = new System.Drawing.Size(157, 22);
             this.tool_search_name.Text = "Par Désignation";
@@ -1113,6 +1129,7 @@
             // 
             // tool_search_code
             // 
+            this.tool_search_code.Image = global::GESTION_CAISSE.Properties.Resources.filter;
             this.tool_search_code.Name = "tool_search_code";
             this.tool_search_code.Size = new System.Drawing.Size(157, 22);
             this.tool_search_code.Text = "Par Code Barre";
@@ -1151,6 +1168,7 @@
             // 
             this.btn_add_contenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add_contenu.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_add_contenu.Image = global::GESTION_CAISSE.Properties.Resources.build;
             this.btn_add_contenu.Location = new System.Drawing.Point(635, 11);
             this.btn_add_contenu.Name = "btn_add_contenu";
             this.btn_add_contenu.Size = new System.Drawing.Size(29, 23);
@@ -1214,6 +1232,7 @@
             // 
             // btn_reglement
             // 
+            this.btn_reglement.Image = global::GESTION_CAISSE.Properties.Resources.xcalc;
             this.btn_reglement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_reglement.Location = new System.Drawing.Point(13, 215);
             this.btn_reglement.Name = "btn_reglement";
@@ -1225,6 +1244,7 @@
             // 
             // btn_ticket
             // 
+            this.btn_ticket.Image = global::GESTION_CAISSE.Properties.Resources.edit;
             this.btn_ticket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_ticket.Location = new System.Drawing.Point(121, 215);
             this.btn_ticket.Name = "btn_ticket";
@@ -1235,6 +1255,7 @@
             // 
             // btn_regl_tick
             // 
+            this.btn_regl_tick.Image = global::GESTION_CAISSE.Properties.Resources.fileexport;
             this.btn_regl_tick.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_regl_tick.Location = new System.Drawing.Point(227, 215);
             this.btn_regl_tick.Name = "btn_regl_tick";
@@ -1362,6 +1383,7 @@
             // 
             // btn_cancel
             // 
+            this.btn_cancel.Image = global::GESTION_CAISSE.Properties.Resources.rotate;
             this.btn_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_cancel.Location = new System.Drawing.Point(11, 7);
             this.btn_cancel.Name = "btn_cancel";
@@ -1374,6 +1396,7 @@
             // btn_save
             // 
             this.btn_save.ContextMenuStrip = this.context_save;
+            this.btn_save.Image = global::GESTION_CAISSE.Properties.Resources.btn_sauvegarde;
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save.Location = new System.Drawing.Point(119, 7);
             this.btn_save.Name = "btn_save";
@@ -1392,6 +1415,7 @@
             // 
             // tool_btn_wait
             // 
+            this.tool_btn_wait.Image = global::GESTION_CAISSE.Properties.Resources.agt_resume;
             this.tool_btn_wait.Name = "tool_btn_wait";
             this.tool_btn_wait.Size = new System.Drawing.Size(129, 22);
             this.tool_btn_wait.Text = "En Attente";
@@ -1399,6 +1423,7 @@
             // 
             // btn_print
             // 
+            this.btn_print.Image = global::GESTION_CAISSE.Properties.Resources.btn_print;
             this.btn_print.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_print.Location = new System.Drawing.Point(237, 7);
             this.btn_print.Name = "btn_print";
@@ -1564,6 +1589,7 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
+<<<<<<< HEAD
             // btn_supp_contenu
             // 
             this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
@@ -1577,6 +1603,26 @@
             this.btn_supp_facture.Name = "btn_supp_facture";
             this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
             this.btn_supp_facture.TabIndex = 0;
+=======
+            // txt_montantVerse
+            // 
+            this.txt_montantVerse.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.txt_montantVerse.Location = new System.Drawing.Point(131, 120);
+            this.txt_montantVerse.Maximum = new decimal(new int[] {
+            -1304428544,
+            434162106,
+            542,
+            0});
+            this.txt_montantVerse.Name = "txt_montantVerse";
+            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
+            this.txt_montantVerse.TabIndex = 5;
+            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
+>>>>>>> origin/master
             // 
             // Form_Caisse_Saisie
             // 
@@ -1738,6 +1784,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn montantReglement;
         private System.Windows.Forms.TextBox txt_montantHt;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn heureFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mtantFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resteFactureWait;
+        private System.Windows.Forms.DataGridViewLinkColumn suppFactureWait_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suppFactureWait;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFactureCours;
         private System.Windows.Forms.DataGridViewTextBoxColumn numFactureCours;
         private System.Windows.Forms.DataGridViewTextBoxColumn heureFactureCours;
@@ -1774,6 +1828,7 @@
         private System.Windows.Forms.ContextMenuStrip context_reglement;
         private System.Windows.Forms.ToolStripMenuItem tool_mensualite;
         private System.Windows.Forms.NumericUpDown txt_montantVerse;
+<<<<<<< HEAD
         private System.Windows.Forms.Button btn_supp_contenu;
         private System.Windows.Forms.Button btn_supp_facture;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFactureWait;
@@ -1784,6 +1839,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn resteFactureWait;
         private System.Windows.Forms.DataGridViewLinkColumn suppFactureWait_;
         private System.Windows.Forms.DataGridViewTextBoxColumn suppFactureWait;
+=======
+>>>>>>> origin/master
     }
 }
 
