@@ -28,7 +28,7 @@ namespace GESTION_CAISSE.DAO
                         a.Designation = lect["designation"].ToString();
                         a.CodeBarre = lect["code_barre"].ToString();
                         a.RefArt = lect["ref_art"].ToString();
-                        a.Prix = Convert.ToDouble(((lect["puv"] != null) ? ((!lect["puv"].ToString().Trim().Equals("")) ? lect["puv"].ToString() : "0") : "0"));
+                        a.Prix = (Double)((lect["puv"] != null) ? (!lect["puv"].ToString().Trim().Equals("") ? lect["puv"] : 0.0) : 0.0);
                         a.Famille = ((lect["famille"] != null)
                             ? (!lect["famille"].ToString().Trim().Equals("")
                             ? new FamilleArticle(Convert.ToInt64(lect["famille"].ToString()))
@@ -183,7 +183,7 @@ namespace GESTION_CAISSE.DAO
                             ? new FamilleArticle(Convert.ToInt64(lect["famille"].ToString()))
                             : new FamilleArticle())
                             : new FamilleArticle());
-                        a.Prix = Convert.ToDouble(((lect["puv"] != null) ? ((!lect["puv"].ToString().Trim().Equals("")) ? lect["puv"].ToString() : "0") : "0"));
+                        a.Prix = (Double)((lect["puv"] != null) ? (!lect["puv"].ToString().Trim().Equals("") ? lect["puv"] : 0.0) : 0.0);
                         a.Plans = BLL.PlanTarifaireBll.Liste("select * from yvs_base_plan_tarifaire_article where actif = true and article = " + a.Id);
 
                         String photo = lect["photo_1"].ToString();

@@ -108,7 +108,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_com_entete_doc_vente order by id desc limit 1";
+                String search = "select id from yvs_com_entete_doc_vente where creneau = " + Constantes.Creneau.Id + " order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -138,7 +138,9 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                string insert = "";
+                string insert = "insert into yvs_com_entete_doc_vente"
+                                + "(creneau, date_entete, etat)"
+                                + "values (" + Constantes.Creneau.Id + ", " + DateTime.Now + ", " + Constantes.ETAT_EN_ATTENTE + ")";
                 NpgsqlCommand cmd = new NpgsqlCommand(insert, con);
                 cmd.ExecuteNonQuery();
                 a.Id = getCurrent();

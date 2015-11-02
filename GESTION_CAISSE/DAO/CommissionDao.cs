@@ -30,9 +30,9 @@ namespace GESTION_CAISSE.DAO
                         a.DateFin = Convert.ToDateTime((lect["date_fin"] != null) ? (!lect["date_fin"].ToString().Trim().Equals("") ? lect["date_fin"].ToString().Trim() : "00/00/0000") : "00/00/0000");
                         a.Actif = Convert.ToBoolean((lect["actif"]!= null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
                         a.Permanent = Convert.ToBoolean((lect["permanent"] != null) ? (!lect["permanent"].ToString().Trim().Equals("") ? lect["permanent"].ToString().Trim() : "false") : "false");
-                        a.Montant = Convert.ToDouble(((lect["montant_commission"] != null) ? ((!lect["montant_commission"].ToString().Trim().Equals("")) ? lect["montant_commission"].ToString() : "0") : "0"));
-                        a.MontantMaximal = Convert.ToDouble(((lect["montant_maximal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"].ToString() : "0") : "0"));
-                        a.MontantMinimal = Convert.ToDouble(((lect["montant_minimun"] != null) ? ((!lect["montant_minimun"].ToString().Trim().Equals("")) ? lect["montant_minimun"].ToString() : "0") : "0"));
+                        a.Montant = (Double)((lect["montant_commission"] != null) ? (!lect["montant_commission"].ToString().Trim().Equals("") ? lect["montant_commission"] : 0.0) : 0.0);
+                        a.MontantMaximal = (Double)((lect["montant_maximal"] != null) ? (!lect["montant_maximal"].ToString().Trim().Equals("") ? lect["montant_maximal"] : 0.0) : 0.0);
+                        a.MontantMinimal = (Double)((lect["montant_minimun"] != null) ? (!lect["montant_minimun"].ToString().Trim().Equals("") ? lect["montant_minimun"] : 0.0) : 0.0);
                         a.Article = (lect["article"] != null
                             ? (!lect["article"].ToString().Trim().Equals("")
                             ? BLL.ArticleComBll.One(Convert.ToInt64(lect["article"].ToString()))
@@ -167,9 +167,9 @@ namespace GESTION_CAISSE.DAO
                         a.DateFin = Convert.ToDateTime((lect["date_fin"] != null) ? (!lect["date_fin"].ToString().Trim().Equals("") ? lect["date_fin"].ToString().Trim() : "00/00/0000") : "00/00/0000");
                         a.Actif = Convert.ToBoolean((lect["actif"] != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
                         a.Permanent = Convert.ToBoolean((lect["permanent"] != null) ? (!lect["permanent"].ToString().Trim().Equals("") ? lect["permanent"].ToString().Trim() : "false") : "false");
-                        a.Montant = Convert.ToDouble(((lect["montant_commission"] != null) ? ((!lect["montant_commission"].ToString().Trim().Equals("")) ? lect["montant_commission"].ToString() : "0") : "0"));
-                        a.MontantMaximal = Convert.ToDouble(((lect["montant_maximal"] != null) ? ((!lect["montant_maximal"].ToString().Trim().Equals("")) ? lect["montant_maximal"].ToString() : "0") : "0"));
-                        a.MontantMinimal = Convert.ToDouble(((lect["montant_minimun"] != null) ? ((!lect["montant_minimun"].ToString().Trim().Equals("")) ? lect["montant_minimun"].ToString() : "0") : "0"));
+                        a.Montant = (Double)((lect["montant_commission"] != null) ? (!lect["montant_commission"].ToString().Trim().Equals("") ? lect["montant_commission"] : 0.0) : 0.0);
+                        a.MontantMaximal = (Double)((lect["montant_maximal"] != null) ? (!lect["montant_maximal"].ToString().Trim().Equals("") ? lect["montant_maximal"] : 0.0) : 0.0);
+                        a.MontantMinimal = (Double)((lect["montant_minimun"] != null) ? (!lect["montant_minimun"].ToString().Trim().Equals("") ? lect["montant_minimun"] : 0.0) : 0.0);
                         a.Article = (lect["article"] != null
                             ? (!lect["article"].ToString().Trim().Equals("")
                             ? BLL.ArticleComBll.One(Convert.ToInt64(lect["article"].ToString()))

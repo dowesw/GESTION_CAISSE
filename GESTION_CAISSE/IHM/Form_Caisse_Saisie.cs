@@ -148,6 +148,14 @@ namespace GESTION_CAISSE.IHM
                     AddRowFacture(dgv_commande, f);
                 }
             }
+            else
+            {
+                e = new BLL.EnteteBll(e).Insert();
+                if ((e != null) ? e.Id > 0 : false)
+                {
+                    Constantes.Entete = e;
+                }
+            }
         }
 
         public void SetClientDefaut()
@@ -459,7 +467,8 @@ namespace GESTION_CAISSE.IHM
             p.Mouvement = Constantes.MOUV_ENTREE;
             p.Mode = reglement.Mode;
             p.OnCompte = reglement.OnCompte;
-            p.NumRef = Utils.GenererReference(Constantes.DOC_PIECE);
+            p.NumPiece = Utils.GenererReference(Constantes.DOC_PIECE);
+            p.NumRef = p.NumPiece + " - " + facture.NumDoc;
             p.Statut = Constantes.ETAT_REGLE;
             return p;
         }
@@ -475,7 +484,8 @@ namespace GESTION_CAISSE.IHM
             p.Mouvement = Constantes.MOUV_ENTREE;
             p.Mode = reglement.Mode;
             p.OnCompte = reglement.OnCompte;
-            p.NumRef = Utils.GenererReference(Constantes.DOC_PIECE);
+            p.NumPiece = Utils.GenererReference(Constantes.DOC_PIECE);
+            p.NumRef = p.NumPiece + " - " + facture.NumDoc;
             p.Statut = Constantes.ETAT_REGLE;
             return p;
         }
@@ -844,7 +854,8 @@ namespace GESTION_CAISSE.IHM
             {
                 if (facture.MontantReste > 0)
                 {
-                    if (Convert.ToDouble(txt_montantVerse.Text) > 0)
+                    double montant = Convert.ToDouble(txt_montantVerse.Text);
+                    if (montant > 0)
                     {
                         Mensualite m = new Mensualite();
                         if (facture.Mensualites.Count > 0)
@@ -860,11 +871,11 @@ namespace GESTION_CAISSE.IHM
                         }
                         if (m.Id > 0)
                         {
-                            createReglementByEcheance(facture.MontantAvance);
+                            createReglementByEcheance(montant);
                         }
                         else
                         {
-                            m = RecopieViewMensualite(facture.MontantAvance);
+                            m = RecopieViewMensualite(montant);
                             Mensualite m_ = new BLL.MensualiteBll(m).Insert();
                             if ((m_ != null) ? m_.Id > 0 : false)
                             {

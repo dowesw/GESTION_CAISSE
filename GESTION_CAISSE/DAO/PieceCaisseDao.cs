@@ -96,8 +96,8 @@ namespace GESTION_CAISSE.DAO
                                 + "(libelle, description, date_piece, mouvement, montant, id_externe, table_externe, societe, mode_paiement,"
                                 + "on_compte, num_piece, num_ref, statut)"
                                 + "values ('" + a.Libelle + "', '" + a.Description + "', '" + a.DatePiece + "', '" + Constantes.MOUV_ENTREE + "', " + a.Montant + ","
-                                + "" + a.IdExterne + ", '" + a.TableEterne + "', " + Constantes.Societe.Id + ", " + a.Mode.Id + ", " + a.OnCompte + ", '" + a.NumPiece + "'"
-                                + " '" + a.NumRef + "', '" + a.Statut + "')";
+                                + "" + a.IdExterne + ", '" + a.TableEterne + "', " + Constantes.Societe.Id + ", " + a.Mode.Id + ", " + a.OnCompte + ", '" + a.NumPiece + "',"
+                                + "'" + a.NumRef + "', '" + a.Statut + "')";
                 NpgsqlCommand cmd = new NpgsqlCommand(insert, con);
                 cmd.ExecuteNonQuery();
                 a.Id = getCurrent(a);
