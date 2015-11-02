@@ -45,6 +45,7 @@ namespace GESTION_CAISSE
             TOOLS.Constantes.Agence = BLL.AgenceBll.One(2299);
             TOOLS.Constantes.Users = BLL.UsersBll.One(2692);
             TOOLS.Constantes.Creneau = BLL.CreneauBll.One(15);
+            TOOLS.Utils.SetEnteteOfDay(Convert.ToDateTime("2015-10-10"));
         }
     }
 }

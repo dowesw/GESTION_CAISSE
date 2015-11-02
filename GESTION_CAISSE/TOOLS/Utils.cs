@@ -412,5 +412,22 @@ namespace GESTION_CAISSE.TOOLS
             return -1;
         }
 
+        public static void SetEnteteOfDay(DateTime date)
+        {
+            ENTITE.Entete e = BLL.EnteteBll.One(TOOLS.Constantes.Creneau, date);
+            if ((e != null) ? e.Id > 0 : false)
+            {
+                TOOLS.Constantes.Entete = e;
+            }
+            else
+            {
+                e = new BLL.EnteteBll(e).Insert();
+                if ((e != null) ? e.Id > 0 : false)
+                {
+                    TOOLS.Constantes.Entete = e;
+                }
+            }
+        }
+
     }
 }
