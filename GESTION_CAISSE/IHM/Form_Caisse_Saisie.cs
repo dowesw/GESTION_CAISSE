@@ -115,46 +115,40 @@ namespace GESTION_CAISSE.IHM
 
         public void setEnteteJour()
         {
-            DateTime date = Convert.ToDateTime("2015-10-10");
-            Entete e = BLL.EnteteBll.One(Constantes.Creneau, date);
-            if ((e != null) ? e.Id > 0 : false)
+            if ((Constantes.Entete != null) ? Constantes.Entete.Id > 0 : false)
             {
-                Constantes.Entete = e;
                 //Charge facture en attente
                 dgv_facture_wait.Rows.Clear();
-                foreach (Facture f in e.FacturesEnAttente)
+                foreach (Facture f in Constantes.Entete.FacturesEnAttente)
                 {
                     AddRowFacture(dgv_facture_wait, f);
                 }
 
                 //Charge facture en cours
                 dgv_facture_cours.Rows.Clear();
-                foreach (Facture f in e.FacturesEnCours)
+                foreach (Facture f in Constantes.Entete.FacturesEnCours)
                 {
                     AddRowFacture(dgv_facture_cours, f);
                 }
 
                 //Charge facture regle
                 dgv_facture_regle.Rows.Clear();
-                foreach (Facture f in e.FacturesRegle)
+                foreach (Facture f in Constantes.Entete.FacturesRegle)
                 {
                     AddRowFacture(dgv_facture_regle, f);
                 }
 
                 //Charge commande
                 dgv_commande.Rows.Clear();
-                foreach (Facture f in e.Commandes)
+                foreach (Facture f in Constantes.Entete.Commandes)
                 {
                     AddRowFacture(dgv_commande, f);
                 }
             }
             else
             {
-                e = new BLL.EnteteBll(e).Insert();
-                if ((e != null) ? e.Id > 0 : false)
-                {
-                    Constantes.Entete = e;
-                }
+                DateTime date = Convert.ToDateTime("2015-10-10");
+                TOOLS.Utils.SetEnteteOfDay(date);
             }
         }
 
@@ -650,6 +644,14 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private void createReglementByEcheance(double montant)
+        {
+            Mensualite m = new Mensualite();
+            PieceCaisse p = RecopieViewReglement(m, m.MontantReste);
+
+            double mtant = facture.MontantAvance - m.MontantReste;
+        }
+
         private void Form_Caisse_Saisie_Load(object sender, EventArgs e)
         {
             Constantes.form_caisse_saisie = this;
@@ -840,14 +842,6 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private void createReglementByEcheance(double montant)
-        {
-            Mensualite m = new Mensualite();
-            PieceCaisse p = RecopieViewReglement(m, m.MontantReste);
-
-            double mtant = facture.MontantAvance - m.MontantReste;
-        }
-
         private void btn_reglement_Click(object sender, EventArgs e)
         {
             if ((facture != null) ? facture.Id > 0 : false)
@@ -908,6 +902,27 @@ namespace GESTION_CAISSE.IHM
             else
             {
                 Messages.ShowErreur("Vous devez selectionner une facture!");
+            }
+        }
+
+        private void btn_ticket_Click(object sender, EventArgs e)
+        {
+            if ((facture != null) ? facture.Id > 0 : false)
+            {
+                new Form_Ticket(facture).Show();
+            }
+            else
+            {
+                Messages.ShowErreur("Vous devez selectionner une facture");
+            }
+        }
+
+        private void btn_regl_tick_Click(object sender, EventArgs e)
+        {
+            btn_reglement_Click(sender, e);
+            if ((facture != null) ? facture.Id > 0 : false)
+            {
+                new Form_Ticket(facture).Show();
             }
         }
 
@@ -1276,7 +1291,11 @@ namespace GESTION_CAISSE.IHM
         private void txt_montantVerse_ValueChanged(object sender, EventArgs e)
         {
             txt_montantVerse.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantVerse.Text));
-            txt_montantReste.Text = (Convert.ToDouble(txt_montantTTC.Text) - Convert.ToDouble(txt_montantVerse.Text)).ToString();
+        }
+
+        private void txt_montantVerse_Leave(object sender, EventArgs e)
+        {
+            txt_montantReste.Text = (Convert.ToDouble(txt_montantReste.Text) - Convert.ToDouble(txt_montantVerse.Text)).ToString();
         }
 
         private void txt_montantReste_TextChanged(object sender, EventArgs e)
@@ -1362,7 +1381,14 @@ namespace GESTION_CAISSE.IHM
 
         private void tool_mensualite_Click(object sender, EventArgs e)
         {
-            new Form_Caisse_Mensualite(this).ShowDialog();
+            if ((facture != null) ? facture.Id > 0 : false)
+            {
+                new Form_Caisse_Mensualite(this).ShowDialog();
+            }
+            else
+            {
+                Messages.ShowErreur("Vous devez dabord selectionner une facture!");
+            }
         }
 
     }

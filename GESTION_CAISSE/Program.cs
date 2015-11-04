@@ -19,7 +19,17 @@ namespace GESTION_CAISSE
             Application.SetCompatibleTextRenderingDefault(false);
             Initialisation();
             Application.Run(new IHM.Form_Caisse_Click());
+<<<<<<< HEAD
+=======
+=======
+            Application.Run(new IHM.Form_Caisse_Saisie());
+<<<<<<< HEAD
+            //Application.Run(new IHM.Form_Ticket());
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
             //test();
+>>>>>>> origin/master
         }
 
         static void StartAppl()

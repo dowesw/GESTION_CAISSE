@@ -53,6 +53,20 @@ namespace GESTION_CAISSE.ENTITE
             set { designation = value; }
         }
 
+        private Dictionnaire ville = new Dictionnaire();
+        public Dictionnaire Ville
+        {
+            get { return ville; }
+            set { ville = value; }
+        }
+
+        private String pays;
+        public String Pays
+        {
+            get { return pays; }
+            set { pays = value; }
+        }
+
         private Societe societe = new Societe();
         internal Societe Societe
         {

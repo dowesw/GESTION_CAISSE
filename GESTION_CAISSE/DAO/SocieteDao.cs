@@ -29,6 +29,7 @@ namespace GESTION_CAISSE.DAO
                         a.CodeAbbreviation = lect["code_abreviation"].ToString();
                         a.Logo = lect["logo"].ToString();
                         a.Designation = lect["name"].ToString();
+                        a.Telephone = lect["tel"].ToString();
                     }
                     lect.Close();
                 }
@@ -156,6 +157,7 @@ namespace GESTION_CAISSE.DAO
                         a.CodeAbbreviation = lect["code_abreviation"].ToString();
                         a.Logo = lect["logo"].ToString();
                         a.Designation = lect["name"].ToString();
+                        a.Telephone = lect["tel"].ToString();
                         l.Add(a);
                     }
                     lect.Close();

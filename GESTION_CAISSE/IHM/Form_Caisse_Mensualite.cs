@@ -24,14 +24,13 @@ namespace GESTION_CAISSE.IHM
             InitializeComponent();
             modes = new List<ModePaiement>();
             configForm();
-
         }
 
         public Form_Caisse_Mensualite(Form parent)
         {
             InitializeComponent();
             modes = new List<ModePaiement>();
-            this.F_parent = this;
+            this.F_parent = parent;
             configForm();
         }
 
@@ -97,12 +96,12 @@ namespace GESTION_CAISSE.IHM
 
         private void AddRowMensualite(Mensualite m)
         {
-            dgv_mensualite.Rows.Add(new object[] { m.Id, m.DateMensualite.ToString("U"), m.Montant, m.MontantVerse, m.MontantReste, m.Etat, m.IsOut });
+            dgv_mensualite.Rows.Add(new object[] { m.Id, m.DateMensualite, m.Montant, m.MontantVerse, m.MontantReste, m.Etat, m.IsOut });
         }
 
         private void AddRowReglement(PieceCaisse m)
         {
-            dgv_mensualite.Rows.Add(new object[] { m.Id, m.DatePiece.ToString("U"), m.Montant, m.Mode.TypePaiement });
+            dgv_reglement.Rows.Add(new object[] { m.Id, m.DatePiece, m.Montant, m.Mode.TypePaiement });
         }
 
         private void FullMensualite(Facture f)
@@ -130,7 +129,7 @@ namespace GESTION_CAISSE.IHM
         private void ResetFicheMensualite()
         {
             mensualite = new Mensualite();
-            dgv_regelement.Rows.Clear();
+            dgv_reglement.Rows.Clear();
             ResetFicheReglement();
         }
 
@@ -149,7 +148,23 @@ namespace GESTION_CAISSE.IHM
 
         private void dgv_mensualite_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            try
+            {
+                if (dgv_mensualite.CurrentRow.Cells[0].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_mensualite.CurrentRow.Cells[0].Value.ToString());
+                    if (id > 0)
+                    {
+                        Form_Caisse_Saisie f = (Form_Caisse_Saisie)F_parent;
+                        Mensualite c = f.facture.Mensualites.Find(x => x.Id == id);
+                        PopulateViewMensualite(c);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
         }
 
         private void dgv_regelement_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -170,6 +185,11 @@ namespace GESTION_CAISSE.IHM
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             ResetFicheReglement();
+        }
+
+        private void btn_genere_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

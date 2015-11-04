@@ -224,6 +224,7 @@ namespace GESTION_CAISSE.TOOLS
         public static void MontantTotalDoc(Facture doc)
         {
             doc.MontantHT = 0;
+            doc.MontantTTC = 0;
             doc.MontantTaxe = 0;
             doc.MontantRemise = 0;
             doc.MontantRistourne = 0;

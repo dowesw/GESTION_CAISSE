@@ -53,5 +53,12 @@ namespace GESTION_CAISSE.ENTITE
             get { return designation; }
             set { designation = value; }
         }
+
+        private String telephone;
+        public String Telephone
+        {
+            get { return telephone; }
+            set { telephone = value; }
+        }
     }
 }

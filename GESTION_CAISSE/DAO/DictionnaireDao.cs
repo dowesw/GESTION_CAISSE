@@ -9,36 +9,23 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class AgenceDao
+    class DictionnaireDao
     {
-        public static Agence getOneAgence(long id)
+        public static Dictionnaire getOneDictionnaire(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_agences where id = " + id + "";
+                String search = "select * from yvs_dictionnaire where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                Agence a = new Agence();
+                Dictionnaire a = new Dictionnaire();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Adresse = lect["adresse"].ToString();
-                        a.Abbreviation = lect["abbreviation"].ToString();
-                        a.CodeAgence = lect["codeagence"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Ville = (lect["ville"] != null
-                            ? (!lect["ville"].ToString().Trim().Equals("")
-                            ? BLL.DictionnaireBll.One(Convert.ToInt32(lect["ville"].ToString()))
-                            : new Dictionnaire())
-                            : new Dictionnaire());
-                        a.Societe = (lect["societe"] != null
-                            ? (!lect["societe"].ToString().Trim().Equals("")
-                            ? BLL.SocieteBll.One(Convert.ToInt32(lect["societe"].ToString()))
-                            : new Societe())
-                            : new Societe());
+                        a.Libelle = lect["libele"].ToString();
                     }
                     lect.Close();
                 }
@@ -60,7 +47,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_agences order by id desc limit 1";
+                String search = "select id from yvs_dictionnaire order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -85,7 +72,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static Agence getAjoutAgence(Agence a)
+        public static Dictionnaire getAjoutDictionnaire(Dictionnaire a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -106,7 +93,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateAgence(Agence a)
+        public static bool getUpdateDictionnaire(Dictionnaire a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -127,7 +114,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteAgence(long id)
+        public static bool getDeleteDictionnaire(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -148,29 +135,21 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<Agence> getListAgence(String query)
+        public static List<Dictionnaire> getListDictionnaire(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<Agence> l = new List<Agence>();
+                List<Dictionnaire> l = new List<Dictionnaire>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        Agence a = new Agence();
+                        Dictionnaire a = new Dictionnaire();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Adresse = lect["adresse"].ToString();
-                        a.Abbreviation = lect["abbreviation"].ToString();
-                        a.CodeAgence = lect["codeagence"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Societe = (lect["societe"] != null
-                            ? (!lect["societe"].ToString().Trim().Equals("")
-                            ? BLL.SocieteBll.One(Convert.ToInt32(lect["societe"].ToString()))
-                            : new Societe())
-                            : new Societe());
+                        a.Libelle = lect["libele"].ToString();
                         l.Add(a);
                     }
                     lect.Close();
