@@ -60,7 +60,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dgv_regelement = new System.Windows.Forms.DataGridView();
+            this.dgv_reglement = new System.Windows.Forms.DataGridView();
             this.idReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mtantReglement = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,7 +72,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_montant)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_regelement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,7 +82,7 @@
             this.groupBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox1.Location = new System.Drawing.Point(12, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(677, 146);
+            this.groupBox1.Size = new System.Drawing.Size(677, 199);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Liste Mensualités";
@@ -96,13 +96,14 @@
             this.btn_genere.Size = new System.Drawing.Size(35, 23);
             this.btn_genere.TabIndex = 1;
             this.btn_genere.UseVisualStyleBackColor = true;
+            this.btn_genere.Click += new System.EventHandler(this.btn_genere_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dgv_mensualite);
             this.panel1.Location = new System.Drawing.Point(6, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 100);
+            this.panel1.Size = new System.Drawing.Size(665, 153);
             this.panel1.TabIndex = 0;
             // 
             // dgv_mensualite
@@ -122,7 +123,7 @@
             this.dgv_mensualite.MultiSelect = false;
             this.dgv_mensualite.Name = "dgv_mensualite";
             this.dgv_mensualite.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_mensualite.Size = new System.Drawing.Size(665, 100);
+            this.dgv_mensualite.Size = new System.Drawing.Size(665, 153);
             this.dgv_mensualite.TabIndex = 0;
             this.dgv_mensualite.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_mensualite_CellContentClick);
             this.dgv_mensualite.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_mensualite_RowsAdded);
@@ -193,7 +194,7 @@
             // 
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 156);
+            this.groupBox2.Location = new System.Drawing.Point(12, 209);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(677, 219);
             this.groupBox2.TabIndex = 1;
@@ -327,7 +328,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dgv_regelement);
+            this.groupBox3.Controls.Add(this.dgv_reglement);
             this.groupBox3.Location = new System.Drawing.Point(287, 17);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(384, 196);
@@ -335,23 +336,23 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Liste";
             // 
-            // dgv_regelement
+            // dgv_reglement
             // 
-            this.dgv_regelement.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_regelement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_regelement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_reglement.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgv_reglement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_reglement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idReglement,
             this.dateReglement,
             this.mtantReglement,
             this.modeReglement});
-            this.dgv_regelement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_regelement.Location = new System.Drawing.Point(3, 16);
-            this.dgv_regelement.MultiSelect = false;
-            this.dgv_regelement.Name = "dgv_regelement";
-            this.dgv_regelement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_regelement.Size = new System.Drawing.Size(378, 177);
-            this.dgv_regelement.TabIndex = 2;
-            this.dgv_regelement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_regelement_CellContentClick);
+            this.dgv_reglement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_reglement.Location = new System.Drawing.Point(3, 16);
+            this.dgv_reglement.MultiSelect = false;
+            this.dgv_reglement.Name = "dgv_reglement";
+            this.dgv_reglement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_reglement.Size = new System.Drawing.Size(378, 177);
+            this.dgv_reglement.TabIndex = 2;
+            this.dgv_reglement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_regelement_CellContentClick);
             // 
             // idReglement
             // 
@@ -393,7 +394,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.CancelButton = this.btn_cancel;
-            this.ClientSize = new System.Drawing.Size(701, 387);
+            this.ClientSize = new System.Drawing.Size(701, 440);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -408,7 +409,7 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_montant)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_regelement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -422,7 +423,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_genere;
         private System.Windows.Forms.DataGridView dgv_mensualite;
-        private System.Windows.Forms.DataGridView dgv_regelement;
+        private System.Windows.Forms.DataGridView dgv_reglement;
         private System.Windows.Forms.NumericUpDown txt_montant;
         private System.Windows.Forms.TextBox txt_numPiece;
         private System.Windows.Forms.Label label3;

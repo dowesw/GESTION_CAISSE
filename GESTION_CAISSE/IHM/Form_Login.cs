@@ -213,20 +213,10 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private void link_creeruser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
         private void Form_Login_Activated(object sender, EventArgs e)
         {
             timer1.Start();
             txt_email.Focus();
-        }
-
-        private void btn_presence_MouseEnter(object sender, EventArgs e)
-        {
-
         }
 
         private void Form_Login_Load(object sender, EventArgs e)

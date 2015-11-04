@@ -141,6 +141,7 @@
             this.btn_add_contenu = new System.Windows.Forms.Button();
             this.lb_search_article = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
             this.btn_reglement = new System.Windows.Forms.Button();
             this.btn_ticket = new System.Windows.Forms.Button();
             this.btn_regl_tick = new System.Windows.Forms.Button();
@@ -177,7 +178,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
-            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -202,13 +202,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_qte_article)).BeginInit();
             this.context_article.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).BeginInit();
             this.panel3.SuspendLayout();
             this.context_save.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).BeginInit();
             this.context_reglement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -1202,6 +1202,26 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Reglement";
             // 
+            // txt_montantVerse
+            // 
+            this.txt_montantVerse.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.txt_montantVerse.Location = new System.Drawing.Point(131, 120);
+            this.txt_montantVerse.Maximum = new decimal(new int[] {
+            -1304428544,
+            434162106,
+            542,
+            0});
+            this.txt_montantVerse.Name = "txt_montantVerse";
+            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
+            this.txt_montantVerse.TabIndex = 5;
+            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
+            this.txt_montantVerse.Leave += new System.EventHandler(this.txt_montantVerse_Leave);
+            // 
             // btn_reglement
             // 
             this.btn_reglement.Image = global::GESTION_CAISSE.Properties.Resources.xcalc;
@@ -1224,6 +1244,7 @@
             this.btn_ticket.TabIndex = 4;
             this.btn_ticket.Text = "&Ticket";
             this.btn_ticket.UseVisualStyleBackColor = true;
+            this.btn_ticket.Click += new System.EventHandler(this.btn_ticket_Click);
             // 
             // btn_regl_tick
             // 
@@ -1235,6 +1256,7 @@
             this.btn_regl_tick.TabIndex = 4;
             this.btn_regl_tick.Text = "Enc. + Ti&ck";
             this.btn_regl_tick.UseVisualStyleBackColor = true;
+            this.btn_regl_tick.Click += new System.EventHandler(this.btn_regl_tick_Click);
             // 
             // com_mode
             // 
@@ -1504,7 +1526,7 @@
             this.context_reglement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tool_mensualite});
             this.context_reglement.Name = "context_reglement";
-            this.context_reglement.Size = new System.Drawing.Size(176, 48);
+            this.context_reglement.Size = new System.Drawing.Size(176, 26);
             // 
             // tool_mensualite
             // 
@@ -1561,25 +1583,6 @@
             this.lb_numPiece.Size = new System.Drawing.Size(104, 13);
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
-            // 
-            // txt_montantVerse
-            // 
-            this.txt_montantVerse.Increment = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.txt_montantVerse.Location = new System.Drawing.Point(131, 120);
-            this.txt_montantVerse.Maximum = new decimal(new int[] {
-            -1304428544,
-            434162106,
-            542,
-            0});
-            this.txt_montantVerse.Name = "txt_montantVerse";
-            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
-            this.txt_montantVerse.TabIndex = 5;
-            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
             // 
             // Form_Caisse_Saisie
             // 
@@ -1641,13 +1644,13 @@
             this.context_article.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).EndInit();
             this.panel3.ResumeLayout(false);
             this.context_save.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).EndInit();
             this.context_reglement.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

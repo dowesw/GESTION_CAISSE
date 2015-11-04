@@ -33,16 +33,21 @@ namespace GESTION_CAISSE.DAO
                             ? new Facture(Convert.ToInt64(lect["facture"].ToString()))
                             : new Facture())
                             : new Facture());
-                        a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
                         a.Reglements = BLL.PieceCaisseBll.Liste("select * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
                         foreach (PieceCaisse p in a.Reglements)
                         {
                             a.MontantVerse += p.Montant;
                         }
                         a.MontantReste = a.Montant - a.MontantVerse;
-                        if (a.MontantReste < 0)
+                        if (a.MontantReste <= 0)
                         {
                             a.MontantReste = 0;
+                            a.Etat = Constantes.ETAT_REGLE;
+                        }
+                        else
+                        {
+                            a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
+                            a.Etat = a.IsOut ? Constantes.ETAT_RETARD : a.Etat;
                         }
                         a.Update = true;
                     }
@@ -181,16 +186,21 @@ namespace GESTION_CAISSE.DAO
                             ? new Facture(Convert.ToInt64(lect["facture"].ToString()))
                             : new Facture())
                             : new Facture());
-                        a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
                         a.Reglements = BLL.PieceCaisseBll.Liste("select * from yvs_base_piece_tresorerie where id_externe = " + a.Id + " and table_externe = '" + Constantes.TABLE_EXTERNE_PIECE + "'");
                         foreach (PieceCaisse p in a.Reglements)
                         {
                             a.MontantVerse += p.Montant;
                         }
                         a.MontantReste = a.Montant - a.MontantVerse;
-                        if (a.MontantReste < 0)
+                        if (a.MontantReste <= 0)
                         {
                             a.MontantReste = 0;
+                            a.Etat = Constantes.ETAT_REGLE;
+                        }
+                        else
+                        {
+                            a.IsOut = (DateTime.Compare(DateTime.Now, a.DateMensualite) < 0);
+                            a.Etat = a.IsOut ? Constantes.ETAT_RETARD : a.Etat;
                         }
                         a.Update = true;
                         l.Add(a);

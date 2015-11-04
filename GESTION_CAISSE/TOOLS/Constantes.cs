@@ -42,6 +42,7 @@ namespace GESTION_CAISSE.TOOLS
         public const String ETAT_EN_COURS = "En Cours";
         public const String ETAT_REGLE = "Réglé";
         public const String ETAT_VALIDE = "Accordé";
+        public const String ETAT_RETARD = "En Retard";
 
         public const String TYPE_FV = "FV";
         public const String TYPE_BCV = "BCV";
