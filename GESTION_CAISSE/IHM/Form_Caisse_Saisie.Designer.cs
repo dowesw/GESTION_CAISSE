@@ -178,6 +178,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            this.btn_supp_contenu = new System.Windows.Forms.Button();
+            this.btn_supp_facture = new System.Windows.Forms.Button();
+=======
+            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
+>>>>>>> origin/master
+>>>>>>> origin/master
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -640,7 +649,10 @@
             // 
             // tool_integre_data
             // 
+<<<<<<< HEAD
+=======
             this.tool_integre_data.Image = global::GESTION_CAISSE.Properties.Resources.agt_update_critical;
+>>>>>>> origin/master
             this.tool_integre_data.Name = "tool_integre_data";
             this.tool_integre_data.Size = new System.Drawing.Size(188, 22);
             this.tool_integre_data.Text = "Soumettre/Reintegrer";
@@ -1220,7 +1232,10 @@
             this.txt_montantVerse.TabIndex = 5;
             this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
+<<<<<<< HEAD
             this.txt_montantVerse.Leave += new System.EventHandler(this.txt_montantVerse_Leave);
+=======
+>>>>>>> origin/master
             // 
             // btn_reglement
             // 
@@ -1530,7 +1545,6 @@
             // 
             // tool_mensualite
             // 
-            this.tool_mensualite.Image = global::GESTION_CAISSE.Properties.Resources.compfile;
             this.tool_mensualite.Name = "tool_mensualite";
             this.tool_mensualite.Size = new System.Drawing.Size(175, 22);
             this.tool_mensualite.Text = "Gestion Mensualité";
@@ -1584,6 +1598,44 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            // btn_supp_contenu
+            // 
+            this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
+            this.btn_supp_contenu.Name = "btn_supp_contenu";
+            this.btn_supp_contenu.Size = new System.Drawing.Size(75, 23);
+            this.btn_supp_contenu.TabIndex = 0;
+            // 
+            // btn_supp_facture
+            // 
+            this.btn_supp_facture.Location = new System.Drawing.Point(0, 0);
+            this.btn_supp_facture.Name = "btn_supp_facture";
+            this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
+            this.btn_supp_facture.TabIndex = 0;
+=======
+            // txt_montantVerse
+            // 
+            this.txt_montantVerse.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.txt_montantVerse.Location = new System.Drawing.Point(131, 120);
+            this.txt_montantVerse.Maximum = new decimal(new int[] {
+            -1304428544,
+            434162106,
+            542,
+            0});
+            this.txt_montantVerse.Name = "txt_montantVerse";
+            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
+            this.txt_montantVerse.TabIndex = 5;
+            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
+>>>>>>> origin/master
+            // 
+>>>>>>> origin/master
             // Form_Caisse_Saisie
             // 
             this.AcceptButton = this.btn_add_contenu;
@@ -1788,6 +1840,19 @@
         private System.Windows.Forms.ContextMenuStrip context_reglement;
         private System.Windows.Forms.ToolStripMenuItem tool_mensualite;
         private System.Windows.Forms.NumericUpDown txt_montantVerse;
+<<<<<<< HEAD
+        private System.Windows.Forms.Button btn_supp_contenu;
+        private System.Windows.Forms.Button btn_supp_facture;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn heureFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mtantFactureWait;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resteFactureWait;
+        private System.Windows.Forms.DataGridViewLinkColumn suppFactureWait_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suppFactureWait;
+=======
+>>>>>>> origin/master
     }
 }
 
