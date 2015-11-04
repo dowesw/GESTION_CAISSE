@@ -1171,6 +1171,7 @@ namespace GESTION_CAISSE.IHM
 
         }
 
+       
         private void dgv_facture_wait_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             int i = e.RowIndex;

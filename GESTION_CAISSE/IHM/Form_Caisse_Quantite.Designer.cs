@@ -193,7 +193,8 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Form_Caisse_Quantite";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form_Caisse_Quantite";
+            this.Text = "Quantité de l\'article";
+            this.Load += new System.EventHandler(this.Form_Caisse_Quantite_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

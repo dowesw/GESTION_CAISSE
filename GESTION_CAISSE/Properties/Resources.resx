@@ -151,14 +151,17 @@
   <data name="btn_ajouter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\btn_ajouter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\ICONES\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Classique" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\THEMES\Classique.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="configure" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\configure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blender" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\blender.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueTrack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\THEMES\BlueTrack.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="package_games_kids" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\package_games_kids.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,9 +178,6 @@
   <data name="btn_supprimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\btn_supprimer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="contents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\ICONES\contents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="edit_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\edit_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,17 +187,26 @@
   <data name="user_m1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\user_m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="visible_no" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\visible_no.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="klines" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\klines.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gnavigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\gnavigation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="player_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\player_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="visible_yes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\visible_yes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Basique" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\THEMES\Basique.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rotate_cw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\rotate_cw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,11 +232,17 @@
   <data name="compfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\compfile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BlackClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\THEMES\BlackClass.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="build" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\build.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="player_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\player_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gnavigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\gnavigation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agt_pause-queue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\agt_pause-queue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,8 +271,8 @@
   <data name="irkick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\irkick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="visible_no" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\ICONES\visible_no.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="contents" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\contents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wizard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\wizard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -265,32 +280,10 @@
   <data name="irkickflash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\irkickflash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  
   <data name="browser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\browser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Basique" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\THEMES\Basique.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BlackClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\THEMES\BlackClass.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BlueTrack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\THEMES\BlueTrack.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Classique" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\THEMES\Classique.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="visible_no" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\ICONES\visible_no.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="visible_yes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\ICONES\visible_yes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bnavigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\bnavigation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tnavigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\tnavigation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
