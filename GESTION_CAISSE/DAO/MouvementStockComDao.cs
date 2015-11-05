@@ -9,28 +9,35 @@ using GESTION_CAISSE.TOOLS;
 
 namespace GESTION_CAISSE.DAO
 {
-    class DepotDao
+    class MouvementStockDao
     {
-        public static Depot getOneDepot(long id)
+        public static MouvementStock getOneMouvementStock(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select * from yvs_base_depots where id = " + id + "";
+                String search = "select * from yvs_base_mouvement_stock where id = " + id + "";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
-                Depot a = new Depot();
+                MouvementStock a = new MouvementStock();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Abbreviation = lect["abbreviation"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Emplacements = BLL.EmplacementBll.Liste("select * from yvs_base_emplacement_depot where depot = " + a.Id);
-                        a.Articles = BLL.ArticleDepotBll.Liste("select * from yvs_base_article_depot where depot = " + a.Id);
-                        a.Mouvements = BLL.MouvementStockBll.Liste("select * from yvs_base_mouvement_stock where date_doc = '" + Constantes.Entete.DateEntete + "' and depot = " + a.Id);
-                        a.Update = true;
+                        a.Article = (lect["article"] != null
+                            ? (!lect["article"].ToString().Trim().Equals("")
+                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
+                            : new Article())
+                            : new Article());
+                        a.Mouvement = lect["mouvement"].ToString();
+                        a.Quantite = (Double)((lect["quantite"] != null) ? (!lect["quantite"].ToString().Trim().Equals("") ? lect["quantite"] : 0) : 0);
+                        a.DateDoc = (DateTime)((lect["date_doc"] != null) ? (!lect["date_doc"].ToString().Trim().Equals("") ? lect["date_doc"] : DateTime.Now) : DateTime.Now);
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? new Depot(Convert.ToInt64(lect["depot"].ToString()))
+                            : new Depot())
+                            : new Depot());
                     }
                     lect.Close();
                 }
@@ -52,7 +59,7 @@ namespace GESTION_CAISSE.DAO
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                String search = "select id from yvs_base_depots order by id desc limit 1";
+                String search = "select id from yvs_base_mouvement_stock order by id desc limit 1";
                 NpgsqlCommand Lcmd = new NpgsqlCommand(search, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 long id = 0;
@@ -77,7 +84,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static Depot getAjoutDepot(Depot a)
+        public static MouvementStock getAjoutMouvementStock(MouvementStock a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -98,7 +105,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getUpdateDepot(Depot a)
+        public static bool getUpdateMouvementStock(MouvementStock a)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -119,7 +126,7 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static bool getDeleteDepot(long id)
+        public static bool getDeleteMouvementStock(long id)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
@@ -140,26 +147,33 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
-        public static List<Depot> getListDepot(String query)
+        public static List<MouvementStock> getListMouvementStock(String query)
         {
             NpgsqlConnection con = Connexion.Connection();
             try
             {
-                List<Depot> l = new List<Depot>();
+                List<MouvementStock> l = new List<MouvementStock>();
                 NpgsqlCommand Lcmd = new NpgsqlCommand(query, con);
                 NpgsqlDataReader lect = Lcmd.ExecuteReader();
                 if (lect.HasRows)
                 {
                     while (lect.Read())
                     {
-                        Depot a = new Depot();
+                        MouvementStock a = new MouvementStock();
                         a.Id = Convert.ToInt64(lect["id"].ToString());
-                        a.Abbreviation = lect["abbreviation"].ToString();
-                        a.Designation = lect["designation"].ToString();
-                        a.Emplacements = BLL.EmplacementBll.Liste("select * from yvs_base_emplacement_depot where depot = " + a.Id);
-                        a.Articles = BLL.ArticleDepotBll.Liste("select * from yvs_base_article_depot where depot = " + a.Id);
-                        a.Mouvements = BLL.MouvementStockBll.Liste("select * from yvs_base_mouvement_stock where date_doc = '" + Constantes.Entete.DateEntete + "' and depot = " + a.Id);
-                        a.Update = true;
+                        a.Article = (lect["article"] != null
+                            ? (!lect["article"].ToString().Trim().Equals("")
+                            ? BLL.ArticleBll.One(Convert.ToInt64(lect["article"].ToString()))
+                            : new Article())
+                            : new Article());
+                        a.Mouvement = lect["mouvement"].ToString();
+                        a.Quantite = (Double)((lect["quantite"] != null) ? (!lect["quantite"].ToString().Trim().Equals("") ? lect["quantite"] : 0) : 0);
+                        a.DateDoc = (DateTime)((lect["date_doc"] != null) ? (!lect["date_doc"].ToString().Trim().Equals("") ? lect["date_doc"] : DateTime.Now) : DateTime.Now);
+                        a.Depot = (lect["depot"] != null
+                            ? (!lect["depot"].ToString().Trim().Equals("")
+                            ? new Depot(Convert.ToInt64(lect["depot"].ToString()))
+                            : new Depot())
+                            : new Depot());
                         l.Add(a);
                     }
                     lect.Close();

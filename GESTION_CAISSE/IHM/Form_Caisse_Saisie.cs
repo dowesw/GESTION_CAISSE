@@ -150,6 +150,8 @@ namespace GESTION_CAISSE.IHM
                 DateTime date = Convert.ToDateTime("2015-10-10");
                 TOOLS.Utils.SetEnteteOfDay(date);
             }
+
+            lb_montant_caisse.Text = Constantes.Entete.Montant.ToString();
         }
 
         public void SetClientDefaut()
@@ -644,14 +646,6 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private void createReglementByEcheance(double montant)
-        {
-            Mensualite m = new Mensualite();
-            PieceCaisse p = RecopieViewReglement(m, m.MontantReste);
-
-            double mtant = facture.MontantAvance - m.MontantReste;
-        }
-
         private void Form_Caisse_Saisie_Load(object sender, EventArgs e)
         {
             Constantes.form_caisse_saisie = this;
@@ -851,25 +845,36 @@ namespace GESTION_CAISSE.IHM
                     double montant = Convert.ToDouble(txt_montantVerse.Text);
                     if (montant > 0)
                     {
-                        Mensualite m = new Mensualite();
                         if (facture.Mensualites.Count > 0)
                         {
-                            foreach (Mensualite m_ in facture.Mensualites)
+                            foreach (Mensualite m in facture.Mensualites)
                             {
-                                if (m_.MontantReste > 0)
+                                if (montant > 0)
                                 {
-                                    m = m_;
-                                    break;
+                                    if (m.MontantReste > 0)
+                                    {
+                                        PieceCaisse p = RecopieViewReglement(m, ((montant - m.MontantReste < 0) ? (m.MontantReste - montant) : m.MontantReste));
+                                        PieceCaisse p_ = new BLL.PieceCaisseBll(p).Insert();
+                                        if ((p_ != null) ? p_.Id > 0 : false)
+                                        {
+                                            montant = (montant - p.Montant < 0) ? montant - p.Montant : 0;
+                                            p.Id = p_.Id;
+                                            p.Update = true;
+                                            m.Reglements.Add(p);
+                                            m.MontantReste -= p.Montant;
+                                            facture.Mensualites.Add(m);
+                                            facture.MontantAvance += p.Montant;
+
+                                            AddRowReglement(p);
+                                        }
+                                    }
                                 }
+
                             }
-                        }
-                        if (m.Id > 0)
-                        {
-                            createReglementByEcheance(montant);
                         }
                         else
                         {
-                            m = RecopieViewMensualite(montant);
+                            Mensualite m = RecopieViewMensualite(montant);
                             Mensualite m_ = new BLL.MensualiteBll(m).Insert();
                             if ((m_ != null) ? m_.Id > 0 : false)
                             {
@@ -882,12 +887,28 @@ namespace GESTION_CAISSE.IHM
                                     p.Id = p_.Id;
                                     p.Update = true;
                                     m.Reglements.Add(p);
+                                    m.MontantReste -= p.Montant;
                                     facture.Mensualites.Add(m);
+                                    facture.MontantAvance += p.Montant;
+
                                     AddRowReglement(p);
-                                    Messages.Succes();
                                 }
                             }
                         }
+
+                        String etat = Constantes.ETAT_EN_COURS;
+                        if (Convert.ToDouble(txt_montantVerse.Text) >= facture.MontantTTC)
+                        {
+                            etat = Constantes.ETAT_REGLE;
+                        }
+                        if (BLL.FactureBll.ChangeEtat(facture.Id, etat))
+                        {
+                            facture.MontantReste = (facture.MontantTTC - Convert.ToDouble(txt_montantVerse.Text) < 0) ? facture.MontantTTC - Convert.ToDouble(txt_montantVerse.Text) : 0;
+                            DeleteCurrentFacture(facture);
+                            facture.Statut = etat;
+                            AddCurrentFacture(facture);
+                        }
+                        Messages.Succes();
                     }
                     else
                     {
@@ -1295,7 +1316,7 @@ namespace GESTION_CAISSE.IHM
 
         private void txt_montantVerse_Leave(object sender, EventArgs e)
         {
-            txt_montantReste.Text = (Convert.ToDouble(txt_montantReste.Text) - Convert.ToDouble(txt_montantVerse.Text)).ToString();
+            txt_montantReste.Text = (facture.MontantReste - Convert.ToDouble(txt_montantVerse.Text)).ToString();
         }
 
         private void txt_montantReste_TextChanged(object sender, EventArgs e)
@@ -1328,6 +1349,11 @@ namespace GESTION_CAISSE.IHM
         private void txt_qte_article_TextChanged(object sender, EventArgs e)
         {
             txt_qte_article.Text = string.Format("{0:#,##0}", double.Parse(txt_qte_article.Text));
+        }
+
+        private void lb_montant_caisse_TextChanged(object sender, EventArgs e)
+        {
+            lb_montant_caisse.Text = string.Format("{0:#,##0.00}", double.Parse(lb_montant_caisse.Text));
         }
 
         private void lb_nom_agence_TextChanged(object sender, EventArgs e)

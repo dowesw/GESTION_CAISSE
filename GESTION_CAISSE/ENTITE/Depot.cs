@@ -12,6 +12,7 @@ namespace GESTION_CAISSE.ENTITE
         {
             emplacements = new List<Emplacement>();
             articles = new List<ArticleDepot>();
+            mouvements = new List<MouvementStock>();
         }
 
         public Depot(long id)
@@ -19,6 +20,7 @@ namespace GESTION_CAISSE.ENTITE
             this.id = id;
             emplacements = new List<Emplacement>();
             articles = new List<ArticleDepot>();
+            mouvements = new List<MouvementStock>();
         }
 
         private long id;
@@ -54,6 +56,13 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return articles; }
             set { articles = value; }
+        }
+
+        private List<MouvementStock> mouvements;
+        internal List<MouvementStock> Mouvements
+        {
+            get { return mouvements; }
+            set { mouvements = value; }
         }
 
         private bool update;

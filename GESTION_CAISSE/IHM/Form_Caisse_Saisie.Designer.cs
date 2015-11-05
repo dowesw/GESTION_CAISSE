@@ -159,8 +159,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.context_save = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tool_btn_wait = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_print = new System.Windows.Forms.Button();
             this.lb_date = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -178,9 +176,33 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            this.btn_supp_contenu = new System.Windows.Forms.Button();
+            this.btn_supp_facture = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.lb_montant_caisse = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+=======
+<<<<<<< HEAD
+            this.btn_supp_contenu = new System.Windows.Forms.Button();
+            this.btn_supp_facture = new System.Windows.Forms.Button();
+>>>>>>> origin/master
             //this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
             this.btn_supp_contenu = new System.Windows.Forms.Button();
             this.btn_supp_facture = new System.Windows.Forms.Button();
+<<<<<<< HEAD
+=======
+=======
+            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -207,22 +229,23 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).BeginInit();
             this.panel3.SuspendLayout();
-            this.context_save.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).BeginInit();
             this.context_reglement.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.panel4);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.lb_nom_depot);
-            this.groupBox1.Controls.Add(this.lb_nom_agence);
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.panel6);
+            this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Controls.Add(this.lb_prenom_user);
             this.groupBox1.Controls.Add(this.lb_nom_user);
             this.groupBox1.Controls.Add(this.box_user);
@@ -241,7 +264,7 @@
             this.panel4.Controls.Add(this.lb_heure_debut_tranch);
             this.panel4.Controls.Add(this.lb_heure_fin_tranch);
             this.panel4.Controls.Add(this.label10);
-            this.panel4.Location = new System.Drawing.Point(742, 16);
+            this.panel4.Location = new System.Drawing.Point(54, 11);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 25);
             this.panel4.TabIndex = 9;
@@ -280,7 +303,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(693, 20);
+            this.label8.Location = new System.Drawing.Point(5, 15);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 6;
@@ -290,7 +313,7 @@
             // 
             this.lb_nom_depot.AutoSize = true;
             this.lb_nom_depot.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_nom_depot.Location = new System.Drawing.Point(391, 46);
+            this.lb_nom_depot.Location = new System.Drawing.Point(58, 36);
             this.lb_nom_depot.Name = "lb_nom_depot";
             this.lb_nom_depot.Size = new System.Drawing.Size(93, 18);
             this.lb_nom_depot.TabIndex = 5;
@@ -300,7 +323,7 @@
             // 
             this.lb_nom_agence.AutoSize = true;
             this.lb_nom_agence.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_nom_agence.Location = new System.Drawing.Point(391, 17);
+            this.lb_nom_agence.Location = new System.Drawing.Point(58, 7);
             this.lb_nom_agence.Name = "lb_nom_agence";
             this.lb_nom_agence.Size = new System.Drawing.Size(151, 18);
             this.lb_nom_agence.TabIndex = 5;
@@ -311,7 +334,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(340, 50);
+            this.label24.Location = new System.Drawing.Point(7, 40);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(45, 13);
             this.label24.TabIndex = 4;
@@ -321,7 +344,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(340, 20);
+            this.label6.Location = new System.Drawing.Point(7, 10);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 4;
@@ -359,6 +382,7 @@
             // 
             // btn_theme
             // 
+            this.btn_theme.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_theme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_theme.ForeColor = System.Drawing.Color.Transparent;
             this.btn_theme.Image = global::GESTION_CAISSE.Properties.Resources.klines;
@@ -374,6 +398,7 @@
             // 
             // btn_deconnect
             // 
+            this.btn_deconnect.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_deconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_deconnect.ForeColor = System.Drawing.Color.Transparent;
             this.btn_deconnect.Image = global::GESTION_CAISSE.Properties.Resources.exit;
@@ -389,6 +414,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.lb_tel_client);
@@ -508,6 +534,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.tabControl1);
             this.groupBox3.Location = new System.Drawing.Point(12, 508);
@@ -519,6 +546,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -960,6 +988,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.panel2);
             this.groupBox4.Controls.Add(this.panel1);
@@ -981,6 +1010,7 @@
             // 
             // dgv_contenu
             // 
+            this.dgv_contenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv_contenu.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgv_contenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_contenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1007,6 +1037,7 @@
             // 
             // articleContenu
             // 
+            this.articleContenu.FillWeight = 160.2564F;
             this.articleContenu.HeaderText = "Article";
             this.articleContenu.Name = "articleContenu";
             this.articleContenu.ReadOnly = true;
@@ -1018,10 +1049,11 @@
             dataGridViewCellStyle13.Format = "N0";
             dataGridViewCellStyle13.NullValue = "0";
             this.puvContenu.DefaultCellStyle = dataGridViewCellStyle13;
+            this.puvContenu.FillWeight = 93.27624F;
             this.puvContenu.HeaderText = "Prix Unitaire";
             this.puvContenu.Name = "puvContenu";
             this.puvContenu.ReadOnly = true;
-            this.puvContenu.Width = 125;
+            this.puvContenu.Width = 116;
             // 
             // qteContenu
             // 
@@ -1029,6 +1061,7 @@
             dataGridViewCellStyle14.Format = "N0";
             dataGridViewCellStyle14.NullValue = "0";
             this.qteContenu.DefaultCellStyle = dataGridViewCellStyle14;
+            this.qteContenu.FillWeight = 99.80973F;
             this.qteContenu.HeaderText = "Quantité";
             this.qteContenu.Name = "qteContenu";
             this.qteContenu.ReadOnly = true;
@@ -1040,10 +1073,11 @@
             dataGridViewCellStyle15.Format = "N2";
             dataGridViewCellStyle15.NullValue = "0";
             this.totalContenu.DefaultCellStyle = dataGridViewCellStyle15;
+            this.totalContenu.FillWeight = 117.6386F;
             this.totalContenu.HeaderText = "Total";
             this.totalContenu.Name = "totalContenu";
             this.totalContenu.ReadOnly = true;
-            this.totalContenu.Width = 140;
+            this.totalContenu.Width = 147;
             // 
             // supp
             // 
@@ -1052,6 +1086,7 @@
             dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Red;
             dataGridViewCellStyle16.NullValue = "X";
             this.supp.DefaultCellStyle = dataGridViewCellStyle16;
+            this.supp.FillWeight = 29.01904F;
             this.supp.HeaderText = "";
             this.supp.LinkColor = System.Drawing.Color.Red;
             this.supp.Name = "supp";
@@ -1060,10 +1095,11 @@
             this.supp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.supp.ToolTipText = "Supprimer";
             this.supp.VisitedLinkColor = System.Drawing.Color.White;
-            this.supp.Width = 34;
+            this.supp.Width = 36;
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.txt_qte_article);
             this.panel1.Controls.Add(this.com_article);
@@ -1160,6 +1196,7 @@
             // 
             // btn_add_contenu
             // 
+            this.btn_add_contenu.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_add_contenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add_contenu.ForeColor = System.Drawing.Color.Transparent;
             this.btn_add_contenu.Image = global::GESTION_CAISSE.Properties.Resources.build;
@@ -1182,6 +1219,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
             this.groupBox5.Controls.Add(this.txt_montantVerse);
             this.groupBox5.Controls.Add(this.btn_reglement);
@@ -1369,6 +1407,7 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.btn_cancel);
             this.panel3.Controls.Add(this.btn_save);
@@ -1392,7 +1431,6 @@
             // 
             // btn_save
             // 
-            this.btn_save.ContextMenuStrip = this.context_save;
             this.btn_save.Image = global::GESTION_CAISSE.Properties.Resources.btn_sauvegarde;
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save.Location = new System.Drawing.Point(119, 7);
@@ -1402,21 +1440,6 @@
             this.btn_save.Text = "Enregi&strer";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
-            // 
-            // context_save
-            // 
-            this.context_save.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tool_btn_wait});
-            this.context_save.Name = "context_save";
-            this.context_save.Size = new System.Drawing.Size(130, 26);
-            // 
-            // tool_btn_wait
-            // 
-            this.tool_btn_wait.Image = global::GESTION_CAISSE.Properties.Resources.agt_resume;
-            this.tool_btn_wait.Name = "tool_btn_wait";
-            this.tool_btn_wait.Size = new System.Drawing.Size(129, 22);
-            this.tool_btn_wait.Text = "En Attente";
-            this.tool_btn_wait.Click += new System.EventHandler(this.tool_btn_wait_Click);
             // 
             // btn_print
             // 
@@ -1431,6 +1454,7 @@
             // 
             // lb_date
             // 
+            this.lb_date.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_date.AutoSize = true;
             this.lb_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_date.Location = new System.Drawing.Point(828, 9);
@@ -1441,10 +1465,11 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.btn_approv);
             this.groupBox6.Location = new System.Drawing.Point(12, 756);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(683, 49);
+            this.groupBox6.Size = new System.Drawing.Size(484, 49);
             this.groupBox6.TabIndex = 7;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Autres Vues";
@@ -1460,6 +1485,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox7.Controls.Add(this.dgv_reglement);
             this.groupBox7.Location = new System.Drawing.Point(701, 623);
             this.groupBox7.Name = "groupBox7";
@@ -1544,7 +1570,7 @@
             this.com_typeDoc.Items.AddRange(new object[] {
             "Facture",
             "Commande"});
-            this.com_typeDoc.Location = new System.Drawing.Point(943, 106);
+            this.com_typeDoc.Location = new System.Drawing.Point(240, 2);
             this.com_typeDoc.Name = "com_typeDoc";
             this.com_typeDoc.Size = new System.Drawing.Size(109, 21);
             this.com_typeDoc.TabIndex = 9;
@@ -1553,7 +1579,7 @@
             // 
             // txt_reference
             // 
-            this.txt_reference.Location = new System.Drawing.Point(777, 107);
+            this.txt_reference.Location = new System.Drawing.Point(74, 3);
             this.txt_reference.Name = "txt_reference";
             this.txt_reference.Size = new System.Drawing.Size(160, 20);
             this.txt_reference.TabIndex = 10;
@@ -1561,7 +1587,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(705, 109);
+            this.label5.Location = new System.Drawing.Point(2, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 11;
@@ -1586,6 +1612,18 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
             // btn_supp_contenu
             // 
             this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
@@ -1599,6 +1637,65 @@
             this.btn_supp_facture.Name = "btn_supp_facture";
             this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
             this.btn_supp_facture.TabIndex = 0;
+<<<<<<< HEAD
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox8.Controls.Add(this.lb_montant_caisse);
+            this.groupBox8.Location = new System.Drawing.Point(498, 756);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 49);
+            this.groupBox8.TabIndex = 14;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Récapitulatif Caisse";
+            // 
+            // lb_montant_caisse
+            // 
+            this.lb_montant_caisse.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lb_montant_caisse.AutoSize = true;
+            this.lb_montant_caisse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_montant_caisse.Location = new System.Drawing.Point(39, 19);
+            this.lb_montant_caisse.Name = "lb_montant_caisse";
+            this.lb_montant_caisse.Size = new System.Drawing.Size(155, 15);
+            this.lb_montant_caisse.TabIndex = 0;
+            this.lb_montant_caisse.Text = "1 000 000 000 000 000";
+            this.lb_montant_caisse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lb_montant_caisse.TextChanged += new System.EventHandler(this.lb_montant_caisse_TextChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.lb_nom_depot);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.label24);
+            this.panel5.Controls.Add(this.lb_nom_agence);
+            this.panel5.Location = new System.Drawing.Point(308, 8);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(255, 64);
+            this.panel5.TabIndex = 10;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.panel6.Controls.Add(this.panel4);
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Location = new System.Drawing.Point(689, 8);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(263, 64);
+            this.panel6.TabIndex = 11;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.panel7.Controls.Add(this.txt_reference);
+            this.panel7.Controls.Add(this.com_typeDoc);
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Location = new System.Drawing.Point(701, 102);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(351, 27);
+            this.panel7.TabIndex = 1;
+=======
             // txt_montantVerse
             // 
             this.txt_montantVerse.Increment = new decimal(new int[] {
@@ -1617,6 +1714,10 @@
             this.txt_montantVerse.TabIndex = 5;
             this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
             // 
             // Form_Caisse_Saisie
             // 
@@ -1625,11 +1726,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1056, 817);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.lb_numPiece);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txt_reference);
-            this.Controls.Add(this.com_typeDoc);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.lb_date);
@@ -1640,12 +1740,11 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1072, 856);
             this.MinimumSize = new System.Drawing.Size(1072, 856);
             this.Name = "Form_Caisse_Saisie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Caisse";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Caisse_Saisie_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Caisse_Saisie_FormClosed);
             this.Load += new System.EventHandler(this.Form_Caisse_Saisie_Load);
@@ -1680,11 +1779,18 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_montantVerse)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.context_save.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).EndInit();
             this.context_reglement.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1765,8 +1871,6 @@
         private System.Windows.Forms.Label lb_search_client;
         private System.Windows.Forms.TextBox txt_montantRemise;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ContextMenuStrip context_save;
-        private System.Windows.Forms.ToolStripMenuItem tool_btn_wait;
         private System.Windows.Forms.ComboBox com_typeDoc;
         private System.Windows.Forms.TextBox txt_reference;
         private System.Windows.Forms.Label label5;
@@ -1824,6 +1928,14 @@
         private System.Windows.Forms.NumericUpDown txt_montantVerse;
         private System.Windows.Forms.Button btn_supp_contenu;
         private System.Windows.Forms.Button btn_supp_facture;
+<<<<<<< HEAD
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label lb_montant_caisse;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+=======
+>>>>>>> origin/master
     }
 }
 

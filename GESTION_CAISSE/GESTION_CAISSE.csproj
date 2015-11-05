@@ -70,6 +70,7 @@
     <Compile Include="BLL\ArticleComptableBll.cs" />
     <Compile Include="BLL\ArticleTaxeBll.cs" />
     <Compile Include="BLL\ArticleDepotBll.cs" />
+    <Compile Include="BLL\MouvementStockBll.cs" />
     <Compile Include="BLL\DictionnaireBll.cs" />
     <Compile Include="BLL\EmplacementBll.cs" />
     <Compile Include="BLL\PlanRemiseBll.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="DAO\ArticleComptableDao.cs" />
     <Compile Include="DAO\ArticleTaxeDao.cs" />
     <Compile Include="DAO\ArticleDepotDao.cs" />
+    <Compile Include="DAO\MouvementStockComDao.cs" />
     <Compile Include="DAO\DictionnaireDao.cs" />
     <Compile Include="ENTITE\Dictionnaire.cs" />
     <Compile Include="DAO\EmplacementDao.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="ENTITE\Mensualite.cs" />
     <Compile Include="ENTITE\ModelReference.cs" />
     <Compile Include="ENTITE\ModePaiement.cs" />
+    <Compile Include="ENTITE\MouvementStock.cs" />
     <Compile Include="ENTITE\Personnel.cs" />
     <Compile Include="ENTITE\PieceCaisse.cs" />
     <Compile Include="ENTITE\PlanCommission.cs" />
@@ -185,6 +188,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Etat_Ticket.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Approvision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form_Approvision.Designer.cs">
+      <DependentUpon>Form_Approvision.cs</DependentUpon>
     </Compile>
     <Compile Include="IHM\Form_Caisse_Mensualite.cs">
       <SubType>Form</SubType>
@@ -279,6 +288,9 @@
     <EmbeddedResource Include="ETAT\Etat_Ticket.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etat_Ticket.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Form_Approvision.resx">
+      <DependentUpon>Form_Approvision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IHM\Form_Caisse_Mensualite.resx">
       <DependentUpon>Form_Caisse_Mensualite.cs</DependentUpon>
@@ -381,11 +393,14 @@
     <Content Include="IMG\ICONES\exit.png" />
     <None Include="IMG\ICONES\fileexport.png" />
     <None Include="IMG\ICONES\filter.png" />
+    <None Include="IMG\ICONES\in.png" />
+    <None Include="IMG\ICONES\in_out.png" />
     <Content Include="IMG\ICONES\irkick.png" />
     <Content Include="IMG\ICONES\irkickflash.png" />
     <None Include="IMG\ICONES\klines.png" />
     <Content Include="IMG\ICONES\logout.png" />
     <None Include="IMG\ICONES\package_games_kids.png" />
+    <None Include="IMG\ICONES\out.png" />
     <Content Include="IMG\ICONES\player_play.png" />
     <Content Include="IMG\ICONES\player_stop.png" />
     <Content Include="IMG\ICONES\restart-1.png" />
