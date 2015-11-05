@@ -1520,6 +1520,7 @@ namespace GESTION_CAISSE.IHM
 
         private void Form_Caisse_Click_Load(object sender, EventArgs e)
         {
+            
             Constantes.form_caisse_click = this;
             contenu = new Contenu();
         }
@@ -1950,6 +1951,28 @@ namespace GESTION_CAISSE.IHM
             a = modes.Find(x => x.Id == a.Id);
             reglement.Mode = a;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if ((fact != null) ? fact.Id > 0 : false)
+            {
+                new Form_Ticket(fact).Show();
+            }
+            else
+            {
+                Messages.ShowErreur("Vous devez selectionner une facture");
+            }
+        }
+
+        private void btn_regl_tick_Click(object sender, EventArgs e)
+        {
+            btnReglement_Click(sender, e);
+            if ((fact != null) ? fact.Id > 0 : false)
+            {
+                new Form_Ticket(fact).Show();
+            }
+        }
+
 
 
     }

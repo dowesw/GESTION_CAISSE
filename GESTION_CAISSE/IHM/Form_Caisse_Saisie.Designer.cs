@@ -178,21 +178,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
-<<<<<<< HEAD
-            this.btn_supp_contenu = new System.Windows.Forms.Button();
-            this.btn_supp_facture = new System.Windows.Forms.Button();
             //this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             this.btn_supp_contenu = new System.Windows.Forms.Button();
             this.btn_supp_facture = new System.Windows.Forms.Button();
-=======
-            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -1235,10 +1223,7 @@
             this.txt_montantVerse.TabIndex = 5;
             this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
-<<<<<<< HEAD
             this.txt_montantVerse.Leave += new System.EventHandler(this.txt_montantVerse_Leave);
-=======
->>>>>>> origin/master
             // 
             // btn_reglement
             // 
@@ -1601,12 +1586,6 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
             // btn_supp_contenu
             // 
             this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
@@ -1639,7 +1618,6 @@
             this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
             // 
->>>>>>> origin/master
             // Form_Caisse_Saisie
             // 
             this.AcceptButton = this.btn_add_contenu;

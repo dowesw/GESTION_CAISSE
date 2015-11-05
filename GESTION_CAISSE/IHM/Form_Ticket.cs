@@ -116,7 +116,6 @@ namespace GESTION_CAISSE.IHM
         {
             CaptureScreen();
             print.Print();
-            compteur = 0;
             this.Dispose();
         }
 
