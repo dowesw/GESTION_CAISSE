@@ -158,7 +158,8 @@ namespace GESTION_CAISSE.IHM
         {
             Form_Caisse_Click f = (Form_Caisse_Click)fParent;
             //f.remboursement = f.apayer - Convert.ToDouble(textBox1.Text);
-            f.Relicat.Text = Convert.ToString(Convert.ToDouble(textBox1.Text) - Convert.ToDouble(f.SommeP.Text));
+            f.SommeVersee.Text = textBox1.Text;
+            //f.Relicat.Text = Convert.ToString(Convert.ToDouble(textBox1.Text) - Convert.ToDouble(f.SommeP.Text));
             this.Close();
         }
 

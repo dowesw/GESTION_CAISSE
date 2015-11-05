@@ -31,7 +31,12 @@ namespace GESTION_CAISSE.IHM
         Depot dpt = new Depot();
         int indTabF;
         int indTabA;
+        int nbrPgF;
+        int nbrPgA;
         public bool archive;
+        long rowFacture;
+        bool suppFacture;
+        DataGridView suppData;
 
         public double remboursement;
         public double apayer;
@@ -41,8 +46,8 @@ namespace GESTION_CAISSE.IHM
         Facture fact = new Facture();
         Mensualite mensualite = new Mensualite();
         PieceCaisse reglement = new PieceCaisse();
-
-
+        List<ModePaiement> modes;
+        Form F_parent;
 
         public Form_Caisse_Click()
         {
@@ -56,6 +61,7 @@ namespace GESTION_CAISSE.IHM
             articlesCrits = new List<Article>();
             articles = new List<Article>();
             clients = new List<Client>();
+            modes = new List<ModePaiement>();
 
             contenu = new Contenu();
 
@@ -67,14 +73,48 @@ namespace GESTION_CAISSE.IHM
 
             //panel4.Enabled = false;
             //picClient.Enabled = false;
-           // btnEnregistrer.Enabled = false;
+            // btnEnregistrer.Enabled = false;
             SearchDirectionF(2);
+            LoadAll();
+        }
 
+        public Form_Caisse_Click(Form parent)
+        {
+            InitializeComponent();
+            familles = new List<FamilleArticle>();
+            //charger famillesa articles
+            familles.Clear();
+            //familles = BLL.FamilleArticleBll.Liste_("select * from yvs_base_famille_article");
+            familles = prodListFamille();
+            famillesCrits = new List<FamilleArticle>();
+            articlesCrits = new List<Article>();
+            articles = new List<Article>();
+            clients = new List<Client>();
+            modes = new List<ModePaiement>();
+            if (parent != null)
+            {
+                F_parent = parent;
+            }
+            contenu = new Contenu();
+
+            ConfigForm();
+
+            // tout réinitialiser
+            archive = true;
+            //btnReglement.Enabled = false;
+
+            //panel4.Enabled = false;
+            //picClient.Enabled = false;
+            // btnEnregistrer.Enabled = false;
+            SearchDirectionF(2);
+            LoadAll();
+
+           
         }
 
         public void ConfigForm()
         {
-            
+            ResetFicheFacture();
             clientZero = BLL.ClientBll.Default();
             dpt = TOOLS.Constantes.Creneau.Depot;
             indTabF = 0; indTabA = 0;
@@ -98,7 +138,9 @@ namespace GESTION_CAISSE.IHM
             bg.Interval = 500;
             bg.Start();
 
-            gestDgvs(null, 2, true);
+            nbrPgF = ((familles.Count % 8) > 0) ? (familles.Count / 8) + 1 : (familles.Count / 8);
+            btn_cpt_Famille.Text = "0/" + nbrPgF;
+           
         }
 
         public void initZonePrix()
@@ -116,7 +158,7 @@ namespace GESTION_CAISSE.IHM
             PrenomClient.Text = clientZero.Tiers.Prenom;
             AdresseClient.Text = clientZero.Tiers.Adresse;
             TelClient.Text = clientZero.Tiers.Tel;
-            label16.Text = clientZero.Tiers.CodeTiers;
+            codeClient.Text = clientZero.Tiers.CodeTiers;
         }
 
         private void InitButton(List<Button> listBtn, List<Label> listLabl)
@@ -129,7 +171,8 @@ namespace GESTION_CAISSE.IHM
                 btn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
                 btn.UseVisualStyleBackColor = true;
                 btn.Visible = false;
-                btn.Click += delegate(object sender, EventArgs e)
+                btn.Enabled = true;
+                btn.Click -= delegate(object sender, EventArgs e)
                 {
 
                 };
@@ -143,26 +186,32 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private void gestDgvs(DataGridView dgv, int lkel, bool b) 
+        private void LoadAll()
         {
-            if(lkel==1)
-            {
-                foreach(DataGridView d in datagrids){
-                    if (d.Equals(dgv)) d.Visible = b;
-                    else d.Visible=!b;
-                }
-            }
-
-            if (lkel ==2)
-            {
-                foreach (DataGridView d in datagrids)
-                {
-                    d.Visible = false;
-                }
-            }
+            LoadAllModes();
+            setEnteteJour();
         }
 
+        public void LoadAllModes()
+        {
+            modes.Clear();
+            string query = "select * FROM yvs_mode_paiement";
+            modes = BLL.ModePaiementBll.Liste(query);
+            com_mode.Items.Clear();
+            com_mode.DisplayMember = "TypePaiement";
+            com_mode.ValueMember = "Id";
+            com_mode.DataSource = new BindingSource(modes, null);
 
+            foreach (ENTITE.ModePaiement a in modes)
+            {
+                if ((a.TypePaiement != null) ? !a.TypePaiement.Trim().Equals("") : false)
+                {
+                    com_mode.AutoCompleteCustomSource.Add(a.TypePaiement);
+                }
+            }
+            com_mode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            com_mode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
         private List<FamilleArticle> prodListFamille()
         {
             FamilleArticle Dflt = new FamilleArticle(0);
@@ -238,10 +287,15 @@ namespace GESTION_CAISSE.IHM
                 System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ctl.Click += delegate(object sender, EventArgs e)
             {
+                tabControl2.SelectedIndex = 1;
                 ctl.BackColor = Color.DarkGray;
                 indTabA = 0;
                 articles.Clear();
                 articles.AddRange(cli.Articles);
+
+                nbrPgA = ((articles.Count % 8) > 1) ? (articles.Count / 8) + 1 : (articles.Count / 8);
+                btn_cpt_Articles.Text = "0/" + nbrPgA;
+
                 SearchDirectionA(2);
                 ctl.Enabled = false;
                 foreach (Button btn in buttonFs)
@@ -268,7 +322,7 @@ namespace GESTION_CAISSE.IHM
         //modification des boutons des articles
         private void ModifButton(Button ctl, Article cli, Label lbl)
         {
-            //cli = (Article)articles.ElementAt<Article>(indTabA);
+
 
             if ((cli.Photos != null) ?
                     ((cli.Photos.Count > 0) ?
@@ -284,35 +338,110 @@ namespace GESTION_CAISSE.IHM
                 chemin += TOOLS.Constantes.FILE_SEPARATOR + cli.Photos[0];
                 ctl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject(chemin)));
             }
-
             ctl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ctl.Text = "";
             ctl.UseVisualStyleBackColor = true;
             ctl.Visible = true;
             ctl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold,
                 System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             ctl.Click += delegate(object sender, EventArgs e)
             {
-                contenu.Article = BLL.ArticleComBll.One(cli);
-                Form_Caisse_Quantite f = new Form_Caisse_Quantite(this);
-                f.ShowDialog();
-                TOOLS.Utils.TotalRRRContenuDoc(fact, contenu);
-                contenu.PrixTotal = contenu.Quantite * contenu.Article.Article.Prix;
-                if (contenu.Quantite != 0)
+                contenu = new Contenu();
+
+                if ((fact != null) ? fact.Id < 1 : true)
                 {
-                    dataGridView1.Rows.Add(new object[] { contenu.Id, contenu.Article.Article.Designation,
-                    contenu.Article.Article.Prix, contenu.Remise, contenu.Quantite, contenu.PrixTotal, null });
-
-                    SommSR.Text = Convert.ToString(Convert.ToDouble(SommSR.Text) + contenu.PrixTotal);
-
-                    //sauvegarde nouveau contenu
+                    Messages.ShowErreur("Vous devez dabord enregsitrer la facture!");
+                    return;
                 }
-                ctl.BackColor = Color.DarkGray;
-                ctl.Enabled = false;
-                btnReglement.Enabled = true;
+                else
+                {
+                    //sauvegarde nouveau contenu
+                    contenu.Article = BLL.ArticleComBll.One(cli);
+                    contenu.Facture = fact;
+                    contenu.Prix = cli.Prix;
+                    contenu.New_ = true;
+                    //qté article
+                    Form_Caisse_Quantite f = new Form_Caisse_Quantite(this);
+                    f.Text = "Quantité de: " + cli.Designation;
+                    f.ShowDialog();
+                    if ((contenu.Quantite != 0) || (contenu.Quantite == null))
+                    {
+                        ctl.BackColor = Color.DarkGray;
+                        ctl.Enabled = false;
+                        btnReglement.Enabled = true;
+                        contenu.PrixTotal = contenu.Quantite * contenu.Prix;
+                        //SommSR.Text = Convert.ToString(Convert.ToDouble(SommSR.Text) + contenu.PrixTotal);
+                    }
+                }
+
+                //contenu.Update=true;
+                if (contenu.Control())
+                {
+                    if (!contenu.Update)
+                    {
+                        contenu.DateContenu = DateTime.Now;
+                        Contenu c_ = new BLL.ContenuBll(contenu).Insert();
+                        if ((c_ != null) ? c_.Id > 0 : false)
+                        {
+                            contenu.Id = c_.Id;
+                            contenu.Update = true;
+                            fact.Contenus.Add(contenu);
+                            AddRowContenu(contenu);
+                            contenu.Update = true;
+                            Messages.Succes();
+                        }
+                    }
+                    else
+                    {
+                        if (new BLL.ContenuBll(contenu).Update())
+                        {
+                            contenu.Update = true;
+                            fact.Contenus[fact.Contenus.FindIndex(x => x.Id == contenu.Id)] = contenu;
+                            UpdateRowContenu(contenu);
+
+                            contenu.Update = true;
+                            Messages.Succes();
+                        }
+                    }
+                    Utils.MontantTotalDoc(fact);
+                    configFacture(fact);
+                    UpdateCurrentFacture(fact);
+                }
+
             };
             lbl.Visible = true;
             lbl.Text = cli.Designation;
+        }
+
+        private Contenu RecopieViewContenu()
+        {
+            Contenu c = new Contenu();
+            c.Id = contenu.Id;
+            c.Article = contenu.Article;
+            c.Facture = fact;
+            //c.Prix = Convert.ToDouble((!txt_prix_article.Text.Trim().Equals("")) ? txt_prix_article.Text.Trim() : "0");
+            //c.Quantite = Convert.ToDouble((!txt_qte_article.Text.Trim().Equals("")) ? txt_qte_article.Text.Trim() : "0");
+            c.DateContenu = contenu.DateContenu;
+            c.PrixTotal = c.Prix * c.Quantite;
+            c.RemiseArt = contenu.RemiseArt;
+            c.RemiseCat = contenu.RemiseCat;
+            c.Remise = c.RemiseArt + c.RemiseCat;
+            c.Ristourne = contenu.Ristourne;
+            c.Commission = contenu.Commission;
+            c.Update = contenu.Update;
+            c.New_ = true;
+            return c;
+        }
+        private void UpdateRowContenu(DataGridView data, Contenu f)
+        {
+            data.Rows.RemoveAt(Utils.GetRowData(data, f.Id));
+            AddRowContenu(data, f);
+        }
+
+        private void UpdateRowContenu(Contenu c)
+        {
+            UpdateRowContenu(dataGridView1, c);
         }
 
         private void ResultatRechercheF(String txt)
@@ -352,6 +481,10 @@ namespace GESTION_CAISSE.IHM
             List<FamilleArticle> listRetour = new List<FamilleArticle>();
             if (sens == 2)
             {
+                int charT=btn_cpt_Famille.Text.IndexOf('/');
+                int subStr= Convert.ToInt32( btn_cpt_Famille.Text.Substring(0, charT));
+                btn_cpt_Famille.Text =  (subStr+1).ToString()+"/" +nbrPgF;
+
                 for (int i = 0; i < 8; i++)
                 {
                     if ((indActu == list.Count - 1) || (list.Count == 0)) pgDroiteF.Enabled = false;
@@ -375,9 +508,12 @@ namespace GESTION_CAISSE.IHM
 
             if (sens == 1)
             {
+                int charT = btn_cpt_Famille.Text.IndexOf('/');
+                int subStr = Convert.ToInt32(btn_cpt_Famille.Text.Substring(0, charT));
+                btn_cpt_Famille.Text = (subStr - 1).ToString() + "/" + nbrPgA;
+
                 for (int i = 0; i < 8; i++)
                 {
-
                     if (indActu == list.Count - 1) pgDroiteF.Enabled = false;
                     else pgDroiteF.Enabled = true;
                     if (indActu < 8) pgGaucheF.Enabled = false;
@@ -403,6 +539,9 @@ namespace GESTION_CAISSE.IHM
             List<Article> listRetour = new List<Article>();
             if (sens == 2)
             {
+                int charT = btn_cpt_Articles.Text.IndexOf('/');
+                int subStr = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT));
+                btn_cpt_Articles.Text = (subStr + 1).ToString() + "/" + nbrPgA;
 
                 for (int i = 0; i < 8; i++)
                 {
@@ -427,6 +566,10 @@ namespace GESTION_CAISSE.IHM
 
             if (sens == 1)
             {
+                int charT = btn_cpt_Articles.Text.IndexOf('/');
+                int subStr = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT));
+                btn_cpt_Articles.Text = (subStr - 1).ToString() + "/" + nbrPgA;
+
                 if ((indActu % 8) != 0) indActu -= (indActu % 8); indActu--;
                 for (int i = 0; i < 8; i++)
                 {
@@ -572,7 +715,7 @@ namespace GESTION_CAISSE.IHM
         {
             Form_Caisse_Reglement f = new Form_Caisse_Reglement(this);
             f.ShowDialog();
-            if ((fact!= null) ? fact.Id > 0 : false)
+            if ((fact != null) ? fact.Id > 0 : false)
             {
                 if (fact.MontantReste > 0)
                 {
@@ -647,7 +790,6 @@ namespace GESTION_CAISSE.IHM
             initZonePrix();
             clientZero = BLL.ClientBll.Default();
             dataGridView1.Rows.Clear();
-            panel4.Enabled = true;
             picClient.Enabled = true;
             btnEnregistrer.Enabled = true;
             archive = false;
@@ -662,6 +804,24 @@ namespace GESTION_CAISSE.IHM
             com_typeDoc.Text = "Facture";
             SetStateFacture(true);
             configFacture(null);
+            clientZero = BLL.ClientBll.Default();
+            dpt = TOOLS.Constantes.Creneau.Depot;
+            indTabF = 0; indTabA = 0;
+            // création de la liste des boutons famille
+            buttonFs = new List<Button> { button7, button8, button9, button10, button11, button12, button13, button14 };
+            // création de la liste des labels famille
+            labelFs = new List<Label> { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8 };
+
+            // création de la liste des boutons article
+            buttonAs = new List<Button> { button15, button16, button17, button18, button19, button20, button21, button22 };
+            // création de la liste des labels article
+            labelAs = new List<Label> { label18, label20, label21, label22, label23, label24, label25, label26 };
+            //lise datagridviews
+            datagrids = new List<DataGridView> { dgv_commande, dgv_facture_cours, dgv_facture_regle, dgv_facture_wait, dgv_reglement };
+            InitButton(buttonFs, labelFs);
+            InitButton(buttonAs, labelAs);
+            initZonePrix();
+            InitInfoClient();
 
         }
 
@@ -671,8 +831,6 @@ namespace GESTION_CAISSE.IHM
             Form_Choix_Client f = new Form_Choix_Client(this);
             f.ShowDialog();
         }
-
-
 
 
         private Facture RecopieViewFacture()
@@ -911,65 +1069,57 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-        private void bntEnCours_Click(object sender, EventArgs e)
+        private void configClient(Client f)
         {
-            groupBox7.Text = "Historique des factures en Cours";
-            groupBox7.Visible = true;
-            gestDgvs(dgv_facture_cours,1,true);
-            panel6.Visible = false;
+            if (f != null)
+            {
+                codeClient.Text = f.Tiers.CodeTiers;
+                AdresseClient.Text = f.Tiers.Adresse;
+                PrenomClient.Text = f.Tiers.Prenom;
+                NomClient.Text = f.Tiers.Nom;
+                TelClient.Text = f.Tiers.Tel;
+                if (f.Tiers.Logo.Equals("") || f.Tiers.Logo == null)
+                {
+                    picClient.Image = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
+                }
+                else
+                {
+                    String chemin = Application.StartupPath;
+                    chemin += TOOLS.Constantes.FILE_SEPARATOR + f.Tiers.Logo;
+                    picClient.Image = ((System.Drawing.Image)(resources.GetObject(chemin)));
+                }
+            }
+            else
+            {
+                lb_numPiece.Text = Utils.GenererReference(Constantes.DOC_FACTURE);
+                codeClient.Text = f.Tiers.CodeTiers;
+                AdresseClient.Text = f.Tiers.Adresse;
+                PrenomClient.Text = f.Tiers.Prenom;
+                NomClient.Text = f.Tiers.Nom;
+                TelClient.Text = f.Tiers.Tel;
+                if (f.Tiers.Logo.Equals("") || f.Tiers.Logo==null)
+                {
+                    picClient.Image = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
+                }
+                else
+                {
+                    String chemin = Application.StartupPath;
+                    chemin += TOOLS.Constantes.FILE_SEPARATOR + f.Tiers.Logo;
+                    picClient.Image = ((System.Drawing.Image)(resources.GetObject(chemin)));
+                }
+            }
         }
 
-        private void bntEnAttente_Click(object sender, EventArgs e)
-        {
-            groupBox7.Text = "Historique des factures en Attentes";
-            groupBox7.Visible = true;
-            gestDgvs(dgv_facture_wait, 1, true);
-            panel6.Visible = false;
-        }
-
-        private void btnCmd_Click(object sender, EventArgs e)
-        {
-            groupBox7.Text = "Historique des Commandes";
-            groupBox7.Visible = true;
-            gestDgvs(dgv_commande, 1, true);
-            panel6.Visible = false;
-        }
-
-        private void bntRefHist_Click(object sender, EventArgs e)
-        {
-            groupBox7.Text = "Historique des factures réglées";
-            groupBox7.Visible = true;
-            gestDgvs(dgv_facture_regle, 1, true);
-            panel6.Visible = false;
-        }
-
-        private void bntEncaissmts_Click(object sender, EventArgs e)
-        {
-            groupBox7.Text = "Historique des Encaissements";
-            groupBox7.Visible = true;
-            gestDgvs(dgv_reglement, 1, true);
-            panel6.Visible = false;
-        }
-
-        private void button23_Click(object sender, EventArgs e)
-        {
-            gestDgvs(null, 2, false);
-            groupBox7.Visible =false;
-            panel6.Visible = true;
-        }
 
         private void NvoTicket_Click_1(object sender, EventArgs e)
         {
             contenu = new Contenu();
-
-            InitButton(buttonAs, labelAs);
+            ConfigForm();
             initZonePrix();
             clientZero = BLL.ClientBll.Default();
             dataGridView1.Rows.Clear();
-            panel4.Enabled = true;
             picClient.Enabled = true;
             btnEnregistrer.Enabled = true;
-            archive = false;
             fact = new Facture();
             fact.TypeDoc = Constantes.TYPE_FV;
             fact.Statut = Constantes.ETAT_EN_ATTENTE;
@@ -977,10 +1127,15 @@ namespace GESTION_CAISSE.IHM
             fact.Categorie = fact.Client.Categorie;
             fact.HeureDoc = DateTime.Now;
             fact.MouvStock = true;
-
             com_typeDoc.Text = "Facture";
             SetStateFacture(true);
             configFacture(null);
+            initZonePrix();
+            InitInfoClient();
+            nbrPgA = 0;
+            btn_cpt_Famille.Text = "0/" + nbrPgF;
+            btn_cpt_Articles.Text = "0/" + nbrPgA;
+            SearchDirectionF(2);
         }
 
         private void btnEnregistrer_Click_1(object sender, EventArgs e)
@@ -1016,7 +1171,7 @@ namespace GESTION_CAISSE.IHM
 
         private void btnReglement_Click(object sender, EventArgs e)
         {
-           
+
             if ((fact != null) ? fact.Id > 0 : false)
             {
                 Form_Caisse_Reglement f = new Form_Caisse_Reglement(this);
@@ -1079,6 +1234,723 @@ namespace GESTION_CAISSE.IHM
                 Messages.ShowErreur("Vous devez selectionner une facture!");
             }
         }
+
+
+
+        private void ResetFicheFacture()
+        {
+            rowFacture = -1;
+            fact = new Facture();
+            fact.TypeDoc = Constantes.TYPE_FV;
+            fact.Statut = Constantes.ETAT_EN_ATTENTE;
+            fact.Client = BLL.ClientBll.Default();
+            fact.Categorie = clientZero.Categorie;
+            fact.HeureDoc = DateTime.Now;
+            fact.MouvStock = true;
+            dataGridView1.Rows.Clear();
+            dgv_reglement.Rows.Clear();
+            fact.Client = clientZero;
+            com_typeDoc.Text = "Facture";
+            SetStateFacture(true);
+            configFacture(null);
+            contenu = new Contenu();
+        }
+
+        private void AddRowContenu(DataGridView data, Contenu c)
+        {
+            if (c != null)
+            {
+                data.Rows.Add(new object[] { c.Id, c.Article.Article.Designation, c.Prix, c.Quantite, c.PrixTotal, null });
+            }
+        }
+
+        private void AddRowContenu(Contenu c)
+        {
+            AddRowContenu(dataGridView1, c);
+        }
+
+        public void FullContenu(Facture f)
+        {
+            if (f != null)
+            {
+                foreach (Contenu c in f.Contenus)
+                {
+                    AddRowContenu(c);
+                }
+            }
+        }
+
+        public void FullReglement(Facture f)
+        {
+            if (f != null)
+            {
+                foreach (PieceCaisse p in f.Reglements)
+                {
+                    AddRowReglement(p);
+                }
+            }
+        }
+
+        private void PopulateViewFacture(Facture f)
+        {
+            ResetFicheFacture();
+            fact = f;
+            clientZero = f.Client;
+            configFacture(f);
+            FullContenu(f);
+            FullReglement(f);
+            btnEnregistrer.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+            btnReglement.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+            btn_regl_tick.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+
+            foreach (Button btn in buttonAs)
+            {
+                btn.Enabled = !f.Statut.Equals(Constantes.ETAT_REGLE);
+            }
+            SetStateFacture(false);
+        }
+
+        private void PopulateViewContenu(Contenu c)
+        {
+            contenu = new Contenu();
+            contenu = c;
+        }
+
+        private void dgv_contenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.CurrentRow.Cells["idContenu"].Value != null)
+                {
+                    long id = Convert.ToInt64(dataGridView1.CurrentRow.Cells["idContenu"].Value.ToString());
+                    if (id > 0)
+                    {
+                        Contenu c = fact.Contenus.Find(x => x.Id == id);
+                        if (e.ColumnIndex == 5)
+                        {
+                            if (!fact.Statut.Equals(Constantes.ETAT_REGLE))
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.ContenuBll.Delete(c.Id))
+                                    {
+                                        dataGridView1.Rows.RemoveAt(Utils.GetRowData(dataGridView1, c.Id));
+                                        fact.Contenus.Remove(c);
+                                        Utils.MontantTotalDoc(fact);
+                                        configFacture(fact);
+                                        UpdateCurrentFacture(fact);
+
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Messages.ShowErreur("Vous ne pouvez pas supprimer ce contenu. car la facture est déja reglée");
+                            }
+                        }
+                        else
+                        {
+                            PopulateViewContenu(c);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dgv_commande_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_commande.CurrentRow.Cells["idCommande"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_commande.CurrentRow.Cells["idCommande"].Value.ToString());
+                    if (id > 0)
+                    {
+                        Facture f = Constantes.Entete.Commandes.Find(x => x.Id == id);
+
+                        if (e.ColumnIndex == 6)
+                        {
+                            if (!f.Statut.Equals(Constantes.ETAT_REGLE) && f.Contenus.Count < 1)
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.FactureBll.Delete(f.Id))
+                                    {
+                                        dgv_commande.Rows.RemoveAt(Utils.GetRowData(dgv_commande, f.Id));
+                                        Constantes.Entete.Commandes.Remove(f);
+                                        ResetFicheFacture();
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (DialogResult.Yes == Messages.Erreur_Oui_Non("Vous ne pouvez pas supprimer cette facture! La marquer?"))
+                                {
+                                    if (BLL.FactureBll.ChangeSupp(f.Id, true))
+                                    {
+                                        f.Supp = true;
+                                        UpdateCurrentFacture(f);
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            com_typeDoc.Text = "Commande";
+                            PopulateViewFacture(f);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.CurrentRow.Cells["idContenu"].Value != null)
+                {
+                    long id = Convert.ToInt64(dataGridView1.CurrentRow.Cells["idContenu"].Value.ToString());
+                    if (id > 0)
+                    {
+                        Contenu c = fact.Contenus.Find(x => x.Id == id);
+                        if (e.ColumnIndex == 5)
+                        {
+                            if (!fact.Statut.Equals(Constantes.ETAT_REGLE))
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.ContenuBll.Delete(c.Id))
+                                    {
+                                        dataGridView1.Rows.RemoveAt(Utils.GetRowData(dataGridView1, c.Id));
+                                        fact.Contenus.Remove(c);
+                                        Utils.MontantTotalDoc(fact);
+                                        configFacture(fact);
+                                        UpdateCurrentFacture(fact);
+
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Messages.ShowErreur("Vous ne pouvez pas supprimer ce contenu. car la facture est déja reglée");
+                            }
+                        }
+                        else
+                        {
+                            PopulateViewContenu(c);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void SetCurrentFacture(long id, bool supp, DataGridView data)
+        {
+            if (id > 0)
+            {
+                Facture f = new Facture(id);
+                switch (data.Name)
+                {
+                    case "dgv_commande":
+                        f = Constantes.Entete.Commandes.Find(x => x.Id == id);
+                        f.Supp = supp;
+                        Constantes.Entete.Commandes[Constantes.Entete.Commandes.FindIndex(x => x.Id == f.Id)] = f;
+                        UpdateRowFacture(dgv_commande, f);
+                        break;
+                    case "dgv_facture_wait":
+                        f = Constantes.Entete.FacturesEnAttente.Find(x => x.Id == id);
+                        f.Supp = supp;
+                        Constantes.Entete.FacturesEnAttente[Constantes.Entete.FacturesEnAttente.FindIndex(x => x.Id == f.Id)] = f;
+                        UpdateRowFacture(dgv_facture_wait, f);
+                        break;
+                    case "dgv_facture_cours":
+                        f = Constantes.Entete.FacturesEnCours.Find(x => x.Id == id);
+                        f.Supp = supp;
+                        Constantes.Entete.FacturesEnCours[Constantes.Entete.FacturesEnCours.FindIndex(x => x.Id == f.Id)] = f;
+                        UpdateRowFacture(dgv_facture_cours, f);
+                        break;
+                    case "dgv_facture_regle":
+                        f = Constantes.Entete.FacturesRegle.Find(x => x.Id == id);
+                        f.Supp = supp;
+                        Constantes.Entete.FacturesRegle[Constantes.Entete.FacturesRegle.FindIndex(x => x.Id == f.Id)] = f;
+                        UpdateRowFacture(dgv_facture_regle, f);
+                        break;
+                }
+            }
+        }
+
+
+        private void Form_Caisse_Click_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Constantes.form_caisse_saisie = null;
+        }
+
+        private void Form_Caisse_Click_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Constantes.form_caisse_saisie == null)
+            {
+                if (DialogResult.OK == Messages.FermerApplication())
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    if (F_parent != null)
+                        F_parent.Show();
+                }
+            }
+        }
+
+        private void Form_Caisse_Click_Load(object sender, EventArgs e)
+        {
+            Constantes.form_caisse_click = this;
+            contenu = new Contenu();
+        }
+
+        private void com_typeDoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String type = com_typeDoc.Text;
+            String reference = "FV/271015/0000";
+            if (!fact.Update)
+            {
+                switch (type)
+                {
+                    case Constantes.TYPE_BCV_NAME:
+                        reference = Utils.GenererReference(Constantes.DOC_COMMANDE);
+                        fact.TypeDoc = Constantes.TYPE_BCV;
+                        lb_totalVerse.Text = "Somme Avancée : ";
+                        fact.MouvStock = false;
+                        break;
+                    case Constantes.TYPE_FV_NAME:
+                        reference = Utils.GenererReference(Constantes.DOC_FACTURE);
+                        fact.TypeDoc = Constantes.TYPE_FV;
+                        lb_totalVerse.Text = "Somme Versée : ";
+                        fact.MouvStock = true;
+                        break;
+                }
+                fact.NumDoc = reference;
+            }
+            else
+            {
+                reference = fact.NumDoc;
+            }
+            lb_numPiece.Text = reference;
+        }
+
+
+        private void btn_theme_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            new Form_Caisse_Saisie().Show();
+        }
+
+        private void btn_deconnect_Click(object sender, EventArgs e)
+        {
+            if (F_parent != null)
+            {
+                Form_Login l = (Form_Login)F_parent;
+                l.bubble.Visible = false;
+                l.Show();
+                this.Dispose();
+            }
+        }
+
+       
+        private void dgv_facture_regle_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+          
+        }
+
+        private void dgv_facture_regle_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int i = e.RowIndex;
+            bool supp = (Boolean)((dgv_facture_regle.Rows[i].Cells[7].Value != null) ? dgv_facture_regle.Rows[i].Cells[7].Value : false);
+            if (supp)
+            {
+                this.dgv_facture_regle.Rows[i].DefaultCellStyle.BackColor = Color.DarkSalmon;
+            }
+        }
+
+        private void dgv_facture_regle_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_facture_regle.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_facture_regle.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_facture_regle;
+                    bool supp = (Boolean)((dgv_facture_regle.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_facture_regle.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_facture_wait_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void dgv_facture_wait_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int i = e.RowIndex;
+            bool supp = (Boolean)((dgv_facture_wait.Rows[i].Cells[7].Value != null) ? dgv_facture_wait.Rows[i].Cells[7].Value : false);
+            if (supp)
+            {
+                this.dgv_facture_wait.Rows[i].DefaultCellStyle.BackColor = Color.DarkSalmon;
+            }
+        }
+
+        private void dgv_facture_wait_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_facture_wait.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_facture_wait.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_facture_wait;
+                    bool supp = (Boolean)((dgv_facture_wait.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_facture_wait.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_facture_cours_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int i = e.RowIndex;
+            bool supp = (Boolean)((dgv_facture_cours.Rows[i].Cells[7].Value != null) ? dgv_facture_cours.Rows[i].Cells[7].Value : false);
+            if (supp)
+            {
+                this.dgv_facture_cours.Rows[i].DefaultCellStyle.BackColor = Color.DarkSalmon;
+            }
+        }
+
+        private void dgv_facture_cours_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_facture_cours.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_facture_cours.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_facture_cours;
+                    bool supp = (Boolean)((dgv_facture_cours.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_facture_cours.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_facture_cours_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void dgv_commande_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgv_commande.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    rowFacture = Convert.ToInt64(dgv_commande.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    suppData = dgv_commande;
+                    bool supp = (Boolean)((dgv_commande.Rows[e.RowIndex].Cells[7].Value != null) ? dgv_commande.Rows[e.RowIndex].Cells[7].Value : false);
+                    suppFacture = !supp;
+                }
+            }
+        }
+
+        private void dgv_commande_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int i = e.RowIndex;
+            bool supp = (Boolean)((dgv_commande.Rows[i].Cells[7].Value != null) ? dgv_commande.Rows[i].Cells[7].Value : false);
+            if (supp)
+            {
+                this.dgv_commande.Rows[i].DefaultCellStyle.BackColor = Color.DarkSalmon;
+            }
+        }
+
+      
+        
+        
+        private void SommeP_TextChanged(object sender, EventArgs e)
+        {
+            SommeP.Text = string.Format("{0:#,##0.00}", double.Parse(SommeP.Text));
+        }
+
+        private void Relicat_TextChanged(object sender, EventArgs e)
+        {
+            //Relicat.Text = string.Format("{0:#,##0.00}", double.Parse(Relicat.Text));
+            Relicat.Text = string.Format("{0:#,##0.00}", double.Parse(Relicat.Text));
+            double reste = Convert.ToDouble(Relicat.Text);
+            label14.Text = (reste < 0) ? "A Rembourser : " : "Reste : ";
+        }
+
+        private void SommeVersee_TextChanged(object sender, EventArgs e)
+        {
+            SommeVersee.Text = string.Format("{0:#,##0.00}", double.Parse(SommeVersee.Text));
+            Relicat.Text = (Convert.ToDouble(SommeP.Text) - Convert.ToDouble(SommeVersee.Text)).ToString();
+
+            //txt_montantVerse.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantVerse.Text));
+            //txt_montantReste.Text = (Convert.ToDouble(txt_montantTTC.Text) - Convert.ToDouble(txt_montantVerse.Text)).ToString();
+       
+        }
+
+        private void TotalRemz_TextChanged(object sender, EventArgs e)
+        {
+            TotalRemz.Text = string.Format("{0:#,##0.00}", double.Parse(TotalRemz.Text));
+        }
+
+        private void dgv_facture_wait_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_facture_wait.CurrentRow.Cells["idFactureWait"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_facture_wait.CurrentRow.Cells["idFactureWait"].Value.ToString());
+                    if (id > 0)
+                    {
+                        clients.Clear();
+                        clients = BLL.ClientBll.Liste("select * from yvs_com_client");
+                        Facture f = Constantes.Entete.FacturesEnAttente.Find(x => x.Id == id);
+                        long idCli = f.Client.Id;
+                        Client c = clients.Find(x => x.Id == idCli);
+                        configClient(c);
+
+                        if (e.ColumnIndex == 6)
+                        {
+                            if (!f.Statut.Equals(Constantes.ETAT_REGLE) && f.Contenus.Count < 1)
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.FactureBll.Delete(f.Id))
+                                    {
+                                        dgv_facture_wait.Rows.RemoveAt(Utils.GetRowData(dgv_facture_wait, f.Id));
+                                        Constantes.Entete.FacturesEnAttente.Remove(f);
+                                        ResetFicheFacture();
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (DialogResult.Yes == Messages.Erreur_Oui_Non("Vous ne pouvez pas supprimer cette facture! La marquer?"))
+                                {
+                                    if (BLL.FactureBll.ChangeSupp(f.Id, true))
+                                    {
+                                        f.Supp = true;
+                                        UpdateCurrentFacture(f);
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            com_typeDoc.Text = "Facture";
+                            PopulateViewFacture(f);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dgv_facture_cours_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_facture_cours.CurrentRow.Cells["idFactureCours"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_facture_cours.CurrentRow.Cells["idFactureCours"].Value.ToString());
+                    if (id > 0)
+                    {
+                        clients.Clear();
+                        clients = BLL.ClientBll.Liste("select * from yvs_com_client");
+                        Facture f = Constantes.Entete.FacturesEnCours.Find(x => x.Id == id);
+                        long idCli = f.Client.Id;
+                        Client c = clients.Find(x => x.Id == idCli);
+                        configClient(c);
+                        if (e.ColumnIndex == 6)
+                        {
+                            if (!f.Statut.Equals(Constantes.ETAT_REGLE) && f.Contenus.Count < 1)
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.FactureBll.Delete(f.Id))
+                                    {
+                                        dgv_facture_cours.Rows.RemoveAt(Utils.GetRowData(dgv_facture_cours, f.Id));
+                                        Constantes.Entete.FacturesEnCours.Remove(f);
+                                        ResetFicheFacture();
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (DialogResult.Yes == Messages.Erreur_Oui_Non("Vous ne pouvez pas supprimer cette facture! La marquer?"))
+                                {
+                                    if (BLL.FactureBll.ChangeSupp(f.Id, true))
+                                    {
+                                        f.Supp = true;
+                                        UpdateCurrentFacture(f);
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            com_typeDoc.Text = "Facture";
+                            PopulateViewFacture(f);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dgv_facture_regle_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_facture_regle.CurrentRow.Cells["idFactureRegle"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_facture_regle.CurrentRow.Cells["idFactureRegle"].Value.ToString());
+                    if (id > 0)
+                    {
+                        clients.Clear();
+                        clients = BLL.ClientBll.Liste("select * from yvs_com_client");
+                        Facture f = Constantes.Entete.FacturesRegle.Find(x => x.Id == id);
+                        long idCli = f.Client.Id;
+                        Client c = clients.Find(x => x.Id == idCli);
+                        configClient(c);
+                        if (e.ColumnIndex == 6)
+                        {
+                            if (!f.Statut.Equals(Constantes.ETAT_REGLE) && f.Contenus.Count < 1)
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.FactureBll.Delete(f.Id))
+                                    {
+                                        dgv_facture_regle.Rows.RemoveAt(Utils.GetRowData(dgv_facture_regle, f.Id));
+                                        Constantes.Entete.FacturesRegle.Remove(f);
+                                        ResetFicheFacture();
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (DialogResult.Yes == Messages.Erreur_Oui_Non("Vous ne pouvez pas supprimer cette facture! La marquer?"))
+                                {
+                                    if (BLL.FactureBll.ChangeSupp(f.Id, true))
+                                    {
+                                        f.Supp = true;
+                                        UpdateCurrentFacture(f);
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            com_typeDoc.Text = "Facture";
+                            PopulateViewFacture(f);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void dgv_commande_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgv_commande.CurrentRow.Cells["idCommande"].Value != null)
+                {
+                    long id = Convert.ToInt64(dgv_commande.CurrentRow.Cells["idCommande"].Value.ToString());
+                    if (id > 0)
+                    {
+                        clients.Clear();
+                        clients = BLL.ClientBll.Liste("select * from yvs_com_client");
+                        Facture f = Constantes.Entete.Commandes.Find(x => x.Id == id);
+                        long idCli = f.Client.Id;
+                        Client c = clients.Find(x=>x.Id== idCli);
+                        configClient(c);
+                        if (e.ColumnIndex == 6)
+                        {
+                            if (!f.Statut.Equals(Constantes.ETAT_REGLE) && f.Contenus.Count < 1)
+                            {
+                                if (DialogResult.Yes == Messages.Confirmation("supprimer"))
+                                {
+                                    if (BLL.FactureBll.Delete(f.Id))
+                                    {
+                                        dgv_commande.Rows.RemoveAt(Utils.GetRowData(dgv_commande, f.Id));
+                                        Constantes.Entete.Commandes.Remove(f);
+                                        ResetFicheFacture();
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (DialogResult.Yes == Messages.Erreur_Oui_Non("Vous ne pouvez pas supprimer cette facture! La marquer?"))
+                                {
+                                    if (BLL.FactureBll.ChangeSupp(f.Id, true))
+                                    {
+                                        f.Supp = true;
+                                        UpdateCurrentFacture(f);
+                                        Messages.Succes();
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            com_typeDoc.Text = "Commande";
+                            PopulateViewFacture(f);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.Exception(ex);
+            }
+        }
+
+        private void com_mode_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            ModePaiement a = com_mode.SelectedItem as ModePaiement;
+            a = modes.Find(x => x.Id == a.Id);
+            reglement.Mode = a;
+        }
+
 
     }
 }

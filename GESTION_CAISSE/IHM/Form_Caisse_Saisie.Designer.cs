@@ -176,6 +176,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.btn_supp_contenu = new System.Windows.Forms.Button();
             this.btn_supp_facture = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -183,6 +184,23 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+=======
+<<<<<<< HEAD
+            this.btn_supp_contenu = new System.Windows.Forms.Button();
+            this.btn_supp_facture = new System.Windows.Forms.Button();
+            //this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            this.btn_supp_contenu = new System.Windows.Forms.Button();
+            this.btn_supp_facture = new System.Windows.Forms.Button();
+=======
+            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
@@ -1592,6 +1610,15 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+>>>>>>> origin/master
             // btn_supp_contenu
             // 
             this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
@@ -1605,6 +1632,7 @@
             this.btn_supp_facture.Name = "btn_supp_facture";
             this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
             this.btn_supp_facture.TabIndex = 0;
+<<<<<<< HEAD
             // 
             // groupBox8
             // 
@@ -1662,6 +1690,26 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(351, 27);
             this.panel7.TabIndex = 1;
+=======
+            // txt_montantVerse
+            // 
+            this.txt_montantVerse.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.txt_montantVerse.Location = new System.Drawing.Point(131, 120);
+            this.txt_montantVerse.Maximum = new decimal(new int[] {
+            -1304428544,
+            434162106,
+            542,
+            0});
+            this.txt_montantVerse.Name = "txt_montantVerse";
+            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
+            this.txt_montantVerse.TabIndex = 5;
+            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
+>>>>>>> origin/master
             // 
             // Form_Caisse_Saisie
             // 
@@ -1872,11 +1920,14 @@
         private System.Windows.Forms.NumericUpDown txt_montantVerse;
         private System.Windows.Forms.Button btn_supp_contenu;
         private System.Windows.Forms.Button btn_supp_facture;
+<<<<<<< HEAD
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label lb_montant_caisse;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
+=======
+>>>>>>> origin/master
     }
 }
 

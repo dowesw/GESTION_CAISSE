@@ -250,6 +250,7 @@ namespace GESTION_CAISSE.TOOLS
             doc.MontantReste = (doc.MontantTTC - doc.MontantAvance);
         }
 
+
         public static void TotalRRRDoc(Facture doc)
         {
             if (doc.Remises != null)

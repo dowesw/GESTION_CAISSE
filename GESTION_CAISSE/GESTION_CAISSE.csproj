@@ -348,6 +348,7 @@
     <Folder Include="IMG\LANG\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="IMG\ICONES\search.png" />
     <None Include="IMG\ICONES\wizard.png" />
     <None Include="IMG\password.png" />
     <None Include="IMG\ICONES\visible_yes.png" />

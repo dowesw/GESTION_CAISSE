@@ -60,5 +60,10 @@ namespace GESTION_CAISSE.IHM
             textBox1.Text = "";
         }
 
+        private void Form_Caisse_Quantite_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
