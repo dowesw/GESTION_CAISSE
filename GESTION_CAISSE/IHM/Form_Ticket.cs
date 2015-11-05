@@ -116,7 +116,6 @@ namespace GESTION_CAISSE.IHM
         {
             CaptureScreen();
             print.Print();
-            compteur = 0;
             this.Dispose();
         }
 
@@ -127,7 +126,7 @@ namespace GESTION_CAISSE.IHM
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (compteur == 5)
+            if (compteur == 2)
             {
                 timer.Stop();
                 Imprimer();

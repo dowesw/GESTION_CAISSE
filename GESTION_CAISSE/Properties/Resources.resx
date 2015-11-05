@@ -265,7 +265,6 @@
   <data name="irkickflash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\irkickflash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  
   <data name="browser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\ICONES\browser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -281,16 +280,16 @@
   <data name="Classique" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\THEMES\Classique.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="visible_no" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\ICONES\visible_no.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="in_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\in_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="visible_yes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\ICONES\visible_yes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bnavigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\bnavigation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\ICONES\out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tnavigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\tnavigation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="favicon_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\favicon-16.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

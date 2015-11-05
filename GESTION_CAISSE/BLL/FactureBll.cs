@@ -96,6 +96,30 @@ namespace GESTION_CAISSE.BLL
             }
         }
 
+        public static bool ChangeEtat(Facture f)
+        {
+            try
+            {
+                return FactureDao.getChangeEtatFacture(f);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible de modifier cette enregistrement", ex);
+            }
+        }
+
+        public static bool ChangeEtat(long id, String etat)
+        {
+            try
+            {
+                return FactureDao.getChangeEtatFacture(id, etat);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible de modifier cette enregistrement", ex);
+            }
+        }
+
         public bool ChangeImpression()
         {
             try

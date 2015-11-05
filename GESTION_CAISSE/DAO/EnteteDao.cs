@@ -34,12 +34,27 @@ namespace GESTION_CAISSE.DAO
                             : new Creneau());
                         a.FacturesRegle = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_REGLE + "'");
+                        foreach(Facture f in a.FacturesRegle){
+                            a.Montant += f.MontantTTC;
+                        }
                         a.FacturesEnAttente = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_ATTENTE + "'");
+                        foreach (Facture f in a.FacturesEnAttente)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.FacturesEnCours = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_COURS + "'");
+                        foreach (Facture f in a.FacturesEnCours)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.Commandes = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_BCV + "' and statut = '" + Constantes.ETAT_VALIDE + "'");
+                        foreach (Facture f in a.Commandes)
+                        {
+                            a.Montant += f.MontantAvance;
+                        }
                         a.Update = true;
                     }
                     lect.Close();
@@ -80,12 +95,28 @@ namespace GESTION_CAISSE.DAO
                             : new Creneau());
                         a.FacturesRegle = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_REGLE + "'");
+                        foreach (Facture f in a.FacturesRegle)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.FacturesEnAttente = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_ATTENTE + "'");
+                        foreach (Facture f in a.FacturesEnAttente)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.FacturesEnCours = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_COURS + "'");
+                        foreach (Facture f in a.FacturesEnCours)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.Commandes = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_BCV + "' and statut = '" + Constantes.ETAT_VALIDE + "'");
+                        foreach (Facture f in a.Commandes)
+                        {
+                            a.Montant += f.MontantAvance;
+                        }
                         a.Update = true;
                     }
                     lect.Close();
@@ -221,12 +252,28 @@ namespace GESTION_CAISSE.DAO
                             : new Creneau());
                         a.FacturesRegle = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_REGLE + "'");
+                        foreach (Facture f in a.FacturesRegle)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.FacturesEnAttente = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_ATTENTE + "'");
+                        foreach (Facture f in a.FacturesEnAttente)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.FacturesEnCours = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_FV + "' and statut = '" + Constantes.ETAT_EN_COURS + "'");
+                        foreach (Facture f in a.FacturesEnCours)
+                        {
+                            a.Montant += f.MontantTTC;
+                        }
                         a.Commandes = BLL.FactureBll.Liste("select * from yvs_com_doc_ventes where entete_doc = "
                             + a.Id + " and type_doc = '" + Constantes.TYPE_BCV + "' and statut = '" + Constantes.ETAT_VALIDE + "'");
+                        foreach (Facture f in a.Commandes)
+                        {
+                            a.Montant += f.MontantAvance;
+                        }
                         a.Update = true;
                         l.Add(a);
                     }

@@ -189,7 +189,7 @@ namespace GESTION_CAISSE.TOOLS
                         }
                         else
                         {
-                            for (int i = 0; i < (modele.Taille - Convert.ToString(num).Length); i++)
+                            for (int i = 0; i < (modele.Taille - Convert.ToString(num + 1).Length); i++)
                             {
                                 apercu += "0";
                             }
@@ -404,10 +404,13 @@ namespace GESTION_CAISSE.TOOLS
         {
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                long l = (Int64)data.Rows[i].Cells[0].Value;
-                if (l.Equals(id))
+                if (data.Rows[i].Cells[0].Value != null)
                 {
-                    return i;
+                    long l = (Int64)data.Rows[i].Cells[0].Value;
+                    if (l.Equals(id))
+                    {
+                        return i;
+                    }
                 }
             }
             return -1;

@@ -337,6 +337,48 @@ namespace GESTION_CAISSE.DAO
             }
         }
 
+        public static bool getChangeEtatFacture(Facture a)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                string delete = "update yvs_com_doc_ventes set statut = '" + a.Statut + "' where id = " + a.Id;
+                NpgsqlCommand Ucmd = new NpgsqlCommand(delete, con);
+                Ucmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Messages.Exception(e);
+                return false;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
+        public static bool getChangeEtatFacture(long id, String etat)
+        {
+            NpgsqlConnection con = Connexion.Connection();
+            try
+            {
+                string delete = "update yvs_com_doc_ventes set statut = '" + etat + "' where id = " + id;
+                NpgsqlCommand Ucmd = new NpgsqlCommand(delete, con);
+                Ucmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Messages.Exception(e);
+                return false;
+            }
+            finally
+            {
+                Connexion.Deconnection(con);
+            }
+        }
+
         public static bool getChangeImpressionFacture(Facture a)
         {
             NpgsqlConnection con = Connexion.Connection();

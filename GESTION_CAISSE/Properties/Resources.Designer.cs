@@ -63,6 +63,26 @@ namespace GESTION_CAISSE.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _in {
+            get {
+                object obj = ResourceManager.GetObject("_in", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _out {
+            get {
+                object obj = ResourceManager.GetObject("_out", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agt_pause_queue {
             get {
                 object obj = ResourceManager.GetObject("agt_pause-queue", resourceCulture);
@@ -361,6 +381,16 @@ namespace GESTION_CAISSE.Properties {
         }
         
         /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon favicon_16 {
+            get {
+                object obj = ResourceManager.GetObject("favicon_16", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap fileexport {
@@ -386,6 +416,16 @@ namespace GESTION_CAISSE.Properties {
         internal static System.Drawing.Bitmap gnavigation {
             get {
                 object obj = ResourceManager.GetObject("gnavigation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap in_out {
+            get {
+                object obj = ResourceManager.GetObject("in_out", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -31,7 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Ticket));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.context_form = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tool_fermer = new System.Windows.Forms.ToolStripMenuItem();
             this.label18 = new System.Windows.Forms.Label();
             this.lb_rendu = new System.Windows.Forms.Label();
             this.lb_reglement = new System.Windows.Forms.Label();
@@ -40,15 +41,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.prixTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.prix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.designation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.qte = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lv_contenu = new System.Windows.Forms.ListView();
-            this.lb_num_ticket = new System.Windows.Forms.Label();
+            this.qte = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.designation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prixTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lb_num_ticket = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.lb_nom_client = new System.Windows.Forms.Label();
             this.lb_nom_caissier = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -61,13 +62,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lb_tel_societe = new System.Windows.Forms.Label();
             this.lb_name_agence = new System.Windows.Forms.Label();
-            this.print = new System.Drawing.Printing.PrintDocument();
             this.lb_name_societe = new System.Windows.Forms.Label();
-            this.context_form = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tool_fermer = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.print = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.context_form.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -102,6 +102,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(285, 313);
             this.panel1.TabIndex = 0;
+            // 
+            // context_form
+            // 
+            this.context_form.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_fermer});
+            this.context_form.Name = "context_form";
+            this.context_form.Size = new System.Drawing.Size(112, 26);
+            // 
+            // tool_fermer
+            // 
+            this.tool_fermer.Image = global::GESTION_CAISSE.Properties.Resources.agt_stop;
+            this.tool_fermer.Name = "tool_fermer";
+            this.tool_fermer.Size = new System.Drawing.Size(111, 22);
+            this.tool_fermer.Text = "Fermer";
+            this.tool_fermer.Click += new System.EventHandler(this.tool_fermer_Click);
             // 
             // label18
             // 
@@ -185,28 +200,6 @@
             this.label16.Text = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
     " - - - - - - - - - - ";
             // 
-            // prixTotal
-            // 
-            this.prixTotal.Text = "Prix.Total";
-            this.prixTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.prixTotal.Width = 70;
-            // 
-            // prix
-            // 
-            this.prix.Text = "Prix.U";
-            this.prix.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.prix.Width = 55;
-            // 
-            // designation
-            // 
-            this.designation.Text = "Désignation";
-            this.designation.Width = 96;
-            // 
-            // qte
-            // 
-            this.qte.Text = "Qte";
-            this.qte.Width = 35;
-            // 
             // lv_contenu
             // 
             this.lv_contenu.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -223,15 +216,27 @@
             this.lv_contenu.UseCompatibleStateImageBehavior = false;
             this.lv_contenu.View = System.Windows.Forms.View.Details;
             // 
-            // lb_num_ticket
+            // qte
             // 
-            this.lb_num_ticket.AutoSize = true;
-            this.lb_num_ticket.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_num_ticket.Location = new System.Drawing.Point(50, 5);
-            this.lb_num_ticket.Name = "lb_num_ticket";
-            this.lb_num_ticket.Size = new System.Drawing.Size(88, 12);
-            this.lb_num_ticket.TabIndex = 1;
-            this.lb_num_ticket.Text = "FA/031115/0002";
+            this.qte.Text = "Qte";
+            this.qte.Width = 35;
+            // 
+            // designation
+            // 
+            this.designation.Text = "Désignation";
+            this.designation.Width = 96;
+            // 
+            // prix
+            // 
+            this.prix.Text = "Prix.U";
+            this.prix.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.prix.Width = 55;
+            // 
+            // prixTotal
+            // 
+            this.prixTotal.Text = "Prix.Total";
+            this.prixTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.prixTotal.Width = 70;
             // 
             // label9
             // 
@@ -243,15 +248,6 @@
             this.label9.Text = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
     " - - - - - - - - - - ";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(2, 5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 12);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Ticket N° : ";
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -261,6 +257,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(148, 25);
             this.panel2.TabIndex = 27;
+            // 
+            // lb_num_ticket
+            // 
+            this.lb_num_ticket.AutoSize = true;
+            this.lb_num_ticket.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_num_ticket.Location = new System.Drawing.Point(50, 5);
+            this.lb_num_ticket.Name = "lb_num_ticket";
+            this.lb_num_ticket.Size = new System.Drawing.Size(88, 12);
+            this.lb_num_ticket.TabIndex = 1;
+            this.lb_num_ticket.Text = "FA/031115/0002";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(2, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 12);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Ticket N° : ";
             // 
             // lb_nom_client
             // 
@@ -382,20 +397,9 @@
             this.lb_name_societe.TabIndex = 12;
             this.lb_name_societe.Text = "Boulangerie La Paix Plus";
             // 
-            // context_form
+            // timer
             // 
-            this.context_form.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tool_fermer});
-            this.context_form.Name = "context_form";
-            this.context_form.Size = new System.Drawing.Size(153, 48);
-            // 
-            // tool_fermer
-            // 
-            this.tool_fermer.Image = global::GESTION_CAISSE.Properties.Resources.agt_stop;
-            this.tool_fermer.Name = "tool_fermer";
-            this.tool_fermer.Size = new System.Drawing.Size(152, 22);
-            this.tool_fermer.Text = "Fermer";
-            this.tool_fermer.Click += new System.EventHandler(this.tool_fermer_Click);
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // Form_Ticket
             // 
@@ -413,9 +417,9 @@
             this.Load += new System.EventHandler(this.Form_Ticket_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.context_form.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.context_form.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
