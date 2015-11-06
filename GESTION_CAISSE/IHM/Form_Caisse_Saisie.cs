@@ -947,6 +947,11 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private void btn_approv_Click(object sender, EventArgs e)
+        {
+            new Form_Approvision().ShowDialog();
+        }
+
         private void dgv_contenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
