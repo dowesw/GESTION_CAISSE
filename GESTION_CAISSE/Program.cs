@@ -17,8 +17,9 @@ namespace GESTION_CAISSE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Initialisation();
-            Application.Run(new IHM.Form_Caisse_Saisie());
+            //Initialisation();
+            //Application.Run(new IHM.Form_Caisse_Saisie());
+            test();
         }
 
         static void StartAppl()
@@ -35,7 +36,8 @@ namespace GESTION_CAISSE
 
         static void test()
         {
-          var t =  TOOLS.Utils.GenererReference(TOOLS.Constantes.DOC_COMMANDE);
+            var t = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var f = t;
         }
         
         static void Initialisation()

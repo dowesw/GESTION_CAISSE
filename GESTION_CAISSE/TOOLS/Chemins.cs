@@ -8,7 +8,9 @@ namespace GESTION_CAISSE.TOOLS
 {
     class Chemins
     {
-        public static string cheminStart = Application.StartupPath;
+        public const string cheminDefault = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+        public const string cheminStart = Application.StartupPath;
 
         public static string getCheminParametre()
         {
