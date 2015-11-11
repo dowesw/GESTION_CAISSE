@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle97 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle98 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Caisse_Click));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.com_mode = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -59,9 +60,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_deconnect = new System.Windows.Forms.Button();
+            this.btn_theme = new System.Windows.Forms.Button();
             this.lb_numPiece = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label28 = new System.Windows.Forms.Label();
             this.txt_reference = new System.Windows.Forms.TextBox();
             this.com_typeDoc = new System.Windows.Forms.ComboBox();
@@ -119,10 +123,34 @@
             this.suppCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgv_facture_regle = new System.Windows.Forms.DataGridView();
+            this.idFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewLinkColumn2 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgv_facture_cours = new System.Windows.Forms.DataGridView();
+            this.idFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heureFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mtantFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resteFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewLinkColumn1 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.suppFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dgv_facture_wait = new System.Windows.Forms.DataGridView();
+            this.idFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suppFactureWait_ = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -136,8 +164,16 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tab_famille = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_cpt_Famille = new System.Windows.Forms.Button();
+            this.pgRecherF = new System.Windows.Forms.Button();
+            this.pgDroiteF = new System.Windows.Forms.Button();
+            this.pgGaucheF = new System.Windows.Forms.Button();
             this.tab_articles = new System.Windows.Forms.TabPage();
+            this.btn_cpt_Articles = new System.Windows.Forms.Button();
+            this.pgDroiteA = new System.Windows.Forms.Button();
+            this.pgGaucheA = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.picClient = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.codeClient = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -154,51 +190,14 @@
             this.btnReglement = new System.Windows.Forms.Button();
             this.NvoTicket = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnListArt = new System.Windows.Forms.Button();
-            this.bntEncaissmts = new System.Windows.Forms.Button();
-            this.btnCmd = new System.Windows.Forms.Button();
-            this.bntregler = new System.Windows.Forms.Button();
-            this.bntEnAttente = new System.Windows.Forms.Button();
-            this.bntEnCours = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.idFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suppFactureWait_ = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idFactureCours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heureFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mtantFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resteFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewLinkColumn1 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.suppFactureWait = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idFactureRegle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewLinkColumn2 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pgRecherF = new System.Windows.Forms.Button();
-            this.pgDroiteF = new System.Windows.Forms.Button();
-            this.pgGaucheF = new System.Windows.Forms.Button();
-            this.pgDroiteA = new System.Windows.Forms.Button();
-            this.pgGaucheA = new System.Windows.Forms.Button();
-            this.picClient = new System.Windows.Forms.PictureBox();
-            this.btn_deconnect = new System.Windows.Forms.Button();
-            this.btn_theme = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_cpt_Articles = new System.Windows.Forms.Button();
-            this.btn_cpt_Famille = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.lb_montant_caisse = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_approv = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -218,15 +217,16 @@
             this.panel5.SuspendLayout();
             this.tab_articles.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel2.Controls.Add(this.com_mode);
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.SommeVersee);
@@ -239,7 +239,6 @@
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 16);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
@@ -364,9 +363,10 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(677, 9);
+            this.label2.Location = new System.Drawing.Point(698, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(180, 18);
             this.label2.TabIndex = 1;
@@ -386,7 +386,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.label6.Location = new System.Drawing.Point(303, 28);
+            this.label6.Location = new System.Drawing.Point(405, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(259, 26);
             this.label6.TabIndex = 5;
@@ -394,6 +394,7 @@
             // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btn_deconnect);
             this.panel1.Controls.Add(this.btn_theme);
@@ -404,17 +405,48 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(6, 10);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(943, 112);
+            this.panel1.Size = new System.Drawing.Size(964, 114);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_deconnect
+            // 
+            this.btn_deconnect.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_deconnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_deconnect.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_deconnect.Image = ((System.Drawing.Image)(resources.GetObject("btn_deconnect.Image")));
+            this.btn_deconnect.Location = new System.Drawing.Point(915, 35);
+            this.btn_deconnect.Name = "btn_deconnect";
+            this.btn_deconnect.Size = new System.Drawing.Size(37, 28);
+            this.btn_deconnect.TabIndex = 17;
+            this.btn_deconnect.Tag = "&Déconnection";
+            this.btn_deconnect.Text = "&D";
+            this.btn_deconnect.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btn_deconnect.UseVisualStyleBackColor = true;
+            // 
+            // btn_theme
+            // 
+            this.btn_theme.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_theme.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_theme.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_theme.Image = ((System.Drawing.Image)(resources.GetObject("btn_theme.Image")));
+            this.btn_theme.Location = new System.Drawing.Point(915, 69);
+            this.btn_theme.Name = "btn_theme";
+            this.btn_theme.Size = new System.Drawing.Size(37, 28);
+            this.btn_theme.TabIndex = 16;
+            this.btn_theme.Tag = "Changer Thème";
+            this.btn_theme.Text = "&L";
+            this.btn_theme.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btn_theme.UseVisualStyleBackColor = true;
             // 
             // lb_numPiece
             // 
             this.lb_numPiece.AutoSize = true;
             this.lb_numPiece.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_numPiece.Location = new System.Drawing.Point(390, 80);
+            this.lb_numPiece.Location = new System.Drawing.Point(525, 80);
             this.lb_numPiece.Name = "lb_numPiece";
             this.lb_numPiece.Size = new System.Drawing.Size(90, 16);
             this.lb_numPiece.TabIndex = 15;
@@ -423,7 +455,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(315, 80);
+            this.label4.Location = new System.Drawing.Point(450, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 16);
             this.label4.TabIndex = 14;
@@ -439,8 +471,22 @@
             this.label19.TabIndex = 10;
             this.label19.Text = "Lisette";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(7, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(89, 103);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // label28
             // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(681, 134);
@@ -451,20 +497,22 @@
             // 
             // txt_reference
             // 
+            this.txt_reference.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_reference.Location = new System.Drawing.Point(676, 164);
             this.txt_reference.Name = "txt_reference";
-            this.txt_reference.Size = new System.Drawing.Size(273, 20);
+            this.txt_reference.Size = new System.Drawing.Size(281, 20);
             this.txt_reference.TabIndex = 17;
             // 
             // com_typeDoc
             // 
+            this.com_typeDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.com_typeDoc.FormattingEnabled = true;
             this.com_typeDoc.Items.AddRange(new object[] {
             "Facture",
             "Commande"});
             this.com_typeDoc.Location = new System.Drawing.Point(786, 134);
             this.com_typeDoc.Name = "com_typeDoc";
-            this.com_typeDoc.Size = new System.Drawing.Size(163, 24);
+            this.com_typeDoc.Size = new System.Drawing.Size(171, 24);
             this.com_typeDoc.TabIndex = 16;
             this.com_typeDoc.Text = "Facture";
             // 
@@ -638,6 +686,8 @@
             // 
             // label18
             // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(17, 68);
@@ -660,6 +710,8 @@
             // 
             // label21
             // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(168, 68);
@@ -726,7 +778,8 @@
             // 
             // button4
             // 
-            this.button4.BackgroundImage = global::GESTION_CAISSE.Properties.Resources.search1;
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.Location = new System.Drawing.Point(610, 75);
             this.button4.Name = "button4";
@@ -786,6 +839,8 @@
             // 
             // button17
             // 
+            this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button17.Location = new System.Drawing.Point(157, 3);
             this.button17.Name = "button17";
@@ -806,6 +861,8 @@
             // 
             // button15
             // 
+            this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button15.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button15.Location = new System.Drawing.Point(6, 3);
             this.button15.Name = "button15";
@@ -816,6 +873,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox7.Controls.Add(this.tabControl1);
             this.groupBox7.Location = new System.Drawing.Point(3, 690);
             this.groupBox7.Name = "groupBox7";
@@ -826,6 +884,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -885,9 +944,9 @@
             // dateReglement
             // 
             this.dateReglement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle85.Format = "G";
-            dataGridViewCellStyle85.NullValue = "Pas Record";
-            this.dateReglement.DefaultCellStyle = dataGridViewCellStyle85;
+            dataGridViewCellStyle43.Format = "G";
+            dataGridViewCellStyle43.NullValue = "Pas Record";
+            this.dateReglement.DefaultCellStyle = dataGridViewCellStyle43;
             this.dateReglement.HeaderText = "Date";
             this.dateReglement.Name = "dateReglement";
             this.dateReglement.ReadOnly = true;
@@ -895,10 +954,10 @@
             // montantReglement
             // 
             this.montantReglement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle86.Format = "N2";
-            dataGridViewCellStyle86.NullValue = "0";
-            this.montantReglement.DefaultCellStyle = dataGridViewCellStyle86;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle44.Format = "N2";
+            dataGridViewCellStyle44.NullValue = "0";
+            this.montantReglement.DefaultCellStyle = dataGridViewCellStyle44;
             this.montantReglement.HeaderText = "Montant";
             this.montantReglement.Name = "montantReglement";
             this.montantReglement.ReadOnly = true;
@@ -974,10 +1033,10 @@
             // 
             // mtantCommande
             // 
-            dataGridViewCellStyle87.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle87.Format = "N2";
-            dataGridViewCellStyle87.NullValue = "0";
-            this.mtantCommande.DefaultCellStyle = dataGridViewCellStyle87;
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle45.Format = "N2";
+            dataGridViewCellStyle45.NullValue = "0";
+            this.mtantCommande.DefaultCellStyle = dataGridViewCellStyle45;
             this.mtantCommande.HeaderText = "Montant TTC";
             this.mtantCommande.Name = "mtantCommande";
             this.mtantCommande.ReadOnly = true;
@@ -985,21 +1044,21 @@
             // 
             // resteCommande
             // 
-            dataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle88.Format = "N2";
-            dataGridViewCellStyle88.NullValue = "0";
-            this.resteCommande.DefaultCellStyle = dataGridViewCellStyle88;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle46.Format = "N2";
+            dataGridViewCellStyle46.NullValue = "0";
+            this.resteCommande.DefaultCellStyle = dataGridViewCellStyle46;
             this.resteCommande.HeaderText = "Reste";
             this.resteCommande.Name = "resteCommande";
             this.resteCommande.ReadOnly = true;
             // 
             // suppCommande_
             // 
-            dataGridViewCellStyle89.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle89.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle89.NullValue = "X";
-            this.suppCommande_.DefaultCellStyle = dataGridViewCellStyle89;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle47.NullValue = "X";
+            this.suppCommande_.DefaultCellStyle = dataGridViewCellStyle47;
             this.suppCommande_.HeaderText = "";
             this.suppCommande_.LinkColor = System.Drawing.Color.Red;
             this.suppCommande_.Name = "suppCommande_";
@@ -1048,6 +1107,75 @@
             this.dgv_facture_regle.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_facture_regle_CellMouseDown);
             this.dgv_facture_regle.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_regle_RowsAdded);
             // 
+            // idFactureRegle
+            // 
+            this.idFactureRegle.HeaderText = "ID";
+            this.idFactureRegle.Name = "idFactureRegle";
+            this.idFactureRegle.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Num Piece";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Heure";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 104;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Client";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle48.Format = "N2";
+            dataGridViewCellStyle48.NullValue = "0";
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle48;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Montant TTC";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle49.Format = "N2";
+            dataGridViewCellStyle49.NullValue = "0";
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle49;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Reste";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewLinkColumn2
+            // 
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle50.NullValue = "X";
+            this.dataGridViewLinkColumn2.DefaultCellStyle = dataGridViewCellStyle50;
+            this.dataGridViewLinkColumn2.HeaderText = "";
+            this.dataGridViewLinkColumn2.LinkColor = System.Drawing.Color.Red;
+            this.dataGridViewLinkColumn2.Name = "dataGridViewLinkColumn2";
+            this.dataGridViewLinkColumn2.ReadOnly = true;
+            this.dataGridViewLinkColumn2.VisitedLinkColor = System.Drawing.Color.White;
+            this.dataGridViewLinkColumn2.Width = 27;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Supp";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.dgv_facture_cours);
@@ -1083,6 +1211,75 @@
             this.dgv_facture_cours.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_facture_cours_CellMouseDown);
             this.dgv_facture_cours.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_cours_RowsAdded);
             // 
+            // idFactureCours
+            // 
+            this.idFactureCours.HeaderText = "ID";
+            this.idFactureCours.Name = "idFactureCours";
+            this.idFactureCours.Visible = false;
+            // 
+            // numFactureWait
+            // 
+            this.numFactureWait.HeaderText = "Num Piece";
+            this.numFactureWait.Name = "numFactureWait";
+            this.numFactureWait.ReadOnly = true;
+            this.numFactureWait.Width = 110;
+            // 
+            // heureFactureWait
+            // 
+            this.heureFactureWait.HeaderText = "Heure";
+            this.heureFactureWait.Name = "heureFactureWait";
+            this.heureFactureWait.ReadOnly = true;
+            this.heureFactureWait.Width = 104;
+            // 
+            // clientFactureWait
+            // 
+            this.clientFactureWait.HeaderText = "Client";
+            this.clientFactureWait.Name = "clientFactureWait";
+            this.clientFactureWait.ReadOnly = true;
+            this.clientFactureWait.Width = 150;
+            // 
+            // mtantFactureWait
+            // 
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle51.Format = "N2";
+            dataGridViewCellStyle51.NullValue = "0";
+            this.mtantFactureWait.DefaultCellStyle = dataGridViewCellStyle51;
+            this.mtantFactureWait.HeaderText = "Montant TTC";
+            this.mtantFactureWait.Name = "mtantFactureWait";
+            this.mtantFactureWait.ReadOnly = true;
+            this.mtantFactureWait.Width = 120;
+            // 
+            // resteFactureWait
+            // 
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle52.Format = "N2";
+            dataGridViewCellStyle52.NullValue = "0";
+            this.resteFactureWait.DefaultCellStyle = dataGridViewCellStyle52;
+            this.resteFactureWait.HeaderText = "Reste";
+            this.resteFactureWait.Name = "resteFactureWait";
+            this.resteFactureWait.ReadOnly = true;
+            // 
+            // dataGridViewLinkColumn1
+            // 
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle53.NullValue = "X";
+            this.dataGridViewLinkColumn1.DefaultCellStyle = dataGridViewCellStyle53;
+            this.dataGridViewLinkColumn1.HeaderText = "";
+            this.dataGridViewLinkColumn1.LinkColor = System.Drawing.Color.Red;
+            this.dataGridViewLinkColumn1.Name = "dataGridViewLinkColumn1";
+            this.dataGridViewLinkColumn1.ReadOnly = true;
+            this.dataGridViewLinkColumn1.VisitedLinkColor = System.Drawing.Color.White;
+            this.dataGridViewLinkColumn1.Width = 27;
+            // 
+            // suppFactureWait
+            // 
+            this.suppFactureWait.HeaderText = "Supp";
+            this.suppFactureWait.Name = "suppFactureWait";
+            this.suppFactureWait.ReadOnly = true;
+            this.suppFactureWait.Visible = false;
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.dgv_facture_wait);
@@ -1116,6 +1313,63 @@
             this.dgv_facture_wait.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_facture_wait_CellMouseDown);
             this.dgv_facture_wait.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_facture_wait_RowsAdded);
             // 
+            // idFactureWait
+            // 
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.Red;
+            this.idFactureWait.DefaultCellStyle = dataGridViewCellStyle54;
+            this.idFactureWait.HeaderText = "ID";
+            this.idFactureWait.Name = "idFactureWait";
+            this.idFactureWait.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column11.HeaderText = "Num Pièce";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column12.HeaderText = "Heure";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column13.HeaderText = "Client";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column14.HeaderText = "Montant TTC";
+            this.Column14.Name = "Column14";
+            // 
+            // Column15
+            // 
+            this.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column15.HeaderText = "Reste";
+            this.Column15.Name = "Column15";
+            // 
+            // suppFactureWait_
+            // 
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle55.NullValue = "X";
+            this.suppFactureWait_.DefaultCellStyle = dataGridViewCellStyle55;
+            this.suppFactureWait_.HeaderText = "";
+            this.suppFactureWait_.LinkColor = System.Drawing.Color.Red;
+            this.suppFactureWait_.Name = "suppFactureWait_";
+            this.suppFactureWait_.ReadOnly = true;
+            this.suppFactureWait_.Text = "X";
+            this.suppFactureWait_.Width = 27;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "supp";
+            this.Column16.Name = "Column16";
+            this.Column16.Visible = false;
+            // 
             // Column1
             // 
             this.Column1.Frozen = true;
@@ -1132,6 +1386,8 @@
             // 
             // panel7
             // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.AutoScroll = true;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.dataGridView1);
@@ -1198,10 +1454,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle90.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle90.NullValue = "X";
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle90;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle56.NullValue = "X";
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle56;
             this.Column7.HeaderText = "";
             this.Column7.LinkColor = System.Drawing.Color.Red;
             this.Column7.Name = "Column7";
@@ -1209,12 +1465,14 @@
             // 
             // tabControl2
             // 
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tab_famille);
             this.tabControl2.Controls.Add(this.tab_articles);
             this.tabControl2.Location = new System.Drawing.Point(3, 406);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(668, 276);
+            this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl2.TabIndex = 6;
             // 
             // tab_famille
@@ -1256,6 +1514,50 @@
             this.panel5.Size = new System.Drawing.Size(654, 241);
             this.panel5.TabIndex = 0;
             // 
+            // btn_cpt_Famille
+            // 
+            this.btn_cpt_Famille.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_cpt_Famille.Enabled = false;
+            this.btn_cpt_Famille.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cpt_Famille.Location = new System.Drawing.Point(610, 125);
+            this.btn_cpt_Famille.Name = "btn_cpt_Famille";
+            this.btn_cpt_Famille.Size = new System.Drawing.Size(47, 44);
+            this.btn_cpt_Famille.TabIndex = 17;
+            this.btn_cpt_Famille.Text = "1/5";
+            this.btn_cpt_Famille.UseVisualStyleBackColor = true;
+            // 
+            // pgRecherF
+            // 
+            this.pgRecherF.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pgRecherF.BackgroundImage")));
+            this.pgRecherF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pgRecherF.Location = new System.Drawing.Point(610, 75);
+            this.pgRecherF.Name = "pgRecherF";
+            this.pgRecherF.Size = new System.Drawing.Size(47, 44);
+            this.pgRecherF.TabIndex = 2;
+            this.pgRecherF.UseVisualStyleBackColor = true;
+            // 
+            // pgDroiteF
+            // 
+            this.pgDroiteF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pgDroiteF.Image = ((System.Drawing.Image)(resources.GetObject("pgDroiteF.Image")));
+            this.pgDroiteF.Location = new System.Drawing.Point(610, 171);
+            this.pgDroiteF.Name = "pgDroiteF";
+            this.pgDroiteF.Size = new System.Drawing.Size(47, 70);
+            this.pgDroiteF.TabIndex = 1;
+            this.pgDroiteF.UseVisualStyleBackColor = true;
+            this.pgDroiteF.Click += new System.EventHandler(this.pgDroiteF_Click_1);
+            // 
+            // pgGaucheF
+            // 
+            this.pgGaucheF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pgGaucheF.Image = ((System.Drawing.Image)(resources.GetObject("pgGaucheF.Image")));
+            this.pgGaucheF.Location = new System.Drawing.Point(610, 3);
+            this.pgGaucheF.Name = "pgGaucheF";
+            this.pgGaucheF.Size = new System.Drawing.Size(47, 70);
+            this.pgGaucheF.TabIndex = 0;
+            this.pgGaucheF.UseVisualStyleBackColor = true;
+            this.pgGaucheF.Click += new System.EventHandler(this.pgGaucheF_Click_1);
+            // 
             // tab_articles
             // 
             this.tab_articles.Controls.Add(this.btn_cpt_Articles);
@@ -1286,8 +1588,46 @@
             this.tab_articles.Text = "Articles de la famille :";
             this.tab_articles.UseVisualStyleBackColor = true;
             // 
+            // btn_cpt_Articles
+            // 
+            this.btn_cpt_Articles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_cpt_Articles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_cpt_Articles.Enabled = false;
+            this.btn_cpt_Articles.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cpt_Articles.Location = new System.Drawing.Point(610, 125);
+            this.btn_cpt_Articles.Name = "btn_cpt_Articles";
+            this.btn_cpt_Articles.Size = new System.Drawing.Size(47, 44);
+            this.btn_cpt_Articles.TabIndex = 52;
+            this.btn_cpt_Articles.Text = "0/0";
+            this.btn_cpt_Articles.UseVisualStyleBackColor = true;
+            // 
+            // pgDroiteA
+            // 
+            this.pgDroiteA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgDroiteA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pgDroiteA.Image = ((System.Drawing.Image)(resources.GetObject("pgDroiteA.Image")));
+            this.pgDroiteA.Location = new System.Drawing.Point(610, 171);
+            this.pgDroiteA.Name = "pgDroiteA";
+            this.pgDroiteA.Size = new System.Drawing.Size(47, 70);
+            this.pgDroiteA.TabIndex = 1;
+            this.pgDroiteA.UseVisualStyleBackColor = true;
+            this.pgDroiteA.Click += new System.EventHandler(this.pgDroiteA_Click_1);
+            // 
+            // pgGaucheA
+            // 
+            this.pgGaucheA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgGaucheA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pgGaucheA.Image = ((System.Drawing.Image)(resources.GetObject("pgGaucheA.Image")));
+            this.pgGaucheA.Location = new System.Drawing.Point(610, 3);
+            this.pgGaucheA.Name = "pgGaucheA";
+            this.pgGaucheA.Size = new System.Drawing.Size(47, 70);
+            this.pgGaucheA.TabIndex = 0;
+            this.pgGaucheA.UseVisualStyleBackColor = true;
+            this.pgGaucheA.Click += new System.EventHandler(this.pgGaucheA_Click_1);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox3.Controls.Add(this.picClient);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.codeClient);
@@ -1300,12 +1640,27 @@
             this.groupBox3.Controls.Add(this.PrenomClient);
             this.groupBox3.Location = new System.Drawing.Point(678, 188);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.MaximumSize = new System.Drawing.Size(379, 313);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(275, 213);
+            this.groupBox3.Size = new System.Drawing.Size(279, 213);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Informations Client";
+            // 
+            // picClient
+            // 
+            this.picClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picClient.ErrorImage = null;
+            this.picClient.Image = ((System.Drawing.Image)(resources.GetObject("picClient.Image")));
+            this.picClient.Location = new System.Drawing.Point(151, 21);
+            this.picClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.picClient.Name = "picClient";
+            this.picClient.Size = new System.Drawing.Size(113, 122);
+            this.picClient.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picClient.TabIndex = 11;
+            this.picClient.TabStop = false;
+            this.picClient.Click += new System.EventHandler(this.picClient_Click_1);
             // 
             // label1
             // 
@@ -1395,6 +1750,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.btn_regl_tick);
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Controls.Add(this.button1);
@@ -1412,144 +1768,88 @@
             // 
             // btn_regl_tick
             // 
-            this.btn_regl_tick.Location = new System.Drawing.Point(183, 67);
+            this.btn_regl_tick.Font = new System.Drawing.Font("Trebuchet MS", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_regl_tick.Image = ((System.Drawing.Image)(resources.GetObject("btn_regl_tick.Image")));
+            this.btn_regl_tick.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_regl_tick.Location = new System.Drawing.Point(196, 68);
             this.btn_regl_tick.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_regl_tick.Name = "btn_regl_tick";
             this.btn_regl_tick.Size = new System.Drawing.Size(84, 38);
             this.btn_regl_tick.TabIndex = 11;
             this.btn_regl_tick.Text = "Enc. & Ticket";
+            this.btn_regl_tick.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_regl_tick.UseVisualStyleBackColor = true;
+            this.btn_regl_tick.Click += new System.EventHandler(this.btn_regl_tick_Click);
             // 
             // button2
             // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(94, 67);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 38);
+            this.button2.Size = new System.Drawing.Size(91, 38);
             this.button2.TabIndex = 10;
             this.button2.Text = "Ticket";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(183, 21);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(196, 21);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 38);
             this.button1.TabIndex = 9;
-            this.button1.Text = "Imprimer";
+            this.button1.Text = "  Imprimer";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // btnReglement
             // 
+            this.btnReglement.Image = ((System.Drawing.Image)(resources.GetObject("btnReglement.Image")));
+            this.btnReglement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReglement.Location = new System.Drawing.Point(4, 67);
             this.btnReglement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReglement.Name = "btnReglement";
             this.btnReglement.Size = new System.Drawing.Size(84, 38);
             this.btnReglement.TabIndex = 8;
             this.btnReglement.Text = "Encaisser";
+            this.btnReglement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReglement.UseVisualStyleBackColor = true;
             this.btnReglement.Click += new System.EventHandler(this.btnReglement_Click);
             // 
             // NvoTicket
             // 
+            this.NvoTicket.Image = ((System.Drawing.Image)(resources.GetObject("NvoTicket.Image")));
+            this.NvoTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.NvoTicket.Location = new System.Drawing.Point(4, 21);
             this.NvoTicket.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NvoTicket.Name = "NvoTicket";
             this.NvoTicket.Size = new System.Drawing.Size(84, 38);
             this.NvoTicket.TabIndex = 7;
-            this.NvoTicket.Text = "Nouveau";
+            this.NvoTicket.Text = "  Nouveau";
             this.NvoTicket.UseVisualStyleBackColor = true;
             this.NvoTicket.Click += new System.EventHandler(this.NvoTicket_Click_1);
             // 
             // btnEnregistrer
             // 
+            this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
+            this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEnregistrer.Location = new System.Drawing.Point(94, 21);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(84, 38);
+            this.btnEnregistrer.Size = new System.Drawing.Size(91, 38);
             this.btnEnregistrer.TabIndex = 6;
-            this.btnEnregistrer.Text = "Enregistrer";
+            this.btnEnregistrer.Text = "   Enregistrer";
+            this.btnEnregistrer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnregistrer.UseVisualStyleBackColor = true;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click_1);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnListArt);
-            this.groupBox5.Controls.Add(this.bntEncaissmts);
-            this.groupBox5.Controls.Add(this.btnCmd);
-            this.groupBox5.Controls.Add(this.bntregler);
-            this.groupBox5.Controls.Add(this.bntEnAttente);
-            this.groupBox5.Controls.Add(this.bntEnCours);
-            this.groupBox5.Location = new System.Drawing.Point(674, 812);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(283, 143);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Historique par:";
-            // 
-            // btnListArt
-            // 
-            this.btnListArt.Location = new System.Drawing.Point(191, 83);
-            this.btnListArt.Name = "btnListArt";
-            this.btnListArt.Size = new System.Drawing.Size(79, 48);
-            this.btnListArt.TabIndex = 6;
-            this.btnListArt.Text = "Liste Articles";
-            this.btnListArt.UseVisualStyleBackColor = true;
-            // 
-            // bntEncaissmts
-            // 
-            this.bntEncaissmts.Location = new System.Drawing.Point(94, 83);
-            this.bntEncaissmts.Name = "bntEncaissmts";
-            this.bntEncaissmts.Size = new System.Drawing.Size(91, 48);
-            this.bntEncaissmts.TabIndex = 5;
-            this.bntEncaissmts.Text = "Encaissements";
-            this.bntEncaissmts.UseVisualStyleBackColor = true;
-            // 
-            // btnCmd
-            // 
-            this.btnCmd.Location = new System.Drawing.Point(191, 21);
-            this.btnCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCmd.Name = "btnCmd";
-            this.btnCmd.Size = new System.Drawing.Size(77, 50);
-            this.btnCmd.TabIndex = 4;
-            this.btnCmd.Text = "Commande";
-            this.btnCmd.UseVisualStyleBackColor = true;
-            // 
-            // bntregler
-            // 
-            this.bntregler.Location = new System.Drawing.Point(6, 81);
-            this.bntregler.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bntregler.Name = "bntregler";
-            this.bntregler.Size = new System.Drawing.Size(78, 50);
-            this.bntregler.TabIndex = 3;
-            this.bntregler.Text = "Réglé";
-            this.bntregler.UseVisualStyleBackColor = true;
-            // 
-            // bntEnAttente
-            // 
-            this.bntEnAttente.Location = new System.Drawing.Point(94, 21);
-            this.bntEnAttente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bntEnAttente.Name = "bntEnAttente";
-            this.bntEnAttente.Size = new System.Drawing.Size(91, 50);
-            this.bntEnAttente.TabIndex = 2;
-            this.bntEnAttente.Text = "En attente";
-            this.bntEnAttente.UseVisualStyleBackColor = true;
-            // 
-            // bntEnCours
-            // 
-            this.bntEnCours.Location = new System.Drawing.Point(6, 21);
-            this.bntEnCours.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bntEnCours.Name = "bntEnCours";
-            this.bntEnCours.Size = new System.Drawing.Size(78, 50);
-            this.bntEnCours.TabIndex = 1;
-            this.bntEnCours.Text = "En cours ";
-            this.bntEnCours.UseVisualStyleBackColor = true;
-            // 
             // groupBox6
             // 
+            this.groupBox6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox6.Controls.Add(this.panel2);
             this.groupBox6.Location = new System.Drawing.Point(674, 410);
             this.groupBox6.Name = "groupBox6";
@@ -1558,329 +1858,51 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Résumé montants";
             // 
-            // idFactureWait
-            // 
-            dataGridViewCellStyle91.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle91.ForeColor = System.Drawing.Color.Red;
-            this.idFactureWait.DefaultCellStyle = dataGridViewCellStyle91;
-            this.idFactureWait.HeaderText = "ID";
-            this.idFactureWait.Name = "idFactureWait";
-            this.idFactureWait.Visible = false;
-            // 
-            // Column11
-            // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column11.HeaderText = "Num Pièce";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column12.HeaderText = "Heure";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column13.HeaderText = "Client";
-            this.Column13.Name = "Column13";
-            // 
-            // Column14
-            // 
-            this.Column14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column14.HeaderText = "Montant TTC";
-            this.Column14.Name = "Column14";
-            // 
-            // Column15
-            // 
-            this.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column15.HeaderText = "Reste";
-            this.Column15.Name = "Column15";
-            // 
-            // suppFactureWait_
-            // 
-            dataGridViewCellStyle92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle92.NullValue = "X";
-            this.suppFactureWait_.DefaultCellStyle = dataGridViewCellStyle92;
-            this.suppFactureWait_.HeaderText = "";
-            this.suppFactureWait_.LinkColor = System.Drawing.Color.Red;
-            this.suppFactureWait_.Name = "suppFactureWait_";
-            this.suppFactureWait_.ReadOnly = true;
-            this.suppFactureWait_.Text = "X";
-            this.suppFactureWait_.Width = 27;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "supp";
-            this.Column16.Name = "Column16";
-            this.Column16.Visible = false;
-            // 
-            // idFactureCours
-            // 
-            this.idFactureCours.HeaderText = "ID";
-            this.idFactureCours.Name = "idFactureCours";
-            this.idFactureCours.Visible = false;
-            // 
-            // numFactureWait
-            // 
-            this.numFactureWait.HeaderText = "Num Piece";
-            this.numFactureWait.Name = "numFactureWait";
-            this.numFactureWait.ReadOnly = true;
-            this.numFactureWait.Width = 110;
-            // 
-            // heureFactureWait
-            // 
-            this.heureFactureWait.HeaderText = "Heure";
-            this.heureFactureWait.Name = "heureFactureWait";
-            this.heureFactureWait.ReadOnly = true;
-            this.heureFactureWait.Width = 104;
-            // 
-            // clientFactureWait
-            // 
-            this.clientFactureWait.HeaderText = "Client";
-            this.clientFactureWait.Name = "clientFactureWait";
-            this.clientFactureWait.ReadOnly = true;
-            this.clientFactureWait.Width = 150;
-            // 
-            // mtantFactureWait
-            // 
-            dataGridViewCellStyle93.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle93.Format = "N2";
-            dataGridViewCellStyle93.NullValue = "0";
-            this.mtantFactureWait.DefaultCellStyle = dataGridViewCellStyle93;
-            this.mtantFactureWait.HeaderText = "Montant TTC";
-            this.mtantFactureWait.Name = "mtantFactureWait";
-            this.mtantFactureWait.ReadOnly = true;
-            this.mtantFactureWait.Width = 120;
-            // 
-            // resteFactureWait
-            // 
-            dataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle94.Format = "N2";
-            dataGridViewCellStyle94.NullValue = "0";
-            this.resteFactureWait.DefaultCellStyle = dataGridViewCellStyle94;
-            this.resteFactureWait.HeaderText = "Reste";
-            this.resteFactureWait.Name = "resteFactureWait";
-            this.resteFactureWait.ReadOnly = true;
-            // 
-            // dataGridViewLinkColumn1
-            // 
-            dataGridViewCellStyle95.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle95.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle95.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle95.NullValue = "X";
-            this.dataGridViewLinkColumn1.DefaultCellStyle = dataGridViewCellStyle95;
-            this.dataGridViewLinkColumn1.HeaderText = "";
-            this.dataGridViewLinkColumn1.LinkColor = System.Drawing.Color.Red;
-            this.dataGridViewLinkColumn1.Name = "dataGridViewLinkColumn1";
-            this.dataGridViewLinkColumn1.ReadOnly = true;
-            this.dataGridViewLinkColumn1.VisitedLinkColor = System.Drawing.Color.White;
-            this.dataGridViewLinkColumn1.Width = 27;
-            // 
-            // suppFactureWait
-            // 
-            this.suppFactureWait.HeaderText = "Supp";
-            this.suppFactureWait.Name = "suppFactureWait";
-            this.suppFactureWait.ReadOnly = true;
-            this.suppFactureWait.Visible = false;
-            // 
-            // idFactureRegle
-            // 
-            this.idFactureRegle.HeaderText = "ID";
-            this.idFactureRegle.Name = "idFactureRegle";
-            this.idFactureRegle.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Num Piece";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Heure";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 104;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Client";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle96.Format = "N2";
-            dataGridViewCellStyle96.NullValue = "0";
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle96;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Montant TTC";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewCellStyle97.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle97.Format = "N2";
-            dataGridViewCellStyle97.NullValue = "0";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle97;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Reste";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewLinkColumn2
-            // 
-            dataGridViewCellStyle98.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle98.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle98.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle98.NullValue = "X";
-            this.dataGridViewLinkColumn2.DefaultCellStyle = dataGridViewCellStyle98;
-            this.dataGridViewLinkColumn2.HeaderText = "";
-            this.dataGridViewLinkColumn2.LinkColor = System.Drawing.Color.Red;
-            this.dataGridViewLinkColumn2.Name = "dataGridViewLinkColumn2";
-            this.dataGridViewLinkColumn2.ReadOnly = true;
-            this.dataGridViewLinkColumn2.VisitedLinkColor = System.Drawing.Color.White;
-            this.dataGridViewLinkColumn2.Width = 27;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Supp";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Visible = false;
-            // 
-            // pgRecherF
-            // 
-            this.pgRecherF.BackgroundImage = global::GESTION_CAISSE.Properties.Resources.search1;
-            this.pgRecherF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pgRecherF.Location = new System.Drawing.Point(610, 75);
-            this.pgRecherF.Name = "pgRecherF";
-            this.pgRecherF.Size = new System.Drawing.Size(47, 44);
-            this.pgRecherF.TabIndex = 2;
-            this.pgRecherF.UseVisualStyleBackColor = true;
-            // 
-            // pgDroiteF
-            // 
-            this.pgDroiteF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pgDroiteF.Image = global::GESTION_CAISSE.Properties.Resources.bnavigation;
-            this.pgDroiteF.Location = new System.Drawing.Point(610, 171);
-            this.pgDroiteF.Name = "pgDroiteF";
-            this.pgDroiteF.Size = new System.Drawing.Size(47, 70);
-            this.pgDroiteF.TabIndex = 1;
-            this.pgDroiteF.UseVisualStyleBackColor = true;
-            // 
-            // pgGaucheF
-            // 
-            this.pgGaucheF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pgGaucheF.Image = global::GESTION_CAISSE.Properties.Resources.tnavigation;
-            this.pgGaucheF.Location = new System.Drawing.Point(610, 3);
-            this.pgGaucheF.Name = "pgGaucheF";
-            this.pgGaucheF.Size = new System.Drawing.Size(47, 70);
-            this.pgGaucheF.TabIndex = 0;
-            this.pgGaucheF.UseVisualStyleBackColor = true;
-            // 
-            // pgDroiteA
-            // 
-            this.pgDroiteA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pgDroiteA.Image = global::GESTION_CAISSE.Properties.Resources.bnavigation;
-            this.pgDroiteA.Location = new System.Drawing.Point(610, 171);
-            this.pgDroiteA.Name = "pgDroiteA";
-            this.pgDroiteA.Size = new System.Drawing.Size(47, 70);
-            this.pgDroiteA.TabIndex = 1;
-            this.pgDroiteA.UseVisualStyleBackColor = true;
-            // 
-            // pgGaucheA
-            // 
-            this.pgGaucheA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pgGaucheA.Image = global::GESTION_CAISSE.Properties.Resources.tnavigation;
-            this.pgGaucheA.Location = new System.Drawing.Point(610, 3);
-            this.pgGaucheA.Name = "pgGaucheA";
-            this.pgGaucheA.Size = new System.Drawing.Size(47, 70);
-            this.pgGaucheA.TabIndex = 0;
-            this.pgGaucheA.UseVisualStyleBackColor = true;
-            // 
-            // picClient
-            // 
-            this.picClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picClient.ErrorImage = null;
-            this.picClient.Image = global::GESTION_CAISSE.Properties.Resources.user_m1;
-            this.picClient.Location = new System.Drawing.Point(151, 21);
-            this.picClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.picClient.Name = "picClient";
-            this.picClient.Size = new System.Drawing.Size(113, 122);
-            this.picClient.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClient.TabIndex = 11;
-            this.picClient.TabStop = false;
-            this.picClient.Click += new System.EventHandler(this.picClient_Click_1);
-            // 
-            // btn_deconnect
-            // 
-            this.btn_deconnect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_deconnect.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_deconnect.Image = global::GESTION_CAISSE.Properties.Resources.exit;
-            this.btn_deconnect.Location = new System.Drawing.Point(894, 34);
-            this.btn_deconnect.Name = "btn_deconnect";
-            this.btn_deconnect.Size = new System.Drawing.Size(37, 28);
-            this.btn_deconnect.TabIndex = 17;
-            this.btn_deconnect.Tag = "&Déconnection";
-            this.btn_deconnect.Text = "&D";
-            this.btn_deconnect.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btn_deconnect.UseVisualStyleBackColor = true;
-            // 
-            // btn_theme
-            // 
-            this.btn_theme.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_theme.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_theme.Image = global::GESTION_CAISSE.Properties.Resources.klines;
-            this.btn_theme.Location = new System.Drawing.Point(894, 68);
-            this.btn_theme.Name = "btn_theme";
-            this.btn_theme.Size = new System.Drawing.Size(37, 28);
-            this.btn_theme.TabIndex = 16;
-            this.btn_theme.Tag = "Changer Thème";
-            this.btn_theme.Text = "&L";
-            this.btn_theme.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btn_theme.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = global::GESTION_CAISSE.Properties.Resources.user_m1;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(89, 103);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btn_cpt_Articles
-            // 
-            this.btn_cpt_Articles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_cpt_Articles.Enabled = false;
-            this.btn_cpt_Articles.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cpt_Articles.Location = new System.Drawing.Point(610, 125);
-            this.btn_cpt_Articles.Name = "btn_cpt_Articles";
-            this.btn_cpt_Articles.Size = new System.Drawing.Size(47, 44);
-            this.btn_cpt_Articles.TabIndex = 52;
-            this.btn_cpt_Articles.Text = "0/0";
-            this.btn_cpt_Articles.UseVisualStyleBackColor = true;
-            // 
-            // btn_cpt_Famille
-            // 
-            this.btn_cpt_Famille.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_cpt_Famille.Enabled = false;
-            this.btn_cpt_Famille.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cpt_Famille.Location = new System.Drawing.Point(610, 125);
-            this.btn_cpt_Famille.Name = "btn_cpt_Famille";
-            this.btn_cpt_Famille.Size = new System.Drawing.Size(47, 44);
-            this.btn_cpt_Famille.TabIndex = 17;
-            this.btn_cpt_Famille.Text = "1/5";
-            this.btn_cpt_Famille.UseVisualStyleBackColor = true;
+            // groupBox8
+            // 
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox8.Controls.Add(this.lb_montant_caisse);
+            this.groupBox8.Location = new System.Drawing.Point(674, 811);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(283, 60);
+            this.groupBox8.TabIndex = 53;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Récapitulatif Caisse";
+            // 
+            // lb_montant_caisse
+            // 
+            this.lb_montant_caisse.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lb_montant_caisse.AutoSize = true;
+            this.lb_montant_caisse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_montant_caisse.Location = new System.Drawing.Point(64, 29);
+            this.lb_montant_caisse.Name = "lb_montant_caisse";
+            this.lb_montant_caisse.Size = new System.Drawing.Size(177, 18);
+            this.lb_montant_caisse.TabIndex = 0;
+            this.lb_montant_caisse.Text = "1 000 000 000 000 000";
+            this.lb_montant_caisse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lb_montant_caisse.TextChanged += new System.EventHandler(this.lb_montant_caisse_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_approv);
+            this.groupBox1.Location = new System.Drawing.Point(674, 877);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(283, 78);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Autres Vues";
+            // 
+            // btn_approv
+            // 
+            this.btn_approv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_approv.Location = new System.Drawing.Point(14, 19);
+            this.btn_approv.Name = "btn_approv";
+            this.btn_approv.Size = new System.Drawing.Size(116, 46);
+            this.btn_approv.TabIndex = 0;
+            this.btn_approv.Text = "Approvisionnement";
+            this.btn_approv.UseVisualStyleBackColor = true;
+            this.btn_approv.Click += new System.EventHandler(this.btn_approv_Click);
             // 
             // Form_Caisse_Click
             // 
@@ -1889,13 +1911,14 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(964, 958);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.txt_reference);
             this.Controls.Add(this.com_typeDoc);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel7);
@@ -1912,6 +1935,7 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1934,11 +1958,12 @@
             this.tab_articles.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1964,10 +1989,6 @@
         private System.Windows.Forms.Label TotalRemz;
         private System.Windows.Forms.Label SommSR;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button bntregler;
-        private System.Windows.Forms.Button bntEnAttente;
-        private System.Windows.Forms.Button bntEnCours;
         public System.Windows.Forms.Label Relicat;
         public System.Windows.Forms.Label SommeP;
         private System.Windows.Forms.Label lb_totalVerse;
@@ -2021,7 +2042,6 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button btnCmd;
         private System.Windows.Forms.Label lb_numPiece;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label28;
@@ -2034,8 +2054,6 @@
         private System.Windows.Forms.Button btnReglement;
         private System.Windows.Forms.Button NvoTicket;
         private System.Windows.Forms.Button btnEnregistrer;
-        private System.Windows.Forms.Button bntEncaissmts;
-        private System.Windows.Forms.Button btnListArt;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -2101,6 +2119,10 @@
         private System.Windows.Forms.Button btn_cpt_Articles;
         private System.Windows.Forms.Button btn_cpt_Famille;
         public System.Windows.Forms.Label SommeVersee;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label lb_montant_caisse;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_approv;
 
 
     }

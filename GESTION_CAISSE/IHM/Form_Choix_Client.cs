@@ -108,16 +108,30 @@ namespace GESTION_CAISSE.IHM
         private List<Client> GetPack8(ref int indActu, List<Client> list, int sens)
         {
             List<Client> listRetour = new List<Client>();
+
             if (sens == 2)
             {
+                listRetour.Clear();
+
+                //int charT = btn_cpt_Articles.Text.IndexOf('/');
+                //int subStr = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT));
+                //btn_cpt_Articles.Text = (subStr + 1).ToString() + "/" + nbrPgA;
+
+                //if (b1A == true)
+                //{
+                //    b1A = false;
+                //    indActu += 8;
+                //}
+
                 for (int i = 0; i < 8; i++)
                 {
-                    if ((indActu == list.Count - 1) || (list.Count==0)) pgDroite.Enabled = false;
+                    if ((indActu == list.Count - 1) || (list.Count == 0) /*|| (subStr == nbrPgF)*/) pgDroite.Enabled = false;
                     else pgDroite.Enabled = true;
+
                     if (indActu < 8) pgGauche.Enabled = false;
                     else pgGauche.Enabled = true;
-                   
-                    if ((indActu >= 0) && (indActu < list.Count))
+
+                    if (/*(indActu >= 0) &&*/ (indActu < list.Count))
                     {
                         listRetour.Add(list.ElementAt<Client>(indActu));
                         indActu++;
@@ -129,29 +143,50 @@ namespace GESTION_CAISSE.IHM
                         return listRetour;
                     }
                 }
+                //b2A = true;
             }
 
             if (sens == 1)
             {
+                //if (b2A == true)
+                //{
+                //    b2A = false;
+                //    if ((indActu % 8) == 7) indActu -= 8;
+                //}
+                listRetour.Clear();
+
+                //int charT2 = btn_cpt_Articles.Text.IndexOf('/');
+                //int subStr2 = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT2));
+                //btn_cpt_Articles.Text = (subStr2 - 1).ToString() + "/" + nbrPgF;
+
+                if ((indActu % 8) != 7) indActu -= ((indActu % 8));
+                else indActu -= 8;
+                //indActu--;
+
                 for (int i = 0; i < 8; i++)
                 {
 
-                    if (indActu == list.Count - 1) pgDroite.Enabled = false;
-                    else pgDroite.Enabled = true;
-                    if (indActu <8) pgGauche.Enabled = false;
-                    else pgGauche.Enabled = true;
-
                     if ((indActu >= 0) && (indActu < list.Count))
                     {
-                        listRetour.Add(list.ElementAt<Client>(indActu));
                         indActu--;
+                        listRetour.Add(list.ElementAt<Client>(indActu));
                     }
 
                     if (indActu <= -1)
                     {
+                        indActu++;
+                        listRetour.Reverse();
                         return listRetour;
                     }
+
+                    if (indActu == list.Count - 1) pgDroite.Enabled = false;
+                    else pgDroite.Enabled = true;
+
+                    if (indActu < 8) pgGauche.Enabled = false;
+                    else pgGauche.Enabled = true;
                 }
+                listRetour.Reverse();
+                //b1A = true;
             }
             return listRetour;
         }

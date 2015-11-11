@@ -178,11 +178,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.btn_supp_contenu = new System.Windows.Forms.Button();
             this.btn_supp_facture = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lb_montant_caisse = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+=======
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.lb_montant_caisse = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.btn_supp_contenu = new System.Windows.Forms.Button();
+            this.btn_supp_facture = new System.Windows.Forms.Button();
+>>>>>>> origin/master
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1615,6 +1623,7 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
+<<<<<<< HEAD
             // btn_supp_contenu
             // 
             this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
@@ -1629,6 +1638,8 @@
             this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
             this.btn_supp_facture.TabIndex = 0;
             // 
+=======
+>>>>>>> origin/master
             // groupBox8
             // 
             this.groupBox8.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1663,6 +1674,23 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(351, 27);
             this.panel7.TabIndex = 1;
+<<<<<<< HEAD
+=======
+            // 
+            // btn_supp_contenu
+            // 
+            this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
+            this.btn_supp_contenu.Name = "btn_supp_contenu";
+            this.btn_supp_contenu.Size = new System.Drawing.Size(75, 23);
+            this.btn_supp_contenu.TabIndex = 0;
+            // 
+            // btn_supp_facture
+            // 
+            this.btn_supp_facture.Location = new System.Drawing.Point(0, 0);
+            this.btn_supp_facture.Name = "btn_supp_facture";
+            this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
+            this.btn_supp_facture.TabIndex = 0;
+>>>>>>> origin/master
             // 
             // Form_Caisse_Saisie
             // 
