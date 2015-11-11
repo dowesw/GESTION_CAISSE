@@ -56,7 +56,7 @@ namespace GESTION_CAISSE.IHM
             //charger famillesa articles
             familles.Clear();
             //familles = BLL.FamilleArticleBll.Liste_("select * from yvs_base_famille_article");
-            familles = prodListFamille();
+
             famillesCrits = new List<FamilleArticle>();
             articlesCrits = new List<Article>();
             articles = new List<Article>();
@@ -85,7 +85,7 @@ namespace GESTION_CAISSE.IHM
             //charger famillesa articles
             familles.Clear();
             //familles = BLL.FamilleArticleBll.Liste_("select * from yvs_base_famille_article");
-            familles = prodListFamille();
+
             famillesCrits = new List<FamilleArticle>();
             articlesCrits = new List<Article>();
             articles = new List<Article>();
@@ -109,11 +109,21 @@ namespace GESTION_CAISSE.IHM
             SearchDirectionF(2);
             LoadAll();
 
-           
+
         }
 
         public void ConfigForm()
         {
+            familles.Clear();
+            //familles = prodListFamille();
+
+            for (int i = 0; i < 26; i++)
+            {
+                FamilleArticle famArt = new FamilleArticle();
+                famArt.Designation = "F" + i;
+                familles.Add(famArt);
+
+            }
             ResetFicheFacture();
             clientZero = BLL.ClientBll.Default();
             dpt = TOOLS.Constantes.Creneau.Depot;
@@ -140,7 +150,7 @@ namespace GESTION_CAISSE.IHM
 
             nbrPgF = ((familles.Count % 8) > 0) ? (familles.Count / 8) + 1 : (familles.Count / 8);
             btn_cpt_Famille.Text = "0/" + nbrPgF;
-           
+
         }
 
         public void initZonePrix()
@@ -476,23 +486,36 @@ namespace GESTION_CAISSE.IHM
             else { articlesCrits.AddRange(articles); }
         }
 
-        private List<FamilleArticle> GetPack8F(ref int indActu, List<FamilleArticle> list, int sens)
+        private bool b1F = false;
+        private bool b2F = false;
+
+        private List<FamilleArticle> GetPack8F(ref int indActu, List<FamilleArticle> list, int sens,ref  bool b1F,ref bool b2F)
         {
             List<FamilleArticle> listRetour = new List<FamilleArticle>();
+
             if (sens == 2)
             {
-                int charT=btn_cpt_Famille.Text.IndexOf('/');
-                int subStr= Convert.ToInt32( btn_cpt_Famille.Text.Substring(0, charT));
-                btn_cpt_Famille.Text =  (subStr+1).ToString()+"/" +nbrPgF;
+                listRetour.Clear();
+
+                int charT = btn_cpt_Famille.Text.IndexOf('/');
+                int subStr = Convert.ToInt32(btn_cpt_Famille.Text.Substring(0, charT));
+                btn_cpt_Famille.Text = (subStr + 1).ToString() + "/" + nbrPgF;
+
+                if (b1F == true)
+                {
+                    b1F = false;
+                    indActu += 8;
+                }
 
                 for (int i = 0; i < 8; i++)
                 {
-                    if ((indActu == list.Count - 1) || (list.Count == 0)) pgDroiteF.Enabled = false;
+                    if ((indActu == list.Count - 1) || (list.Count == 0) || (subStr == nbrPgF)) pgDroiteF.Enabled = false;
                     else pgDroiteF.Enabled = true;
+
                     if (indActu < 8) pgGaucheF.Enabled = false;
                     else pgGaucheF.Enabled = true;
 
-                    if ((indActu >= 0) && (indActu < list.Count))
+                    if (/*(indActu >= 0) &&*/ (indActu < list.Count))
                     {
                         listRetour.Add(list.ElementAt<FamilleArticle>(indActu));
                         indActu++;
@@ -504,49 +527,84 @@ namespace GESTION_CAISSE.IHM
                         return listRetour;
                     }
                 }
+                b2F = true;
             }
 
             if (sens == 1)
             {
-                int charT = btn_cpt_Famille.Text.IndexOf('/');
-                int subStr = Convert.ToInt32(btn_cpt_Famille.Text.Substring(0, charT));
-                btn_cpt_Famille.Text = (subStr - 1).ToString() + "/" + nbrPgA;
+                if (b2F == true)
+                {
+                    b2F = false;
+                    if ((indActu % 8) == 7) indActu -= 8;
+                }
+                listRetour.Clear();
+
+                int charT2 = btn_cpt_Articles.Text.IndexOf('/');
+                int subStr2 = Convert.ToInt32(btn_cpt_Famille.Text.Substring(0, charT2));
+                btn_cpt_Famille.Text = (subStr2 - 1).ToString() + "/" + nbrPgF;
+
+                if ((indActu % 8) != 7) indActu -= ((indActu % 8));
+                else indActu -= 8;
+                //indActu--;
 
                 for (int i = 0; i < 8; i++)
                 {
-                    if (indActu == list.Count - 1) pgDroiteF.Enabled = false;
-                    else pgDroiteF.Enabled = true;
-                    if (indActu < 8) pgGaucheF.Enabled = false;
-                    else pgGaucheF.Enabled = true;
 
                     if ((indActu >= 0) && (indActu < list.Count))
                     {
-                        listRetour.Add(list.ElementAt<FamilleArticle>(indActu));
                         indActu--;
+                        listRetour.Add(list.ElementAt<FamilleArticle>(indActu));
                     }
 
                     if (indActu <= -1)
                     {
+                        indActu++;
+                        listRetour.Reverse();
                         return listRetour;
                     }
+
+                    if (indActu == list.Count - 1) pgDroiteF.Enabled = false;
+                    else pgDroiteF.Enabled = true;
+
+                    if (indActu < 8) pgGaucheF.Enabled = false;
+                    else pgGaucheF.Enabled = true;
                 }
+                listRetour.Reverse();
+                b1F = true;
             }
             return listRetour;
         }
 
+        private bool b1A = false;
+        private bool b2A = false;
+
         private List<Article> GetPack8A(ref int indActu, List<Article> list, int sens)
         {
             List<Article> listRetour = new List<Article>();
+
             if (sens == 2)
             {
+                listRetour.Clear();
+
                 int charT = btn_cpt_Articles.Text.IndexOf('/');
                 int subStr = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT));
                 btn_cpt_Articles.Text = (subStr + 1).ToString() + "/" + nbrPgA;
 
+                if (b1A == true)
+                {
+                    b1A = false;
+                    indActu += 8;
+                }
+
                 for (int i = 0; i < 8; i++)
                 {
+                    if ((indActu == list.Count - 1) || (list.Count == 0) || (subStr == nbrPgF)) pgDroiteA.Enabled = false;
+                    else pgDroiteA.Enabled = true;
 
-                    if ((indActu >= 0) && (indActu < list.Count))
+                    if (indActu < 8) pgGaucheA.Enabled = false;
+                    else pgGaucheA.Enabled = true;
+
+                    if (/*(indActu >= 0) &&*/ (indActu < list.Count))
                     {
                         listRetour.Add(list.ElementAt<Article>(indActu));
                         indActu++;
@@ -557,39 +615,51 @@ namespace GESTION_CAISSE.IHM
                         indActu--;
                         return listRetour;
                     }
-                    if ((indActu == list.Count - 1) || (list.Count == 0)) pgDroiteA.Enabled = false;
-                    else pgDroiteA.Enabled = true;
-                    if (indActu < 8) pgGaucheA.Enabled = false;
-                    else pgGaucheA.Enabled = true;
                 }
+                b2A = true;
             }
 
             if (sens == 1)
             {
-                int charT = btn_cpt_Articles.Text.IndexOf('/');
-                int subStr = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT));
-                btn_cpt_Articles.Text = (subStr - 1).ToString() + "/" + nbrPgA;
+                if (b2A == true)
+                {
+                    b2A = false;
+                    if ((indActu % 8) == 7) indActu -= 8;
+                }
+                listRetour.Clear();
 
-                if ((indActu % 8) != 0) indActu -= (indActu % 8); indActu--;
+                int charT2 = btn_cpt_Articles.Text.IndexOf('/');
+                int subStr2 = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT2));
+                btn_cpt_Articles.Text = (subStr2 - 1).ToString() + "/" + nbrPgF;
+
+                if ((indActu % 8) != 7) indActu -= ((indActu % 8));
+                else indActu -= 8;
+                //indActu--;
+
                 for (int i = 0; i < 8; i++)
                 {
 
                     if ((indActu >= 0) && (indActu < list.Count))
                     {
-                        listRetour.Add(list.ElementAt<Article>(indActu));
                         indActu--;
+                        listRetour.Add(list.ElementAt<Article>(indActu));
                     }
 
                     if (indActu <= -1)
                     {
                         indActu++;
+                        listRetour.Reverse();
                         return listRetour;
                     }
+
                     if (indActu == list.Count - 1) pgDroiteA.Enabled = false;
                     else pgDroiteA.Enabled = true;
+
                     if (indActu < 8) pgGaucheA.Enabled = false;
                     else pgGaucheA.Enabled = true;
                 }
+                listRetour.Reverse();
+                b1A = true;
             }
             return listRetour;
         }
@@ -599,7 +669,7 @@ namespace GESTION_CAISSE.IHM
             int posBtn = 0;
             InitButton(buttonFs, labelFs);
             ResultatRechercheF("");
-            List<FamilleArticle> seracList = GetPack8F(ref indTabF, famillesCrits, sens);
+            List<FamilleArticle> seracList = GetPack8F(ref indTabF, famillesCrits, sens,ref b1F, ref b2F);
             var t = seracList.Count;
             foreach (FamilleArticle cli in seracList)
             {
@@ -619,26 +689,6 @@ namespace GESTION_CAISSE.IHM
                 ModifButton(buttonAs.ElementAt<Button>(posBtn), cli, labelAs.ElementAt<Label>(posBtn));
                 posBtn++;
             }
-        }
-
-        private void pgGaucheF_Click(object sender, EventArgs e)
-        {
-            SearchDirectionF(1);
-        }
-
-        private void pgDroiteF_Click(object sender, EventArgs e)
-        {
-            SearchDirectionF(2);
-        }
-
-        private void pgGaucheA_Click(object sender, EventArgs e)
-        {
-            SearchDirectionA(1);
-        }
-
-        private void pgDroiteA_Click(object sender, EventArgs e)
-        {
-            SearchDirectionA(2);
         }
 
 
@@ -1010,39 +1060,43 @@ namespace GESTION_CAISSE.IHM
 
         public void setEnteteJour()
         {
-            DateTime date = Convert.ToDateTime("2015-10-10");
-            Entete e = BLL.EnteteBll.One(Constantes.Creneau, date);
-            if ((e != null) ? e.Id > 0 : false)
+            if ((Constantes.Entete != null) ? Constantes.Entete.Id > 0 : false)
             {
-                Constantes.Entete = e;
                 //Charge facture en attente
                 dgv_facture_wait.Rows.Clear();
-                foreach (Facture f in e.FacturesEnAttente)
+                foreach (Facture f in Constantes.Entete.FacturesEnAttente)
                 {
                     AddRowFacture(dgv_facture_wait, f);
                 }
 
                 //Charge facture en cours
                 dgv_facture_cours.Rows.Clear();
-                foreach (Facture f in e.FacturesEnCours)
+                foreach (Facture f in Constantes.Entete.FacturesEnCours)
                 {
                     AddRowFacture(dgv_facture_cours, f);
                 }
 
                 //Charge facture regle
                 dgv_facture_regle.Rows.Clear();
-                foreach (Facture f in e.FacturesRegle)
+                foreach (Facture f in Constantes.Entete.FacturesRegle)
                 {
                     AddRowFacture(dgv_facture_regle, f);
                 }
 
                 //Charge commande
                 dgv_commande.Rows.Clear();
-                foreach (Facture f in e.Commandes)
+                foreach (Facture f in Constantes.Entete.Commandes)
                 {
                     AddRowFacture(dgv_commande, f);
                 }
             }
+            else
+            {
+                DateTime date = Convert.ToDateTime("2015-10-10");
+                TOOLS.Utils.SetEnteteOfDay(date);
+            }
+
+            lb_montant_caisse.Text = Constantes.Entete.Montant.ToString();
         }
 
         private void configFacture(Facture f)
@@ -1097,7 +1151,7 @@ namespace GESTION_CAISSE.IHM
                 PrenomClient.Text = f.Tiers.Prenom;
                 NomClient.Text = f.Tiers.Nom;
                 TelClient.Text = f.Tiers.Tel;
-                if (f.Tiers.Logo.Equals("") || f.Tiers.Logo==null)
+                if (f.Tiers.Logo.Equals("") || f.Tiers.Logo == null)
                 {
                     picClient.Image = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
                 }
@@ -1171,7 +1225,6 @@ namespace GESTION_CAISSE.IHM
 
         private void btnReglement_Click(object sender, EventArgs e)
         {
-
             if ((fact != null) ? fact.Id > 0 : false)
             {
                 Form_Caisse_Reglement f = new Form_Caisse_Reglement(this);
@@ -1179,27 +1232,39 @@ namespace GESTION_CAISSE.IHM
 
                 if (fact.MontantReste > 0)
                 {
-                    if (Convert.ToDouble(SommeVersee.Text) > 0)
+                    double montant = Convert.ToDouble(SommeVersee.Text);
+                    if (montant > 0)
                     {
-                        Mensualite m = new Mensualite();
                         if (fact.Mensualites.Count > 0)
                         {
-                            foreach (Mensualite m_ in fact.Mensualites)
+                            foreach (Mensualite m in fact.Mensualites)
                             {
-                                if (m_.MontantReste > 0)
+                                if (montant > 0)
                                 {
-                                    m = m_;
-                                    break;
+                                    if (m.MontantReste > 0)
+                                    {
+                                        PieceCaisse p = RecopieViewReglement(m, ((montant - m.MontantReste < 0) ? (m.MontantReste - montant) : m.MontantReste));
+                                        PieceCaisse p_ = new BLL.PieceCaisseBll(p).Insert();
+                                        if ((p_ != null) ? p_.Id > 0 : false)
+                                        {
+                                            montant = (montant - p.Montant < 0) ? montant - p.Montant : 0;
+                                            p.Id = p_.Id;
+                                            p.Update = true;
+                                            m.Reglements.Add(p);
+                                            m.MontantReste -= p.Montant;
+                                            fact.Mensualites.Add(m);
+                                            fact.MontantAvance += p.Montant;
+
+                                            AddRowReglement(p);
+                                        }
+                                    }
                                 }
+
                             }
-                        }
-                        if (m.Id > 0)
-                        {
-                            createReglementByEcheance(fact.MontantAvance);
                         }
                         else
                         {
-                            m = RecopieViewMensualite(fact.MontantAvance);
+                            Mensualite m = RecopieViewMensualite(montant);
                             Mensualite m_ = new BLL.MensualiteBll(m).Insert();
                             if ((m_ != null) ? m_.Id > 0 : false)
                             {
@@ -1212,12 +1277,28 @@ namespace GESTION_CAISSE.IHM
                                     p.Id = p_.Id;
                                     p.Update = true;
                                     m.Reglements.Add(p);
+                                    m.MontantReste -= p.Montant;
                                     fact.Mensualites.Add(m);
+                                    fact.MontantAvance += p.Montant;
+
                                     AddRowReglement(p);
-                                    Messages.Succes();
                                 }
                             }
                         }
+
+                        String etat = Constantes.ETAT_EN_COURS;
+                        if (Convert.ToDouble(SommeVersee.Text) >= fact.MontantTTC)
+                        {
+                            etat = Constantes.ETAT_REGLE;
+                        }
+                        if (BLL.FactureBll.ChangeEtat(fact.Id, etat))
+                        {
+                            fact.MontantReste = (fact.MontantTTC - Convert.ToDouble(SommeVersee.Text) < 0) ? fact.MontantTTC - Convert.ToDouble(SommeVersee.Text) : 0;
+                            DeleteCurrentFacture(fact);
+                            fact.Statut = etat;
+                            AddCurrentFacture(fact);
+                        }
+                        Messages.Succes();
                     }
                     else
                     {
@@ -1235,7 +1316,38 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-
+        private void DeleteCurrentFacture(Facture f)
+        {
+            if ((f != null) ? f.Id > 0 : false)
+            {
+                String type = f.TypeDoc;
+                String etat = f.Statut;
+                switch (type)
+                {
+                    case Constantes.TYPE_BCV:
+                        Constantes.Entete.Commandes.Remove(f);
+                        dgv_commande.Rows.RemoveAt(Utils.GetRowData(dgv_commande, f.Id));
+                        break;
+                    case Constantes.TYPE_FV:
+                        switch (etat)
+                        {
+                            case Constantes.ETAT_EN_ATTENTE:
+                                Constantes.Entete.FacturesEnAttente.Remove(f);
+                                dgv_facture_wait.Rows.RemoveAt(Utils.GetRowData(dgv_facture_wait, f.Id));
+                                break;
+                            case Constantes.ETAT_EN_COURS:
+                                Constantes.Entete.FacturesEnCours.Remove(f);
+                                dgv_facture_cours.Rows.RemoveAt(Utils.GetRowData(dgv_facture_cours, f.Id));
+                                break;
+                            case Constantes.ETAT_REGLE:
+                                Constantes.Entete.FacturesRegle.Remove(f);
+                                dgv_facture_regle.Rows.RemoveAt(Utils.GetRowData(dgv_facture_regle, f.Id));
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
 
         private void ResetFicheFacture()
         {
@@ -1520,7 +1632,6 @@ namespace GESTION_CAISSE.IHM
 
         private void Form_Caisse_Click_Load(object sender, EventArgs e)
         {
-            
             Constantes.form_caisse_click = this;
             contenu = new Contenu();
         }
@@ -1573,10 +1684,10 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-       
+
         private void dgv_facture_regle_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          
+
         }
 
         private void dgv_facture_regle_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -1605,7 +1716,7 @@ namespace GESTION_CAISSE.IHM
 
         private void dgv_facture_wait_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void dgv_facture_wait_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -1658,7 +1769,7 @@ namespace GESTION_CAISSE.IHM
 
         private void dgv_facture_cours_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void dgv_commande_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -1685,9 +1796,9 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
-      
-        
-        
+
+
+
         private void SommeP_TextChanged(object sender, EventArgs e)
         {
             SommeP.Text = string.Format("{0:#,##0.00}", double.Parse(SommeP.Text));
@@ -1708,7 +1819,7 @@ namespace GESTION_CAISSE.IHM
 
             //txt_montantVerse.Text = string.Format("{0:#,##0.00}", double.Parse(txt_montantVerse.Text));
             //txt_montantReste.Text = (Convert.ToDouble(txt_montantTTC.Text) - Convert.ToDouble(txt_montantVerse.Text)).ToString();
-       
+
         }
 
         private void TotalRemz_TextChanged(object sender, EventArgs e)
@@ -1901,7 +2012,7 @@ namespace GESTION_CAISSE.IHM
                         clients = BLL.ClientBll.Liste("select * from yvs_com_client");
                         Facture f = Constantes.Entete.Commandes.Find(x => x.Id == id);
                         long idCli = f.Client.Id;
-                        Client c = clients.Find(x=>x.Id== idCli);
+                        Client c = clients.Find(x => x.Id == idCli);
                         configClient(c);
                         if (e.ColumnIndex == 6)
                         {
@@ -1973,7 +2084,35 @@ namespace GESTION_CAISSE.IHM
             }
         }
 
+        private void lb_montant_caisse_TextChanged(object sender, EventArgs e)
+        {
+            lb_montant_caisse.Text = string.Format("{0:#,##0.00}", double.Parse(lb_montant_caisse.Text));
+        }
 
+        private void btn_approv_Click(object sender, EventArgs e)
+        {
+            new Form_Approvision().ShowDialog();
+        }
+
+        private void pgDroiteF_Click_1(object sender, EventArgs e)
+        {
+            SearchDirectionF(2);
+        }
+
+        private void pgGaucheF_Click_1(object sender, EventArgs e)
+        {
+            SearchDirectionF(1);
+        }
+
+        private void pgGaucheA_Click_1(object sender, EventArgs e)
+        {
+            SearchDirectionA(1);
+        }
+
+        private void pgDroiteA_Click_1(object sender, EventArgs e)
+        {
+            SearchDirectionA(2);
+        }
 
     }
 }

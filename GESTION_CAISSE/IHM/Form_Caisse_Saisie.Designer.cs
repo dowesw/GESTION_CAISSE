@@ -49,15 +49,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Caisse_Saisie));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lb_heure_debut_tranch = new System.Windows.Forms.Label();
             this.lb_heure_fin_tranch = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.lb_nom_depot = new System.Windows.Forms.Label();
-            this.lb_nom_agence = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.lb_nom_agence = new System.Windows.Forms.Label();
             this.lb_prenom_user = new System.Windows.Forms.Label();
             this.lb_nom_user = new System.Windows.Forms.Label();
             this.box_user = new System.Windows.Forms.PictureBox();
@@ -176,35 +178,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lb_numPiece = new System.Windows.Forms.Label();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            this.btn_supp_contenu = new System.Windows.Forms.Button();
-            this.btn_supp_facture = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lb_montant_caisse = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-=======
-<<<<<<< HEAD
             this.btn_supp_contenu = new System.Windows.Forms.Button();
             this.btn_supp_facture = new System.Windows.Forms.Button();
->>>>>>> origin/master
-            //this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
-            this.btn_supp_contenu = new System.Windows.Forms.Button();
-            this.btn_supp_facture = new System.Windows.Forms.Button();
-<<<<<<< HEAD
-=======
-=======
-            this.txt_montantVerse = new System.Windows.Forms.NumericUpDown();
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
             this.groupBox1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.context_client.SuspendLayout();
@@ -234,8 +216,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_reglement)).BeginInit();
             this.context_reglement.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -258,6 +238,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Entete";
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.panel6.Controls.Add(this.panel4);
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Location = new System.Drawing.Point(689, 8);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(263, 64);
+            this.panel6.TabIndex = 11;
             // 
             // panel4
             // 
@@ -309,6 +299,18 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "Tranche : ";
             // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.lb_nom_depot);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.label24);
+            this.panel5.Controls.Add(this.lb_nom_agence);
+            this.panel5.Location = new System.Drawing.Point(308, 8);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(255, 64);
+            this.panel5.TabIndex = 10;
+            // 
             // lb_nom_depot
             // 
             this.lb_nom_depot.AutoSize = true;
@@ -319,16 +321,15 @@
             this.lb_nom_depot.TabIndex = 5;
             this.lb_nom_depot.Text = "Caisse N°2";
             // 
-            // lb_nom_agence
+            // label6
             // 
-            this.lb_nom_agence.AutoSize = true;
-            this.lb_nom_agence.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_nom_agence.Location = new System.Drawing.Point(58, 7);
-            this.lb_nom_agence.Name = "lb_nom_agence";
-            this.lb_nom_agence.Size = new System.Drawing.Size(151, 18);
-            this.lb_nom_agence.TabIndex = 5;
-            this.lb_nom_agence.Text = "Agence Bessengue";
-            this.lb_nom_agence.TextChanged += new System.EventHandler(this.lb_nom_agence_TextChanged);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(7, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Agence : ";
             // 
             // label24
             // 
@@ -340,15 +341,16 @@
             this.label24.TabIndex = 4;
             this.label24.Text = "Dépot : ";
             // 
-            // label6
+            // lb_nom_agence
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Agence : ";
+            this.lb_nom_agence.AutoSize = true;
+            this.lb_nom_agence.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_nom_agence.Location = new System.Drawing.Point(58, 7);
+            this.lb_nom_agence.Name = "lb_nom_agence";
+            this.lb_nom_agence.Size = new System.Drawing.Size(151, 18);
+            this.lb_nom_agence.TabIndex = 5;
+            this.lb_nom_agence.Text = "Agence Bessengue";
+            this.lb_nom_agence.TextChanged += new System.EventHandler(this.lb_nom_agence_TextChanged);
             // 
             // lb_prenom_user
             // 
@@ -1482,6 +1484,7 @@
             this.btn_approv.TabIndex = 0;
             this.btn_approv.Text = "Approvisionnement";
             this.btn_approv.UseVisualStyleBackColor = true;
+            this.btn_approv.Click += new System.EventHandler(this.btn_approv_Click);
             // 
             // groupBox7
             // 
@@ -1612,33 +1615,6 @@
             this.lb_numPiece.TabIndex = 13;
             this.lb_numPiece.Text = "FV/271015/0000";
             // 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
-            // btn_supp_contenu
-            // 
-            this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
-            this.btn_supp_contenu.Name = "btn_supp_contenu";
-            this.btn_supp_contenu.Size = new System.Drawing.Size(75, 23);
-            this.btn_supp_contenu.TabIndex = 0;
-            // 
-            // btn_supp_facture
-            // 
-            this.btn_supp_facture.Location = new System.Drawing.Point(0, 0);
-            this.btn_supp_facture.Name = "btn_supp_facture";
-            this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
-            this.btn_supp_facture.TabIndex = 0;
-<<<<<<< HEAD
-            // 
             // groupBox8
             // 
             this.groupBox8.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1663,28 +1639,6 @@
             this.lb_montant_caisse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lb_montant_caisse.TextChanged += new System.EventHandler(this.lb_montant_caisse_TextChanged);
             // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.lb_nom_depot);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.label24);
-            this.panel5.Controls.Add(this.lb_nom_agence);
-            this.panel5.Location = new System.Drawing.Point(308, 8);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(255, 64);
-            this.panel5.TabIndex = 10;
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.panel6.Controls.Add(this.panel4);
-            this.panel6.Controls.Add(this.label8);
-            this.panel6.Location = new System.Drawing.Point(689, 8);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(263, 64);
-            this.panel6.TabIndex = 11;
-            // 
             // panel7
             // 
             this.panel7.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1695,29 +1649,20 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(351, 27);
             this.panel7.TabIndex = 1;
-=======
-            // txt_montantVerse
             // 
-            this.txt_montantVerse.Increment = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.txt_montantVerse.Location = new System.Drawing.Point(131, 120);
-            this.txt_montantVerse.Maximum = new decimal(new int[] {
-            -1304428544,
-            434162106,
-            542,
-            0});
-            this.txt_montantVerse.Name = "txt_montantVerse";
-            this.txt_montantVerse.Size = new System.Drawing.Size(209, 20);
-            this.txt_montantVerse.TabIndex = 5;
-            this.txt_montantVerse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_montantVerse.ValueChanged += new System.EventHandler(this.txt_montantVerse_ValueChanged);
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
->>>>>>> origin/master
+            // btn_supp_contenu
+            // 
+            this.btn_supp_contenu.Location = new System.Drawing.Point(0, 0);
+            this.btn_supp_contenu.Name = "btn_supp_contenu";
+            this.btn_supp_contenu.Size = new System.Drawing.Size(75, 23);
+            this.btn_supp_contenu.TabIndex = 0;
+            // 
+            // btn_supp_facture
+            // 
+            this.btn_supp_facture.Location = new System.Drawing.Point(0, 0);
+            this.btn_supp_facture.Name = "btn_supp_facture";
+            this.btn_supp_facture.Size = new System.Drawing.Size(75, 23);
+            this.btn_supp_facture.TabIndex = 0;
             // 
             // Form_Caisse_Saisie
             // 
@@ -1750,8 +1695,12 @@
             this.Load += new System.EventHandler(this.Form_Caisse_Saisie_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_user)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1785,10 +1734,6 @@
             this.context_reglement.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.ResumeLayout(false);
@@ -1928,14 +1873,11 @@
         private System.Windows.Forms.NumericUpDown txt_montantVerse;
         private System.Windows.Forms.Button btn_supp_contenu;
         private System.Windows.Forms.Button btn_supp_facture;
-<<<<<<< HEAD
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label lb_montant_caisse;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-=======
->>>>>>> origin/master
     }
 }
 

@@ -190,14 +190,11 @@
             this.btnReglement = new System.Windows.Forms.Button();
             this.NvoTicket = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnListArt = new System.Windows.Forms.Button();
-            this.bntEncaissmts = new System.Windows.Forms.Button();
-            this.btnCmd = new System.Windows.Forms.Button();
-            this.bntregler = new System.Windows.Forms.Button();
-            this.bntEnAttente = new System.Windows.Forms.Button();
-            this.bntEnCours = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.lb_montant_caisse = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_approv = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -222,8 +219,9 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClient)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -688,6 +686,8 @@
             // 
             // label18
             // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(17, 68);
@@ -710,6 +710,8 @@
             // 
             // label21
             // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(168, 68);
@@ -776,6 +778,7 @@
             // 
             // button4
             // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.Location = new System.Drawing.Point(610, 75);
@@ -836,6 +839,8 @@
             // 
             // button17
             // 
+            this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button17.Location = new System.Drawing.Point(157, 3);
             this.button17.Name = "button17";
@@ -856,6 +861,8 @@
             // 
             // button15
             // 
+            this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button15.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button15.Location = new System.Drawing.Point(6, 3);
             this.button15.Name = "button15";
@@ -877,6 +884,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -1378,6 +1386,8 @@
             // 
             // panel7
             // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.AutoScroll = true;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.dataGridView1);
@@ -1401,7 +1411,7 @@
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
@@ -1455,6 +1465,7 @@
             // 
             // tabControl2
             // 
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tab_famille);
             this.tabControl2.Controls.Add(this.tab_articles);
             this.tabControl2.Location = new System.Drawing.Point(3, 406);
@@ -1534,6 +1545,7 @@
             this.pgDroiteF.Size = new System.Drawing.Size(47, 70);
             this.pgDroiteF.TabIndex = 1;
             this.pgDroiteF.UseVisualStyleBackColor = true;
+            this.pgDroiteF.Click += new System.EventHandler(this.pgDroiteF_Click_1);
             // 
             // pgGaucheF
             // 
@@ -1544,6 +1556,7 @@
             this.pgGaucheF.Size = new System.Drawing.Size(47, 70);
             this.pgGaucheF.TabIndex = 0;
             this.pgGaucheF.UseVisualStyleBackColor = true;
+            this.pgGaucheF.Click += new System.EventHandler(this.pgGaucheF_Click_1);
             // 
             // tab_articles
             // 
@@ -1577,6 +1590,7 @@
             // 
             // btn_cpt_Articles
             // 
+            this.btn_cpt_Articles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_cpt_Articles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_cpt_Articles.Enabled = false;
             this.btn_cpt_Articles.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1589,6 +1603,7 @@
             // 
             // pgDroiteA
             // 
+            this.pgDroiteA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pgDroiteA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pgDroiteA.Image = ((System.Drawing.Image)(resources.GetObject("pgDroiteA.Image")));
             this.pgDroiteA.Location = new System.Drawing.Point(610, 171);
@@ -1596,9 +1611,11 @@
             this.pgDroiteA.Size = new System.Drawing.Size(47, 70);
             this.pgDroiteA.TabIndex = 1;
             this.pgDroiteA.UseVisualStyleBackColor = true;
+            this.pgDroiteA.Click += new System.EventHandler(this.pgDroiteA_Click_1);
             // 
             // pgGaucheA
             // 
+            this.pgGaucheA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pgGaucheA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pgGaucheA.Image = ((System.Drawing.Image)(resources.GetObject("pgGaucheA.Image")));
             this.pgGaucheA.Location = new System.Drawing.Point(610, 3);
@@ -1606,6 +1623,7 @@
             this.pgGaucheA.Size = new System.Drawing.Size(47, 70);
             this.pgGaucheA.TabIndex = 0;
             this.pgGaucheA.UseVisualStyleBackColor = true;
+            this.pgGaucheA.Click += new System.EventHandler(this.pgGaucheA_Click_1);
             // 
             // groupBox3
             // 
@@ -1732,7 +1750,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.btn_regl_tick);
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Controls.Add(this.button1);
@@ -1829,82 +1847,6 @@
             this.btnEnregistrer.UseVisualStyleBackColor = true;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click_1);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.btnListArt);
-            this.groupBox5.Controls.Add(this.bntEncaissmts);
-            this.groupBox5.Controls.Add(this.btnCmd);
-            this.groupBox5.Controls.Add(this.bntregler);
-            this.groupBox5.Controls.Add(this.bntEnAttente);
-            this.groupBox5.Controls.Add(this.bntEnCours);
-            this.groupBox5.Location = new System.Drawing.Point(674, 812);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(283, 143);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Historique par:";
-            // 
-            // btnListArt
-            // 
-            this.btnListArt.Location = new System.Drawing.Point(191, 83);
-            this.btnListArt.Name = "btnListArt";
-            this.btnListArt.Size = new System.Drawing.Size(79, 48);
-            this.btnListArt.TabIndex = 6;
-            this.btnListArt.Text = "Liste Articles";
-            this.btnListArt.UseVisualStyleBackColor = true;
-            // 
-            // bntEncaissmts
-            // 
-            this.bntEncaissmts.Location = new System.Drawing.Point(94, 83);
-            this.bntEncaissmts.Name = "bntEncaissmts";
-            this.bntEncaissmts.Size = new System.Drawing.Size(91, 48);
-            this.bntEncaissmts.TabIndex = 5;
-            this.bntEncaissmts.Text = "Encaissements";
-            this.bntEncaissmts.UseVisualStyleBackColor = true;
-            // 
-            // btnCmd
-            // 
-            this.btnCmd.Location = new System.Drawing.Point(191, 21);
-            this.btnCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCmd.Name = "btnCmd";
-            this.btnCmd.Size = new System.Drawing.Size(77, 50);
-            this.btnCmd.TabIndex = 4;
-            this.btnCmd.Text = "Commande";
-            this.btnCmd.UseVisualStyleBackColor = true;
-            // 
-            // bntregler
-            // 
-            this.bntregler.Location = new System.Drawing.Point(6, 81);
-            this.bntregler.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bntregler.Name = "bntregler";
-            this.bntregler.Size = new System.Drawing.Size(78, 50);
-            this.bntregler.TabIndex = 3;
-            this.bntregler.Text = "Réglé";
-            this.bntregler.UseVisualStyleBackColor = true;
-            // 
-            // bntEnAttente
-            // 
-            this.bntEnAttente.Location = new System.Drawing.Point(94, 21);
-            this.bntEnAttente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bntEnAttente.Name = "bntEnAttente";
-            this.bntEnAttente.Size = new System.Drawing.Size(91, 50);
-            this.bntEnAttente.TabIndex = 2;
-            this.bntEnAttente.Text = "En attente";
-            this.bntEnAttente.UseVisualStyleBackColor = true;
-            // 
-            // bntEnCours
-            // 
-            this.bntEnCours.Location = new System.Drawing.Point(6, 21);
-            this.bntEnCours.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bntEnCours.Name = "bntEnCours";
-            this.bntEnCours.Size = new System.Drawing.Size(78, 50);
-            this.bntEnCours.TabIndex = 1;
-            this.bntEnCours.Text = "En cours ";
-            this.bntEnCours.UseVisualStyleBackColor = true;
-            // 
             // groupBox6
             // 
             this.groupBox6.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1916,6 +1858,52 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Résumé montants";
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox8.Controls.Add(this.lb_montant_caisse);
+            this.groupBox8.Location = new System.Drawing.Point(674, 811);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(283, 60);
+            this.groupBox8.TabIndex = 53;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Récapitulatif Caisse";
+            // 
+            // lb_montant_caisse
+            // 
+            this.lb_montant_caisse.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lb_montant_caisse.AutoSize = true;
+            this.lb_montant_caisse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_montant_caisse.Location = new System.Drawing.Point(64, 29);
+            this.lb_montant_caisse.Name = "lb_montant_caisse";
+            this.lb_montant_caisse.Size = new System.Drawing.Size(177, 18);
+            this.lb_montant_caisse.TabIndex = 0;
+            this.lb_montant_caisse.Text = "1 000 000 000 000 000";
+            this.lb_montant_caisse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lb_montant_caisse.TextChanged += new System.EventHandler(this.lb_montant_caisse_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_approv);
+            this.groupBox1.Location = new System.Drawing.Point(674, 877);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(283, 78);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Autres Vues";
+            // 
+            // btn_approv
+            // 
+            this.btn_approv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_approv.Location = new System.Drawing.Point(14, 19);
+            this.btn_approv.Name = "btn_approv";
+            this.btn_approv.Size = new System.Drawing.Size(116, 46);
+            this.btn_approv.TabIndex = 0;
+            this.btn_approv.Text = "Approvisionnement";
+            this.btn_approv.UseVisualStyleBackColor = true;
+            this.btn_approv.Click += new System.EventHandler(this.btn_approv_Click);
+            // 
             // Form_Caisse_Click
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
@@ -1923,13 +1911,14 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(964, 958);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.txt_reference);
             this.Controls.Add(this.com_typeDoc);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel7);
@@ -1971,8 +1960,10 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClient)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1998,10 +1989,6 @@
         private System.Windows.Forms.Label TotalRemz;
         private System.Windows.Forms.Label SommSR;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button bntregler;
-        private System.Windows.Forms.Button bntEnAttente;
-        private System.Windows.Forms.Button bntEnCours;
         public System.Windows.Forms.Label Relicat;
         public System.Windows.Forms.Label SommeP;
         private System.Windows.Forms.Label lb_totalVerse;
@@ -2055,7 +2042,6 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button btnCmd;
         private System.Windows.Forms.Label lb_numPiece;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label28;
@@ -2068,8 +2054,6 @@
         private System.Windows.Forms.Button btnReglement;
         private System.Windows.Forms.Button NvoTicket;
         private System.Windows.Forms.Button btnEnregistrer;
-        private System.Windows.Forms.Button bntEncaissmts;
-        private System.Windows.Forms.Button btnListArt;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -2135,6 +2119,10 @@
         private System.Windows.Forms.Button btn_cpt_Articles;
         private System.Windows.Forms.Button btn_cpt_Famille;
         public System.Windows.Forms.Label SommeVersee;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label lb_montant_caisse;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_approv;
 
 
     }
