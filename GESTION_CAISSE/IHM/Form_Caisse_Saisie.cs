@@ -62,6 +62,7 @@ namespace GESTION_CAISSE.IHM
             lb_numPiece.Text = Utils.GenererReference(Constantes.DOC_FACTURE);
             lb_nom_agence.Text = Constantes.Agence.Designation;
             lb_nom_user.Text = Constantes.Users.NomUser;
+            box_user.Image = Constantes.Users.Image;
             lb_nom_depot.Text = depot.Designation;
             lb_heure_debut_tranch.Text = Constantes.Creneau.Tranche.HeureDebut.ToString("T");
             lb_heure_fin_tranch.Text = Constantes.Creneau.Tranche.HeureFin.ToString("T");
@@ -70,6 +71,13 @@ namespace GESTION_CAISSE.IHM
             timer1.Tick += (s, e) => { lb_date.Text = DateTime.Now.ToString("U"); };
             timer1.Interval = 100;
             timer1.Start();
+
+
+            DataGridViewImageColumn icon = new DataGridViewImageColumn();
+            icon.Name = "mouv";
+            icon.HeaderText = "";
+            icon.Width = 50;
+            dgv_contenu.Columns.Insert(1, icon);
         }
 
         private void configClient(Client a)
@@ -77,6 +85,7 @@ namespace GESTION_CAISSE.IHM
             lb_adr_client.Text = a.Tiers.Adresse;
             lb_nom_client.Text = a.Tiers.Nom_prenom;
             lb_tel_client.Text = a.Tiers.Tel;
+            box_client.Image = a.Image;
         }
 
         private void configFacture(Facture f)
@@ -208,13 +217,14 @@ namespace GESTION_CAISSE.IHM
         public void LoadAllArticle()
         {
             articles.Clear();
-
+            Article a_;
             foreach (ArticleDepot a in depot.Articles)
             {
-                articles.Add(a.Article);
+                a_ = a.Article;
+                a_.Stock = a.Stock;
+                articles.Add(a_);
             }
 
-            com_article.Items.Clear();
             com_article.DisplayMember = "Designation";
             com_article.ValueMember = "Id";
             com_article.DataSource = new BindingSource(articles, null);
@@ -274,7 +284,7 @@ namespace GESTION_CAISSE.IHM
         {
             if (c != null)
             {
-                data.Rows.Add(new object[] { c.Id, c.Article.Article.Designation, c.Prix, c.Quantite, c.PrixTotal, null });
+                data.Rows.Add(new object[] { c.Id, new Bitmap(c.Article.Image, new Size(16, 16)), c.Article.Designation, c.Prix, c.Quantite, c.PrixTotal, null });
             }
         }
 
@@ -744,7 +754,11 @@ namespace GESTION_CAISSE.IHM
         private void btn_theme_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            new Form_Caisse_Click().Show();
+            Constantes.form_caisse_saisie = null;
+            if (F_parent != null)
+                new Form_Caisse_Click(F_parent).Show();
+            else
+                new Form_Caisse_Click().Show();
         }
 
         private void btn_deconnect_Click(object sender, EventArgs e)
@@ -950,6 +964,14 @@ namespace GESTION_CAISSE.IHM
         private void btn_approv_Click(object sender, EventArgs e)
         {
             new Form_Approvision().ShowDialog();
+        }
+
+        private void btn_actualise_Click(object sender, EventArgs e)
+        {
+            Constantes.Creneau.Depot = BLL.DepotBll.One(Constantes.Creneau.Depot.Id);
+            depot = Constantes.Creneau.Depot;
+            LoadAllArticle();
+            ResetFicheContenu();
         }
 
         private void dgv_contenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1212,7 +1234,7 @@ namespace GESTION_CAISSE.IHM
 
         }
 
-       
+
         private void dgv_facture_wait_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             int i = e.RowIndex;
@@ -1420,11 +1442,6 @@ namespace GESTION_CAISSE.IHM
             {
                 Messages.ShowErreur("Vous devez dabord selectionner une facture!");
             }
-        }
-
-        private void btn_approv_Click(object sender, EventArgs e)
-        {
-            new Form_Approvision().ShowDialog();
         }
 
     }

@@ -60,19 +60,17 @@ namespace GESTION_CAISSE.ENTITE
             set { depot = value; }
         }
 
-        private System.Drawing.Bitmap image;
         public System.Drawing.Bitmap Image
         {
             get {
                 if (mouvement == TOOLS.Constantes.MOUV_ENTREE)
                 {
-                    image = global::GESTION_CAISSE.Properties.Resources._in;
+                    return global::GESTION_CAISSE.Properties.Resources._in;
                 }
                 else
                 {
-                    image = global::GESTION_CAISSE.Properties.Resources._out;
+                    return  global::GESTION_CAISSE.Properties.Resources._out;
                 }
-                return image; 
             }
             set { }
         }

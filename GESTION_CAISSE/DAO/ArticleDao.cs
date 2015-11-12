@@ -28,6 +28,10 @@ namespace GESTION_CAISSE.DAO
                         a.Designation = lect["designation"].ToString();
                         a.CodeBarre = lect["code_barre"].ToString();
                         a.RefArt = lect["ref_art"].ToString();
+                        a.Photo1 = lect["photo_1"].ToString();
+                        a.Photo2 = lect["photo_2"].ToString();
+                        a.Photo3 = lect["photo_3"].ToString();
+                        a.MethodeVal = ((lect["methode_val"] != null) ? (!lect["methode_val"].ToString().Trim().Equals("") ? lect["methode_val"].ToString() : Constantes.FIFO) : Constantes.FIFO);
                         a.Prix = (Double)((lect["puv"] != null) ? (!lect["puv"].ToString().Trim().Equals("") ? lect["puv"] : 0.0) : 0.0);
                         a.Famille = ((lect["famille"] != null)
                             ? (!lect["famille"].ToString().Trim().Equals("")
@@ -35,22 +39,6 @@ namespace GESTION_CAISSE.DAO
                             : new FamilleArticle())
                             : new FamilleArticle());
                         a.Plans = BLL.PlanTarifaireBll.Liste("select * from yvs_base_plan_tarifaire_article where actif = true and article = " + a.Id);
-
-                        String photo = lect["photo_1"].ToString();
-                        if ((photo != null) ? !photo.Trim().Equals("") : false)
-                        {
-                            //a.Photos.Add(photo);
-                        }
-                        photo = lect["photo_2"].ToString();
-                        if ((photo != null) ? !photo.Trim().Equals("") : false)
-                        {
-                            //a.Photos.Add(photo);
-                        }
-                        photo = lect["photo_3"].ToString();
-                        if ((photo != null) ? !photo.Trim().Equals("") : false)
-                        {
-                            //a.Photos.Add(photo);
-                        }
                     }
                     a.Update = true;
                     lect.Close();
@@ -178,30 +166,17 @@ namespace GESTION_CAISSE.DAO
                         a.Designation = lect["designation"].ToString();
                         a.CodeBarre = lect["code_barre"].ToString();
                         a.RefArt = lect["ref_art"].ToString();
+                        a.Photo1 = lect["photo_1"].ToString();
+                        a.Photo2 = lect["photo_2"].ToString();
+                        a.Photo3 = lect["photo_3"].ToString();
+                        a.MethodeVal = ((lect["methode_val"] != null) ? lect["methode_val"].ToString() : Constantes.FIFO);
+                        a.Prix = (Double)((lect["puv"] != null) ? (!lect["puv"].ToString().Trim().Equals("") ? lect["puv"] : 0.0) : 0.0);
                         a.Famille = ((lect["famille"] != null)
                             ? (!lect["famille"].ToString().Trim().Equals("")
                             ? new FamilleArticle(Convert.ToInt64(lect["famille"].ToString()))
                             : new FamilleArticle())
                             : new FamilleArticle());
-                        a.Prix = (Double)((lect["puv"] != null) ? (!lect["puv"].ToString().Trim().Equals("") ? lect["puv"] : 0.0) : 0.0);
                         a.Plans = BLL.PlanTarifaireBll.Liste("select * from yvs_base_plan_tarifaire_article where actif = true and article = " + a.Id);
-
-                        String photo = lect["photo_1"].ToString();
-                        if ((photo != null) ? !photo.Trim().Equals("") : false)
-                        {
-                            //a.Photos.Add(photo);
-                        }
-                        photo = lect["photo_2"].ToString();
-                        if ((photo != null) ? !photo.Trim().Equals("") : false)
-                        {
-                            //a.Photos.Add(photo);
-                        }
-                        photo = lect["photo_3"].ToString();
-                        if ((photo != null) ? !photo.Trim().Equals("") : false)
-                        {
-                            //a.Photos.Add(photo);
-                        }
-
                         a.Update = true;
                         l.Add(a);
                     }

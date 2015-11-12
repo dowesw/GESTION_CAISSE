@@ -17,6 +17,7 @@ namespace GESTION_CAISSE.IHM
         List<Button> claviers;
         public Form_Caisse_Quantite(Form parent)
         {
+            this.Text = TOOLS.Constantes.APP_NAME + " : Entrer La Quantité";
 
             InitializeComponent();
             fParent = parent;

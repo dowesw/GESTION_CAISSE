@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using GESTION_CAISSE.TOOLS;
+using System.IO;
 
 namespace GESTION_CAISSE.ENTITE
 {
@@ -60,11 +61,20 @@ namespace GESTION_CAISSE.ENTITE
             set { photo = value; }
         }
 
-        private bool connected;
-        public bool Connected
+        public System.Drawing.Image Image
         {
-            get { return connected; }
-            set { connected = value; }
+            get {
+                if ((photo != null) ? !photo.Trim().Equals("") : false)
+                {
+                    string chemin = Chemins.getCheminPhoto() + photo;
+                    if (File.Exists(chemin))
+                    {
+                        return new System.Drawing.Bitmap(chemin);
+                    }
+                }
+                return global::GESTION_CAISSE.Properties.Resources.user_m; ; 
+            }
+            set { }
         }
 
         private Employe employe;
@@ -72,6 +82,20 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return employe; }
             set { employe = value; }
+        }
+
+        private Agence agence = new Agence();
+        internal Agence Agence
+        {
+            get { return agence; }
+            set { agence = value; }
+        }
+
+        private bool connected;
+        public bool Connected
+        {
+            get { return connected; }
+            set { connected = value; }
         }
 
         private bool actif;

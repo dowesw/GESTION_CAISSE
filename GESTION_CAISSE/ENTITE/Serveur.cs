@@ -46,8 +46,7 @@ namespace GESTION_CAISSE.ENTITE
 
         public Boolean Control()
         {
-            Serveur bean = this;
-            return Control(bean);
+            return Control(this);
         }
 
         public static Boolean Control(Serveur bean)

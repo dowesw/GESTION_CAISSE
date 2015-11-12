@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GESTION_CAISSE.TOOLS;
+using System.IO;
 
 namespace GESTION_CAISSE.ENTITE
 {
@@ -62,11 +64,65 @@ namespace GESTION_CAISSE.ENTITE
             set { prix = value; }
         }
 
-        private List<String> photos;
-        public List<String> Photos
+        private string methodeVal;
+        public string MethodeVal
         {
-            get { return photos; }
-            set { photos = value; }
+            get { return methodeVal; }
+            set { methodeVal = value; }
+        }
+
+        private string photo1;
+        public string Photo1
+        {
+            get { return photo1; }
+            set { photo1 = value; }
+        }
+
+        private string photo2;
+        public string Photo2
+        {
+            get { return photo2; }
+            set { photo2 = value; }
+        }
+
+        private string photo3;
+        public string Photo3
+        {
+            get { return photo3; }
+            set { photo3 = value; }
+        }
+
+        public System.Drawing.Image Image
+        {
+            get
+            {
+                if ((photo1 != null) ? !photo1.Trim().Equals("") : false)
+                {
+                    string chemin = Chemins.getCheminArticle() + photo1;
+                    if (File.Exists(chemin))
+                    {
+                        return new System.Drawing.Bitmap(chemin);
+                    }
+                }
+                else if ((photo2 != null) ? !photo2.Trim().Equals("") : false)
+                {
+                    string chemin = Chemins.getCheminArticle() + photo2;
+                    if (File.Exists(chemin))
+                    {
+                        return new System.Drawing.Bitmap(chemin);
+                    }
+                }
+                else if ((photo3 != null) ? !photo3.Trim().Equals("") : false)
+                {
+                    string chemin = Chemins.getCheminArticle() + photo3;
+                    if (File.Exists(chemin))
+                    {
+                        return new System.Drawing.Bitmap(chemin);
+                    }
+                }
+                return global::GESTION_CAISSE.Properties.Resources.article; ;
+            }
+            set { }
         }
 
         private String categorie;
@@ -95,6 +151,13 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return plans; }
             set { plans = value; }
+        }
+
+        private double stock;
+        public double Stock
+        {
+            get { return stock; }
+            set { stock = value; }
         }
 
         private bool update;

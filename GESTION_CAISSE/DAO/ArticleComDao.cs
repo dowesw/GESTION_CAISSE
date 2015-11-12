@@ -33,6 +33,7 @@ namespace GESTION_CAISSE.DAO
                         a.Designation = a.Article.Designation;
                         a.RefArt = a.Article.RefArt;
                         a.CodeBarre = a.Article.CodeBarre;
+                        a.Image = a.Article.Image;
                         a.Update = true;
                     }
                     lect.Close();
@@ -72,7 +73,9 @@ namespace GESTION_CAISSE.DAO
                         a.Designation = a.Article.Designation;
                         a.RefArt = a.Article.RefArt;
                         a.CodeBarre = a.Article.CodeBarre;
+                        a.Image = a.Article.Image;
                     }
+                    a.Stock = article.Stock;
                     a.Update = true;
                     lect.Close();
                 }
@@ -111,7 +114,9 @@ namespace GESTION_CAISSE.DAO
                         a.Designation = a.Article.Designation;
                         a.RefArt = a.Article.RefArt;
                         a.CodeBarre = a.Article.CodeBarre;
+                        a.Image = a.Article.Image;
                     }
+                    a.Stock = article.Stock;
                     a.Update = true;
                     lect.Close();
                 }
@@ -243,6 +248,7 @@ namespace GESTION_CAISSE.DAO
                         a.Designation = a.Article.Designation;
                         a.RefArt = a.Article.RefArt;
                         a.CodeBarre = a.Article.CodeBarre;
+                        a.Image = a.Article.Image;
                         a.Update = true;
                         l.Add(a);
                     }

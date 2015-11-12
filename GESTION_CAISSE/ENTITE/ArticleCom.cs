@@ -54,6 +54,20 @@ namespace GESTION_CAISSE.ENTITE
             set { designation = value; }
         }
 
+        private System.Drawing.Image image;
+        public System.Drawing.Image Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
+
+        private double stock;
+        public double Stock
+        {
+            get { return stock; }
+            set { stock = value; }
+        }
+
         private bool update;
         public bool Update
         {

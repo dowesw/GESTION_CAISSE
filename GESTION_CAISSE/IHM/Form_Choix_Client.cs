@@ -26,6 +26,8 @@ namespace GESTION_CAISSE.IHM
 
         public Form_Choix_Client(Form parent)
         {
+            this.Text = TOOLS.Constantes.APP_NAME + " : Choix Client";
+
             InitializeComponent();
             fParent = parent;
 
@@ -265,15 +267,17 @@ namespace GESTION_CAISSE.IHM
 
         private void numerique_Click(object sender, EventArgs e)
         {
-
             panel4.Visible = true;
-            panel1.Visible = false;
-
+            panel6.Visible = false;
+            alphabet.Enabled = true;
+            numerique.Enabled = false;
         }
         private void alphabet_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
+            panel6.Visible = true;
             panel4.Visible = false;
+            alphabet.Enabled = false;
+            numerique.Enabled = true;
         }
         //effacer un caractere
         private void button27_Click(object sender, EventArgs e)
@@ -308,6 +312,5 @@ namespace GESTION_CAISSE.IHM
         {
 
         }
-
     }
 }

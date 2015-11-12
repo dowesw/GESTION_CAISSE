@@ -17,20 +17,14 @@ namespace GESTION_CAISSE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
             //Initialisation();
             //Application.Run(new IHM.Form_Caisse_Saisie());
-            test();
-=======
-            Initialisation();
-            Application.Run(new IHM.Form_Caisse_Click());
-            //Application.Run(new IHM.Form_Ticket());
->>>>>>> origin/master
+            StartAppl();
         }
 
         static void StartAppl()
         {
-            if (BLL.ServeurBll.ReturnServeur().Control())
+            if (TOOLS.Connexion.Connection_Test())
             {
                 Application.Run(new IHM.Form_Login());
             }
@@ -42,10 +36,15 @@ namespace GESTION_CAISSE
 
         static void test()
         {
-            var t = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var f = t;
+            Form f = new Form();
+            Button b = new Button();
+            b.Size = new System.Drawing.Size(100, 50);
+            System.Drawing.Bitmap i = global::GESTION_CAISSE.Properties.Resources.article;
+            b.Image = new System.Drawing.Bitmap(i,new System.Drawing.Size(16,16));
+            f.Controls.Add(b);
+            f.ShowDialog();
         }
-        
+
         static void Initialisation()
         {
             TOOLS.Constantes.Societe = BLL.SocieteBll.One(2288);

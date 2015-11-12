@@ -143,6 +143,11 @@ namespace GESTION_CAISSE.ENTITE
                 Messages.ShowErreur("Le contenu ne peut pas être null");
                 return false;
             }
+            if ((bean.facture != null) ? bean.facture.Id < 1 : true)
+            {
+                Messages.ShowErreur("Vous devez dabord enregsitrer la facture!");
+                return false;
+            }
             if ((bean.article != null) ? bean.article.Id < 1 : true)
             {
                 Messages.ShowErreur("L'article ne peut pas être null");
@@ -158,10 +163,14 @@ namespace GESTION_CAISSE.ENTITE
                 Messages.ShowErreur("Vous devez entrer une quantitée");
                 return false;
             }
-            if ((bean.facture != null) ? bean.facture.Id < 1 : true)
+            if (bean.Quantite > bean.article.Stock)
             {
-                Messages.ShowErreur("Vous devez dabord enregsitrer la facture!");
-                return false;
+                if (bean.article.Article.MethodeVal.Equals(Constantes.FIFO))
+                {
+                    Messages.ShowErreur("Stock insuffisant pour cette vente");
+                    return false;
+                }
+                Messages.Alert("Le stock de cette article est négatif!");
             }
             return true;
         }

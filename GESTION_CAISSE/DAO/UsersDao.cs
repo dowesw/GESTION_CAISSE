@@ -32,6 +32,11 @@ namespace GESTION_CAISSE.DAO
                         a.Photo = lect["photo"].ToString().Trim();
                         a.Actif = Convert.ToBoolean((lect["actif"].ToString() != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
                         a.Connected = Convert.ToBoolean((lect["connecte"].ToString() != null) ? (!lect["connecte"].ToString().Trim().Equals("") ? lect["connecte"].ToString().Trim() : "false") : "false");
+                        a.Agence = (lect["agence"] != null
+                            ? (!lect["agence"].ToString().Trim().Equals("")
+                            ? BLL.AgenceBll.One(Convert.ToInt32(lect["agence"].ToString()))
+                            : new Agence())
+                            : new Agence());
                         a.Admin = false;
                     }
                     lect.Close();
@@ -69,7 +74,11 @@ namespace GESTION_CAISSE.DAO
                         a.Photo = lect["photo"].ToString().Trim();
                         a.Actif = Convert.ToBoolean((lect["actif"].ToString() != null) ? (!lect["actif"].ToString().Trim().Equals("") ? lect["actif"].ToString().Trim() : "false") : "false");
                         a.Connected = Convert.ToBoolean((lect["connecte"].ToString() != null) ? (!lect["connecte"].ToString().Trim().Equals("") ? lect["connecte"].ToString().Trim() : "false") : "false");
-                        TOOLS.Constantes.Agence = BLL.AgenceBll.One(Convert.ToInt64(lect["agence"].ToString()));
+                        a.Agence = (lect["agence"] != null
+                            ? (!lect["agence"].ToString().Trim().Equals("")
+                            ? BLL.AgenceBll.One(Convert.ToInt32(lect["agence"].ToString()))
+                            : new Agence())
+                            : new Agence());
                         a.Employe = null;
                         a.Admin = false;
                     }

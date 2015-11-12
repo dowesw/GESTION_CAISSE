@@ -74,7 +74,7 @@ namespace GESTION_CAISSE.IHM
             //panel4.Enabled = false;
             //picClient.Enabled = false;
             // btnEnregistrer.Enabled = false;
-            SearchDirectionF(2);
+            //SearchDirectionF(2);
             LoadAll();
         }
 
@@ -106,24 +106,23 @@ namespace GESTION_CAISSE.IHM
             //panel4.Enabled = false;
             //picClient.Enabled = false;
             // btnEnregistrer.Enabled = false;
-            SearchDirectionF(2);
             LoadAll();
-
 
         }
 
         public void ConfigForm()
         {
+            this.Text = Constantes.APP_NAME + " : Principal";
+
+            Timer bg = new Timer();
+            bg.Tick += (s, e) => { lb_date.Text = DateTime.Now.ToString("U"); };
+            bg.Interval = 500;
+            bg.Start();
+
             familles.Clear();
-            //familles = prodListFamille();
 
-            for (int i = 0; i < 26; i++)
-            {
-                FamilleArticle famArt = new FamilleArticle();
-                famArt.Designation = "F" + i;
-                familles.Add(famArt);
+            familles = prodListFamille();
 
-            }
             ResetFicheFacture();
             clientZero = BLL.ClientBll.Default();
             dpt = TOOLS.Constantes.Creneau.Depot;
@@ -143,14 +142,11 @@ namespace GESTION_CAISSE.IHM
             InitButton(buttonAs, labelAs);
             initZonePrix();
             InitInfoClient();
-            Timer bg = new Timer();
-            bg.Tick += (s, e) => { label2.Text = DateTime.Now.ToString("U"); };
-            bg.Interval = 500;
-            bg.Start();
 
             nbrPgF = ((familles.Count % 8) > 0) ? (familles.Count / 8) + 1 : (familles.Count / 8);
             btn_cpt_Famille.Text = "0/" + nbrPgF;
 
+            InitFamille();
         }
 
         public void initZonePrix()
@@ -164,8 +160,7 @@ namespace GESTION_CAISSE.IHM
         public void InitInfoClient()
         {
             // initialisation deslabels pour le client
-            NomClient.Text = clientZero.Tiers.Nom;
-            PrenomClient.Text = clientZero.Tiers.Prenom;
+            NomClient.Text = clientZero.Tiers.Nom_prenom;
             AdresseClient.Text = clientZero.Tiers.Adresse;
             TelClient.Text = clientZero.Tiers.Tel;
             codeClient.Text = clientZero.Tiers.CodeTiers;
@@ -239,10 +234,6 @@ namespace GESTION_CAISSE.IHM
 
             foreach (Article arT in articless)
             {
-                //if (arT.Famille.Id < 1)
-                //{ 
-                //    arT.Famille = Dflt; Dflt.Articles.Add(arT);
-                //}
                 if (arT.Famille.Id > 0)
                 {
                     if (!listInter.Contains(arT.Famille))
@@ -250,7 +241,6 @@ namespace GESTION_CAISSE.IHM
                         FamilleArticle f = BLL.FamilleArticleBll.One_(arT.Famille.Id);
                         f.Articles.Add(arT);
                         listInter.Add(f);
-                        //listInter.Add(arT.Famille);
                     }
                     else
                     {
@@ -265,29 +255,15 @@ namespace GESTION_CAISSE.IHM
                     f.Articles.Add(arT);
                     listInter[listInter.FindIndex(x => x.Id == f.Id)] = f;
                 }
-
-                //arT.Famille.Id;
-                //BLL.FamilleArticleBll.One();
-                //list.Add();
             }
             return listInter;
         }
+
         //modification des boutons des familles
         private void ModifButton(Button ctl, FamilleArticle cli, Label lbl)
         {
-
-            //cli = (FamilleArticle)familles.ElementAt<FamilleArticle>(indTabF);
-
-            //if (cli.Tiers.Logo.Trim().Equals("") || cli.Tiers.Logo == null)
-            //{
-            //    ctl.BackgroundImage = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
-            //}
-            //else
-            //{
-            //    String chemin = Application.StartupPath;
-            //    chemin += TOOLS.Constantes.FILE_SEPARATOR + cli.Tiers.Logo;
-            //    ctl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject(chemin)));
-            //}
+            lbl.Visible = true;
+            lbl.Text = cli.Designation;
             ctl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ctl.Text = "";
             ctl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -306,7 +282,10 @@ namespace GESTION_CAISSE.IHM
                 nbrPgA = ((articles.Count % 8) > 1) ? (articles.Count / 8) + 1 : (articles.Count / 8);
                 btn_cpt_Articles.Text = "0/" + nbrPgA;
 
-                SearchDirectionA(2);
+                pgGaucheA.Enabled = false;
+                pgDroiteA.Enabled = cli.Articles.Count > 8;
+
+                InitArticle();
                 ctl.Enabled = false;
                 foreach (Button btn in buttonFs)
                 {
@@ -316,38 +295,22 @@ namespace GESTION_CAISSE.IHM
                     }
                 }
 
-                foreach (Button btn in buttonAs)
-                {
-                    if (btn != ctl)
-                    {
-                        btn.Enabled = true;
-                    }
-                }
+                //foreach (Button btn in buttonAs)
+                //{
+                //    if (btn != ctl)
+                //    {
+                //        btn.Enabled = true;
+                //    }
+                //}
             };
-
-            lbl.Visible = true;
-            lbl.Text = cli.Designation;
         }
 
         //modification des boutons des articles
         private void ModifButton(Button ctl, Article cli, Label lbl)
         {
-
-
-            if ((cli.Photos != null) ?
-                    ((cli.Photos.Count > 0) ?
-                        ((cli.Photos[0] != null) ? cli.Photos[0].Trim().Equals("") : true)
-                    : true)
-                : true)
-            {
-                ctl.BackgroundImage = ((System.Drawing.Image)global::GESTION_CAISSE.Properties.Resources.user_m1);
-            }
-            else
-            {
-                String chemin = Application.StartupPath;
-                chemin += TOOLS.Constantes.FILE_SEPARATOR + cli.Photos[0];
-                ctl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject(chemin)));
-            }
+            lbl.Visible = true;
+            lbl.Text = cli.Designation;
+            ctl.BackgroundImage = (System.Drawing.Image)cli.Image;
             ctl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ctl.Text = "";
             ctl.UseVisualStyleBackColor = true;
@@ -420,8 +383,6 @@ namespace GESTION_CAISSE.IHM
                 }
 
             };
-            lbl.Visible = true;
-            lbl.Text = cli.Designation;
         }
 
         private Contenu RecopieViewContenu()
@@ -486,10 +447,89 @@ namespace GESTION_CAISSE.IHM
             else { articlesCrits.AddRange(articles); }
         }
 
-        private bool b1F = false;
-        private bool b2F = false;
+        private List<FamilleArticle> GetPack8F(List<FamilleArticle> list, bool droite)
+        {
+            List<FamilleArticle> listRetour = new List<FamilleArticle>();
+            if (list.Count > 0)
+            {
+                if (droite)
+                {
 
-        private List<FamilleArticle> GetPack8F(ref int indActu, List<FamilleArticle> list, int sens,ref  bool b1F,ref bool b2F)
+                    int charT = btn_cpt_Famille.Text.IndexOf('/');
+                    int subStr = Convert.ToInt32(btn_cpt_Famille.Text.Substring(0, charT));
+                    btn_cpt_Famille.Text = (subStr + 1).ToString() + "/" + nbrPgF;
+
+                    int tail = (list.Count - indTabF) > 8 ? 8 : list.Count - indTabF;
+
+                    for (int i = 0; i < tail; i++)
+                    {
+                        listRetour.Add(list.ElementAt<FamilleArticle>(indTabF));
+                        indTabF++;
+                    }
+
+                    tail = (list.Count - indTabF) > 8 ? 8 : list.Count - indTabF;
+                    if (tail == 0)
+                        tail = 1;
+
+                    if (indTabF + tail <= list.Count)
+                        pgDroiteF.Enabled = true;
+                    else
+                    {
+                        pgDroiteF.Enabled = false;
+                        indTabF = list.Count;
+                    }
+
+                    pgGaucheF.Enabled = true;
+
+                }
+                else
+                {
+                    int charT2 = btn_cpt_Famille.Text.IndexOf('/');
+                    int subStr2 = Convert.ToInt32(btn_cpt_Famille.Text.Substring(0, charT2));
+                    btn_cpt_Famille.Text = (subStr2 - 1).ToString() + "/" + nbrPgF;
+
+                    if ((indTabF % 8) > 0)
+                    {
+                        indTabF -= ((indTabF % 8));
+                    }
+                    else
+                    {
+                        indTabF -= 8;
+                    }
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        indTabF--;
+                        listRetour.Add(list.ElementAt<FamilleArticle>(indTabF));
+                    }
+
+                    if (indTabF < 8)
+                    {
+                        pgGaucheF.Enabled = false;
+                        if (indTabF == 0)
+                        {
+                            indTabF = 8;
+                        }
+                    }
+                    else
+                    {
+                        indTabF += 8;
+                    }
+
+                    pgDroiteF.Enabled = true;
+
+                    listRetour.Reverse();
+                }
+            }
+            else
+            {
+                pgDroiteF.Enabled = false;
+                pgGaucheF.Enabled = false;
+            }
+            return listRetour;
+        }
+
+        private List<FamilleArticle> GetPack8F(ref int indActu, List<FamilleArticle> list, int sens, ref  bool b1F, ref bool b2F)
         {
             List<FamilleArticle> listRetour = new List<FamilleArticle>();
 
@@ -578,6 +618,88 @@ namespace GESTION_CAISSE.IHM
         private bool b1A = false;
         private bool b2A = false;
 
+        private List<Article> GetPack8A(List<Article> list, bool droite)
+        {
+            List<Article> listRetour = new List<Article>();
+            if (list.Count > 0)
+            {
+                if (droite)
+                {
+
+                    int charT = btn_cpt_Articles.Text.IndexOf('/');
+                    int subStr = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT));
+                    btn_cpt_Articles.Text = (subStr + 1).ToString() + "/" + nbrPgA;
+
+                    int tail = (list.Count - indTabA) > 8 ? 8 : list.Count - indTabA;
+
+                    for (int i = 0; i < tail; i++)
+                    {
+                        listRetour.Add(list.ElementAt<Article>(indTabA));
+                        indTabA++;
+                    }
+
+                    tail = (list.Count - indTabA) > 8 ? 8 : list.Count - indTabA;
+                    if (tail == 0)
+                        tail = 1;
+
+                    if (indTabA + tail <= list.Count)
+                        pgDroiteA.Enabled = true;
+                    else
+                    {
+                        pgDroiteA.Enabled = false;
+                        indTabA = list.Count;
+                    }
+
+                    pgGaucheA.Enabled = true;
+
+                }
+                else
+                {
+                    int charT2 = btn_cpt_Articles.Text.IndexOf('/');
+                    int subStr2 = Convert.ToInt32(btn_cpt_Articles.Text.Substring(0, charT2));
+                    btn_cpt_Articles.Text = (subStr2 - 1).ToString() + "/" + nbrPgA;
+
+                    if ((indTabA % 8) > 0)
+                    {
+                        indTabA -= ((indTabA % 8));
+                    }
+                    else
+                    {
+                        indTabA -= 8;
+                    }
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        indTabA--;
+                        listRetour.Add(list.ElementAt<Article>(indTabA));
+                    }
+
+                    if (indTabA < 8)
+                    {
+                        pgGaucheA.Enabled = false;
+                        if (indTabA == 0)
+                        {
+                            indTabA = 8;
+                        }
+                    }
+                    else
+                    {
+                        indTabA += 8;
+                    }
+
+                    pgDroiteA.Enabled = true;
+
+                    listRetour.Reverse();
+                }
+            }
+            else
+            {
+                pgDroiteA.Enabled = false;
+                pgGaucheA.Enabled = false;
+            }
+            return listRetour;
+        }
+
         private List<Article> GetPack8A(ref int indActu, List<Article> list, int sens)
         {
             List<Article> listRetour = new List<Article>();
@@ -664,30 +786,53 @@ namespace GESTION_CAISSE.IHM
             return listRetour;
         }
 
-        private void SearchDirectionF(int sens)
+        private void InitFamille()
         {
-            int posBtn = 0;
+            int taill = (familles.Count > 8) ? 8 : familles.Count;
+            for (int i = 0; i < taill; i++)
+            {
+                ModifButton(buttonFs.ElementAt<Button>(i), familles.ElementAt<FamilleArticle>(i), labelFs.ElementAt<Label>(i));
+            }
+            indTabF = taill;
+            pgGaucheF.Enabled = false;
+            pgGaucheA.Enabled = false;
+            pgDroiteA.Enabled = false;
+            pgDroiteF.Enabled = familles.Count > 8;
+        }
+
+        private void InitArticle()
+        {
+            int taill = (articles.Count > 8) ? 8 : articles.Count;
+            for (int i = 0; i < taill; i++)
+            {
+                ModifButton(buttonAs.ElementAt<Button>(i), articles.ElementAt<Article>(i), labelAs.ElementAt<Label>(i));
+            }
+            indTabA = taill;
+            pgGaucheA.Enabled = false;
+            pgDroiteA.Enabled = familles.Count > 8;
+        }
+
+        private void SearchDirectionF(bool droite)
+        {
             InitButton(buttonFs, labelFs);
             ResultatRechercheF("");
-            List<FamilleArticle> seracList = GetPack8F(ref indTabF, famillesCrits, sens,ref b1F, ref b2F);
-            var t = seracList.Count;
-            foreach (FamilleArticle cli in seracList)
+            List<FamilleArticle> seracList = GetPack8F(famillesCrits, droite);
+
+            for (int i = 0; i < seracList.Count; i++)
             {
-                ModifButton(buttonFs.ElementAt<Button>(posBtn), cli, labelFs.ElementAt<Label>(posBtn));
-                posBtn++;
+                ModifButton(buttonFs.ElementAt<Button>(i), seracList.ElementAt<FamilleArticle>(i), labelFs.ElementAt<Label>(i));
             }
         }
-        private void SearchDirectionA(int sens)
+
+        private void SearchDirectionA(bool droite)
         {
-            int posBtn = 0;
             InitButton(buttonAs, labelAs);
             ResultatRechercheA("");
-            List<Article> seracList = GetPack8A(ref indTabA, articlesCrits, sens);
+            List<Article> seracList = GetPack8A(articlesCrits, droite);
             var t = seracList.Count;
-            foreach (Article cli in seracList)
+            for (int i = 0; i < seracList.Count; i++)
             {
-                ModifButton(buttonAs.ElementAt<Button>(posBtn), cli, labelAs.ElementAt<Label>(posBtn));
-                posBtn++;
+                ModifButton(buttonAs.ElementAt<Button>(i), seracList.ElementAt<Article>(i), labelAs.ElementAt<Label>(i));
             }
         }
 
@@ -1129,8 +1274,7 @@ namespace GESTION_CAISSE.IHM
             {
                 codeClient.Text = f.Tiers.CodeTiers;
                 AdresseClient.Text = f.Tiers.Adresse;
-                PrenomClient.Text = f.Tiers.Prenom;
-                NomClient.Text = f.Tiers.Nom;
+                NomClient.Text = f.Tiers.Nom_prenom;
                 TelClient.Text = f.Tiers.Tel;
                 if (f.Tiers.Logo.Equals("") || f.Tiers.Logo == null)
                 {
@@ -1148,8 +1292,7 @@ namespace GESTION_CAISSE.IHM
                 lb_numPiece.Text = Utils.GenererReference(Constantes.DOC_FACTURE);
                 codeClient.Text = f.Tiers.CodeTiers;
                 AdresseClient.Text = f.Tiers.Adresse;
-                PrenomClient.Text = f.Tiers.Prenom;
-                NomClient.Text = f.Tiers.Nom;
+                NomClient.Text = f.Tiers.Nom_prenom;
                 TelClient.Text = f.Tiers.Tel;
                 if (f.Tiers.Logo.Equals("") || f.Tiers.Logo == null)
                 {
@@ -1189,7 +1332,7 @@ namespace GESTION_CAISSE.IHM
             nbrPgA = 0;
             btn_cpt_Famille.Text = "0/" + nbrPgF;
             btn_cpt_Articles.Text = "0/" + nbrPgA;
-            SearchDirectionF(2);
+            SearchDirectionF(true);
         }
 
         private void btnEnregistrer_Click_1(object sender, EventArgs e)
@@ -1611,7 +1754,7 @@ namespace GESTION_CAISSE.IHM
 
         private void Form_Caisse_Click_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Constantes.form_caisse_saisie = null;
+            Constantes.form_caisse_click = null;
         }
 
         private void Form_Caisse_Click_FormClosed(object sender, FormClosedEventArgs e)
@@ -1670,7 +1813,11 @@ namespace GESTION_CAISSE.IHM
         private void btn_theme_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            new Form_Caisse_Saisie().Show();
+            Constantes.form_caisse_click = null;
+            if (F_parent != null)
+                new Form_Caisse_Saisie(F_parent).Show();
+            else
+                new Form_Caisse_Saisie().Show();
         }
 
         private void btn_deconnect_Click(object sender, EventArgs e)
@@ -2094,24 +2241,29 @@ namespace GESTION_CAISSE.IHM
             new Form_Approvision().ShowDialog();
         }
 
-        private void pgDroiteF_Click_1(object sender, EventArgs e)
+        private void pgDroiteF_Click(object sender, EventArgs e)
         {
-            SearchDirectionF(2);
+            SearchDirectionF(true);
         }
 
-        private void pgGaucheF_Click_1(object sender, EventArgs e)
+        private void pgGaucheF_Click(object sender, EventArgs e)
         {
-            SearchDirectionF(1);
+            SearchDirectionF(false);
         }
 
-        private void pgGaucheA_Click_1(object sender, EventArgs e)
+        private void pgGaucheA_Click(object sender, EventArgs e)
         {
-            SearchDirectionA(1);
+            SearchDirectionA(false);
         }
 
-        private void pgDroiteA_Click_1(object sender, EventArgs e)
+        private void pgDroiteA_Click(object sender, EventArgs e)
         {
-            SearchDirectionA(2);
+            SearchDirectionA(true);
+        }
+
+        private void btn_actualise_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

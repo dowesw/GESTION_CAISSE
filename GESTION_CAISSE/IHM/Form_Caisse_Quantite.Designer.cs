@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Caisse_Quantite));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -46,15 +47,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Location = new System.Drawing.Point(4, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(273, 32);
+            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBox1.Size = new System.Drawing.Size(256, 32);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "0";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 50);
+            this.button1.Location = new System.Drawing.Point(4, 42);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 55);
             this.button1.TabIndex = 0;
@@ -63,7 +66,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(82, 50);
+            this.button2.Location = new System.Drawing.Point(68, 42);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(64, 55);
             this.button2.TabIndex = 2;
@@ -72,7 +75,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(152, 50);
+            this.button3.Location = new System.Drawing.Point(132, 42);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(64, 55);
             this.button3.TabIndex = 3;
@@ -81,7 +84,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(221, 50);
+            this.button4.Location = new System.Drawing.Point(196, 42);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(64, 55);
             this.button4.TabIndex = 4;
@@ -90,7 +93,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(82, 111);
+            this.button5.Location = new System.Drawing.Point(68, 98);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(64, 55);
             this.button5.TabIndex = 5;
@@ -99,7 +102,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(12, 111);
+            this.button6.Location = new System.Drawing.Point(4, 98);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(64, 55);
             this.button6.TabIndex = 6;
@@ -108,7 +111,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(152, 111);
+            this.button7.Location = new System.Drawing.Point(132, 98);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(64, 55);
             this.button7.TabIndex = 7;
@@ -117,7 +120,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(221, 111);
+            this.button8.Location = new System.Drawing.Point(196, 98);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(64, 55);
             this.button8.TabIndex = 8;
@@ -126,7 +129,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(12, 172);
+            this.button9.Location = new System.Drawing.Point(4, 154);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(64, 55);
             this.button9.TabIndex = 9;
@@ -135,7 +138,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(82, 172);
+            this.button10.Location = new System.Drawing.Point(68, 154);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(64, 55);
             this.button10.TabIndex = 10;
@@ -144,9 +147,9 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(152, 172);
+            this.button11.Location = new System.Drawing.Point(132, 154);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(133, 55);
+            this.button11.Size = new System.Drawing.Size(128, 55);
             this.button11.TabIndex = 11;
             this.button11.Text = "EFFACER";
             this.button11.UseVisualStyleBackColor = true;
@@ -154,9 +157,9 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(12, 233);
+            this.button12.Location = new System.Drawing.Point(4, 210);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(134, 55);
+            this.button12.Size = new System.Drawing.Size(127, 55);
             this.button12.TabIndex = 12;
             this.button12.Text = "EFFACER TOUT";
             this.button12.UseVisualStyleBackColor = true;
@@ -164,9 +167,9 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(151, 233);
+            this.button13.Location = new System.Drawing.Point(131, 210);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(134, 55);
+            this.button13.Size = new System.Drawing.Size(129, 55);
             this.button13.TabIndex = 13;
             this.button13.Text = "VALIDER";
             this.button13.UseVisualStyleBackColor = true;
@@ -176,7 +179,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 297);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(264, 270);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
@@ -191,6 +195,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(280, 309);
+            this.MinimumSize = new System.Drawing.Size(280, 309);
             this.Name = "Form_Caisse_Quantite";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quantité de l\'article";

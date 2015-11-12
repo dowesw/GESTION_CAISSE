@@ -76,6 +76,10 @@ namespace GESTION_CAISSE.IHM
                                 if (Constantes.Users == null)
                                     Constantes.Users = new ENTITE.Users();
                                 Constantes.Users = u_;
+                                if (u_.Agence != null)
+                                    TOOLS.Constantes.Agence = u_.Agence;
+                                if (u_.Agence.Societe != null)
+                                    TOOLS.Constantes.Societe = u_.Agence.Societe;
                                 return true;
                             }
                             else
@@ -109,6 +113,8 @@ namespace GESTION_CAISSE.IHM
             if ((c != null) ? c.Id > 0 : false)
             {
                 Constantes.Creneau = c;
+                TOOLS.Utils.SetEnteteOfDay(DateTime.Now);
+                return true;
             }
             Messages.ShowErreur("Vous n'etes pas programmé pour aujourd'hui. Veuillez contacter votre administrateur!");
             return false;

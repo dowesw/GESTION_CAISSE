@@ -189,6 +189,12 @@
       <DependentUpon>Etat_Ticket.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="IHM\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="IHM\Form_Approvision.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +295,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etat_Ticket.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IHM\Form_Approvision.resx">
       <DependentUpon>Form_Approvision.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +372,9 @@
     <None Include="IMG\ICONES\stylesheet.png" />
     <None Include="IMG\dnavigation.png" />
     <None Include="IMG\bnavigation.png" />
+    <None Include="IMG\article.png" />
+    <None Include="IMG\article_16.png" />
+    <None Include="IMG\article_24.png" />
     <Content Include="IMG\favicon-16.ico" />
     <Content Include="IMG\favicon-32.ico" />
     <Content Include="IMG\favicon.ico" />

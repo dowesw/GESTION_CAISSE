@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GESTION_CAISSE.TOOLS;
+using System.IO;
 
 namespace GESTION_CAISSE.ENTITE
 {
@@ -58,6 +60,30 @@ namespace GESTION_CAISSE.ENTITE
         {
             get { return categorieClt; }
             set { categorieClt = value; }
+        }
+
+        private string photo;
+        public string Photo
+        {
+            get { return photo; }
+            set { photo = value; }
+        }
+
+        public System.Drawing.Image Image
+        {
+            get
+            {
+                if ((photo != null) ? !photo.Trim().Equals("") : false)
+                {
+                    string chemin = Chemins.getCheminPhoto() + photo;
+                    if (File.Exists(chemin))
+                    {
+                        return new System.Drawing.Bitmap(chemin);
+                    }
+                }
+                return global::GESTION_CAISSE.Properties.Resources.user_m; ;
+            }
+            set { }
         }
 
         private bool update;

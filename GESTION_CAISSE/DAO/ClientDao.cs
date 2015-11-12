@@ -32,6 +32,7 @@ namespace GESTION_CAISSE.DAO
                             : new Tiers())
                             : new Tiers());
                         a.Nom_prenom = a.Tiers.Nom_prenom;
+                        a.Photo = a.Tiers.Logo;
                         a.CategorieClt = (lect["categorie"] != null
                             ? (!lect["categorie"].ToString().Trim().Equals("")
                             ? BLL.CategorieClientBll.One(Convert.ToInt64(lect["categorie"].ToString()))
@@ -79,6 +80,7 @@ namespace GESTION_CAISSE.DAO
                             : new Tiers())
                             : new Tiers());
                         a.Nom_prenom = a.Tiers.Nom_prenom;
+                        a.Photo = a.Tiers.Logo;
                         a.CategorieClt = (lect["categorie"] != null
                             ? (!lect["categorie"].ToString().Trim().Equals("")
                             ? BLL.CategorieClientBll.One(Convert.ToInt64(lect["categorie"].ToString()))
@@ -220,6 +222,7 @@ namespace GESTION_CAISSE.DAO
                             : new Tiers())
                             : new Tiers());
                         a.Nom_prenom = a.Tiers.Nom_prenom;
+                        a.Photo = a.Tiers.Logo;
                         a.CategorieClt = (lect["categorie"] != null
                             ? (!lect["categorie"].ToString().Trim().Equals("")
                             ? BLL.CategorieClientBll.One(Convert.ToInt64(lect["categorie"].ToString()))

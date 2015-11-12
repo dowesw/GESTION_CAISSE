@@ -25,7 +25,7 @@ namespace GESTION_CAISSE.TOOLS
 
 
 
-        public const String NAME_ADMIN = "A";
+        public const string NAME_ADMIN = "A";
 
         public const int MAX_ERROR_CONNECT = 2;
         public const int MAX_TIME_CONNECT = 30;
@@ -34,31 +34,43 @@ namespace GESTION_CAISSE.TOOLS
 
         public const string APP_NAME = "Gestion Caisse";
 
-        public const String MOUV_ENTREE = "E";
+        public const string MOUV_ENTREE = "E";
+        public const string MOUV_SORTIE = "S";
 
-        public const String TABLE_EXTERNE_PIECE = "yvs_com_mensualite_facture_vente";
+        public const string TABLE_EXTERNE_PIECE = "yvs_com_mensualite_facture_vente";
 
-        public const String ETAT_EN_ATTENTE = "En Attente";
-        public const String ETAT_EN_COURS = "En Cours";
-        public const String ETAT_REGLE = "Réglé";
-        public const String ETAT_VALIDE = "Accordé";
-        public const String ETAT_RETARD = "En Retard";
+        public const string ETAT_EN_ATTENTE = "En Attente";
+        public const string ETAT_EN_COURS = "En Cours";
+        public const string ETAT_REGLE = "Réglé";
+        public const string ETAT_VALIDE = "Accordé";
+        public const string ETAT_RETARD = "En Retard";
 
-        public const String TYPE_FV = "FV";
-        public const String TYPE_BCV = "BCV";
-        public const String TYPE_FV_NAME = "Facture";
-        public const String TYPE_BCV_NAME = "Commande";
+        public const string TYPE_FV = "FV";
+        public const string TYPE_BCV = "BCV";
+        public const string TYPE_FV_NAME = "Facture";
+        public const string TYPE_BCV_NAME = "Commande";
 
-        public const String DOC_FACTURE = "Facture Vente";
-        public const String DOC_COMMANDE = "Bon Commande Vente";
-        public const String DOC_PIECE = "Piece Tresorerie";        
+        public const string DOC_FACTURE = "Facture Vente";
+        public const string DOC_COMMANDE = "Bon Commande Vente";
+        public const string DOC_PIECE = "Piece Tresorerie";        
 
         //Base
-        public const String BASE_CA = "CA";
-        public const String BASE_QTE = "Qte";
+        public const string BASE_CA = "CA";
+        public const string BASE_QTE = "Qte";
 
         //Nature Montant
-        public const String NATURE_TAUX = "Taux";
-        public const String NATURE_MTANT = "Montant";
+        public const string NATURE_TAUX = "Taux";
+        public const string NATURE_MTANT = "Montant";
+
+        //Methode de valorisation
+        public const string FIFO = "FIFO";
+        public const string LIFO = "LIFO";
+        public const string CMPI = "CMPI";
+        public const string CMPII = "CMPII";
+
+        //Mode Inventaire
+        public const string INV_PERMANENT = "P";
+        public const string INV_INTERMITENT = "I";
+
     }
 }

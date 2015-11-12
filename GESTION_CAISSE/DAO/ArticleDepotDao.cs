@@ -43,7 +43,22 @@ namespace GESTION_CAISSE.DAO
                         a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0.0) : 0.0);
                         a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0.0) : 0.0);
                         a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0.0) : 0.0);
-                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (lect["quantite_stock"].ToString().Length > 0 ? lect["quantite_stock"] : 0.0) : 0.0);
+
+                        //Calcul du stock de l'article dans le depot
+                        double stock = 0;
+                        List<MouvementStock> l = BLL.MouvementStockBll.Liste("select * from yvs_base_mouvement_stock where article = " + a.Article.Id + " and depot = " + a.Depot.Id);
+                        foreach (MouvementStock m in l)
+                        {
+                            if ((m.Mouvement != null) ? (m.Mouvement.Equals(Constantes.MOUV_ENTREE)) : false)
+                            {
+                                stock += m.Quantite;
+                            }
+                            else
+                            {
+                                stock -= m.Quantite;
+                            }
+                        }
+                        a.Stock = stock;
                         a.Update = true;
                     }
                     lect.Close();
@@ -93,7 +108,22 @@ namespace GESTION_CAISSE.DAO
                         a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0.0) : 0.0);
                         a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0.0) : 0.0);
                         a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0.0) : 0.0);
-                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (lect["quantite_stock"].ToString().Length > 0 ? lect["quantite_stock"] : 0.0) : 0.0);
+
+                        //Calcul du stock de l'article dans le depot
+                        double stock = 0;
+                        List<MouvementStock> l = BLL.MouvementStockBll.Liste("select * from yvs_base_mouvement_stock where article = " + a.Article.Id + " and depot = " + a.Depot.Id);
+                        foreach (MouvementStock m in l)
+                        {
+                            if ((m.Mouvement != null) ? (m.Mouvement.Equals(Constantes.MOUV_ENTREE)) : false)
+                            {
+                                stock += m.Quantite;
+                            }
+                            else
+                            {
+                                stock -= m.Quantite;
+                            }
+                        }
+                        a.Stock = stock; 
                         a.Update = true;
                     }
                     lect.Close();
@@ -236,7 +266,21 @@ namespace GESTION_CAISSE.DAO
                         a.StockAlert = (Double)((lect["stock_alert"] != null) ? (!lect["stock_alert"].ToString().Trim().Equals("") ? lect["stock_alert"] : 0.0) : 0.0);
                         a.StockMax = (Double)((lect["stock_max"] != null) ? (!lect["stock_max"].ToString().Trim().Equals("") ? lect["stock_max"] : 0.0) : 0.0);
                         a.StockMin = (Double)((lect["stock_min"] != null) ? (!lect["stock_min"].ToString().Trim().Equals("") ? lect["stock_min"] : 0.0) : 0.0);
-                        a.Stock = (Double)((lect["quantite_stock"] != null) ? (lect["quantite_stock"].ToString().Length > 0 ? lect["quantite_stock"] : 0.0) : 0.0);
+                        //Calcul du stock de l'article dans le depot
+                        double stock = 0;
+                        List<MouvementStock> y = BLL.MouvementStockBll.Liste("select * from yvs_base_mouvement_stock where article = " + a.Article.Id + " and depot = " + a.Depot.Id);
+                        foreach (MouvementStock m in y)
+                        {
+                            if ((m.Mouvement != null) ? (m.Mouvement.Equals(Constantes.MOUV_ENTREE)) : false)
+                            {
+                                stock += m.Quantite;
+                            }
+                            else
+                            {
+                                stock -= m.Quantite;
+                            }
+                        }
+                        a.Stock = stock;
                         a.Update = true;
                         l.Add(a);
                     }
