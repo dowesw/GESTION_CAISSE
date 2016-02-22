@@ -17,9 +17,9 @@ namespace GESTION_CAISSE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Initialisation();
-            //Application.Run(new IHM.Form_Caisse_Saisie());
-            StartAppl();
+            Initialisation();
+            Application.Run(new IHM.Form_Caisse_Saisie());
+            //StartAppl();
         }
 
         static void StartAppl()
